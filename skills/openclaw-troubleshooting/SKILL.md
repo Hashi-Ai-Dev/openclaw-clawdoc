@@ -203,8 +203,10 @@ agents: { defaults: { maxConcurrent: 4 } }
 - 1-hour expiry, 3 pending max per channel
 
 **Node device pairing fails**
-- Run `openclaw pairing list <channel>`
-- Pairing codes are channel-specific
+- Use `openclaw devices list` to check paired devices
+- Approve with `openclaw devices approve <requestId>` (not `openclaw pairing`)
+- Node/device pairing uses `openclaw devices`, NOT `openclaw pairing` (which is for channel pairing only)
+- Pairing codes expire after 1 hour
 
 ---
 

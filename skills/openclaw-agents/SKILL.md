@@ -1,6 +1,6 @@
 ---
 name: openclaw-agents
-description: OpenClaw multi-agent system. Use when setting up multiple agents, bindings, channel routing, per-agent sandbox, tool policies, ACP runtimes, or workspace bootstrap. Triggers on: "multi-agent", "bindings", "routing", "agentId", "workspace", "sandbox", "tool policy", "per-agent", "ACP", "acp", "runtime", "bootstrap".
+description: OpenClaw multi-agent system. Use when setting up multiple agents, bindings, channel routing, per-agent sandbox, tool policies, ACP runtimes, workspace bootstrap, subagent limits, context pruning, or per-agent thinking/reasoning overrides. Triggers on: "multi-agent", "bindings", "routing", "agentId", "workspace", "sandbox", "tool policy", "per-agent", "ACP", "acp", "runtime", "bootstrap", "subagent", "sessions_spawn", "contextPruning", "thinkingDefault", "reasoningDefault", "fastModeDefault", "execApprovals", "sandbox mode", "sandbox scope".
 ---
 
 # OpenClaw Multi-Agent
@@ -247,16 +247,19 @@ agents: {
   defaults: {
     contextPruning: {
       mode: "cache-ttl",     // Only mode currently
-      softTrim: 150000,      // Soft trim at N chars
-      hardClear: 200000,      // Hard trim at N chars (replaces content)
-      tools: { deny: [] },   // Tool-result deny list
-      keepLastAssistants: 1  // Keep last N assistant messages
+      ttl: "1h",             // Cooldown between pruning passes (default unit: minutes)
+      softTrimRatio: 0.3,     // Soft trim at 30% of soft cap
+      hardClearRatio: 0.5,    // Hard clear at 50% of hard cap
+      softTrim: { maxChars: 4000, headChars: 1500, tailChars: 1500 },
+      hardClear: { enabled: true, placeholder: "[Old tool result content cleared]" },
+      tools: { deny: ["browser", "canvas"] },  // Tool-result deny list
+      keepLastAssistants: 3  // Keep last N assistant messages
     }
   }
 }
 ```
 
-> **Key distinction:** `contextPruning` only prunes in-memory context sent to the LLM. The `.jsonl` transcript on disk is NOT modified by this setting. Use `/compact` to reduce transcript history on disk.
+> **Key distinction:** `contextPruning` only prunes in-memory context sent to the LLM. The `.jsonl` transcript on disk is NOT modified by this setting. Soft trim keeps beginning+end of oversized tool results; hard clear replaces them entirely with a placeholder. Ratios are character-based approximations, not exact token counts. Image blocks are never trimmed or cleared.
 
 ## References
 
