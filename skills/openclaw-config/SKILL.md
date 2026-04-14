@@ -163,10 +163,21 @@ Complete reference for `~/.openclaw/openclaw.json`. Every significant top-level 
 ## Common fixes
 
 ### Enable Honcho as memory backend
+The single most common OpenClaw misconfiguration: both `memory-core` and `openclaw-honcho` fight for the memory slot.
+
+**Fix:**
 ```json5
-plugins: { slots: { memory: "openclaw-honcho" } }
+plugins: {
+  slots: { memory: "openclaw-honcho" },   // claims the memory slot
+  entries: {
+    "openclaw-honcho": {                  // enable the plugin
+      enabled: true,
+      config: { baseUrl: "http://127.0.0.1:8000" }
+    }
+  }
+}
 ```
-Restart gateway required.
+Restart gateway required. Do not set `memory.backend` — the slot override handles it.
 
 ### Discord bot not responding
 - `dmPolicy: "pairing"` requires pairing approval
@@ -211,6 +222,68 @@ Discord retries only on HTTP 429. Telegram retries on 429, timeout, transient ne
 
 **Require restart:** `memory.backend`, `plugins.entries.*.enabled`, `agents.defaults.*`, `session.identityLinks`
 **Dynamic (no restart):** `tools.web.search.apiKey`, `agents.defaults.memorySearch.remote`, channel-level `enabled`
+
+## Config editing via gateway tool
+
+Use the `gateway` tool (action: `config.patch` or `config.apply`) to edit config at runtime. These are rate-limited to **3 requests per 60 seconds** per device — excess calls return `UNAVAILABLE` with `retryAfterMs`.
+
+### `config.patch` (preferred — partial update)
+
+JSON merge patch semantics:
+- Objects merge **recursively**
+- `null` **deletes** a key
+- Arrays **replace** entirely
+
+```javascript
+gateway(
+  action: "config.patch",
+  raw: "{ channels: { telegram: { groups: { \"*\": { requireMention: false } } } } }",
+  baseHash: "<hash from config.get>"
+)
+```
+
+**Always run `config.schema.lookup` first** to inspect the subtree you're editing.
+
+### `config.apply` (full replacement)
+
+Replaces the **entire config**. Use only when replacing the whole file. Otherwise prefer `config.patch`.
+
+```javascript
+gateway(
+  action: "config.apply",
+  raw: "{ ...entire config... }",
+  baseHash: "<hash>"
+)
+```
+
+### Config write rate limit
+
+| Limit | Value |
+|-------|-------|
+| Requests | 3 per 60 seconds |
+| Scope | per `deviceId + clientIp` |
+| On exceed | `UNAVAILABLE` + `retryAfterMs` |
+
+### Hot reload
+
+The gateway watches `~/.openclaw/openclaw.json` and reloads automatically:
+
+| Mode | Behavior |
+|------|----------|
+| `hybrid` (default) | Hot-apply safe changes; auto-restart for critical ones |
+| `hot` | Hot-apply safe changes only; log warning for restart-needed changes |
+| `restart` | Restart on any change |
+| `off` | Manual restart only |
+
+```json5
+gateway: { reload: { mode: "hybrid", debounceMs: 300 } }
+```
+
+**What needs a restart:** `memory.backend`, `plugins.slots`, `agents.defaults.*`, `session.identityLinks`. All others hot-apply.
+
+### Safe direct edit (alternative)
+
+You can also edit `~/.openclaw/openclaw.json` directly — the gateway watches the file and auto-reloads. No restart needed for most changes.
 
 ## References
 

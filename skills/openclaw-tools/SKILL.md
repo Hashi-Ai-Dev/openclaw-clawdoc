@@ -74,7 +74,27 @@ description: OpenClaw built-in tools reference. Use when explaining, configuring
 | Tool | What it does |
 |------|-------------|
 | `cron` | Manage cron jobs + wake events |
-| `gateway` | Restart/apply config/update gateway |
+| `gateway` | Restart gateway, inspect/apply/patch config, run updates |
+
+### `gateway` tool actions
+
+| Action | What it does |
+|--------|-------------|
+| `config.get` | Fetch current config snapshot + hash |
+| `config.patch` | Merge partial update (preferred for edits) |
+| `config.apply` | Replace entire config |
+| `config.schema.lookup` | Inspect schema at a dot-path |
+| `update.run` | Self-update + restart |
+| `restart` | Restart gateway |
+
+**Rate limit:** 3 writes (`config.patch`/`config.apply`/`update.run`) per 60 seconds per deviceId+clientIp. Exceeding returns `UNAVAILABLE` with `retryAfterMs`.
+
+**`config.patch` semantics (preferred):**
+- Objects merge recursively
+- `null` deletes a key
+- Arrays replace entirely
+
+**Always get `baseHash` from `config.get` first**, then pass it to `config.patch`/`config.apply` to prevent concurrent-write clobbering.
 
 ## Messaging tools
 
