@@ -1,6 +1,6 @@
 ---
 name: openclaw-plugins
-description: OpenClaw plugin system. Use when installing, configuring, debugging, or building plugins; understanding plugin slots, capability model, plugin manifest, SDK entry points, hook system, or plugin allow/deny. Triggers on: "plugin", "install plugin", "plugin slot", "plugin config", "extension", "plugin manifest", "plugin SDK", "channel plugin", "provider plugin", "tool plugin", "hook plugin", "building plugins", "plugin capability", "plugin allow list", "plugin shape".
+description: OpenClaw plugin system. Use when installing, configuring, debugging, or building plugins; understanding plugin slots, capability model, plugin manifest, SDK entry points, hook system, or plugin allow/deny. Triggers on: "plugin", "plugins install", "plugin slot", "plugin config", "extension", "plugin manifest", "plugin SDK", "channel plugin", "provider plugin", "tool plugin", "hook plugin", "building plugins", "plugin capability", "plugin allow list", "plugin shape", "ClawHub", "npm install", "plugin not loading", "plugin conflict", "disabled plugin", "plugin API", "openclaw plugins".
 ---
 
 # OpenClaw Plugins
@@ -47,18 +47,33 @@ openclaw plugins inspect <plugin-id>   # see shape + capability breakdown
 
 ## Exclusive slots
 
-Some capability kinds map to **exclusive slots** (one plugin owns the slot):
+Some capability kinds map to **exclusive slots** (one plugin owns the slot at a time):
 
 | Slot | Default owner | Override key |
 |---|---|---|
 | `memory` | `memory-core` | `plugins.slots.memory` |
 | `context-engine` | `legacy` | `plugins.slots.contextEngine` |
 
+**Concrete example — swapping memory to Honcho:**
+
 ```json5
 plugins: {
-  slots: { memory: "openclaw-honcho" }   // swap memory backend
+  slots: { memory: "openclaw-honcho" },  // replaces memory-core
+  entries: {
+    "openclaw-honcho": {
+      enabled: true,
+      config: {
+        workspaceId: "openclaw",
+        baseUrl: "http://127.0.0.1:8000"
+      }
+    }
+  }
 }
 ```
+
+After changing a slot you must restart the gateway: `openclaw gateway restart`.
+
+**Never set a slot to a plugin that isn't installed and enabled.** If Honcho isn't in `plugins.entries`, setting `slots.memory: "openclaw-honcho"` will silently disable memory entirely. Always verify with `openclaw plugins list` after a slot change.
 
 ## Plugin manifest (`openclaw.plugin.json`)
 
@@ -113,14 +128,25 @@ export default defineChannelPluginEntry({
 import { defineSetupPluginEntry } from "openclaw/plugin-sdk/setup";
 ```
 
-## Plugin allow list
+## Plugin allow list, deny list, and entries — what's the difference?
 
 ```json5
 plugins: {
-  allow: ["plugin-id", "@scope/plugin-name"]
+  allow: ["plugin-id", "@scope/plugin-name"],   // only these non-bundled plugins can load
+  deny:  ["some-plugin"],                         // block specific plugins even if discovered
+  entries: {
+    "my-plugin": { enabled: true, config: {} }  // per-plugin config lives here
+  }
 }
 ```
-If empty, discovered non-bundled plugins may auto-load. Bundled plugins (`discord`, `minimax`, `browser`, `active-memory`, `brave`, `diffs`, `llm-task`, `lobster`, `memory-core`) are always allowed.
+
+**`allow`** — If set to a non-empty array, only plugins whose IDs are listed may auto-load. Unlisted non-bundled plugins are blocked. If set to `[]` (empty), any discovered plugin may try to load. Bundled plugins ignore this list entirely (`discord`, `minimax`, `browser`, `active-memory`, `brave`, `diffs`, `llm-task`, `lobster`, `memory-core`).
+
+**`deny`** — Explicit blocklist applied after `allow`. Use this to quiet a plugin that would otherwise auto-load. Does not require the plugin to be in `allow`.
+
+**`entries`** — Per-plugin runtime configuration (enabled flag, config object, workspace binding). A plugin can be in `entries` without being in `allow` if it's bundled. A non-bundled plugin must be in `allow` to load even if it has an `entries` config.
+
+**Never use `deny` as your primary control mechanism.** The primary gate is `allow`. Use `deny` only as a targeted exception for auto-discovered plugins you'd otherwise permit.
 
 ## Installing + verifying plugins
 
@@ -203,10 +229,12 @@ Key steps:
 
 | Error | Cause | Fix |
 |---|---|---|
-| `plugin disabled (memory slot set to X)` | Memory slot occupied | Set `plugins.slots.memory` |
-| Plugin not loading | Not in `allow` list | Add to `plugins.allow` |
-| Config validation fail on startup | Missing/invalid `openclaw.plugin.json` | Check manifest schema |
+| `plugin disabled (memory slot set to X)` | Slot occupied by another plugin | Check `plugins.slots` + `plugins.entries` — only one plugin can own a slot |
+| Plugin not loading | Not in `allow` list | Add to `plugins.allow`; verify with `openclaw plugins list` |
+| Config validation fail on startup | Missing/invalid `openclaw.plugin.json` | Check manifest schema; see `references/plugin-manifest.md` |
 | `openclaw plugins list` empty after install | Gateway not restarted for new plugin | Restart gateway |
+| Slot set but plugin not in `entries` | Slot points to plugin that has no config | Add plugin to `plugins.entries` with `enabled: true` first |
+| Plugin loads but capability not working | Wrong shape or capability not registered | Run `openclaw plugins inspect <id>` to check registered capabilities |
 
 ## References
 

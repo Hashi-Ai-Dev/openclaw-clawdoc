@@ -1,6 +1,6 @@
 ---
 name: openclaw-memory
-description: OpenClaw memory systems. Use when configuring memory backends, embedding providers, QMD, Honcho, active memory, dreaming, memory-wiki, or memory search. Triggers on: "memory", "memory search", "embedding", "QMD", "Honcho", "sqlite-vec", "vector search", "BM25", "hybrid search", "memory config", "active memory", "dreaming", "memory wiki", "citations".
+description: OpenClaw memory systems. Use when configuring memory backends, embedding providers, QMD, Honcho, active memory, dreaming, memory-wiki, or memory search. Triggers on: "memory", "memory search", "embedding", "QMD", "Honcho", "sqlite-vec", "vector search", "BM25", "hybrid search", "memory config", "active memory", "dreaming", "memory wiki", "citations", "recall", "context", "semantic search", "vector", "pgvector", "memory not working", "search results wrong", "vector database", "memory backend".
 ---
 
 # OpenClaw Memory
@@ -30,7 +30,7 @@ plugins: {
 }
 ```
 
-**Honcho uses a different slot approach** — it registers its own tools directly (`honcho_context`, `honcho_search_conclusions`, etc.) rather than replacing `memory_search`. It doesn't need `plugins.slots.memory` override. See [Honcho setup](#honcho) below.
+**⚠️ Never set `plugins.slots.memory` for Honcho.** Honcho registers its own tools (`honcho_context`, `honcho_search_conclusions`, `honcho_search_messages`, `honcho_session`, `honcho_ask`) directly — it does NOT replace `memory_search` and does NOT use the `memory` slot. Setting `slots.memory: "openclaw-honcho"` is wrong for Honcho. Leave `slots.memory` at its default (`memory-core`) when using Honcho. The Honcho config goes in `plugins.entries["openclaw-honcho"]` only. See [Honcho setup](#honcho) below.
 
 ---
 
@@ -161,7 +161,7 @@ Key knobs:
 
 ## Citations
 
-Controls whether search snippets include a `Source: <path#line>` footer.
+Controls whether search snippets include a `Source: <path#line>` footer appended to the snippet text.
 
 ```json5
 memory.citations: "auto"  // "auto" | "on" | "off"
@@ -174,6 +174,13 @@ memory.citations: "auto"  // "auto" | "on" | "off"
 | `off` | Omit footer (path still passed to agent internally) |
 
 Applies to all backends. Not specific to QMD — `memory.citations` is a top-level memory config key.
+
+**What citations look like in practice:**
+```
+"...the gateway restart is required after config changes..."
+Source: memory/2026-04-14.md#12
+```
+Citations are footer-only — they do not appear inline (e.g. `[1]` style). They tell the agent which file and line to read for verification, but the agent must call `memory_get` to retrieve the actual content.
 
 ---
 

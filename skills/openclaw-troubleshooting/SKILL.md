@@ -1,9 +1,17 @@
 ---
 name: openclaw-troubleshooting
-description: OpenClaw troubleshooting and fixes. Use when diagnosing memory issues, channel problems, gateway crashes, config errors, plugin conflicts, ACP agents, pairing issues, hook failures, queue problems, or secret resolution. Triggers on: "broken", "not working", "error", "crash", "debug", "fix", "issue", "problem", "troubleshoot", "pairing", "ACP", "hook", "secret", "lock file".
+description: OpenClaw troubleshooting and fixes. Use when diagnosing gateway crashes, config errors that other skills can't resolve, plugin conflicts after config checks pass, ACP agent failures, pairing/device pairing, hook not firing, lock file issues, secret resolution failures, or queue/backpressure problems. Triggers on: "gateway crash", "config error", "crash", "debug", "troubleshoot", "pairing", "device pairing", "hook failure", "lock file", "queue", "backpressure", "secret not resolving", "plugin conflict", "openclaw doctor", "gateway locked", " ACP agent won't start", "channel silent", "hook not firing".
 ---
 
 # OpenClaw Troubleshooting
+
+## ⚠️ Never Do These
+
+- **Never `rm /tmp/openclaw.lock` while the gateway process is still running.** Check `ps aux | grep openclaw-gateway` first — a stale lock file is only safe to delete if the process is confirmed dead.
+- **Never restart the gateway without checking the session queue.** Run `openclaw status` and `openclaw doctor` first — a restart mid-queue drops pending messages.
+- **Never confuse `openclaw pairing` with `openclaw devices`.** `openclaw pairing` is for channel pairing (Discord DMs, WhatsApp, etc.). `openclaw devices` is for node/device pairing. Using the wrong command will not resolve your issue.
+- **Never set `plugins.slots.memory` to Honcho** — Honcho does not use the memory slot. Leave the slot at its default and configure Honcho only via `plugins.entries["openclaw-honcho"]`.
+- **Never assume a config change took effect without a restart.** Keys that require restart: `memory.backend`, `plugins.entries.*.enabled`, `agents.defaults.*`. Keys that are dynamic (no restart): `tools.web.search.apiKey`, `agents.defaults.memorySearch.remote`.
 
 ## Quick diagnostics
 
@@ -11,26 +19,56 @@ description: OpenClaw troubleshooting and fixes. Use when diagnosing memory issu
 openclaw status                        # gateway health
 tail -100 /tmp/openclaw/openclaw-$(date +%Y-%m-%d).log   # recent logs
 ps aux | grep openclaw-gateway | grep -v grep            # is it running?
-python3 -m json.tool /data/.openclaw/openclaw.json > /dev/null && echo "valid"  # config valid
+python3 -m json.tool ~/.openclaw/openclaw.json > /dev/null && echo "valid"  # config valid
 curl -s http://127.0.0.1:18789/ -o /dev/null -w "%{http_code}"  # HTTP health
 openclaw doctor                        # diagnose + auto-fix
 openclaw doctor --fix
 ```
 
-## Decision tree (which log/section to check)
+## Decision tree (action-first order)
 
-| Symptom | Check first |
-|---------|-------------|
-| Gateway won't start | Lock file `/tmp/openclaw.lock` + process check |
-| Plugin won't load | `plugins.allow` list + `openclaw plugins list` |
-| Memory search stale/wrong | Rebuild index: `openclaw memory index --force` |
-| Channel silent/non-responsive | Transport probe + bot token + intent check |
-| ACP agent won't spawn | `/acp doctor` then `/acp spawn codex --bind here` |
-| Hook not firing | `openclaw hooks list` + `openclaw hooks info HOOK_NAME` |
-| Config change no effect | Restart required? Check `memory.backend`, `plugins.entries.*.enabled` |
-| Auth/credential error | Search logs for `auth` or `credential` |
-| 429 rate limit | Model `context1m` + credential eligibility check |
-| SecretRef unresolved | `~/.openclaw/credentials/` + plaintext key test |
+**Step 1 — Is the gateway running?**
+```bash
+ps aux | grep openclaw-gateway | grep -v grep
+curl -s http://127.0.0.1:18789/ -o /dev/null -w "%{http_code}"
+```
+- If not running and won't start → check lock file (see Lock file stale below)
+- If running but unresponsive → check logs
+
+**Step 2 — Is it a plugin issue?**
+```bash
+openclaw plugins list
+```
+- Missing from list → check `plugins.allow`
+- Listed but disabled → check `plugins.entries[<id>].enabled`
+- Config validation error → check `openclaw.plugin.json` manifest
+
+**Step 3 — Is it a memory/search issue?**
+```bash
+openclaw memory status
+openclaw memory index --force   # rebuild index if stale
+```
+
+**Step 4 — Is it a channel issue?**
+```bash
+openclaw channels status --probe
+openclaw doctor
+```
+
+**Step 5 — Is it an ACP agent issue?**
+```bash
+/acp doctor
+/acp status
+```
+
+**Step 6 — Is it a hook issue?**
+```bash
+openclaw hooks list
+openclaw hooks info HOOK_NAME
+```
+
+**Step 7 — Is it an auth/credential issue?**
+Search logs for `auth`, `credential`, or `429`.
 
 ---
 
@@ -47,9 +85,13 @@ ps aux | grep openclaw-gateway
 **Lock file stale (gateway won't start)**
 ```bash
 cat /tmp/openclaw.lock
-rm /tmp/openclaw.lock   # only if gateway is NOT running
+ps aux | grep openclaw-gateway | grep -v grep   # must return EMPTY before proceeding
+# Only run the next line if the process is truly dead:
+rm /tmp/openclaw.lock
 openclaw gateway start
 ```
+
+**Never delete the lock file while the gateway process is alive.** The lock file prevents two gateway instances from starting. If you delete it with the process still running, you'll create a race condition on next start.
 
 **Config JSON invalid**
 ```bash
@@ -59,11 +101,9 @@ python3 -m json.tool /data/.openclaw/openclaw.json > /dev/null
 ### Memory
 
 **"plugin disabled (memory slot set to X)"**
-- Memory slot occupied by another plugin
-```json5
-plugins: { slots: { memory: "openclaw-honcho" } }
-```
-Then restart gateway.
+- Memory slot occupied by another plugin. Check what is in `plugins.slots.memory` and whether that plugin is intended to own the slot.
+- If you are trying to use Honcho: **do not set `slots.memory` for Honcho** — Honcho does not use the memory slot. Verify Honcho config in `plugins.entries["openclaw-honcho"]` is correct instead.
+- If you are switching back to builtin/QMD: set `slots.memory: "memory-core"` and restart gateway.
 
 **Embedding 404**
 - `memorySearch.remote.baseUrl` wrong OR invalid provider
@@ -202,11 +242,21 @@ agents: { defaults: { maxConcurrent: 4 } }
 **Pairing code expired**
 - 1-hour expiry, 3 pending max per channel
 
-**Node device pairing fails**
-- Use `openclaw devices list` to check paired devices
-- Approve with `openclaw devices approve <requestId>` (not `openclaw pairing`)
-- Node/device pairing uses `openclaw devices`, NOT `openclaw pairing` (which is for channel pairing only)
-- Pairing codes expire after 1 hour
+**Node device pairing fails — this is the #1 confusion point**
+```bash
+# Check paired devices:
+openclaw devices list
+
+# Approve a device pairing request:
+openclaw devices approve <requestId>
+# ^^^ NOT "openclaw pairing approve" — that command is for channel pairing
+```
+
+**Rule of thumb:**
+- `openclaw pairing *` → channel pairing (Discord DMs, WhatsApp, Telegram — linking your account to the bot)
+- `openclaw devices *` → node/device pairing (linking a client node to the gateway)
+
+If your issue is "my phone/desktop client won't connect to the gateway", you need `openclaw devices`, not `openclaw pairing`. Pairing codes expire after 1 hour and max 3 are pending per channel.
 
 ---
 

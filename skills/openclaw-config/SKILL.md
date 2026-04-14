@@ -1,6 +1,6 @@
 ---
 name: openclaw-config
-description: OpenClaw gateway configuration reference. Use when auditing, editing, or troubleshooting openclaw.json. Covers ALL config keys: agents, channels, memory, tools, providers, session, messages, sandbox, plugins, env, model routing. Triggers on: "config", "openclaw.json", "configuration", "config reference", "config audit", "gateway config", "session config", "channel config".
+description: OpenClaw gateway configuration reference. Use when auditing, editing, or troubleshooting openclaw.json. Covers ALL config keys: agents, channels, memory, tools, providers, session, messages, sandbox, plugins, env, model routing. Triggers on: "config", "openclaw.json", "configuration", "config reference", "config audit", "gateway config", "session config", "channel config", "runtime", "model routing", "env vars", "gateway won't start", "config error", "how to configure", "openclaw doctor").
 ---
 
 # OpenClaw Config Reference
