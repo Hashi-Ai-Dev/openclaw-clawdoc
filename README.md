@@ -24,8 +24,8 @@
 ## Features
 
 - **11 specialized skills** covering every OpenClaw subsystem
-- **297 reference docs** copied from the official OpenClaw documentation
-- **315 total files** — complete knowledge base ready to run
+- **313 reference docs** copied from the official OpenClaw documentation
+- **331 total files** — complete knowledge base ready to run
 - **Progressive disclosure design** — lean SKILL.md bodies, deep reference files
 - **Built-in diagnostics** — triage → skill routing → detailed fix
 - **Community-ready** — MIT licensed, fork it, customize it, ship your own variant

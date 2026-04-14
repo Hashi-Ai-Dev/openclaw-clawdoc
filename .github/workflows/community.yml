@@ -1,0 +1,10 @@
+name: Community
+
+on:
+  issues:
+    types: [opened, edited, labeled, unlabeled]
+  pull_request:
+    types: [opened, edited, labeled, unlabeled]
+  discussion:
+    types: [opened, edited, categorized, unanswered]
+
