@@ -12,9 +12,9 @@
 
 ## What is ClawDoc?
 
-**ClawDoc** is a specialized OpenClaw agent that owns all things OpenClaw — configuration auditing, plugin integration, performance tuning, troubleshooting, documentation, and agent system design.
+**ClawDoc** is a specialized OpenClaw agent built to fully understand, efficiently audit, patch, fix, change, and manage any OpenClaw configuration or issue. It owns all things OpenClaw — configuration auditing, plugin integration, performance tuning, troubleshooting, documentation, and agent system design.
 
-This is the **open-source release** of the ClawDoc agent, packaged with its full skill tree so anyone can run, extend, or fork it.
+**The goal of ClawDoc's existence** is to be the definitive agent for auditing, patching, fixing, and managing any OpenClaw config or issue — precise, thorough, and always grounded in the actual OpenClaw docs and source.
 
 > [!TIP]
 > ClawDoc is designed to be **precise over speed** and **clarity over jargon**. Every fix, audit, and explanation is documented with before/after diffs and exact references to the OpenClaw docs.
