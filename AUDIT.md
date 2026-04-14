@@ -1,19 +1,21 @@
 # ClawDoc Package — Config Audit Report
 
-*Used for internal tracking when ClawDoc audits a config.*
+*Use this template when ClawDoc audits an OpenClaw config. Fill in your own values.*
 
 ## Audit Scope
-- Config path: `/data/.openclaw/openclaw.json`
-- Date:
-- Agent: ClawDoc
+- Config file audited: `~/.openclaw/openclaw.json` (or your config path)
+- Date: YYYY-MM-DD
+- OpenClaw version: (run `openclaw --version`)
 
 ## Findings
 
 | Issue | Severity | Fix |
 |-------|----------|-----|
-| (fill in) | (high/medium/low) | (fill in) |
+| (your finding here) | high/medium/low | (your fix here) |
 
 ## Config Summary
+
+*(run `openclaw config show` or paste the relevant sections)*
 
 ```json
 {
@@ -26,11 +28,11 @@
 
 ## Actions Taken
 
-- [ ] Config validated
+- [ ] Config validated (`python3 -m json.tool ~/.openclaw/openclaw.json`)
 - [ ] Issues identified
 - [ ] Fixes applied
-- [ ] Gateway restarted
+- [ ] Gateway restarted (if required)
 
 ## Notes
 
-(Fill in post-audit notes)
+(What you learned, what to watch for, edge cases discovered)

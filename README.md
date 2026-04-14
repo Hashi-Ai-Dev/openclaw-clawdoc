@@ -12,7 +12,7 @@
 
 ## What is ClawDoc?
 
-**ClawDoc** is a specialized OpenClaw agent built to fully understand, efficiently audit, patch, fix, change, and manage any OpenClaw configuration or issue. It owns all things OpenClaw — configuration auditing, plugin integration, performance tuning, troubleshooting, documentation, and agent system design.
+**ClawDoc** is a specialized OpenClaw agent built to fully understand, audit, patch, fix, and manage any OpenClaw configuration or issue. It owns all things OpenClaw — configuration auditing, plugin integration, performance tuning, troubleshooting, documentation, and agent system design.
 
 **The goal of ClawDoc's existence** is to be the definitive agent for auditing, patching, fixing, and managing any OpenClaw config or issue — precise, thorough, and always grounded in the actual OpenClaw docs and source.
 
@@ -24,10 +24,11 @@
 ## Features
 
 - **11 specialized skills** covering every OpenClaw subsystem
-- **55 reference docs** copied from the official OpenClaw documentation
+- **297 reference docs** copied from the official OpenClaw documentation
+- **315 total files** — complete knowledge base ready to run
 - **Progressive disclosure design** — lean SKILL.md bodies, deep reference files
 - **Built-in diagnostics** — triage → skill routing → detailed fix
-- **Community-ready** — fork it, customize it, ship your own variant
+- **Community-ready** — MIT licensed, fork it, customize it, ship your own variant
 
 ---
 
@@ -37,125 +38,90 @@
 |-------|-------------|
 | `openclaw-master` | Top-level routing — maps issues to the right skill |
 | `openclaw-config` | Gateway config reference, all keys, common patterns |
-| `openclaw-memory` | Memory backends (builtin/QMD/Honcho), embeddings |
+| `openclaw-memory` | Memory backends (builtin/QMD/Honcho), embeddings, citations |
 | `openclaw-agents` | Multi-agent setup, bindings, sandbox, tool policies |
-| `openclaw-channels` | Discord, Telegram, WhatsApp, Slack, Signal, Matrix, iMessage |
+| `openclaw-channels` | All 31 channel types: Discord, Telegram, WhatsApp, Slack, Signal, Matrix, iMessage, IRC, Feishu, LINE, GoogleChat, Mattermost, Microsoft Teams, Nextcloud Talk, Nostr, QQ Bot, Synology Chat, Twitch, Tlon, Zalo, Voice Call |
 | `openclaw-concepts` | Architecture, session, compaction, streaming, bootstrap |
 | `openclaw-troubleshooting` | Diagnosis flows, error codes, common fixes |
-| `openclaw-plugins` | Plugin slots, installing plugins, plugin config |
-| `openclaw-tools` | Tool reference: exec, browser, cron, sessions, subagents |
+| `openclaw-plugins` | Plugin slots, SDK, hook system, installing plugins |
+| `openclaw-tools` | Tool reference: exec, browser, cron, sessions, subagents, gateway |
 | `openclaw-cli` | CLI commands: status, gateway, plugins, memory, agents |
-| `openclaw-providers` | Model providers: OpenAI, Anthropic, Gemini, Bedrock, Ollama |
+| `openclaw-providers` | All 50 model providers: OpenAI, Anthropic, Gemini, Bedrock, Ollama, Groq, DeepSeek, Mistral, and 42 more |
 
-Each skill lives in its own directory with:
-- `SKILL.md` — triggering conditions + lean reference
-- `references/` — full doc copies from `/openclaw/docs/`
+Each skill lives in its own directory:
+
+```
+skill-name/
+├── SKILL.md           # Required — trigger conditions + reference summary
+└── references/        # Deep-dive docs from OpenClaw source
+    ├── deep-topic.md
+    └── config-ref.md
+```
 
 ---
 
 ## Quick Start
 
-### 1. Install ClawDoc's skills
-
-Copy the `skills/` folder into your OpenClaw workspace:
-
+### Run ClawDoc
 ```bash
-# Your OpenClaw workspace skills directory
-cp -r skills/ ~/.openclaw/skills/clawdoc/
+# Point OpenClaw at this directory as the skills root
+openclaw skills add /path/to/clawdoc/skills
 
-# Or alongside your project skills
-cp -r skills/ /path/to/your/project/skills/
+# Or copy skills into your OpenClaw workspace
+cp -r skills/* ~/.openclaw/skills/
 ```
 
-### 2. Reference from your agent
-
-In your agent's `AGENTS.md` or `SOUL.md`, load the master skill:
-
+### Use ClawDoc
 ```
-Load skill: openclaw-master (or path/to/openclaw-master/SKILL.md)
+@your-agent [your OpenClaw config question]
 ```
 
-### 3. Ask ClawDoc anything
-
-```
-@your-agent How do I set up multi-agent routing with Discord bindings?
-@your-agent My Honcho memory plugin won't load — getting "plugin disabled (memory slot)" error
-@your-agent audit my openclaw.json config
-```
+ClawDoc will route to the right skill, read the relevant reference docs, and give you a precise answer grounded in the actual OpenClaw schema.
 
 ---
 
-## Architecture
+## Repository Structure
 
 ```
 openclaw-clawdoc/
-├── SKILL.md                   # This file
-├── LICENSE
-├── README.md
-├── CONTRIBUTING.md
-├── skills/                    # All 11 skills
-│   ├── openclaw-master/       # Top-level router
-│   ├── openclaw-config/       # Config reference
-│   ├── openclaw-memory/       # Memory + embeddings
-│   ├── openclaw-agents/       # Multi-agent
-│   ├── openclaw-channels/     # Channels
-│   ├── openclaw-concepts/     # Concepts
-│   ├── openclaw-troubleshooting/
-│   ├── openclaw-plugins/      # Plugin system
-│   ├── openclaw-tools/        # Tools
-│   ├── openclaw-cli/         # CLI
-│   └── openclaw-providers/   # Model providers
-├── scripts/                   # Helper scripts
-├── examples/                  # Config examples
-└── assets/                    # Avatar, logos
+├── README.md          # This file
+├── LICENSE            # MIT
+├── CONTRIBUTING.md    # How to contribute
+├── AUDIT.md           # Config audit report template
+├── assets/
+│   └── avatar.svg    # ClawDoc avatar
+├── examples/
+│   ├── discord-full.json
+│   ├── honcho-memory.json
+│   ├── multi-agent-discord.json
+│   └── per-agent-sandbox.json
+└── skills/
+    ├── openclaw-master/
+    ├── openclaw-config/
+    ├── openclaw-memory/
+    └── ... (11 skills total)
 ```
-
----
-
-## Config Examples
-
-See `examples/` for ready-to-paste config snippets:
-
-- `examples/honcho-memory.json` — Enable Honcho as memory backend
-- `examples/multi-agent-discord.json` — Multi-agent + Discord bindings
-- `examples/memory-qmd.json` — QMD memory backend config
-- `examples/per-agent-sandbox.json` — Per-agent sandbox + tool policies
-
----
-
-## ClawDoc's Memory (MEMORY.md)
-
-ClawDoc maintains long-term memory at `MEMORY.md` (in its workspace). Key learned patterns:
-
-- **Honcho slot fix**: `plugins.slots.memory = "openclaw-honcho"` (not `memory.backend`)
-- **Gateway restart rule**: Only restart for `memory.backend`, `plugins.entries.*.enabled`, `agents.defaults.*`
-- **Valid embedding providers**: `local`, `openai`, `gemini`, `voyage`, `mistral`, `bedrock` — OpenRouter is NOT valid
-- **Discord binding format**: `guildId/channelId` (not just channel ID)
 
 ---
 
 ## Community
 
-- **OpenClaw Docs**: https://docs.openclaw.ai
-- **OpenClaw GitHub**: https://github.com/openclaw/openclaw
-- **OpenClaw Discord**: https://discord.com/invite/clawd
-- **ClawHub** (skill registry): https://clawhub.ai
+- **Docs:** https://docs.openclaw.ai
+- **Discord:** https://discord.com/invite/clawd
+- **ClawHub:** https://clawhub.ai (find new skills)
+- **Source:** https://github.com/openclaw/openclaw
 
 ---
 
-## Forking / Extending
+## Contributing
 
-ClawDoc is built as a standard OpenClaw skill package. To create your own variant:
-
-1. Copy the `skills/` directory
-2. Edit SKILL.md frontmatter `name` and `description` for your agent
-3. Customize the skill bodies and reference docs
-4. Share with the community via ClawHub
-
-See `CONTRIBUTING.md` for conventions and the skill creator guide.
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for conventions, style guide, and how to add new skills or reference docs.
 
 ---
 
-## License
+## Philosophy
 
-MIT — see `LICENSE`. ClawDoc is free for the community to use, fork, and extend.
+- **Precision over speed** — Config work requires exactness. Quote the schema, cite the docs, show the exact patch.
+- **No hand-waving** — If I'm not sure, I say so and investigate rather than guess.
+- **Show your work** — When auditing or fixing, show the before/after diff so it's learnable.
+- **Community-minded** — This agent is open-sourced. Design for clarity and generalizability.
