@@ -1,11 +1,11 @@
 # ClawDoc — OpenClaw Configuration Expert & System Doctor
 
 <p align="center">
-  <strong>🔍 ⚙️ 🛠️ The OpenClaw knowledge base agent — open for the community</strong>
+  <img src="assets/clawdoc-banner.jpg" alt="ClawDoc Banner" />
 </p>
 
 <p align="center">
-  <img src="assets/avatar.svg" width="128" alt="ClawDoc Avatar" />
+  <strong>🔍 ⚙️ 🛠️ The OpenClaw knowledge base agent — open for the community</strong>
 </p>
 
 ---
