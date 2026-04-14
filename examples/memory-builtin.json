@@ -1,0 +1,33 @@
+{
+  "agents": {
+    "defaults": {
+      "workspace": "~/.openclaw/workspace",
+      "model": {
+        "primary": "minimax/MiniMax-M2.7"
+      },
+      "memorySearch": {
+        "provider": "openai",
+        "model": "text-embedding-3-small",
+        "query": {
+          "hybrid": {
+            "enabled": true,
+            "vectorWeight": 0.7,
+            "textWeight": 0.3,
+            "mmr": {
+              "enabled": true,
+              "lambda": 0.7
+            },
+            "temporalDecay": {
+              "enabled": true,
+              "halfLifeDays": 30
+            }
+          }
+        }
+      }
+    }
+  },
+  "memory": {
+    "backend": "builtin",
+    "citations": "auto"
+  }
+}

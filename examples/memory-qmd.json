@@ -1,0 +1,35 @@
+{
+  "memory": {
+    "backend": "qmd",
+    "citations": "auto",
+    "qmd": {
+      "includeDefaultMemory": true,
+      "update": {
+        "interval": "5m",
+        "debounceMs": 15000
+      },
+      "limits": {
+        "maxResults": 6,
+        "timeoutMs": 4000
+      },
+      "scope": {
+        "default": "deny",
+        "rules": [
+          {
+            "action": "allow",
+            "match": {
+              "chatType": "direct"
+            }
+          }
+        ]
+      },
+      "paths": [
+        {
+          "name": "docs",
+          "path": "~/notes",
+          "pattern": "**/*.md"
+        }
+      ]
+    }
+  }
+}

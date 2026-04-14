@@ -1,0 +1,50 @@
+{
+  "agents": {
+    "list": [
+      {
+        "id": "locked-down",
+        "name": "Locked Agent",
+        "workspace": "~/.openclaw/workspace-locked",
+        "sandbox": {
+          "mode": "all",
+          "scope": "agent",
+          "workspaceAccess": "ro"
+        },
+        "tools": {
+          "profile": "minimal",
+          "allow": ["read", "sessions_list", "sessions_history", "session_status"],
+          "deny": ["exec", "write", "edit", "browser", "canvas", "nodes", "cron"]
+        }
+      },
+      {
+        "id": "coding",
+        "name": "Coding Agent",
+        "workspace": "~/.openclaw/workspace-coding",
+        "sandbox": {
+          "mode": "all",
+          "scope": "session",
+          "workspaceAccess": "rw",
+          "docker": {
+            "image": "openclaw-sandbox:bookworm-slim",
+            "network": "none",
+            "memory": "2g"
+          }
+        },
+        "tools": {
+          "profile": "coding"
+        }
+      },
+      {
+        "id": "trusted",
+        "name": "Trusted Agent",
+        "workspace": "~/.openclaw/workspace-trusted",
+        "sandbox": {
+          "mode": "off"
+        },
+        "tools": {
+          "profile": "full"
+        }
+      }
+    ]
+  }
+}

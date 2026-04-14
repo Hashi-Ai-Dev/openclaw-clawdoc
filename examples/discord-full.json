@@ -1,0 +1,48 @@
+{
+  "channels": {
+    "discord": {
+      "token": "YOUR_BOT_TOKEN",
+      "dmPolicy": "pairing",
+      "allowFrom": ["YOUR_DISCORD_USER_ID"],
+      "guilds": {
+        "YOUR_GUILD_ID": {
+          "slug": "your-server",
+          "requireMention": false,
+          "ignoreOtherMentions": true,
+          "reactionNotifications": "own",
+          "users": ["YOUR_DISCORD_USER_ID"],
+          "channels": {
+            "general": {
+              "allow": true,
+              "requireMention": false
+            },
+            "help": {
+              "allow": true,
+              "requireMention": true,
+              "users": ["YOUR_DISCORD_USER_ID"],
+              "skills": ["docs"],
+              "systemPrompt": "Short answers only, reference the official docs."
+            }
+          }
+        }
+      },
+      "historyLimit": 20,
+      "textChunkLimit": 2000,
+      "chunkMode": "length",
+      "threadBindings": {
+        "enabled": true,
+        "idleHours": 24,
+        "maxAgeHours": 0,
+        "spawnSubagentSessions": false
+      },
+      "execApprovals": {
+        "enabled": "auto",
+        "approvers": ["YOUR_DISCORD_USER_ID"],
+        "agentFilter": ["default"],
+        "sessionFilter": ["discord:"],
+        "target": "dm",
+        "cleanupAfterResolve": false
+      }
+    }
+  }
+}

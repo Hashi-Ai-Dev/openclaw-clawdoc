@@ -1,0 +1,69 @@
+{
+  "agents": {
+    "defaults": {
+      "workspace": "~/.openclaw/workspace"
+    },
+    "list": [
+      {
+        "id": "main",
+        "default": true,
+        "workspace": "~/.openclaw/workspace-main",
+        "name": "Main Agent"
+      },
+      {
+        "id": "coding",
+        "workspace": "~/.openclaw/workspace-coding",
+        "name": "Coding Agent",
+        "model": {
+          "primary": "minimax/MiniMax-M2.7"
+        }
+      }
+    ]
+  },
+  "bindings": [
+    {
+      "agentId": "main",
+      "match": {
+        "channel": "discord",
+        "accountId": "default"
+      }
+    },
+    {
+      "agentId": "coding",
+      "match": {
+        "channel": "discord",
+        "accountId": "coding-bot"
+      }
+    }
+  ],
+  "channels": {
+    "discord": {
+      "accounts": {
+        "default": {
+          "token": "YOUR_MAIN_BOT_TOKEN",
+          "guilds": {
+            "YOUR_GUILD_ID": {
+              "channels": {
+                "YOUR_CHANNEL_ID": {
+                  "allow": true
+                }
+              }
+            }
+          }
+        },
+        "coding-bot": {
+          "token": "YOUR_CODING_BOT_TOKEN",
+          "guilds": {
+            "YOUR_GUILD_ID": {
+              "channels": {
+                "CODING_CHANNEL_ID": {
+                  "allow": true
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
