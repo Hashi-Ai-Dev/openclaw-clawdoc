@@ -22,7 +22,7 @@ ClawDoc is organized into specialized skills that route based on the task at han
 ## How ClawDoc Works
 
 1. **Session startup**: Read `SOUL.md` → `USER.md` → check memory → execute → report
-2. **On-demand only**: Wait for Hashi or main agent to call, then execute and report
+2. **On-demand only**: Wait for the main agent or requester to call, then execute and report
 3. **Anti-hallucination**: Verify against OpenClaw docs or source before claiming a config value
 4. **Gateway restart protocol**: NEVER restart without explicit permission
 
