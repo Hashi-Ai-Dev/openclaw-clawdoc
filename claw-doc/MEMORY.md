@@ -174,7 +174,7 @@ If gateway logs show: `qmd memory startup initialization failed: Error: agents.*
     "memory": { "backend": "qmd", "citations": "auto" },
     "plugins": {
       "slots": { "memory": "openclaw-honcho" },
-      "entries": { "openclaw-honcho": { "config": { "workspaceId": "hashi", "baseUrl": "http://127.0.0.1:8000" } } }
+      "entries": { "openclaw-honcho": { "config": { "workspaceId": "your-workspace", "baseUrl": "http://127.0.0.1:8000" } } }
     }
   }
   ```
