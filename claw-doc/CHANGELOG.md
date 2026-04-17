@@ -55,7 +55,7 @@ Comprehensive one-pass diagnostic covering:
     "entries": {
       "openclaw-honcho": {
         "config": {
-          "workspaceId": "hashi",
+          "workspaceId": "your-workspace",
           "baseUrl": "http://127.0.0.1:8000"
         }
       }
