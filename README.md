@@ -92,9 +92,11 @@ openclaw-clawdoc/
 ├── AUDIT.md           # Config audit report template
 ├── assets/
 │   └── avatar.svg    # ClawDoc avatar
-├── examples/
+├── examples/              # 6 ready-to-use config examples
 │   ├── discord-full.json
 │   ├── honcho-memory.json
+│   ├── memory-builtin.json
+│   ├── memory-qmd.json
 │   ├── multi-agent-discord.json
 │   └── per-agent-sandbox.json
 └── skills/
