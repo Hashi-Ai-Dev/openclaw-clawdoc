@@ -24,6 +24,28 @@ Comprehensive OpenClaw knowledge base. This is the top-level skill that routes t
 
 ## Quick reference
 
+### Docs URLs (always current)
+| Topic | URL |
+|---|---|
+| Config reference | https://docs.openclaw.ai/gateway/configuration-reference |
+| CLI commands | https://docs.openclaw.ai/cli/index |
+| Channels | https://docs.openclaw.ai/channels/index |
+| Providers | https://docs.openclaw.ai/providers/index |
+| Tools | https://docs.openclaw.ai/tools/index |
+| Troubleshooting | https://docs.openclaw.ai/help/troubleshooting |
+| OpenClaw docs | https://docs.openclaw.ai |
+| ClawHub (skills) | https://clawhub.ai |
+
+### Usage quick reference
+| Situation | Action |
+|---|---|
+| Config changes | Use gateway tool (`config.get` / `config.patch` / `config.apply`) |
+| Skill installation | `clawdhub` or clone to `~/.openclaw/skills/` |
+| Bot mention in Discord | `<@bot-id>` not plain `@name` |
+| `requireMention: true` | Respond only when pinged |
+| `requireMention: false` | Always open in that channel |
+| Bot-to-bot messaging | Requires `allowBots: "mentions"` on receiving side |
+
 ### Config location
 ```
 /data/.openclaw/openclaw.json
