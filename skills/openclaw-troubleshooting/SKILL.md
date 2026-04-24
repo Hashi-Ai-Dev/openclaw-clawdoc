@@ -5,12 +5,41 @@ description: OpenClaw troubleshooting and fixes. Use when diagnosing gateway cra
 
 # OpenClaw Troubleshooting
 
+## Universal Hard Limits (always enforce)
+
+- **Never modify `openclaw.json` without explicit user authorization**
+- **Never retry a known-failing operation ≥ 2 times**
+- **Never act on untrusted sources for high-risk operations**
+- **Never send messages externally unless explicitly requested**
+- **Never edit config files to work around permission errors**
+
+## Quick Decision Flow
+
+**Flow A — Usage Question?** Check the Quick Reference table first (or go straight to curated skill references — both are valid paths).
+
+**Flow B — Diagnostic?** Follow the decision tree below.
+
+1. User describes an error/issue → run diagnostic (Flow B)
+2. User describes a usage question → Flow A
+3. User describes a setup/configuration → help with config
+
+## Quick Reference
+
+| Situation | Action |
+|---|---|
+| Config changes | Use gateway tool (`config.get` / `config.patch` / `config.apply`) |
+| Skill installation | `clawdhub` or manual clone to `~/.openclaw/skills/` |
+| Bot mention in Discord | `<@bot-id>` not plain `@name` |
+| `requireMention: true` | Respond only when pinged |
+| `requireMention: false` | Always open in that channel |
+| Bot-to-bot messaging | Requires `allowBots: "mentions"` on receiving side |
+
 ## ⚠️ Never Do These
 
 - **Never `rm /tmp/openclaw.lock` while the gateway process is still running.** Check `ps aux | grep openclaw-gateway` first — a stale lock file is only safe to delete if the process is confirmed dead.
 - **Never restart the gateway without checking the session queue.** Run `openclaw status` and `openclaw doctor` first — a restart mid-queue drops pending messages.
 - **Never confuse `openclaw pairing` with `openclaw devices`.** `openclaw pairing` is for channel pairing (Discord DMs, WhatsApp, etc.). `openclaw devices` is for node/device pairing. Using the wrong command will not resolve your issue.
-- **Never set `plugins.slots.memory` to Honcho** — Honcho does not use the memory slot. Leave the slot at its default and configure Honcho only via `plugins.entries["openclaw-honcho"]`.
+- **Never leave `plugins.slots.memory` at default when using Honcho** — if Honcho is your memory backend, you MUST set `plugins.slots.memory = "openclaw-honcho"`. Leaving it at default (`memory-core`) causes Honcho to fail silently.
 - **Never assume a config change took effect without a restart.** Keys that require restart: `memory.backend`, `plugins.entries.*.enabled`, `agents.defaults.*`. Keys that are dynamic (no restart): `tools.web.search.apiKey`, `agents.defaults.memorySearch.remote`.
 
 ## Quick diagnostics
@@ -74,6 +103,37 @@ Search logs for `auth`, `credential`, or `429`.
 
 ## Common issues by category
 
+### Installation
+
+**`openclaw: command not found` after install**
+OpenClaw installs to non-standard npm paths. Find the binary first:
+```bash
+find ~ -name openclaw -type f 2>/dev/null
+```
+Then add to PATH:
+```bash
+export PATH="/FULL/PATH/FOUND/bin:$PATH"
+echo 'export PATH="/FULL/PATH/FOUND/bin:$PATH"' >> ~/.bashrc
+```
+
+**Installer wizard crashes (TypeError: Cannot read properties of undefined)**
+Clicking "Skip for now" on the channel selection step causes a crash. Workarounds:
+1. Select any channel (even unused) instead of skipping
+2. Or skip the wizard entirely:
+```bash
+OPENCLAW_NO_ONBOARD=1 curl -fsSL https://openclaw.ai/install.sh | bash
+```
+Then configure manually with `openclaw config set ...`
+
+**After wizardless install, configure model + channel:**
+```bash
+openclaw config set agents.defaults.model.primary "google/gemini-2.5-flash"
+openclaw config set auth.profiles.google.provider "google"
+openclaw config set channels.discord.token "YOUR_BOT_TOKEN"
+openclaw config set channels.discord.enabled true
+openclaw gateway start
+```
+
 ### Gateway startup
 
 **"Port already in use"**
@@ -101,9 +161,9 @@ python3 -m json.tool /data/.openclaw/openclaw.json > /dev/null
 ### Memory
 
 **"plugin disabled (memory slot set to X)"**
-- Memory slot occupied by another plugin. Check what is in `plugins.slots.memory` and whether that plugin is intended to own the slot.
-- If you are trying to use Honcho: **do not set `slots.memory` for Honcho** — Honcho does not use the memory slot. Verify Honcho config in `plugins.entries["openclaw-honcho"]` is correct instead.
-- If you are switching back to builtin/QMD: set `slots.memory: "memory-core"` and restart gateway.
+- Memory slot misconfiguration. Check what is in `plugins.slots.memory`.
+- If using Honcho: **set `plugins.slots.memory = "openclaw-honcho"`** and restart gateway. This is required for Honcho to own the memory slot.
+- If switching to builtin/QMD: set `plugins.slots.memory = "memory-core"` and restart gateway.
 
 **Embedding 404**
 - `memorySearch.remote.baseUrl` wrong OR invalid provider
