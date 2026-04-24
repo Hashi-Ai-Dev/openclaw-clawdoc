@@ -15,7 +15,7 @@ description: OpenClaw troubleshooting and fixes. Use when diagnosing gateway cra
 
 ## Quick Decision Flow
 
-**Flow A — Usage Question?** Check the Quick Reference table first (or go straight to curated skill references — both are valid paths).
+**Flow A — Usage Question?** Check the Quick Reference table first (or go straight to curated skill references — both are valid paths). Official docs: https://docs.openclaw.ai
 
 **Flow B — Diagnostic?** Follow the decision tree below.
 
