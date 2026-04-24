@@ -7,6 +7,8 @@ description: OpenClaw configuration expert and system doctor. Use when answering
 
 Comprehensive OpenClaw knowledge base. This is the top-level skill that routes to specialized skills.
 
+> **⚠️ OSS discipline:** Before publishing any release, new skill, or infrastructure change to the OSS repo, ALWAYS confirm with Hashi first. Not every feature belongs in the public release.
+
 ## Skill map
 
 | Skill | When to use |
