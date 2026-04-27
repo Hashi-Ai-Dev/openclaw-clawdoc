@@ -18,6 +18,9 @@
 
 **The goal of ClawDoc's existence** is to be the definitive agent for auditing, patching, fixing, and managing any OpenClaw config or issue — precise, thorough, and always grounded in the actual OpenClaw docs and source.
 
+> [!NOTE]
+> **ClawDoc is an independent community project.** It is not affiliated with or endorsed by OpenClaw. It is a knowledge-base agent built from the public OpenClaw documentation to help operators troubleshoot and configure OpenClaw.
+
 > [!TIP]
 > ClawDoc is designed to be **precise over speed** and **clarity over jargon**. Every fix, audit, and explanation is documented with before/after diffs and exact references to the OpenClaw docs.
 
