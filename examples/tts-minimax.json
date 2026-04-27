@@ -1,3 +1,6 @@
+// MiniMax text-to-speech — enable voice replies on Discord, Telegram, WhatsApp.
+// Audio auto-sends as a voice message attachment. Apply: openclaw config merge examples/tts-minimax.json
+// Requires: MINIMAX_API_KEY set in environment (reuses same key as text model).
 {
   "messages": {
     "tts": {
@@ -5,7 +8,9 @@
       "provider": "minimax",
       "providers": {
         "minimax": {
+          // T2A v2 HD model — high quality voice
           "model": "speech-2.8-hd",
+          // Voice preset — see MiniMax docs for full voice list
           "voice": "English_expressive_narrator"
         }
       }

@@ -1,0 +1,13 @@
+// Minimal config to verify a fresh OpenClaw install is working.
+// Apply AFTER running the installer — this confirms model + gateway respond.
+// Apply: openclaw config merge examples/install-verify.json
+// Then test: openclaw doctor --non-interactive
+{
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "minimax/MiniMax-M2.7"
+      }
+    }
+  }
+}

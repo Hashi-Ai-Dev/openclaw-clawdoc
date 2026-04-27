@@ -1,3 +1,6 @@
+// Builtin memory with semantic search — no external services required.
+// OpenClaw's default memory backend. Apply: openclaw config merge examples/memory-builtin.json
+// Requires: OpenAI API key (or other embedding provider) configured via auth.providers.
 {
   "agents": {
     "defaults": {
@@ -5,18 +8,22 @@
       "model": {
         "primary": "minimax/MiniMax-M2.7"
       },
+      // Memory search: semantically search past conversations
       "memorySearch": {
         "provider": "openai",
         "model": "text-embedding-3-small",
         "query": {
           "hybrid": {
             "enabled": true,
+            // Vector search weight (0.0–1.0) — balance with textWeight
             "vectorWeight": 0.7,
             "textWeight": 0.3,
+            // Maximal Marginal Relevance — diverse results, no repetition
             "mmr": {
               "enabled": true,
               "lambda": 0.7
             },
+            // Prefer recent information, decay over time
             "temporalDecay": {
               "enabled": true,
               "halfLifeDays": 30
@@ -26,8 +33,10 @@
       }
     }
   },
+  // Builtin memory: local SQLite, no external service needed
   "memory": {
     "backend": "builtin",
+    // Auto-cite sources in replies when pulling from memory
     "citations": "auto"
   }
 }

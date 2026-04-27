@@ -1,11 +1,19 @@
+// Minimal Discord setup — single server, DM pairing, bot only responds when called.
+// Apply: openclaw config merge examples/discord-single.json
+// Then: openclaw gateway restart
 {
   "channels": {
     "discord": {
+      // Bot token from https://discord.com/developers/applications
       "token": "YOUR_BOT_TOKEN",
+      // "pairing" = users must approve DMs with a code (secure)
+      // "open" = anyone can DM (not recommended)
       "dmPolicy": "pairing",
       "guilds": {
         "YOUR_GUILD_ID": {
+          // Bot responds without being @mentioned in this server
           "requireMention": false,
+          // Restrict to specific user IDs (optional — remove for public bot)
           "users": ["YOUR_DISCORD_USER_ID"],
           "channels": {
             "YOUR_CHANNEL_ID": {
