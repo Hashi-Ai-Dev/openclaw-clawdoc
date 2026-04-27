@@ -1,16 +1,15 @@
 {
   "channels": {
     "discord": {
+      "token": "YOUR_BOT_TOKEN",
       "dmPolicy": "pairing",
       "guilds": {
         "YOUR_GUILD_ID": {
           "requireMention": false,
-          "ignoreOtherMentions": true,
           "users": ["YOUR_DISCORD_USER_ID"],
           "channels": {
             "YOUR_CHANNEL_ID": {
-              "allow": true,
-              "requireMention": false
+              "allow": true
             }
           }
         }

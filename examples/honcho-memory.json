@@ -7,7 +7,7 @@
       "openclaw-honcho": {
         "enabled": true,
         "config": {
-          "workspaceId": "openclaw",
+          "workspaceId": "your-workspace-id",
           "baseUrl": "http://127.0.0.1:8000"
         }
       }
