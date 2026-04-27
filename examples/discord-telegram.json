@@ -1,0 +1,25 @@
+{
+  "channels": {
+    "discord": {
+      "enabled": true,
+      "dmPolicy": "pairing",
+      "guilds": {
+        "YOUR_DISCORD_GUILD_ID": {
+          "requireMention": false,
+          "users": ["YOUR_DISCORD_USER_ID"],
+          "channels": {
+            "YOUR_DISCORD_CHANNEL_ID": {
+              "allow": true
+            }
+          }
+        }
+      }
+    },
+    "telegram": {
+      "enabled": true,
+      "botToken": "YOUR_TELEGRAM_BOT_TOKEN",
+      "dmPolicy": "pairing",
+      "allowFrom": ["YOUR_TELEGRAM_USER_ID"]
+    }
+  }
+}

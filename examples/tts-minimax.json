@@ -1,0 +1,14 @@
+{
+  "messages": {
+    "tts": {
+      "enabled": true,
+      "provider": "minimax",
+      "providers": {
+        "minimax": {
+          "model": "speech-2.8-hd",
+          "voice": "English_expressive_narrator"
+        }
+      }
+    }
+  }
+}

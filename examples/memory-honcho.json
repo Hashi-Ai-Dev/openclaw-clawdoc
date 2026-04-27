@@ -1,0 +1,20 @@
+{
+  "memory": {
+    "backend": "qmd",
+    "citations": "auto"
+  },
+  "plugins": {
+    "slots": {
+      "memory": "openclaw-honcho"
+    },
+    "entries": {
+      "openclaw-honcho": {
+        "enabled": true,
+        "config": {
+          "workspaceId": "your-workspace",
+          "baseUrl": "http://127.0.0.1:8000"
+        }
+      }
+    }
+  }
+}

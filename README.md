@@ -21,12 +21,16 @@
 > [!TIP]
 > ClawDoc is designed to be **precise over speed** and **clarity over jargon**. Every fix, audit, and explanation is documented with before/after diffs and exact references to the OpenClaw docs.
 
+> [!NOTE]
+> **New here?** Start with [QUICKSTART.md](./QUICKSTART.md) — get running in 10 minutes.
+
 ---
 
 ## Features
 
 - **11 specialized skills** covering every OpenClaw subsystem
 - **424 reference docs** copied from the official OpenClaw documentation
+- **10 ready-to-use config examples** — TTS, memory, multi-channel, sandboxing
 - **429 total files** — complete knowledge base ready to run
 - **Progressive disclosure design** — lean SKILL.md bodies, deep reference files
 - **Built-in diagnostics** — triage → skill routing → detailed fix
@@ -64,6 +68,8 @@ skill-name/
 
 ## Quick Start
 
+> ⚡ **10-minute setup:** follow [QUICKSTART.md](./QUICKSTART.md) for the essential install → model → channel → verify path.
+
 ### Run ClawDoc
 ```bash
 # Point OpenClaw at this directory as the skills root
@@ -92,10 +98,15 @@ openclaw-clawdoc/
 ├── AUDIT.md           # Config audit report template
 ├── assets/
 │   └── avatar.svg    # ClawDoc avatar
-├── examples/              # 6 ready-to-use config examples
+├── QUICKSTART.md        # Start here — 10 min to running
+├── examples/              # 10 ready-to-use config examples
+│   ├── README.md         # Guide to picking the right example
+│   ├── discord-single.json
 │   ├── discord-full.json
-│   ├── honcho-memory.json
+│   ├── discord-telegram.json
+│   ├── tts-minimax.json
 │   ├── memory-builtin.json
+│   ├── memory-honcho.json
 │   ├── memory-qmd.json
 │   ├── multi-agent-discord.json
 │   └── per-agent-sandbox.json
