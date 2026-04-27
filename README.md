@@ -1,6 +1,6 @@
 # ClawDoc — OpenClaw Configuration Expert & System Doctor
 
-[![OpenClaw](https://img.shields.io/badge/OpenClaw-2026.4.24-blue?style=flat-square)](https://github.com/openclaw/openclaw) · ![Reference Docs](https://img.shields.io/badge/Reference_Docs-360-green?style=flat-square) · ![Skills](https://img.shields.io/badge/Skills-11-orange?style=flat-square)
+[![OpenClaw](https://img.shields.io/badge/OpenClaw-2026.4.25-blue?style=flat-square)](https://github.com/openclaw/openclaw) · ![Reference Docs](https://img.shields.io/badge/Reference_Docs-424-green?style=flat-square) · ![Skills](https://img.shields.io/badge/Skills-11-orange?style=flat-square)
 
 <p align="center">
   <img src="assets/clawdoc-banner.jpg" alt="ClawDoc Banner" />
@@ -26,8 +26,8 @@
 ## Features
 
 - **11 specialized skills** covering every OpenClaw subsystem
-- **360 reference docs** copied from the official OpenClaw documentation
-- **369 total files** — complete knowledge base ready to run
+- **424 reference docs** copied from the official OpenClaw documentation
+- **429 total files** — complete knowledge base ready to run
 - **Progressive disclosure design** — lean SKILL.md bodies, deep reference files
 - **Built-in diagnostics** — triage → skill routing → detailed fix
 - **Community-ready** — MIT licensed, fork it, customize it, ship your own variant
