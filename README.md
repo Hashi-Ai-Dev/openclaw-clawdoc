@@ -1,6 +1,6 @@
 # ClawDoc — OpenClaw Configuration Expert & System Doctor
 
-[![OpenClaw](https://img.shields.io/badge/OpenClaw-2026.4.25-blue?style=flat-square)](https://github.com/openclaw/openclaw) · ![Reference Docs](https://img.shields.io/badge/Reference_Docs-424-green?style=flat-square) · ![Skills](https://img.shields.io/badge/Skills-11-orange?style=flat-square)
+[![OpenClaw](https://img.shields.io/badge/OpenClaw-2026.4.25-blue?style=flat-square)](https://github.com/openclaw/openclaw) · ![Reference Docs](https://img.shields.io/badge/Reference_Docs-436-green?style=flat-square) · ![Skills](https://img.shields.io/badge/Skills-21-orange?style=flat-square)
 
 <p align="center">
   <img src="assets/clawdoc-banner.jpg" alt="ClawDoc Banner" />
@@ -31,10 +31,10 @@
 
 ## Features
 
-- **11 specialized skills** covering every OpenClaw subsystem
-- **424 reference docs** copied from the official OpenClaw documentation
-- **10 ready-to-use config examples** — TTS, memory, multi-channel, sandboxing
-- **429 total files** — complete knowledge base ready to run
+- **21 specialized skills** covering every OpenClaw subsystem
+- **436 reference docs** copied from the official OpenClaw documentation
+- **13 ready-to-use config examples** — TTS, memory, multi-channel, sandboxing, webhooks
+- **463 total files** — complete knowledge base ready to run
 - **Progressive disclosure design** — lean SKILL.md bodies, deep reference files
 - **Built-in diagnostics** — triage → skill routing → detailed fix
 - **Community-ready** — MIT licensed, fork it, customize it, ship your own variant
@@ -56,6 +56,15 @@
 | `openclaw-tools` | Tool reference: exec, browser, cron, sessions, subagents, gateway |
 | `openclaw-cli` | CLI commands: status, gateway, plugins, memory, agents |
 | `openclaw-providers` | All 50 model providers: OpenAI, Anthropic, Gemini, Bedrock, Ollama, Groq, DeepSeek, Mistral, and 42 more |
+| `openclaw-automation` | Cron, hooks, tasks, Task Flow, standing orders |
+| `openclaw-install` | Install guides: Docker, Railway, Fly, Raspberry Pi, DigitalOcean, Hostinger |
+| `openclaw-start` | First-run wizard, onboarding flow, getting started |
+| `openclaw-help` | FAQ, help commands, usage patterns |
+| `openclaw-nodes` | Mobile/desktop node pairing, routing, device management |
+| `openclaw-platforms` | Platform-specific setup notes |
+| `openclaw-logging` | Logging configuration, log management |
+| `openclaw-ci` | CI/CD integration, webhook automation |
+| `openclaw-web` | Web UI, dashboard, TUI, webchat |
 
 Each skill lives in its own directory:
 
@@ -73,16 +82,20 @@ skill-name/
 
 > ⚡ **10-minute setup:** follow [QUICKSTART.md](./QUICKSTART.md) for the essential install → model → channel → verify path.
 
-### Run ClawDoc
-```bash
-# Point OpenClaw at this directory as the skills root
-openclaw skills add /path/to/clawdoc/skills
+### Install ClawDoc
 
-# Or copy skills into your OpenClaw workspace
-cp -r skills/* ~/.openclaw/skills/
+```bash
+# Clone into your OpenClaw skills directory
+git clone https://github.com/Hashi-Ai-Dev/openclaw-clawdoc.git ~/.openclaw/skills/openclaw
+
+# Or copy individual skill directories you need
+cp -r skills/openclaw-master/ ~/.openclaw/skills/
+cp -r skills/openclaw-config/ ~/.openclaw/skills/
+# ... etc
 ```
 
 ### Use ClawDoc
+
 ```
 @your-agent [your OpenClaw config question]
 ```
@@ -95,14 +108,17 @@ ClawDoc will route to the right skill, read the relevant reference docs, and giv
 
 ```
 openclaw-clawdoc/
-├── README.md          # This file
-├── LICENSE            # MIT
-├── CONTRIBUTING.md    # How to contribute
-├── AUDIT.md           # Config audit report template
+├── README.md              # This file
+├── LICENSE               # MIT
+├── CONTRIBUTING.md       # How to contribute
+├── QUICKSTART.md         # Start here — 10 min to running
+├── TROUBLESHOOTING.md    # Quick triage front door
+├── AUDIT.md              # Config audit report template
+├── SECURITY.md           # Security policy
 ├── assets/
-│   └── avatar.svg    # ClawDoc avatar
-├── QUICKSTART.md        # Start here — 10 min to running
-├── examples/              # 10 ready-to-use config examples
+│   ├── avatar.svg
+│   └── clawdoc-banner.jpg
+├── examples/             # 13 ready-to-use config examples
 │   ├── README.md         # Guide to picking the right example
 │   ├── discord-single.json
 │   ├── discord-full.json
@@ -112,12 +128,30 @@ openclaw-clawdoc/
 │   ├── memory-honcho.json
 │   ├── memory-qmd.json
 │   ├── multi-agent-discord.json
-│   └── per-agent-sandbox.json
-└── skills/
+│   ├── per-agent-sandbox.json
+│   ├── webhook-basic.json
+│   └── install-verify.json
+└── skills/              # 21 skills total
     ├── openclaw-master/
     ├── openclaw-config/
     ├── openclaw-memory/
-    └── ... (11 skills total)
+    ├── openclaw-agents/
+    ├── openclaw-channels/
+    ├── openclaw-concepts/
+    ├── openclaw-troubleshooting/
+    ├── openclaw-plugins/
+    ├── openclaw-tools/
+    ├── openclaw-cli/
+    ├── openclaw-providers/
+    ├── openclaw-automation/
+    ├── openclaw-install/
+    ├── openclaw-start/
+    ├── openclaw-help/
+    ├── openclaw-nodes/
+    ├── openclaw-platforms/
+    ├── openclaw-logging/
+    ├── openclaw-ci/
+    └── openclaw-web/
 ```
 
 ---
