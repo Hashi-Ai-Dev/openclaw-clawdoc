@@ -1,6 +1,6 @@
 # ClawDoc — OpenClaw Configuration Expert & System Doctor
 
-[![OpenClaw](https://img.shields.io/badge/OpenClaw-2026.4.25-blue?style=flat-square)](https://github.com/openclaw/openclaw) · ![Reference Docs](https://img.shields.io/badge/Reference_Docs-436-green?style=flat-square) · ![Skills](https://img.shields.io/badge/Skills-21-orange?style=flat-square)
+[![OpenClaw](https://img.shields.io/badge/OpenClaw-2026.4.25-blue?style=flat-square)](https://github.com/openclaw/openclaw) · ![Reference Docs](https://img.shields.io/badge/Reference_Docs-440-green?style=flat-square) · ![Skills](https://img.shields.io/badge/Skills-21-orange?style=flat-square)
 
 <p align="center">
   <img src="assets/clawdoc-banner.jpg" alt="ClawDoc Banner" />
@@ -32,9 +32,9 @@
 ## Features
 
 - **21 specialized skills** covering every OpenClaw subsystem
-- **436 reference docs** copied from the official OpenClaw documentation
+- **440 reference docs** copied from the official OpenClaw documentation
 - **13 ready-to-use config examples** — TTS, memory, multi-channel, sandboxing, webhooks
-- **463 total files** — complete knowledge base ready to run
+- **467 total files** — complete knowledge base ready to run
 - **Progressive disclosure design** — lean SKILL.md bodies, deep reference files
 - **Built-in diagnostics** — triage → skill routing → detailed fix
 - **Community-ready** — MIT licensed, fork it, customize it, ship your own variant
@@ -83,6 +83,14 @@ skill-name/
 > ⚡ **10-minute setup:** follow [QUICKSTART.md](./QUICKSTART.md) for the essential install → model → channel → verify path.
 
 ### Install ClawDoc
+
+Give your OpenClaw agent the repo URL and let it do the rest:
+
+> **"Install ClawDoc from `https://github.com/Hashi-Ai-Dev/openclaw-clawdoc`"**
+
+Your agent reads the repo, picks up all 21 skills, and ClawDoc is live. That's it.
+
+Or do it manually:
 
 ```bash
 # Clone into your OpenClaw skills directory
