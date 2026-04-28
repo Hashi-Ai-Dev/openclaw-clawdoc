@@ -1,6 +1,6 @@
 # ClawDoc — OpenClaw Configuration Expert & System Doctor
 
-[![OpenClaw](https://img.shields.io/badge/OpenClaw-2026.4.26-blue?style=flat-square)](https://github.com/openclaw/openclaw) · ![Reference Docs](https://img.shields.io/badge/Reference_Docs-471-green?style=flat-square) · ![Skills](https://img.shields.io/badge/Skills-21-orange?style=flat-square)
+[![OpenClaw](https://img.shields.io/badge/OpenClaw-2026.4.26-blue?style=flat-square)](https://github.com/openclaw/openclaw) · ![Reference Docs](https://img.shields.io/badge/Reference_Docs-471-green?style=flat-square) · ![Skills](https://img.shields.io/badge/Skills-22-orange?style=flat-square)
 
 <p align="center">
   <img src="assets/clawdoc-banner.jpg" alt="ClawDoc Banner" />
@@ -59,6 +59,7 @@
 | `openclaw-automation` | Cron, hooks, tasks, Task Flow, standing orders |
 | `openclaw-install` | Install guides: Docker, Railway, Fly, Raspberry Pi, DigitalOcean, Hostinger |
 | `openclaw-start` | First-run wizard, onboarding flow, getting started |
+| `clawdoc-onboarding` | Guided first-run setup for new ClawDoc users |
 | `openclaw-help` | FAQ, help commands, usage patterns |
 | `openclaw-nodes` | Mobile/desktop node pairing, routing, device management |
 | `openclaw-platforms` | Platform-specific setup notes |
@@ -88,7 +89,7 @@ Give your OpenClaw agent the repo URL and let it do the rest:
 
 > **"Install ClawDoc from `https://github.com/Hashi-Ai-Dev/openclaw-clawdoc`"**
 
-Your agent reads the repo, picks up all 21 skills, and ClawDoc is live. That's it.
+Your agent reads the repo, picks up all 22 skills, and ClawDoc is live. That's it.
 
 Or do it manually:
 
@@ -165,7 +166,7 @@ openclaw-clawdoc/
 │   ├── per-agent-sandbox.json
 │   ├── webhook-basic.json
 │   └── install-verify.json
-└── skills/              # 21 skills total
+└── skills/              # 22 skills total
     ├── openclaw-master/
     ├── openclaw-config/
     ├── openclaw-memory/
@@ -185,7 +186,8 @@ openclaw-clawdoc/
     ├── openclaw-platforms/
     ├── openclaw-logging/
     ├── openclaw-ci/
-    └── openclaw-web/
+    ├── openclaw-web/
+    └── clawdoc-onboarding/
 ```
 
 ---
