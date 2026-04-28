@@ -52,6 +52,7 @@
 | `openclaw-channels` | All 31 channel types: Discord, Telegram, WhatsApp, Slack, Signal, Matrix, iMessage, IRC, Feishu, LINE, GoogleChat, Mattermost, Microsoft Teams, Nextcloud Talk, Nostr, QQ Bot, Synology Chat, Twitch, Tlon, Zalo, Voice Call |
 | `openclaw-concepts` | Architecture, session, compaction, streaming, bootstrap |
 | `openclaw-troubleshooting` | Diagnosis flows, error codes, common fixes |
+| `openclaw-sync` | Keep ClawDoc in sync with latest OpenClaw releases |
 | `openclaw-plugins` | Plugin slots, SDK, hook system, installing plugins |
 | `openclaw-tools` | Tool reference: exec, browser, cron, sessions, subagents, gateway |
 | `openclaw-cli` | CLI commands: status, gateway, plugins, memory, agents |
@@ -112,6 +113,33 @@ ClawDoc will route to the right skill, read the relevant reference docs, and giv
 
 ---
 
+## Ready-to-use Examples
+
+Apply any example with:
+```bash
+openclaw config merge examples/NAME.json && openclaw gateway restart
+```
+
+**Quick picker:**
+
+| Scenario | Example |
+|----------|---------|
+| Just installed — verify it works | `install-verify.json` |
+| Discord bot, single server | `discord-single.json` |
+| Discord full-featured (threads + exec) | `discord-full.json` |
+| Discord + Telegram together | `discord-telegram.json` |
+| Voice output (TTS) | `tts-minimax.json` |
+| Conversation memory (builtin) | `memory-builtin.json` |
+| Semantic search over your files | `memory-qmd.json` |
+| Full memory with external search | `memory-honcho.json` |
+| Different agents per Discord channel | `multi-agent-discord.json` |
+| Locked-down sandboxed agent | `per-agent-sandbox.json` |
+| Receive webhooks | `webhook-basic.json` |
+
+**Beginner path:** `install-verify.json` → `discord-single.json` → `memory-builtin.json`
+
+---
+
 ## Repository Structure
 
 ```
@@ -126,9 +154,8 @@ openclaw-clawdoc/
 ├── assets/
 │   ├── avatar.svg
 │   └── clawdoc-banner.jpg
-├── examples/             # 13 ready-to-use config examples
-│   ├── README.md         # Guide to picking the right example
-│   ├── discord-single.json
+├── examples/             # 12 ready-to-use config examples
+    ├── discord-single.json
 │   ├── discord-full.json
 │   ├── discord-telegram.json
 │   ├── tts-minimax.json
