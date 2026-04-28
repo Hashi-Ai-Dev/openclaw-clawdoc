@@ -1,6 +1,6 @@
 # ClawDoc — OpenClaw Configuration Expert & System Doctor
 
-[![OpenClaw](https://img.shields.io/badge/OpenClaw-2026.4.25-blue?style=flat-square)](https://github.com/openclaw/openclaw) · ![Reference Docs](https://img.shields.io/badge/Reference_Docs-440-green?style=flat-square) · ![Skills](https://img.shields.io/badge/Skills-21-orange?style=flat-square)
+[![OpenClaw](https://img.shields.io/badge/OpenClaw-2026.4.26-blue?style=flat-square)](https://github.com/openclaw/openclaw) · ![Reference Docs](https://img.shields.io/badge/Reference_Docs-471-green?style=flat-square) · ![Skills](https://img.shields.io/badge/Skills-21-orange?style=flat-square)
 
 <p align="center">
   <img src="assets/clawdoc-banner.jpg" alt="ClawDoc Banner" />
