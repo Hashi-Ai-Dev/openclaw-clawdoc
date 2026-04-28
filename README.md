@@ -52,7 +52,6 @@
 | `openclaw-channels` | All 31 channel types: Discord, Telegram, WhatsApp, Slack, Signal, Matrix, iMessage, IRC, Feishu, LINE, GoogleChat, Mattermost, Microsoft Teams, Nextcloud Talk, Nostr, QQ Bot, Synology Chat, Twitch, Tlon, Zalo, Voice Call |
 | `openclaw-concepts` | Architecture, session, compaction, streaming, bootstrap |
 | `openclaw-troubleshooting` | Diagnosis flows, error codes, common fixes |
-| `openclaw-sync` | Keep ClawDoc in sync with latest OpenClaw releases |
 | `openclaw-plugins` | Plugin slots, SDK, hook system, installing plugins |
 | `openclaw-tools` | Tool reference: exec, browser, cron, sessions, subagents, gateway |
 | `openclaw-cli` | CLI commands: status, gateway, plugins, memory, agents |
