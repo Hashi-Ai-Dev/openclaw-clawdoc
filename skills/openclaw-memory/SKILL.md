@@ -76,6 +76,7 @@ Plugin that blocks before each reply and injects memory context. Enable:
 - `references/memory-builtin.md` — builtin backend detail
 - `references/memory-qmd.md` — QMD setup and extra paths
 - `references/memory-honcho.md` — Honcho setup and cross-session memory
+- `references/honcho-persistence.md` — **Critical:** postgres data_directory, ephemeral storage, backup, and recovery for self-hosted Honcho
 - `references/memory-search.md` — hybrid search, MMR, temporal decay, citations
 - `references/active-memory.md` — active memory config, query modes
 - `references/dreaming.md` — dreaming background consolidation

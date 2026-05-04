@@ -434,6 +434,32 @@ Related:
 
 Most post-upgrade breakage is config drift or stricter defaults now being enforced.
 
+### 0) ⚠️ Did you run `gateway update.run`?
+
+**`gateway update.run` can silently overwrite config fields including `gateway.auth.token`.** This immediately invalidates Discord bot tokens and other channel auth — the bot drops offline with no warning.
+
+```bash
+# Check if your gateway auth token changed (compare with your backup)
+openclaw config get gateway.auth.token
+
+# Check if Discord channel dropped
+openclaw channels status --probe
+openclaw logs --follow | grep -i discord
+```
+
+**Recovery:**
+```bash
+# Restore the original token
+openclaw config set gateway.auth.token "YOUR_BACKED_UP_TOKEN"
+openclaw config set channels.discord.token "YOUR_DISCORD_BOT_TOKEN"
+openclaw gateway restart
+```
+
+**Prevention before next update:**
+1. Backup tokens: `openclaw config get gateway.auth.token` and `openclaw config get channels.discord.token`
+2. Read release notes for breaking changes
+3. After update: restore tokens if changed, then restart the gateway
+
 ### 1) Auth and URL override behavior changed
 
 ```bash

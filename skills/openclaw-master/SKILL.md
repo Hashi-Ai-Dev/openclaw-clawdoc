@@ -47,6 +47,22 @@ Top-level routing skill for OpenClaw questions. Routes to specialized skills.
 | Hook not firing | `openclaw hooks list` → `openclaw hooks enable <name>` |
 | Pairing code expired | Codes expire 1h, max 3 pending per channel |
 
+## ⚠️ Update Safety
+
+**`gateway update.run` is not safe to run on a production system without preparation.** It can silently overwrite config fields including `gateway.auth.token`, immediately disconnecting Discord bots and invalidating channel credentials.
+
+**Before running `gateway update.run`:**
+
+1. Record auth tokens: `openclaw config get gateway.auth.token` and `openclaw config get channels.discord.token`
+
+2. Check release notes for breaking changes
+
+3. After update: restore tokens if changed, then run `openclaw gateway restart`
+
+4. Verify Discord reconnected: `openclaw channels status --probe`
+
+See `openclaw-cli/references/update.md` for the full safe sync pipeline.
+
 ## Architecture
 
 Gateway daemon (port 18789) owns all messaging surfaces. Three memory backends: **builtin** (SQLite), **QMD** (local sidecar), **Honcho** (cross-session plugin). Multi-agent via `agents.list[]` + `bindings[]`.
