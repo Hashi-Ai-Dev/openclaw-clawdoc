@@ -99,7 +99,8 @@ Managed multi-step orchestration: **managed** (owns lifecycle) or **mirrored** (
 - `references/architecture.md` — gateway deep dive
 - `references/session.md` — session system
 - `references/compaction.md` — compaction + memory flush
-- `references/streaming.md` — block streaming details
+- `references/streaming.md` — block streaming and preview mode details
+- `references/progress-drafts.md` — editable progress messages during long turns
 - `references/queue.md` — queue lanes + semantics
 - `references/system-prompt.md` — prompt assembly
 - `references/soul.md` — SOUL.md guide

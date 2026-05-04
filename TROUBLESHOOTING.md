@@ -159,7 +159,7 @@ For deeper diagnosis, ClawDoc routes to these skills:
 | Plugin install failures | `openclaw-plugins` |
 | Memory not working | `openclaw-memory` |
 | Cron/hooks not firing | `openclaw-automation` |
-| Need full diagnostic run | `openclaw-diagnose` (local skill) |
+| Need full diagnostic run | `openclaw doctor --fix` or `openclaw doctor --non-interactive` |
 
 ## Getting help
 

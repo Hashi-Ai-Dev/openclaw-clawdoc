@@ -61,7 +61,7 @@ Set via `agents.defaults.memorySearch`:
 }
 ```
 
-Supported: `openai`, `gemini`, `voyage`, `mistral`, `bedrock`, `local`.
+Supported: `openai`, `gemini`, `voyage`, `mistral`, `deepinfra`, `bedrock`, `local`. DeepInfra auto-detects when API key resolves; `local` uses a GGUF model via `node-llama-cpp`.
 
 ## Active memory
 
