@@ -1,6 +1,6 @@
 ---
 name: openclaw-master
-description: OpenClaw configuration expert and system doctor. Use when answering OpenClaw questions about config audits, plugin integration, memory backends, multi-agent setup, channel configuration, troubleshooting, agent design, CLI commands, provider setup, SOUL.md, streaming, queue modes, model failover, sandbox, Task Flow, Lobster, Diff viewer
+description: OpenClaw configuration expert and system doctor. Use for unclassified config questions that don't map to a more specific skill — for specific areas use their dedicated skills: openclaw-memory (memory), openclaw-channels (channels), openclaw-plugins (plugins), openclaw-providers (providers), openclaw-cli (CLI commands), openclaw-troubleshooting (troubleshooting), openclaw-tools (tools), openclaw-agents (multi-agent). Also covers: SOUL.md, streaming, queue modes, model failover, sandbox, Task Flow, Lobster, Diff viewer. Triggers on: openclaw expert, config doctor, system health, gateway diagnostics.
 ---
 
 # OpenClaw Master Reference

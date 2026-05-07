@@ -1,6 +1,6 @@
 ---
 name: openclaw-memory
-description: OpenClaw memory systems. Use when configuring memory backends, embedding providers, QMD, Honcho, active memory, dreaming, memory-wiki, or memory search., "memory search", "embedding", "QMD", "Honcho", "sqlite-vec", "vector search", "BM25", "hybrid search", "memory config", "active memory", "dreaming", "memory wiki", "citations", "recall", "context", "semantic search", "vector", "pgvector", "memory not working", "search results wrong", "vector database", "memory backend".
+description: OpenClaw memory systems. Use when configuring memory backends, embedding providers, QMD, Honcho, active memory, dreaming, memory-wiki, or memory search. Covers: memory search, embedding, QMD, Honcho, sqlite-vec, vector search, BM25, hybrid search, memory config, active memory, dreaming, memory wiki, citations, recall, context, semantic search, vector, pgvector, memory backend. Natural triggers: vector database not working, search results are wrong, memory search not finding anything, embeddings broken, how do I set up memory, configure Honcho, memory backend setup. Triggers on: memory search, embedding, QMD, Honcho, sqlite-vec, vector search, BM25, hybrid search, memory config, active memory, dreaming, memory wiki, citations, recall, context, semantic search, vector, pgvector, memory backend, memory not working, search results wrong, vector database.
 ---
 
 # OpenClaw Memory
