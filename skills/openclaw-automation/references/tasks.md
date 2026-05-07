@@ -96,13 +96,13 @@ Not every agent run creates a task. Heartbeat turns and normal interactive chat 
 | Subagent orchestration | `subagent`   | Spawning a subagent via `sessions_spawn`               | `done_only`           |
 | Cron jobs (all types)  | `cron`       | Every cron execution (main-session and isolated)       | `silent`              |
 | CLI operations         | `cli`        | `openclaw agent` commands that run through the gateway | `silent`              |
-| Agent media jobs       | `cli`        | Session-backed `video_generate` runs                   | `silent`              |
+| Agent media jobs       | `cli`        | Session-backed `music_generate`/`video_generate` runs  | `silent`              |
 
 <AccordionGroup>
   <Accordion title="Notify defaults for cron and media">
     Main-session cron tasks use `silent` notify policy by default — they create records for tracking but do not generate notifications. Isolated cron tasks also default to `silent` but are more visible because they run in their own session.
 
-    Session-backed `video_generate` runs also use `silent` notify policy. They still create task records, but completion is handed back to the original agent session as an internal wake so the agent can write the follow-up message and attach the finished video itself. If you opt into `tools.media.asyncCompletion.directSend`, async `music_generate` and `video_generate` completions try direct channel delivery first before falling back to the requester-session wake path.
+    Session-backed `music_generate` and `video_generate` runs also use `silent` notify policy. They still create task records, but completion is handed back to the original agent session as an internal wake so the agent can write the follow-up message and attach the finished media itself. Group/channel completions follow the normal visible-reply policy, so the agent uses the message tool when source delivery requires it.
 
   </Accordion>
   <Accordion title="Concurrent video_generate guardrail">
@@ -151,11 +151,12 @@ Agent run completion is authoritative for active task records. A successful deta
 - Cron tasks: the cron runtime no longer tracks the job as active and durable
   cron run history does not show a terminal result for that run. Offline CLI
   audit does not treat its own empty in-process cron runtime state as authority.
-- CLI tasks: isolated child-session tasks use the child session; chat-backed
-  CLI tasks use the live run context instead, so lingering
-  channel/group/direct session rows do not keep them alive. Gateway-backed
-  `openclaw agent` runs also finalize from their run result, so completed runs
-  do not sit active until the sweeper marks them `lost`.
+- CLI tasks: tasks with a run id/source id use the live run context, so
+  lingering child-session or chat-session rows do not keep them alive after the
+  gateway-owned run disappears. Legacy CLI tasks without run identity still fall
+  back to the child session. Gateway-backed `openclaw agent` runs also finalize
+  from their run result, so completed runs do not sit active until the sweeper
+  marks them `lost`.
 
 ## Delivery and notifications
 
@@ -249,7 +250,7 @@ openclaw tasks notify <lookup> state_changes
     - ACP/subagent tasks check their backing child session.
     - Subagent tasks whose child session has a restart-recovery tombstone are marked lost instead of being treated as recoverable backing sessions.
     - Cron tasks check whether the cron runtime still owns the job, then recover terminal status from persisted cron run logs/job state before falling back to `lost`. Only the Gateway process is authoritative for the in-memory cron active-job set; offline CLI audit uses durable history but does not mark a cron task lost solely because that local Set is empty.
-    - Chat-backed CLI tasks check the owning live run context, not just the chat session row.
+    - CLI tasks with run identity check the owning live run context, not just child-session or chat-session rows.
 
     Completion cleanup is also runtime-aware:
 
@@ -316,7 +317,7 @@ A sweeper runs every **60 seconds** and handles four things:
 
 <Steps>
   <Step title="Reconciliation">
-    Checks whether active tasks still have authoritative runtime backing. ACP/subagent tasks use child-session state, cron tasks use active-job ownership, and chat-backed CLI tasks use the owning run context. If that backing state is gone for more than 5 minutes, the task is marked `lost`.
+    Checks whether active tasks still have authoritative runtime backing. ACP/subagent tasks use child-session state, cron tasks use active-job ownership, and CLI tasks with run identity use the owning run context. If that backing state is gone for more than 5 minutes, the task is marked `lost`.
   </Step>
   <Step title="ACP session repair">
     Closes terminal or orphaned parent-owned one-shot ACP sessions, and closes stale terminal or orphaned persistent ACP sessions only when no active conversation binding remains.
