@@ -1,6 +1,6 @@
 ---
 name: openclaw-channels
-description: OpenClaw channel configuration. Use when setting up, auditing, or troubleshooting any messaging channel: Discord, Telegram, WhatsApp, Slack, Signal, Matrix, iMessage, IRC, Feishu, LINE, GoogleChat, Mattermost, Microsoft Teams, Nextcloud Talk, Nostr, QQ Bot, Synology Chat, Twitch, Tlon, Zalo, Voice Call. Triggers on: "Discord", "Telegram", "WhatsApp", "Signal", "Slack", "channel config", "dmPolicy", "group policy", "allowFrom", "pairing", "broadcast groups".
+description: OpenClaw channel configuration. Use when setting up, auditing, or troubleshooting any messaging channel: Discord, Telegram, WhatsApp, Slack, Signal, Matrix, iMessage, bluebubbles, IRC, Feishu, LINE, GoogleChat, Mattermost, Microsoft Teams, Nextcloud Talk, Nostr, QQ Bot, Synology Chat, Twitch, Tlon, Zalo, Voice Call. Also covers: bluebubbles, feishu, googlechat, group-messages, imessage, irc, line reference docs. Triggers on: "Discord", "Telegram", "WhatsApp", "Signal", "Slack", "channel config", "dmPolicy", "group policy", "allowFrom", "pairing", "broadcast groups".
 ---
 
 # OpenClaw Channels

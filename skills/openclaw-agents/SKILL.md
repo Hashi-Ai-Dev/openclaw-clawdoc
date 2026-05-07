@@ -1,6 +1,6 @@
 ---
 name: openclaw-agents
-description: OpenClaw multi-agent system. Use when setting up multiple agents, bindings, channel routing, per-agent sandbox, tool policies, ACP runtimes, workspace bootstrap, subagent limits, context pruning, or per-agent thinking/reasoning overrides. Triggers on: "multi-agent", "bindings", "routing", "agentId", "workspace", "sandbox", "tool policy", "per-agent", "ACP", "acp", "runtime", "bootstrap", "subagent", "sessions_spawn", "contextPruning", "thinkingDefault", "reasoningDefault", "fastModeDefault", "execApprovals", "sandbox mode", "sandbox scope".
+description: OpenClaw multi-agent system. Use when setting up multiple agents, bindings, channel routing, per-agent sandbox, tool policies, ACP runtimes, workspace bootstrap, subagent limits, context pruning, or per-agent thinking/reasoning overrides. Also covers: multi-agent-sandbox-tools, qa-e2e-automation, session-tool reference docs. Triggers on: "multi-agent", "bindings", "routing", "agentId", "workspace", "sandbox", "tool policy", "per-agent", "ACP", "acp", "runtime", "bootstrap", "subagent", "sessions_spawn", "contextPruning", "thinkingDefault", "reasoningDefault", "fastModeDefault", "execApprovals", "sandbox mode", "sandbox scope".
 ---
 
 # OpenClaw Multi-Agent

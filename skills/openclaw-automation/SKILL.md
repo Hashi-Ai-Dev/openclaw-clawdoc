@@ -1,6 +1,6 @@
 ---
 name: openclaw-automation
-description: Automation in OpenClaw — cron jobs, hooks, tasks, webhooks, poll, standing orders, Task Flow, Clawflow. Use when: scheduling recurring tasks, setting up cron jobs, configuring webhooks, reacting to events with hooks, running background tasks, orchestrating multi-step workflows, using standing orders to inject persistent instructions. Triggers on: "automation", "cron", "schedule", "webhook", "hook", "task", "background", "standing order", "recurring", "every x minutes", "task flow", "clawflow", "poll".
+description: Automation in OpenClaw — cron jobs, hooks, tasks, webhooks, poll, standing orders, Task Flow, Clawflow. Also covers: auth-monitoring, clawflow, commitments, cron-vs-heartbeat, standing-orders reference docs. Use when: scheduling recurring tasks, setting up cron jobs, configuring webhooks, reacting to events with hooks, running background tasks, orchestrating multi-step workflows, using standing orders to inject persistent instructions. Triggers on: "automation", "cron", "schedule", "webhook", "hook", "task", "background", "standing order", "recurring", "every x minutes", "task flow", "clawflow", "poll".
 ---
 
 # OpenClaw Automation Reference
