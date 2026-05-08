@@ -69,3 +69,11 @@ openclaw hooks enable <hook-name>
 - `references/cron-jobs.md` — cron job setup and examples
 - `references/hooks.md` — hook events and configuration
 - `references/tasks.md` — background tasks, webhooks, standing orders
+- `references/auth-monitoring.md` — auth monitoring and metrics
+- `references/ci.md` — CI setup and automation
+- `references/clawflow.md` — Clawflow workflow DSL
+- `references/commitments.md` — commitments and standing orders
+- `references/cron-vs-heartbeat.md` — cron vs heartbeat comparison
+- `references/logging.md` — logging setup and log levels
+- `references/standing-orders.md` — persistent standing order tasks
+- `references/taskflow.md` — Task Flow orchestration

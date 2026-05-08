@@ -124,3 +124,7 @@ Tool profiles: `minimal` (session_status only), `coding` (fs+runtime+web+session
 - `references/agent-workspace.md` — workspace bootstrap
 - `openclaw-tools/references/acp-agents.md` — ACP runtime
 - `openclaw-concepts/references/session.md` — session system
+- `references/agent-loop.md` — agent lifecycle and loop behavior
+- `references/multi-agent-sandbox-tools.md` — sandbox tools for multi-agent
+- `references/qa-e2e-automation.md` — QA and end-to-end automation
+- `references/session-tool.md` — session tool reference

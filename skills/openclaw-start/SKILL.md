@@ -59,3 +59,6 @@ OpenClaw seeds these files on first run:
 
 - `references/wizard-cli-reference.md` — complete wizard reference
 - `references/wizard-cli-automation.md` — non-interactive flags and CI usage
+- `references/getting-started.md` — getting started guide
+- `references/onboarding-overview.md` — onboarding flow overview
+- `references/openclaw.md` — OpenClaw CLI overview
