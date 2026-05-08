@@ -1,6 +1,6 @@
 ---
 name: openclaw-start
-description: First run, bootstrapping, and onboarding OpenClaw. Use when: running OpenClaw for the first time, using the setup wizard, configuring the workspace, bootstrapping an agent, understanding the onboarding flow, using openclaw onboard CLI. Triggers on: "start", "bootstrap", "onboarding", "wizard", "first run", "getting started", "setup", "onboard", "initial".
+description: First run, bootstrapping, and onboarding OpenClaw. Use when: running OpenClaw for the first time, using the setup wizard, configuring the workspace, bootstrapping an agent, understanding the onboarding flow, using openclaw onboard CLI. Triggers on: "start", "bootstrap", "onboarding", "wizard", "first run", "getting started", "setup", "onboard", "initial", "new install", "fresh install", "how do I start", "where do I begin".
 ---
 
 # OpenClaw Start Reference
