@@ -1,134 +1,110 @@
 # ClawDoc Quickstart
 
-Get ClawDoc running in under 10 minutes. This guide covers the essential path: install OpenClaw, point it at ClawDoc's skills, and verify everything works.
+Get ClawDoc running in under 10 minutes. Choose your install mode first.
 
 ---
 
-## Prerequisites
+## Choose Your Mode
+
+| | Mode 1 — Persistent Agent | Mode 2 — Skills Only |
+|---|---|---|
+| **Creates a new agent?** | ✅ Yes | ❌ No |
+| **Best for** | Dedicated system doctor, ongoing maintenance | Quick OpenClaw help, existing agent |
+| **Your agent keeps its identity?** | ❌ No (ClawDoc has its own) | ✅ Yes |
+| **Guide** | [AGENT_INSTALL.md](./AGENT_INSTALL.md) | [SKILLS_INSTALL.md](./SKILLS_INSTALL.md) |
+
+Not sure? **Start with Mode 2** — it's the lightest path.
+
+---
+
+## Prerequisites (Both Modes)
 
 - OpenClaw installed (`curl -fsSL https://openclaw.ai/install.sh | bash`)
 - A model provider account (MiniMax, OpenAI, or any [supported provider](./skills/openclaw-providers/))
-- Discord bot token (for Discord setup)
+- `git` available in your terminal
 
 ---
 
-## Step 1 — Configure a Model
+## Mode 1 — Persistent Agent
 
-OpenClaw needs a default model before it can run agents.
+Full guide: [AGENT_INSTALL.md](./AGENT_INSTALL.md)
+
+Summary:
 
 ```bash
-# MiniMax (recommended — free tier available)
-openclaw config set agents.defaults.model.primary "minimax/MiniMax-M2.7"
-openclaw config set auth.profiles.minimax.provider "minimax"
+# 1. Create dedicated ClawDoc agent
+openclaw agents add claw-doc \
+  --workspace /home/user/.openclaw/agents/claw-doc \
+  --non-interactive
 
-# Or OpenAI
-openclaw config set agents.defaults.model.primary "openai/gpt-4o"
-openclaw config set auth.profiles.openai.provider "openai"
-openclaw config set auth.profiles.openai.apiKey "your-api-key"
-```
+# 2. Install skills
+git clone https://github.com/Hashi-Ai-Dev/openclaw-clawdoc.git /tmp/openclaw-clawdoc
+cp -r /tmp/openclaw-clawdoc/skills/* /home/user/.openclaw/agents/claw-doc/skills/
 
-Verify:
-```bash
+# 3. Verify
+openclaw skills list --agent claw-doc
+openclaw skills check --agent claw-doc
+
+# 4. Restart and test
+openclaw gateway restart
 openclaw doctor --non-interactive
 ```
 
 ---
 
-## Step 2 — Add ClawDoc Skills
+## Mode 2 — Skills Only
+
+Full guide: [SKILLS_INSTALL.md](./SKILLS_INSTALL.md)
+
+Summary:
 
 ```bash
-# Option A: Add the full skill tree
-openclaw skills add /path/to/clawdoc/skills
+# 1. Clone
+git clone https://github.com/Hashi-Ai-Dev/openclaw-clawdoc.git /tmp/openclaw-clawdoc
 
-# Option B: Copy skills directly into your OpenClaw workspace
-cp -r skills/* ~/.openclaw/skills/
-```
+# 2. Find your agent's workspace path
+openclaw agents list
+# Note the Workspace: path for your agent (e.g. /home/user/.openclaw/agents/main)
 
-Restart the gateway:
-```bash
+# 3. Copy skills into your agent's workspace
+cp -r /tmp/openclaw-clawdoc/skills/* /home/user/.openclaw/agents/main/skills/
+
+# 4. Restart and verify
 openclaw gateway restart
-```
-
----
-
-## Step 3 — Configure a Channel (Discord example)
-
-```bash
-# Set your Discord bot token
-openclaw config set channels.discord.token "YOUR_BOT_TOKEN"
-openclaw config set channels.discord.enabled true
-```
-
-Create a minimal channel config. Save as `~/.openclaw/discord-quick.json`:
-
-```json
-{
-  "channels": {
-    "discord": {
-      "dmPolicy": "pairing",
-      "guilds": {
-        "YOUR_GUILD_ID": {
-          "requireMention": false,
-          "users": ["YOUR_USER_ID"],
-          "channels": {
-            "YOUR_CHANNEL_ID": {
-              "allow": true
-            }
-          }
-        }
-      }
-    }
-  }
-}
-```
-
-Apply it:
-```bash
-openclaw config merge ~/.openclaw/discord-quick.json
-openclaw gateway restart
-```
-
----
-
-## Step 4 — Verify
-
-```bash
+openclaw skills list
+openclaw skills check
 openclaw doctor --non-interactive
 ```
-
-You should see:
-- ✅ Gateway running
-- ✅ Model configured
-- ✅ Discord connected
-- ✅ Skills loaded
 
 ---
 
 ## What to Try First
 
-Once running, ask ClawDoc your first question:
+Once installed (either mode), ask ClawDoc your first question:
 
 ```
-@your-agent How do I configure memory Search with embeddings?
+@your-agent How do I configure memory search with embeddings?
 ```
 
-ClawDoc will route to the right skill, read the reference docs, and give you a precise answer.
+ClawDoc routes to the right skill, reads the reference docs, and gives you a precise grounded answer.
 
 ---
 
 ## Common First Tasks
 
-| Task | Command |
+| Task | Example |
 |------|---------|
-| Configure TTS | See `examples/tts-minimax.json` |
-| Set up Honcho memory | See `examples/memory-honcho.json` |
-| Add a second channel | See `examples/discord-telegram.json` |
-| Lock down an agent | See `examples/per-agent-sandbox.json` |
+| Configure TTS | `examples/tts-minimax.json` |
+| Set up Honcho memory | `examples/memory-honcho.json` |
+| Add a second channel | `examples/discord-telegram.json` |
+| Lock down an agent | `examples/per-agent-sandbox.json` |
 
 ---
 
 ## Next Steps
 
-- Browse [`skills/`](./skills/) to see all 11 available skills
+- Browse [`skills/`](./skills/) to see all 22 available skills
 - Check [`examples/`](./examples/) for ready-to-use config snippets
-- Read [`CONTRIBUTING.md`](./CONTRIBUTING.md) if you want to extend or fork ClawDoc
+- Read [AGENT_INSTALL.md](./AGENT_INSTALL.md) if you want a dedicated ClawDoc agent (Mode 1)
+- Read [SKILLS_INSTALL.md](./SKILLS_INSTALL.md) for the skills-only install (Mode 2)
+- Read [CONTRIBUTING.md](./CONTRIBUTING.md) if you want to extend or fork ClawDoc
