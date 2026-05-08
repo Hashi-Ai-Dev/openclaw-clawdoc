@@ -69,6 +69,8 @@ FORBIDDEN_CLAWDOC_SKILLS = {
 # ---------------------------------------------------------------------------
 # These exact paths are approved public files and must NOT be flagged.
 # All other occurrences of these filenames are still blocked.
+# Note: ALLOWED_PATHS bypasses only private-file/path blocklist checks.
+# Secret/token scanning still runs on allowed-path files (but not examples/).
 # ---------------------------------------------------------------------------
 ALLOWED_PATHS = {
     # Approved public agent template files
@@ -86,11 +88,7 @@ ALLOWED_PATHS = {
     "LICENSE",
     "AUDIT.md",
     "TROUBLESHOOTING.md",
-    # root-level SOUL.md allowed ONLY if it is the public ClawDoc persona
-    # (checked separately via origin/master tracking — not allowed if it is
-    # Root-level SOUL.md is allowed only if it is the public ClawDoc persona.
-    # A SOUL.md that is a private/personal runtime marker is forbidden and
-    # must not appear in the public repo.
+    # root-level SOUL.md allowed only if it is the public ClawDoc persona
     "SOUL.md",
 }
 
@@ -98,16 +96,31 @@ ALLOWED_PATHS = {
 # SECRET DETECTION PATTERNS
 # ---------------------------------------------------------------------------
 SECRET_PATTERNS = [
-    re.compile(r"ghp_[A-Za-z0-9]{36}"),            # GitHub PAT
-    re.compile(r"gho_[A-Za-z0-9]{36}"),            # GitHub OAuth
-    re.compile(r"ghu_[A-Za-z0-9]{36}"),            # GitHub user token
-    re.compile(r"glpat-[A-Za-z0-9\-]{20,}"),       # GitLab PAT
-    re.compile(r"xox[baprs]-[A-Za-z0-9\-]{10,}"),  # Slack tokens
-    re.compile(r"sk-[A-Za-z0-9]{48,}"),            # OpenAI API key
-    re.compile(r"sk-ant-[A-Za-z0-9\-]{50,}"),      # Anthropic key
-    re.compile(r"AIza[A-Za-z0-9\-]{35,}"),         # Google API key
-    re.compile(r"ya29\.[A-Za-z0-9\-]{100,}"),      # Google OAuth
-    re.compile(r"BQ[A-Za-z0-9\-]{50,}"),           # Google OAuth
+    re.compile(r"ghp_[A-Za-z0-9]{36}"),             # GitHub PAT
+    re.compile(r"github_pat_[A-Za-z0-9_]{22,}"),    # GitHub fine-grained PAT
+    re.compile(r"gho_[A-Za-z0-9]{36}"),             # GitHub OAuth
+    re.compile(r"ghu_[A-Za-z0-9]{36}"),             # GitHub user token
+    re.compile(r"glpat-[A-Za-z0-9\-]{20,}"),        # GitLab PAT
+    re.compile(r"xox[baprs]-[A-Za-z0-9\-]{10,}"),   # Slack tokens
+    re.compile(r"sk-[A-Za-z0-9]{48,}"),             # OpenAI API key
+    re.compile(r"sk-ant-[A-Za-z0-9\-]{50,}"),       # Anthropic key
+    re.compile(r"sk-or-v1-[A-Za-z0-9\-]{40,}"),     # OpenRouter key
+    re.compile(r"sk-cp-[A-Za-z0-9\-]{40,}"),        # MiniMax API key
+    re.compile(r"AIza[A-Za-z0-9\-]{35,}"),          # Google API key
+    re.compile(r"ya29\.[A-Za-z0-9\-]{100,}"),       # Google OAuth
+    re.compile(r"BQ[A-Za-z0-9\-]{50,}"),            # Google OAuth
+    # Provider env assignment patterns: TOKEN=VALUE where VALUE looks like a real key
+    re.compile(r"(?i)(openai_api_key|anthropic_api_key|openrouter_api_key|minimax_api_key|discord_bot_token|github_token)\s*=\s*['\"]?[A-Za-z0-9_\-]{20,}['\"]?"),
+]
+
+# Patterns that indicate a deliberate placeholder/example (not a real secret)
+PLACEHOLDER_PATTERNS = [
+    re.compile(r"your-[a-z]+-id", re.IGNORECASE),        # your-workspace-id, your-api-key
+    re.compile(r"your-[a-z]+-host", re.IGNORECASE),     # your-honcho-host.com
+    re.compile(r"<[^>]+>"),                               # <YOUR_TOKEN>
+    re.compile(r"'.*?'|\".*?\""),                       # 'placeholder', "placeholder"
+    re.compile(r"xxx+|XXXX+"),                            # xxx, XXXX
+    re.compile(r"OPENCLAW_[A-Z_]{30,}"),                # OpenClaw env var names (e.g. OPENCLAW_BUNDLED_CHANNEL_UPDATE_DOCKER_RUN_TIMEOUT) — not secrets
 ]
 
 # ---------------------------------------------------------------------------
@@ -116,7 +129,6 @@ SECRET_PATTERNS = [
 
 def is_allowed_path(rel_path: Path) -> bool:
     """Return True if this path is on the allowlist."""
-    # Normalize separators
     normalized = str(rel_path).replace("\\", "/")
     return normalized in ALLOWED_PATHS
 
@@ -133,53 +145,47 @@ def check_blocklist(repo_root: Path) -> list[str]:
     violations = []
     for entry in repo_root.rglob("*"):
         if entry.is_dir():
-            continue  # directories handled below
+            continue
 
         rel = entry.relative_to(repo_root)
         normalized = str(rel).replace("\\", "/")
 
-        # Skip .git entirely
         if ".git" in rel.parts:
             continue
 
-        # Skip allowed paths
         if is_allowed_path(rel):
             continue
 
         name = entry.name
 
-        # Check: forbidden filename at non-allowed path
         if name in FORBIDDEN_FILENAMES:
-            # Root-level USER.md, IDENTITY.md, TOOLS.md, SOUL.md are public templates
-            # But inside memory/, .agents/, .openclaw/ they are private runtime
             if is_private_dir(rel):
                 violations.append(f"forbidden private file found: {rel}")
             elif name in {"USER.md", "IDENTITY.md", "TOOLS.md", "SOUL.md", "AGENTS.md"}:
-                # These at root are allowed; flag only if somewhere unexpected
                 pass  # allowed at root (checked above via is_allowed_path)
             else:
                 violations.append(f"forbidden file found: {rel}")
 
-        # Check: forbidden directory names
         if entry.parent.name in FORBIDDEN_DIRNAMES or name in FORBIDDEN_DIRNAMES:
             if name in FORBIDDEN_DIRNAMES and not is_allowed_path(rel):
                 violations.append(f"forbidden directory found: {rel}")
 
-        # Check: private clawdoc-* skill directories
-        if "clawdoc-" in name:
-            skill_dir = rel.parts[0] if len(rel.parts) == 1 else rel.parts[1] if len(rel.parts) >= 2 else name
-            # Actually we need to check the directory name under skills/
-            # e.g. skills/clawdoc-update/SKILL.md → clawdoc-update is forbidden
-            if len(rel.parts) >= 2 and rel.parts[0] == "skills":
-                skill_slug = rel.parts[1]
-                if skill_slug in FORBIDDEN_CLAWDOC_SKILLS:
-                    violations.append(f"forbidden private clawdoc-* skill found: skills/{skill_slug}/")
+        if "clawdoc-" in name and len(rel.parts) >= 2 and rel.parts[0] == "skills":
+            skill_slug = rel.parts[1]
+            if skill_slug in FORBIDDEN_CLAWDOC_SKILLS:
+                violations.append(f"forbidden private clawdoc-* skill found: skills/{skill_slug}/")
 
     return violations
 
 
 def scan_file_for_secrets(path: Path) -> list[str]:
-    """Scan a single file for secret patterns."""
+    """Scan a single file for secret patterns.
+
+    Skips examples/ (they contain placeholder config snippets).
+    Skips files that contain only placeholder patterns (not real secrets).
+    Does NOT skip files just because they are in ALLOWED_PATHS —
+    ALLOWED_PATHS bypasses only private-file/path blocklist checks, not token scanning.
+    """
     # Skip example JSON files — they intentionally contain placeholder/test data
     if path.suffix == ".json" and "examples" in path.parts:
         return []
@@ -192,7 +198,13 @@ def scan_file_for_secrets(path: Path) -> list[str]:
 
     for pattern in SECRET_PATTERNS:
         matches = pattern.findall(content)
-        if matches:
+        real_matches = []
+        for match in matches:
+            # Skip if the match is a known placeholder
+            if any(ph.match(match) for ph in PLACEHOLDER_PATTERNS):
+                continue
+            real_matches.append(match)
+        if real_matches:
             violations.append(f"{path}: secret/token pattern detected (redacted)")
 
     return violations
@@ -206,6 +218,8 @@ def main():
     violations.extend(blocklist_errors)
 
     # Scan non-exempt files for secrets
+    # NOTE: ALLOWED_PATHS does NOT exempt files from secret scanning.
+    # Only examples/ directory is exempt.
     for path in REPO_ROOT.rglob("*"):
         if ".git" in path.parts:
             continue
@@ -213,10 +227,8 @@ def main():
             continue
         if path.is_dir():
             continue
-        # Skip allowed paths for secret scanning too
-        rel = path.relative_to(REPO_ROOT)
-        if is_allowed_path(rel):
-            continue
+        if is_allowed_path(path.relative_to(REPO_ROOT)):
+            continue  # blocklist check skipped for allowed paths
 
         secret_errors = scan_file_for_secrets(path)
         violations.extend(secret_errors)

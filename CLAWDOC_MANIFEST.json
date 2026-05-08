@@ -12,8 +12,8 @@
     "examples": 12
   },
   "reference_docs_definition": {
-    "description": "reference_docs = files under skills/**/references/** (reproducible command: git ls-files skills/ | grep 'references/' | wc -l)",
-    "reproducible_count": "cd /data/agents/claw-doc/clawdoc-live && git ls-files skills/ | grep 'references/' | wc -l = 487",
+    "description": "reference_docs = files under skills/**/references/**",
+    "reproducible_count": "git ls-files skills/ | grep 'references/' | wc -l = 487",
     "includes_mdx": "yes — includes *.mdx files such as railway.mdx"
   },
 
@@ -96,7 +96,7 @@
       ".agents/",
       ".openclaw/"
     ],
-    "note": "AGENTS.md, SOUL.md, USER.md, IDENTITY.md, TOOLS.md at the repo root are public templates and are allowed. The same filenames inside private directories (memory/, .agents/, .openclaw/) are private runtime and are forbidden."
+    "note": "Root-level SOUL.md is allowed only if it is the public ClawDoc persona (content matches origin/master tracking). USER.md, IDENTITY.md, TOOLS.md, and AGENTS.md at repo root are blocked by default — new public identity/user/tool templates should live under agent-template/, not repo root. The same filenames inside private directories (memory/, .agents/, .openclaw/) are private runtime and are forbidden."
   },
 
   "validation_rules": {
