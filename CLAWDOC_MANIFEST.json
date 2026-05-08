@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "1.0",
+  "clawdoc_version": "v1.6.0",
+  "tracked_openclaw_version": "2026.5.7",
+  "description": "Machine-readable manifest of the ClawDoc public repository contents. ClawDoc is a dual-mode OpenClaw system doctor distribution supporting two install modes: Mode 1 (persistent dedicated agent) and Mode 2 (skills-only into an existing agent).",
+  "install_modes_supported": ["persistent-agent", "skills-only"],
+
+  "file_counts": {
+    "skills": 22,
+    "reference_docs": 487,
+    "examples": 12
+  },
+  "reference_docs_definition": {
+    "description": "reference_docs = files under skills/**/references/**",
+    "reproducible_count": "git ls-files skills/ | grep 'references/' | wc -l = 487",
+    "includes_mdx": "yes — includes *.mdx files such as railway.mdx"
+  },
+
+  "skills": {
+    "description": "Public openclaw-* skills shipped with ClawDoc. All SKILL.md files have name + description frontmatter only. 'triggers' are embedded inline in description, not a separate frontmatter key.",
+    "public_list": [
+      "openclaw-master",
+      "openclaw-config",
+      "openclaw-memory",
+      "openclaw-agents",
+      "openclaw-channels",
+      "openclaw-troubleshooting",
+      "openclaw-automation",
+      "openclaw-logging",
+      "openclaw-ci",
+      "openclaw-nodes",
+      "openclaw-platforms",
+      "openclaw-install",
+      "openclaw-start",
+      "openclaw-tools",
+      "openclaw-providers",
+      "openclaw-cli",
+      "openclaw-web",
+      "openclaw-concepts",
+      "openclaw-plugins",
+      "openclaw-help",
+      "openclaw-reference",
+      "clawdoc-onboarding"
+    ],
+    "forbidden": [
+      "clawdoc-update",
+      "clawdoc-release-manager",
+      "clawdoc-repo-manager",
+      "clawdoc-m27-loop",
+      "clawdoc-effectiveness",
+      "clawdoc-doc-auditor",
+      "clawdoc-doc-reviewer",
+      "clawdoc-oss-reviewer",
+      "clawdoc-org-manager",
+      "clawdoc-fb-post",
+      "clawdoc-commit-sanitizer"
+    ],
+    "forbidden_note": "Any skills/ directory containing 'clawdoc-' that is NOT 'clawdoc-onboarding' is private and must not appear in the public repo."
+  },
+
+  "public_template_files": {
+    "description": "Approved public template files that are NOT forbidden. Only these paths are allowed.",
+    "allowed_paths": [
+      "agent-template/SOUL.md",
+      "agent-template/AGENTS.md",
+      "agent-template/README.md",
+      "README.md",
+      "QUICKSTART.md",
+      "AGENT_INSTALL.md",
+      "SKILLS_INSTALL.md",
+      "CONTRIBUTING.md",
+      "SECURITY.md",
+      "CODE_OF_CONDUCT.md",
+      "LICENSE",
+      "AUDIT.md",
+      "TROUBLESHOOTING.md"
+    ],
+    "blocked_by_default": [
+      "MEMORY.md",
+      "HEARTBEAT.md",
+      "USER.md",
+      "IDENTITY.md",
+      "TOOLS.md",
+      "AGENTS.md"
+    ],
+    "note": "Root-level USER.md, IDENTITY.md, TOOLS.md, HEARTBEAT.md, MEMORY.md, AGENTS.md are always forbidden unless explicitly listed above. Root-level SOUL.md is allowed only if it is the public ClawDoc persona already tracked in origin/master. A root-level SOUL.md that contains a private/personal runtime marker is forbidden and must not appear in the public repo."
+  },
+
+  "forbidden_private_runtime": {
+    "description": "These files/directories are private runtime state and must never appear in the public repo at any path.",
+    "files_and_dirs": [
+      "MEMORY.md",
+      "HEARTBEAT.md",
+      "memory/",
+      ".agents/",
+      ".openclaw/"
+    ],
+    "note": "Root-level SOUL.md is allowed only if it is the public ClawDoc persona (content matches origin/master tracking). USER.md, IDENTITY.md, TOOLS.md, and AGENTS.md at repo root are blocked by default — new public identity/user/tool templates should live under agent-template/, not repo root. The same filenames inside private directories (memory/, .agents/, .openclaw/) are private runtime and are forbidden."
+  },
+
+  "validation_rules": {
+    "skill_frontmatter": {
+      "required": ["name", "description"],
+      "forbidden": ["triggers"],
+      "triggers_note": "Trigger phrases must be embedded inline within the 'description' field, not as a separate 'triggers' frontmatter key."
+    },
+    "examples_must_parse": true,
+    "no_private_runtime_files": true,
+    "install_mode_documentation": "Both README.md and QUICKSTART.md must mention Mode 1 (persistent-agent) and Mode 2 (skills-only) install paths.",
+    "skill_count_accuracy": "README.md and QUICKSTART.md must not claim 11 skills. The correct count is 22."
+  },
+
+  "version_tracks": {
+    "description": "Two separate version tracks are maintained independently.",
+    "clawdoc_package_version": "SemVer public package version (e.g. v1.6.0). Bumped for public install contract, new capabilities, or breaking changes.",
+    "tracked_openclaw_version": "Upstream OpenClaw source/docs version (e.g. 2026.5.7). Updated on every sync; does not drive ClawDoc SemVer."
+  }
+}

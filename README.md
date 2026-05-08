@@ -4,7 +4,7 @@
 
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-2026.5.7-blue?style=flat-square)](https://github.com/openclaw/openclaw)
 [![Skills](https://img.shields.io/badge/Skills-22-orange?style=flat-square)](#skill-tree)
-[![Reference Docs](https://img.shields.io/badge/Reference_Docs-508-green?style=flat-square)](#reference-docs)
+[![Reference Docs](https://img.shields.io/badge/Reference_Docs-487-green?style=flat-square)](#reference-docs)
 [![License](https://img.shields.io/badge/License-MIT-success?style=flat-square)](LICENSE)
 
 <p align="center">
@@ -22,6 +22,22 @@ ClawDoc is a specialized OpenClaw agent that knows the entire OpenClaw system in
 
 > [!TIP]
 > Every answer is grounded in the actual OpenClaw schema and docs. Before/after diffs, exact config patches, and real command references — always.
+
+---
+
+## Which install mode?
+
+ClawDoc supports two adoption paths. Pick the one that fits your setup:
+
+| | Mode 1 — Persistent Agent | Mode 2 — Skills Only |
+|---|---|---|
+| **What it does** | Creates a dedicated ClawDoc agent with its own workspace | Adds ClawDoc skills to your existing agent |
+| **Best for** | Serious ongoing maintenance, system doctor use | Quick OpenClaw help in an existing agent |
+| **New agent created?** | ✅ Yes | ❌ No |
+| **Separate identity?** | ✅ Yes | ❌ Your agent keeps its identity |
+| **Guide** | [AGENT_INSTALL.md](./AGENT_INSTALL.md) | [SKILLS_INSTALL.md](./SKILLS_INSTALL.md) |
+
+Not sure which to pick? Start with **Mode 2 — Skills Only** for the lightest path. Switch to Mode 1 if you want ClawDoc to have its own persistent workspace and identity.
 
 ---
 
@@ -45,15 +61,10 @@ ClawDoc is for OpenClaw operators who need reliable help with:
 
 Your agent reads the repo, picks up all 22 skills, and is ready to help. That's it.
 
-**Manual install:**
+**Manual install — choose your mode:**
 
-```bash
-git clone https://github.com/Hashi-Ai-Dev/openclaw-clawdoc.git
-mkdir -p ~/.openclaw/skills
-cp -r openclaw-clawdoc/skills/* ~/.openclaw/skills/
-```
-
-> Note: OpenClaw normally discovers individual skill directories from `~/.openclaw/skills/`. If your setup uses a different skills path, copy the contents of `skills/` into that configured directory.
+- [AGENT_INSTALL.md](./AGENT_INSTALL.md) — Mode 1: persistent dedicated ClawDoc agent
+- [SKILLS_INSTALL.md](./SKILLS_INSTALL.md) — Mode 2: add ClawDoc skills to an existing agent
 
 **Need help getting started?** → [QUICKSTART.md](./QUICKSTART.md) (10 min)
 
@@ -65,13 +76,13 @@ cp -r openclaw-clawdoc/skills/* ~/.openclaw/skills/
 @your-agent [any OpenClaw config question]
 ```
 
-ClawDoc routes to the right skill, reads the relevant docs, and gives you a precise, grounded answer.
+ClawDoc routes to the right skill, reads the reference docs, and gives you a precise, grounded answer.
 
 ---
 
 ## Reference docs
 
-**508 docs** copied from the official OpenClaw source and versioned against the tracked OpenClaw release.
+**487 docs** copied from the official OpenClaw source and versioned against the tracked OpenClaw release.
 
 | Area | What's covered |
 |------|---------------|

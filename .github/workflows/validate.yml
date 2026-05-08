@@ -1,0 +1,27 @@
+name: Validate ClawDoc Public Repo
+
+on:
+  push:
+    branches: [master, feat/**]
+  pull_request:
+    branches: [master]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run safety scanner
+        run: python scripts/safety_scanner.py
+
+      - name: Run repository validator
+        run: python scripts/validate_repo.py
