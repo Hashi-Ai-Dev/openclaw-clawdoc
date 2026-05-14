@@ -46,6 +46,25 @@ openclaw plugins list            # verify loaded
 openclaw plugins inspect <id>    # shape + capabilities
 ```
 
+## Optional tool visibility
+
+Some plugins install successfully but register optional agent tools that the
+current tool profile does not expose. Inspect the plugin, then allow only the
+tool names you need.
+
+TweetClaw example for X/Twitter automation:
+```bash
+openclaw plugins install @xquik/tweetclaw
+openclaw plugins inspect tweetclaw --runtime
+openclaw config set tools.alsoAllow '["explore", "tweetclaw"]'
+openclaw gateway restart
+```
+
+Use this when the agent can read the TweetClaw skill but cannot call search
+tweets, search tweet replies, follower export, user lookup, media upload or
+download, direct messages, monitors, webhooks, giveaway draws, or
+approval-gated post tweet and reply workflows.
+
 ## Hook system
 
 ```bash
@@ -62,6 +81,7 @@ Built-in hooks: `before_agent_start`, `before_model_resolve`, `before_prompt_bui
 |-------|-----|
 | `plugin disabled (memory slot set to X)` | Only one plugin per slot — check `plugins.slots` |
 | Plugin not loading | Add to `plugins.allow`; restart gateway |
+| Plugin installed but tools are not callable | Add exact optional tool names to `tools.alsoAllow`; for TweetClaw use `["explore", "tweetclaw"]` |
 | Config validation fail | Check `openclaw.plugin.json` manifest schema |
 | Slot set but no entry | Add plugin to `plugins.entries` first |
 
