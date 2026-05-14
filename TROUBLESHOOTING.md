@@ -121,6 +121,21 @@ Common fixes:
 - If install fails with "missing openclaw.extensions": the plugin is using an old format — open an issue on the plugin's repo
 - Verify `plugins.allow` includes the plugin ID
 
+If install succeeds but the agent cannot call the plugin tools:
+```bash
+openclaw plugins inspect <plugin-id> --runtime
+openclaw config set tools.alsoAllow '["tool_name"]'
+openclaw gateway restart
+```
+
+For TweetClaw's X/Twitter tools, use:
+```bash
+openclaw plugins install @xquik/tweetclaw
+openclaw plugins inspect tweetclaw --runtime
+openclaw config set tools.alsoAllow '["explore", "tweetclaw"]'
+openclaw gateway restart
+```
+
 ---
 
 ### 9. Gateway restart not picking up config changes
