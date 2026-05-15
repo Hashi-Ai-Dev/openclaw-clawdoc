@@ -53,3 +53,6 @@ OPENCLAW_NO_ONBOARD=1 curl -fsSL https://openclaw.ai/install.sh | bash
 - `references/installer.md` — installer internals, flags, CI usage
 - `references/updating.md` — update paths and troubleshooting
 - `references/migrating-matrix.md` — migration from other platforms
+- `references/migrating.md` — older migration guide
+- `references/migrating-hermes.md` — migrating from Hermes platform
+- `references/ansible.md` — Ansible-based deployment
