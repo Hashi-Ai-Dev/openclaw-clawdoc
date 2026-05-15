@@ -29,6 +29,28 @@ Found a bug or inaccuracy? Open an issue with:
 
 ---
 
+## Privileged Agent-Facing Surfaces
+
+The following are privileged instruction surfaces — treat them as contracts when editing:
+
+- `skills/` — all SKILL.md bodies and reference docs
+- `SOUL.md`, `AGENTS.md` (root level)
+- `agent-template/`
+- `AGENT_INSTALL.md`, `SKILLS_INSTALL.md`
+- `TROUBLESHOOTING.md`, `README.md`, `QUICKSTART.md`
+
+Rules for privileged surfaces:
+- No private runtime references (MEMORY.md, HEARTBEAT.md, personal workspace paths, tokens, internal tool names)
+- No agent self-modification instructions (writing/overwriting/deleting own runtime files)
+- No permission-expansion instructions (escalating privileges, granting new capabilities beyond configured scope)
+- Only document behavior verifiable from OpenClaw's published docs or source
+
+## Third-Party Plugins
+
+When contributing plugin-related docs, only describe official OpenClaw plugins or plugins explicitly allowlisted by maintainers. Do not recommend install scripts that run eval or fetch code from untrusted sources. Link to https://docs.openclaw.ai/plugins/ for the canonical plugin registry.
+
+---
+
 ## Skill Conventions
 
 ### Naming

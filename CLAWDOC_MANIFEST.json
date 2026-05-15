@@ -4,8 +4,10 @@
   "clawdoc_version": "v1.6.0",
   "tracked_openclaw_version": "2026.5.7",
   "description": "Machine-readable manifest of the ClawDoc public repository contents. ClawDoc is a dual-mode OpenClaw system doctor distribution supporting two install modes: Mode 1 (persistent dedicated agent) and Mode 2 (skills-only into an existing agent).",
-  "install_modes_supported": ["persistent-agent", "skills-only"],
-
+  "install_modes_supported": [
+    "persistent-agent",
+    "skills-only"
+  ],
   "file_counts": {
     "skills": 22,
     "reference_docs": 487,
@@ -14,9 +16,8 @@
   "reference_docs_definition": {
     "description": "reference_docs = files under skills/**/references/**",
     "reproducible_count": "git ls-files skills/ | grep 'references/' | wc -l = 487",
-    "includes_mdx": "yes — includes *.mdx files such as railway.mdx"
+    "includes_mdx": "yes \u2014 includes *.mdx files such as railway.mdx"
   },
-
   "skills": {
     "description": "Public openclaw-* skills shipped with ClawDoc. All SKILL.md files have name + description frontmatter only. 'triggers' are embedded inline in description, not a separate frontmatter key.",
     "public_list": [
@@ -58,11 +59,9 @@
     ],
     "forbidden_note": "Any skills/ directory containing 'clawdoc-' that is NOT 'clawdoc-onboarding' is private and must not appear in the public repo."
   },
-
   "public_template_files": {
     "description": "Approved public template files that are NOT forbidden. Only these paths are allowed.",
     "allowed_paths": [
-      "agent-template/SOUL.md",
       "agent-template/AGENTS.md",
       "agent-template/README.md",
       "README.md",
@@ -86,7 +85,6 @@
     ],
     "note": "Root-level USER.md, IDENTITY.md, TOOLS.md, HEARTBEAT.md, MEMORY.md, AGENTS.md are always forbidden unless explicitly listed above. Root-level SOUL.md is allowed only if it is the public ClawDoc persona already tracked in origin/master. A root-level SOUL.md that contains a private/personal runtime marker is forbidden and must not appear in the public repo."
   },
-
   "forbidden_private_runtime": {
     "description": "These files/directories are private runtime state and must never appear in the public repo at any path.",
     "files_and_dirs": [
@@ -96,13 +94,17 @@
       ".agents/",
       ".openclaw/"
     ],
-    "note": "Root-level SOUL.md is allowed only if it is the public ClawDoc persona (content matches origin/master tracking). USER.md, IDENTITY.md, TOOLS.md, and AGENTS.md at repo root are blocked by default — new public identity/user/tool templates should live under agent-template/, not repo root. The same filenames inside private directories (memory/, .agents/, .openclaw/) are private runtime and are forbidden."
+    "note": "Root-level SOUL.md is allowed only if it is the public ClawDoc persona (content matches origin/master tracking). USER.md, IDENTITY.md, TOOLS.md, and AGENTS.md at repo root are blocked by default \u2014 new public identity/user/tool templates should live under agent-template/, not repo root. The same filenames inside private directories (memory/, .agents/, .openclaw/) are private runtime and are forbidden."
   },
-
   "validation_rules": {
     "skill_frontmatter": {
-      "required": ["name", "description"],
-      "forbidden": ["triggers"],
+      "required": [
+        "name",
+        "description"
+      ],
+      "forbidden": [
+        "triggers"
+      ],
       "triggers_note": "Trigger phrases must be embedded inline within the 'description' field, not as a separate 'triggers' frontmatter key."
     },
     "examples_must_parse": true,
@@ -110,7 +112,6 @@
     "install_mode_documentation": "Both README.md and QUICKSTART.md must mention Mode 1 (persistent-agent) and Mode 2 (skills-only) install paths.",
     "skill_count_accuracy": "README.md and QUICKSTART.md must not claim 11 skills. The correct count is 22."
   },
-
   "version_tracks": {
     "description": "Two separate version tracks are maintained independently.",
     "clawdoc_package_version": "SemVer public package version (e.g. v1.6.0). Bumped for public install contract, new capabilities, or breaking changes.",

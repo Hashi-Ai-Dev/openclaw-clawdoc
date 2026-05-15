@@ -6,9 +6,11 @@ Scans the public ClawDoc repository for:
 - Forbidden private runtime files/directories
 - Forbidden private clawdoc-* skills (except allowed exceptions)
 - Real-looking secrets/tokens in non-example files
+- Prompt-injection / permission-expansion patterns in privileged Markdown surfaces
 
 Uses PATH-AWARE blocklist with explicit allowlist overrides.
 Only scans files outside the examples/ directory for secrets.
+Privilege injection scanning covers skills/ and key docs only (not SECURITY.md / CONTRIBUTING.md).
 
 Exit codes:
   0  — no forbidden content found
@@ -70,11 +72,10 @@ FORBIDDEN_CLAWDOC_SKILLS = {
 # These exact paths are approved public files and must NOT be flagged.
 # All other occurrences of these filenames are still blocked.
 # Note: ALLOWED_PATHS bypasses only private-file/path blocklist checks.
-# Secret/token scanning still runs on allowed-path files (but not examples/).
+# Secret/token scanning still runs on allowed-path files.
 # ---------------------------------------------------------------------------
 ALLOWED_PATHS = {
     # Approved public agent template files
-    "agent-template/SOUL.md",
     "agent-template/AGENTS.md",
     "agent-template/README.md",
     # Approved public root files
@@ -122,6 +123,40 @@ PLACEHOLDER_PATTERNS = [
     re.compile(r"xxx+|XXXX+"),                            # xxx, XXXX
     re.compile(r"OPENCLAW_[A-Z_]{30,}"),                # OpenClaw env var names (e.g. OPENCLAW_BUNDLED_CHANNEL_UPDATE_DOCKER_RUN_TIMEOUT) — not secrets
 ]
+
+# ---------------------------------------------------------------------------
+# PRIVILEGED MARKDOWN — INJECTION / PERMISSION-EXPANSION PATTERNS
+# ---------------------------------------------------------------------------
+# Scanned only in privileged Markdown surfaces listed in PRIVILEGED_PATH_PREFIXES.
+# SECURITY.md and CONTRIBUTING.md are excluded to avoid false positives
+# (they name these threats as warnings, not instructions).
+# ---------------------------------------------------------------------------
+PRIVILEGED_PATTERNS = [
+    re.compile(r"ignore\s+(all\s+)?previous\s+(instructions?|rules?|constraints?)", re.IGNORECASE),
+    re.compile(r"(disregard|forget)\s+(your\s+)?(instructions?|rules?|constraints?)", re.IGNORECASE),
+    re.compile(r"you\s+are\s+now\s+(a|an)\s+\w+\s+with\s+(elevated|expanded|admin|root)", re.IGNORECASE),
+    re.compile(r"grant\s+(yourself|your)\s+(full\s+)?(admin|elevated|root)\s+permission", re.IGNORECASE),
+    re.compile(r"you\s+have\s+permission\s+to\s+(escalate|elevate|bypass)", re.IGNORECASE),
+    re.compile(r"(elevate|escalate)\s+(your|their)\s+(privileges?|permissions?|access)", re.IGNORECASE),
+    re.compile(r"--\s*superuser|--sudo", re.IGNORECASE),
+    re.compile(r"new\s+permissions?\s*:\s*\[.*(?:admin|root|elevated|system).*\]", re.IGNORECASE),
+    re.compile(r"(write|overwrite|delete)[_-]?(to[_-])?file", re.IGNORECASE),
+    re.compile(r"modify[_-]?(your\s+)?(system|prompt|instructions|AGENTS|SOUL)", re.IGNORECASE),
+    re.compile(r"<system>|<human>|<system_message>", re.IGNORECASE),
+]
+
+# Paths that are privileged Markdown surfaces — scanned for injection patterns.
+# SECURITY.md and CONTRIBUTING.md are intentionally excluded (they discuss threats as warnings).
+PRIVILEGED_PATH_PREFIXES = {
+    "skills/",
+    "SOUL.md",
+    "AGENTS.md",
+    "AGENT_INSTALL.md",
+    "SKILLS_INSTALL.md",
+    "TROUBLESHOOTING.md",
+    "README.md",
+    "QUICKSTART.md",
+}
 
 # ---------------------------------------------------------------------------
 # SCAN LOGIC
@@ -183,8 +218,7 @@ def scan_file_for_secrets(path: Path) -> list[str]:
 
     Skips examples/ (they contain placeholder config snippets).
     Skips files that contain only placeholder patterns (not real secrets).
-    Does NOT skip files just because they are in ALLOWED_PATHS —
-    ALLOWED_PATHS bypasses only private-file/path blocklist checks, not token scanning.
+    ALLOWED_PATHS does NOT exempt files from secret scanning.
     """
     # Skip example JSON files — they intentionally contain placeholder/test data
     if path.suffix == ".json" and "examples" in path.parts:
@@ -210,6 +244,20 @@ def scan_file_for_secrets(path: Path) -> list[str]:
     return violations
 
 
+def check_privileged_markdown(path: Path) -> list[str]:
+    """Scan privileged Markdown files for prompt-injection / permission-expansion patterns."""
+    violations = []
+    try:
+        content = path.read_text(errors="ignore")
+    except Exception:
+        return []
+
+    for pattern in PRIVILEGED_PATTERNS:
+        if pattern.search(content):
+            violations.append(f"{path}: privileged-content injection pattern detected")
+    return violations
+
+
 def main():
     violations = []
 
@@ -217,9 +265,9 @@ def main():
     blocklist_errors = check_blocklist(REPO_ROOT)
     violations.extend(blocklist_errors)
 
-    # Scan non-exempt files for secrets
-    # NOTE: ALLOWED_PATHS does NOT exempt files from secret scanning.
-    # Only examples/ directory is exempt.
+    # Scan all non-exempt files for secrets
+    # NOTE: ALLOWED_PATHS bypasses only blocklist checks, not secret scanning.
+    # Only examples/ directory is exempt from secret scanning.
     for path in REPO_ROOT.rglob("*"):
         if ".git" in path.parts:
             continue
@@ -227,11 +275,18 @@ def main():
             continue
         if path.is_dir():
             continue
-        if is_allowed_path(path.relative_to(REPO_ROOT)):
-            continue  # blocklist check skipped for allowed paths
 
         secret_errors = scan_file_for_secrets(path)
         violations.extend(secret_errors)
+
+    # Check privileged Markdown files for injection/permission-expansion patterns
+    for path in REPO_ROOT.rglob("*.md"):
+        if ".git" in path.parts:
+            continue
+        rel = path.relative_to(REPO_ROOT)
+        normalized = str(rel).replace("\\", "/")
+        if any(normalized.startswith(p) for p in PRIVILEGED_PATH_PREFIXES):
+            violations.extend(check_privileged_markdown(path))
 
     if violations:
         print("SAFETY SCAN FAILED", file=sys.stderr)

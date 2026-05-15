@@ -43,10 +43,25 @@ You should see `claw-doc` in the list with `Routing: default (no explicit rules)
 # Clone the ClawDoc repo
 git clone https://github.com/Hashi-Ai-Dev/openclaw-clawdoc.git /tmp/openclaw-clawdoc
 
+# Stable install (recommended for production):
+cd /tmp/openclaw-clawdoc && git checkout v1.6.0 && cd ..
+
+# Bleeding-edge (may include unreleased changes — use at your own risk):
+# cd /tmp/openclaw-clawdoc && git checkout master
+
 # Copy skills into the agent's workspace
 cp -r /tmp/openclaw-clawdoc/skills/* /home/user/.openclaw/agents/claw-doc/skills/
+```
 
-# Verify skills are visible to the agent
+**Set the agent persona** — copy root `SOUL.md` as the agent's persona file:
+
+```bash
+cp /tmp/openclaw-clawdoc/SOUL.md /home/user/.openclaw/agents/claw-doc/SOUL.md
+```
+
+Verify skills are visible to the agent:
+
+```bash
 openclaw skills list --agent claw-doc
 openclaw skills check --agent claw-doc
 ```
@@ -106,13 +121,9 @@ ClawDoc should route to `openclaw-memory`, read the reference docs, and return a
 When a new ClawDoc release is available:
 
 ```bash
-# Pull latest from the repo
 cd /tmp/openclaw-clawdoc && git pull
-
-# Sync updated skills into the agent workspace
 cp -r /tmp/openclaw-clawdoc/skills/* /home/user/.openclaw/agents/claw-doc/skills/
-
-# Verify no skills are broken
+cp /tmp/openclaw-clawdoc/SOUL.md /home/user/.openclaw/agents/claw-doc/SOUL.md
 openclaw skills check --agent claw-doc
 ```
 

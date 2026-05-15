@@ -1,0 +1,18 @@
+# Privileged agent-facing surfaces
+skills/ @LucielAI
+SOUL.md @LucielAI
+AGENTS.md @LucielAI
+agent-template/ @LucielAI
+AGENT_INSTALL.md @LucielAI
+SKILLS_INSTALL.md @LucielAI
+TROUBLESHOOTING.md @LucielAI
+README.md @LucielAI
+QUICKSTART.md @LucielAI
+
+# Scanner, manifest, and policy
+.github/CODEOWNERS @LucielAI
+.github/workflows/ @LucielAI
+scripts/ @LucielAI
+CLAWDOC_MANIFEST.json @LucielAI
+SECURITY.md @LucielAI
+CONTRIBUTING.md @LucielAI
