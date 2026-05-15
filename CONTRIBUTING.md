@@ -40,7 +40,7 @@ The following are privileged instruction surfaces — treat them as contracts wh
 - `TROUBLESHOOTING.md`, `README.md`, `QUICKSTART.md`
 
 Rules for privileged surfaces:
-- No private runtime references (MEMORY.md, HEARTBEAT.md, personal workspace paths, tokens, internal tool names)
+- No private runtime content or operator-specific runtime references. Generic runtime workspace concepts such as MEMORY.md may be documented only in install/template guidance where they are clearly described as user-local files.
 - No agent self-modification instructions (writing/overwriting/deleting own runtime files)
 - No permission-expansion instructions (escalating privileges, granting new capabilities beyond configured scope)
 - Only document behavior verifiable from OpenClaw's published docs or source

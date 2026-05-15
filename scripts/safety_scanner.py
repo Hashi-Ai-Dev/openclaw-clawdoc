@@ -151,6 +151,7 @@ PRIVILEGED_PATH_PREFIXES = {
     "skills/",
     "SOUL.md",
     "AGENTS.md",
+    "agent-template/",
     "AGENT_INSTALL.md",
     "SKILLS_INSTALL.md",
     "TROUBLESHOOTING.md",

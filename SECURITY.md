@@ -28,7 +28,7 @@ When deploying ClawDoc:
 
 ClawDoc documentation may describe OpenClaw's plugin architecture and mechanisms. However:
 
-- Do not recommend specific third-party plugins unless officially maintained, explicitly audited, or well-known with a verified stable release.
+- Do not recommend specific third-party plugins unless they are officially maintained by OpenClaw or explicitly audited and allowlisted by this repo.
 - Do not include install commands for plugins that run eval-based installers or fetch code from untrusted URLs.
 - Link to the official plugin registry at https://docs.openclaw.ai/plugins/ instead of recommending specific third-party tools.
 

@@ -118,10 +118,20 @@ ClawDoc should route to `openclaw-memory`, read the reference docs, and return a
 
 ## Updating ClawDoc
 
-When a new ClawDoc release is available:
+**Stable release update:**
 
 ```bash
-cd /tmp/openclaw-clawdoc && git pull
+cd /tmp/openclaw-clawdoc && git fetch --tags
+git checkout v1.6.0
+cp -r /tmp/openclaw-clawdoc/skills/* /home/user/.openclaw/agents/claw-doc/skills/
+cp /tmp/openclaw-clawdoc/SOUL.md /home/user/.openclaw/agents/claw-doc/SOUL.md
+openclaw skills check --agent claw-doc
+```
+
+**Bleeding-edge update:**
+
+```bash
+cd /tmp/openclaw-clawdoc && git checkout master && git pull
 cp -r /tmp/openclaw-clawdoc/skills/* /home/user/.openclaw/agents/claw-doc/skills/
 cp /tmp/openclaw-clawdoc/SOUL.md /home/user/.openclaw/agents/claw-doc/SOUL.md
 openclaw skills check --agent claw-doc
