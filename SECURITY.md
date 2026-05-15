@@ -24,6 +24,16 @@ When deploying ClawDoc:
 - **Run `openclaw gateway` with a token** in production, not in open/unauthenticated mode
 - **Use `~/.openclaw/openclaw.json`** for config, not `/data/.openclaw/` — the latter is a local system path
 
+## Third-Party Plugin Policy
+
+ClawDoc documentation may describe OpenClaw's plugin architecture and mechanisms. However:
+
+- Do not recommend specific third-party plugins unless they are officially maintained by OpenClaw or explicitly audited and allowlisted by this repo.
+- Do not include install commands for plugins that run eval-based installers or fetch code from untrusted URLs.
+- Link to the official plugin registry at https://docs.openclaw.ai/plugins/ instead of recommending specific third-party tools.
+
+When in doubt, leave it out. Operator security decisions are outside the scope of this documentation repo.
+
 ## Config Security Notes
 
 ClawDoc documents OpenClaw's configuration schema. When configuring channels (Discord, Telegram, etc.):
