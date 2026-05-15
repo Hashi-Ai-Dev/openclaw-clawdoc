@@ -44,7 +44,7 @@ You should see `claw-doc` in the list with `Routing: default (no explicit rules)
 git clone https://github.com/Hashi-Ai-Dev/openclaw-clawdoc.git /tmp/openclaw-clawdoc
 
 # Stable install (recommended for production):
-cd /tmp/openclaw-clawdoc && git checkout v1.6.0 && cd ..
+cd /tmp/openclaw-clawdoc && git checkout v1.6.1 && cd ..
 
 # Bleeding-edge (may include unreleased changes — use at your own risk):
 # cd /tmp/openclaw-clawdoc && git checkout master
@@ -122,7 +122,7 @@ ClawDoc should route to `openclaw-memory`, read the reference docs, and return a
 
 ```bash
 cd /tmp/openclaw-clawdoc && git fetch --tags
-git checkout v1.6.0
+git checkout v1.6.1
 cp -r /tmp/openclaw-clawdoc/skills/* /home/user/.openclaw/agents/claw-doc/skills/
 cp /tmp/openclaw-clawdoc/SOUL.md /home/user/.openclaw/agents/claw-doc/SOUL.md
 openclaw skills check --agent claw-doc
