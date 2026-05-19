@@ -11,7 +11,7 @@
   <img src="assets/clawdoc-banner.png" alt="ClawDoc Banner" />
 </p>
 
-🔮 **From the same org:** [HermitDoc](https://github.com/Hashi-Ai-Dev/HermitDoc) — agent benchmarking and evaluation · [ClawHub](https://clawhub.ai) — find new skills
+🧠 **Same idea, different agent:** [HermitDoc](https://github.com/Hashi-Ai-Dev/HermitDoc) — the ClawDoc philosophy applied to Hermes Agent
 
 ---
 
