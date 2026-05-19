@@ -8,7 +8,7 @@
 [![License](https://img.shields.io/badge/License-MIT-success?style=flat-square)](LICENSE)
 
 <p align="center">
-  <img src="assets/clawdoc-banner.jpg" alt="ClawDoc Banner" />
+  <img src="assets/clawdoc-banner.png" alt="ClawDoc Banner" />
 </p>
 
 🔮 **From the same org:** [HermitDoc](https://github.com/Hashi-Ai-Dev/HermitDoc) — agent benchmarking and evaluation · [ClawHub](https://clawhub.ai) — find new skills
