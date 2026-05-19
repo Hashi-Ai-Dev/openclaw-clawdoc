@@ -173,6 +173,7 @@ openclaw config merge examples/NAME.json && openclaw gateway restart
 - 💬 [Discord](https://discord.com/invite/clawd)
 - 🛒 [ClawHub](https://clawhub.ai) — find new skills
 - 🐙 [Source](https://github.com/openclaw/openclaw)
+- 🔮 [HermitDoc](https://github.com/Hashi-Ai-Dev/HermitDoc) — agent benchmarking and evaluation
 
 ---
 
