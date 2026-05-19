@@ -2,9 +2,9 @@
 
 **The OpenClaw knowledge-base agent for config audits, troubleshooting, and grounded system fixes.**
 
-[![OpenClaw](https://img.shields.io/badge/OpenClaw-2026.5.12-blue?style=flat-square)](https://github.com/openclaw/openclaw)
+[![OpenClaw](https://img.shields.io/badge/OpenClaw-2026.5.18-blue?style=flat-square)](https://github.com/openclaw/openclaw)
 [![Skills](https://img.shields.io/badge/Skills-22-orange?style=flat-square)](#skill-tree)
-[![Reference Docs](https://img.shields.io/badge/Reference_Docs-520-green?style=flat-square)](#reference-docs)
+[![Reference Docs](https://img.shields.io/badge/Reference_Docs-523-green?style=flat-square)](#reference-docs)
 [![License](https://img.shields.io/badge/License-MIT-success?style=flat-square)](LICENSE)
 
 <p align="center">
