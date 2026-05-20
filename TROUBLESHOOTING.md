@@ -128,13 +128,10 @@ openclaw config set tools.alsoAllow '["tool_name"]'
 openclaw gateway restart
 ```
 
-For TweetClaw's X/Twitter tools, use:
-```bash
-openclaw plugins install @xquik/tweetclaw
-openclaw plugins inspect tweetclaw --runtime
-openclaw config set tools.alsoAllow '["explore", "tweetclaw"]'
-openclaw gateway restart
-```
+For third-party plugins, verify the package source, maintainer, manifest, and
+install behavior before installation. Agents should not install third-party
+plugins or widen `tools.alsoAllow` automatically without explicit operator
+approval.
 
 ---
 
