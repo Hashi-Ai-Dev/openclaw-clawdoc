@@ -1,132 +1,173 @@
 ---
-summary: "Gateway-owned node pairing (Option B) for iOS and other remote nodes"
+summary: "Pairing overview: approve who can DM you + which nodes can join"
 read_when:
-  - Implementing node pairing approvals without macOS UI
-  - Adding CLI flows for approving remote nodes
-  - Extending gateway protocol with node management
-title: "Gateway-owned pairing"
+  - Setting up DM access control
+  - Pairing a new iOS/Android node
+  - Reviewing OpenClaw security posture
+title: "Pairing"
 ---
 
-In Gateway-owned pairing, the **Gateway** is the source of truth for which nodes
-are allowed to join. UIs (macOS app, future clients) are just frontends that
-approve or reject pending requests.
+"Pairing" is OpenClaw's explicit access approval step.
+It is used in two places:
 
-**Important:** WS nodes use **device pairing** (role `node`) during `connect`.
-`node.pair.*` is a separate pairing store and does **not** gate the WS handshake.
-Only clients that explicitly call `node.pair.*` use this flow.
+1. **DM pairing** (who is allowed to talk to the bot)
+2. **Node pairing** (which devices/nodes are allowed to join the gateway network)
 
-## Concepts
+Security context: [Security](/gateway/security)
 
-- **Pending request**: a node asked to join; requires approval.
-- **Paired node**: approved node with an issued auth token.
-- **Transport**: the Gateway WS endpoint forwards requests but does not decide
-  membership. (Legacy TCP bridge support has been removed.)
+## 1) DM pairing (inbound chat access)
 
-## How pairing works
+When a channel is configured with DM policy `pairing`, unknown senders get a short code and their message is **not processed** until you approve.
 
-1. A node connects to the Gateway WS and requests pairing.
-2. The Gateway stores a **pending request** and emits `node.pair.requested`.
-3. You approve or reject the request (CLI or UI).
-4. On approval, the Gateway issues a **new token** (tokens are rotated on re-pair).
-5. The node reconnects using the token and is now "paired".
+Default DM policies are documented in: [Security](/gateway/security)
 
-Pending requests expire automatically after **5 minutes**.
+`dmPolicy: "open"` is public only when the effective DM allowlist includes `"*"`.
+Setup and validation require that wildcard for public-open configs. If existing
+state contains `open` with concrete `allowFrom` entries, runtime still admits
+only those senders, and pairing-store approvals do not widen `open` access.
 
-## CLI workflow (headless friendly)
+Pairing codes:
+
+- 8 characters, uppercase, no ambiguous chars (`0O1I`).
+- **Expire after 1 hour**. The bot only sends the pairing message when a new request is created (roughly once per hour per sender).
+- Pending DM pairing requests are capped at **3 per channel** by default; additional requests are ignored until one expires or is approved.
+
+### Approve a sender
 
 ```bash
-openclaw nodes pending
-openclaw nodes approve <requestId>
-openclaw nodes reject <requestId>
-openclaw nodes status
-openclaw nodes remove --node <id|name|ip>
-openclaw nodes rename --node <id|name|ip> --name "Living Room iPad"
+openclaw pairing list telegram
+openclaw pairing approve telegram <CODE>
 ```
 
-`nodes status` shows paired/connected nodes and their capabilities.
+If no command owner is configured yet, approving a DM pairing code also bootstraps
+`commands.ownerAllowFrom` to the approved sender, such as `telegram:123456789`.
+That gives first-time setups an explicit owner for privileged commands and exec
+approval prompts. After an owner exists, later pairing approvals only grant DM
+access; they do not add more owners.
 
-## API surface (gateway protocol)
+Supported channels: `discord`, `feishu`, `googlechat`, `imessage`, `irc`, `line`, `matrix`, `mattermost`, `msteams`, `nextcloud-talk`, `nostr`, `openclaw-weixin`, `signal`, `slack`, `synology-chat`, `telegram`, `twitch`, `whatsapp`, `zalo`, `zalouser`.
 
-Events:
+### Reusable sender groups
 
-- `node.pair.requested` - emitted when a new pending request is created.
-- `node.pair.resolved` - emitted when a request is approved/rejected/expired.
+Use top-level `accessGroups` when the same trusted sender set should apply to
+multiple message channels or to both DM and group allowlists.
 
-Methods:
+Static groups use `type: "message.senders"` and are referenced with
+`accessGroup:<name>` from channel allowlists:
 
-- `node.pair.request` - create or reuse a pending request.
-- `node.pair.list` - list pending + paired nodes (`operator.pairing`).
-- `node.pair.approve` - approve a pending request (issues token).
-- `node.pair.reject` - reject a pending request.
-- `node.pair.remove` - remove a stale paired node entry.
-- `node.pair.verify` - verify `{ nodeId, token }`.
+```json5
+{
+  accessGroups: {
+    operators: {
+      type: "message.senders",
+      members: {
+        discord: ["discord:123456789012345678"],
+        telegram: ["987654321"],
+        whatsapp: ["+15551234567"],
+      },
+    },
+  },
+  channels: {
+    telegram: { dmPolicy: "allowlist", allowFrom: ["accessGroup:operators"] },
+    whatsapp: { groupPolicy: "allowlist", groupAllowFrom: ["accessGroup:operators"] },
+  },
+}
+```
 
-Notes:
+Access groups are documented in detail here: [Access groups](/channels/access-groups)
 
-- `node.pair.request` is idempotent per node: repeated calls return the same
-  pending request.
-- Repeated requests for the same pending node also refresh the stored node
-  metadata and the latest allowlisted declared command snapshot for operator visibility.
-- Approval **always** generates a fresh token; no token is ever returned from
-  `node.pair.request`.
-- Operator scope levels and approval-time checks are summarized in
-  [Operator scopes](/gateway/operator-scopes).
-- Requests may include `silent: true` as a hint for auto-approval flows.
-- `node.pair.approve` uses the pending request's declared commands to enforce
-  extra approval scopes:
-  - commandless request: `operator.pairing`
-  - non-exec command request: `operator.pairing` + `operator.write`
-  - `system.run` / `system.run.prepare` / `system.which` request:
-    `operator.pairing` + `operator.admin`
+### Where the state lives
 
-<Warning>
-Node pairing is a trust and identity flow plus token issuance. It does **not** pin the live node command surface per node.
+Stored under `~/.openclaw/credentials/`:
 
-- Live node commands come from what the node declares on connect after the gateway's global node command policy (`gateway.nodes.allowCommands` and `denyCommands`) is applied.
-- Per-node `system.run` allow and ask policy lives on the node in `exec.approvals.node.*`, not in the pairing record.
+- Pending requests: `<channel>-pairing.json`
+- Approved allowlist store:
+  - Default account: `<channel>-allowFrom.json`
+  - Non-default account: `<channel>-<accountId>-allowFrom.json`
 
-</Warning>
+Account scoping behavior:
 
-## Node command gating (2026.3.31+)
+- Non-default accounts read/write only their scoped allowlist file.
+- Default account uses the channel-scoped unscoped allowlist file.
 
-<Warning>
-**Breaking change:** Starting with `2026.3.31`, node commands are disabled until node pairing is approved. Device pairing alone is no longer enough to expose declared node commands.
-</Warning>
+Treat these as sensitive (they gate access to your assistant).
 
-When a node connects for the first time, pairing is requested automatically. Until the pairing request is approved, all pending node commands from that node are filtered and will not execute. Once trust is established through pairing approval, the node's declared commands become available subject to the normal command policy.
+<Note>
+The pairing allowlist store is for DM access. Group authorization is separate.
+Approving a DM pairing code does not automatically allow that sender to run group
+commands or control the bot in groups. First-owner bootstrap is separate config
+state in `commands.ownerAllowFrom`, and group chat delivery still follows the
+channel's group allowlists (for example `groupAllowFrom`, `groups`, or per-group
+or per-topic overrides depending on the channel).
+</Note>
 
-This means:
+## 2) Node device pairing (iOS/Android/macOS/headless nodes)
 
-- Nodes that were previously relying on device pairing alone to expose commands must now complete node pairing.
-- Commands queued before pairing approval are dropped, not deferred.
+Nodes connect to the Gateway as **devices** with `role: node`. The Gateway
+creates a device pairing request that must be approved.
 
-## Node event trust boundaries (2026.3.31+)
+### Pair via Telegram (recommended for iOS)
 
-<Warning>
-**Breaking change:** Node-originated runs now stay on a reduced trusted surface.
-</Warning>
+If you use the `device-pair` plugin, you can do first-time device pairing entirely from Telegram:
 
-Node-originated summaries and related session events are restricted to the intended trusted surface. Notification-driven or node-triggered flows that previously relied on broader host or session tool access may need adjustment. This hardening ensures that node events cannot escalate into host-level tool access beyond what the node's trust boundary permits.
+1. In Telegram, message your bot: `/pair`
+2. The bot replies with two messages: an instruction message and a separate **setup code** message (easy to copy/paste in Telegram).
+3. On your phone, open the OpenClaw iOS app → Settings → Gateway.
+4. Scan the QR code or paste the setup code and connect.
+5. Back in Telegram: `/pair pending` (review request IDs, role, and scopes), then approve.
 
-Durable node presence updates follow the same identity boundary. The `node.presence.alive` event is
-accepted only from authenticated node device sessions and updates pairing metadata only when the
-device/node identity is already paired. Self-declared `client.id` values are not enough to write
-last-seen state.
+The setup code is a base64-encoded JSON payload that contains:
 
-## Auto-approval (macOS app)
+- `url`: the Gateway WebSocket URL (`ws://...` or `wss://...`)
+- `bootstrapToken`: a short-lived single-device bootstrap token used for the initial pairing handshake
 
-The macOS app can optionally attempt a **silent approval** when:
+That bootstrap token carries the built-in pairing bootstrap profile:
 
-- the request is marked `silent`, and
-- the app can verify an SSH connection to the gateway host using the same user.
+- the built-in setup profile allows the fresh QR/setup-code baseline only:
+  `node` plus a bounded `operator` handoff
+- the handed-off `node` token stays `scopes: []`
+- the handed-off `operator` token is limited to `operator.approvals`,
+  `operator.read`, and `operator.write`
+- `operator.admin` and `operator.pairing` are not granted by QR/setup-code
+  bootstrap; they require a separate approved operator pairing or token flow
+- later token rotation/revocation remains bounded by both the device's approved
+  role contract and the caller session's operator scopes
 
-If silent approval fails, it falls back to the normal "Approve/Reject" prompt.
+Treat the setup code like a password while it is valid.
 
-## Trusted-CIDR device auto-approval
+For Tailscale, public, or other remote mobile pairing, use Tailscale Serve/Funnel
+or another `wss://` Gateway URL. Plaintext `ws://` setup codes are accepted only
+for loopback, private LAN addresses, `.local` Bonjour hosts, and the Android
+emulator host. Tailnet CGNAT addresses, `.ts.net` names, and public hosts still
+fail closed before QR/setup-code issuance.
 
-WS device pairing for `role: node` remains manual by default. For private
-node networks where the Gateway already trusts the network path, operators can
-opt in with explicit CIDRs or exact IPs:
+### Approve a node device
+
+```bash
+openclaw devices list
+openclaw devices approve <requestId>
+openclaw devices reject <requestId>
+```
+
+When an explicit approval is denied because the approving paired-device session
+was opened with pairing-only scope, the CLI retries the same request with
+`operator.admin`. This lets an existing admin-capable paired device recover a new
+Control UI/browser pairing without editing `devices/paired.json` by hand. The
+Gateway still validates the retried connection; tokens that cannot authenticate
+with `operator.admin` remain blocked.
+
+If the same device retries with different auth details (for example different
+role/scopes/public key), the previous pending request is superseded and a new
+`requestId` is created.
+
+<Note>
+An already paired device does not get broader access silently. If it reconnects asking for more scopes or a broader role, OpenClaw keeps the existing approval as-is and creates a fresh pending upgrade request. Use `openclaw devices list` to compare the currently approved access with the newly requested access before you approve.
+</Note>
+
+### Optional trusted-CIDR node auto-approve
+
+Device pairing remains manual by default. For tightly controlled node networks,
+you can opt in to first-time node auto-approval with explicit CIDRs or exact IPs:
 
 ```json5
 {
@@ -140,68 +181,34 @@ opt in with explicit CIDRs or exact IPs:
 }
 ```
 
-Security boundary:
+This only applies to fresh `role: node` pairing requests with no requested
+scopes. Operator, browser, Control UI, and WebChat clients still require manual
+approval. Role, scope, metadata, and public-key changes still require manual
+approval.
 
-- Disabled when `gateway.nodes.pairing.autoApproveCidrs` is unset.
-- No blanket LAN or private-network auto-approve mode exists.
-- Only fresh `role: node` device pairing with no requested scopes is eligible.
-- Operator, browser, Control UI, and WebChat clients stay manual.
-- Role, scope, metadata, and public-key upgrades stay manual.
-- Same-host loopback trusted-proxy header paths are not eligible because that
-  path can be spoofed by local callers.
+### Node pairing state storage
 
-## Metadata-upgrade auto-approval
+Stored under `~/.openclaw/devices/`:
 
-When an already paired device reconnects with only non-sensitive metadata
-changes (for example, display name or client platform hints), OpenClaw treats
-that as a `metadata-upgrade`. Silent auto-approval is narrow: it applies only
-to trusted non-browser local reconnects that already proved possession of local
-or shared credentials, including same-host native app reconnects after OS
-version metadata changes. Browser/Control UI clients and remote clients still
-use the explicit re-approval flow. Scope upgrades (read to write/admin) and
-public key changes are **not** eligible for metadata-upgrade auto-approval -
-they stay as explicit re-approval requests.
+- `pending.json` (short-lived; pending requests expire)
+- `paired.json` (paired devices + tokens)
 
-## QR pairing helpers
+### Notes
 
-`/pair qr` renders the pairing payload as structured media so mobile and
-browser clients can scan it directly.
+- The legacy `node.pair.*` API (CLI: `openclaw nodes pending|approve|reject|remove|rename`) is a
+  separate gateway-owned pairing store. WS nodes still require device pairing.
+- The pairing record is the durable source of truth for approved roles. Active
+  device tokens stay bounded to that approved role set; a stray token entry
+  outside the approved roles does not create new access.
 
-Deleting a device also sweeps any stale pending pairing requests for that
-device id, so `nodes pending` does not show orphaned rows after a revoke.
+## Related docs
 
-## Locality and forwarded headers
-
-Gateway pairing treats a connection as loopback only when both the raw socket
-and any upstream proxy evidence agree. If a request arrives on loopback but
-carries `Forwarded`, any `X-Forwarded-*`, or `X-Real-IP` header evidence, that
-forwarded-header evidence disqualifies the loopback locality claim. The pairing
-path then requires explicit approval instead of silently treating the request as
-a same-host connect. See [Trusted Proxy Auth](/gateway/trusted-proxy-auth) for
-the equivalent rule on operator auth.
-
-## Storage (local, private)
-
-Pairing state is stored under the Gateway state directory (default `~/.openclaw`):
-
-- `~/.openclaw/nodes/paired.json`
-- `~/.openclaw/nodes/pending.json`
-
-If you override `OPENCLAW_STATE_DIR`, the `nodes/` folder moves with it.
-
-Security notes:
-
-- Tokens are secrets; treat `paired.json` as sensitive.
-- Rotating a token requires re-approval (or deleting the node entry).
-
-## Transport behavior
-
-- The transport is **stateless**; it does not store membership.
-- If the Gateway is offline or pairing is disabled, nodes cannot pair.
-- If the Gateway is in remote mode, pairing still happens against the remote Gateway's store.
-
-## Related
-
-- [Channel pairing](/channels/pairing)
-- [Nodes](/nodes)
-- [Devices CLI](/cli/devices)
+- Security model + prompt injection: [Security](/gateway/security)
+- Updating safely (run doctor): [Updating](/install/updating)
+- Channel configs:
+  - Telegram: [Telegram](/channels/telegram)
+  - WhatsApp: [WhatsApp](/channels/whatsapp)
+  - Signal: [Signal](/channels/signal)
+  - iMessage: [iMessage](/channels/imessage)
+  - Discord: [Discord](/channels/discord)
+  - Slack: [Slack](/channels/slack)
