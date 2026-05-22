@@ -1,6 +1,6 @@
 ---
 name: openclaw-concepts
-description: OpenClaw core concepts. Use when explaining architecture, memory, sessions, compaction, streaming, multi-agent design, sandboxing, agent bootstrap, message flow, queue modes, model failover, system prompt, SOUL.md, or timezone. Triggers on: "how does it work", "architecture", "session", "compaction", "streaming", "bootstrap", "context", "agent loop", "queue", "message flow", "failover".
+description: "OpenClaw core concepts. Use when explaining architecture, memory, sessions, compaction, streaming, multi-agent design, sandboxing, agent bootstrap, message flow, queue modes, model failover, system prompt, SOUL.md, or timezone. Triggers on: \"how does it work\", \"architecture\", \"session\", \"compaction\", \"streaming\", \"bootstrap\", \"context\", \"agent loop\", \"queue\", \"message flow\", \"failover\", \"features\", \"retry\", \"typebox\", \"models\", \"model-providers\", \"usage-tracking\"."
 ---
 
 # OpenClaw Concepts
