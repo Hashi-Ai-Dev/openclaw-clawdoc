@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "schema_version": "1.0",
-  "clawdoc_version": "v1.6.9",
-  "tracked_openclaw_version": "2026.5.19",
+  "clawdoc_version": "v1.6.10",
+  "tracked_openclaw_version": "2026.5.20",
   "description": "Machine-readable manifest of the ClawDoc public repository contents. ClawDoc is a dual-mode OpenClaw system doctor distribution supporting two install modes: Mode 1 (persistent dedicated agent) and Mode 2 (skills-only into an existing agent).",
   "install_modes_supported": [
     "persistent-agent",
@@ -10,7 +10,7 @@
   ],
   "file_counts": {
     "skills": 22,
-    "reference_docs": 525,
+    "reference_docs": 530,
     "examples": 12
   },
   "reference_docs_definition": {
