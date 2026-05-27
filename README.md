@@ -84,7 +84,7 @@ ClawDoc routes to the right skill, reads the reference docs, and gives you a pre
 
 ## Reference docs
 
-**530 docs** copied from the official OpenClaw source and versioned against the tracked OpenClaw release.
+**533 docs** copied from the official OpenClaw source and versioned against the tracked OpenClaw release.
 
 | Area | What's covered |
 |------|---------------|
