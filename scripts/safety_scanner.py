@@ -122,6 +122,8 @@ PLACEHOLDER_PATTERNS = [
     re.compile(r"'.*?'|\".*?\""),                       # 'placeholder', "placeholder"
     re.compile(r"xxx+|XXXX+"),                            # xxx, XXXX
     re.compile(r"OPENCLAW_[A-Z_]{30,}"),                # OpenClaw env var names (e.g. OPENCLAW_BUNDLED_CHANNEL_UPDATE_DOCKER_RUN_TIMEOUT) — not secrets
+    re.compile(r"example-[a-z0-9-]+-key-not-real", re.IGNORECASE),  # example-anthropic-key-not-real, example-openai-key-not-real
+    re.compile(r"example-[a-z0-9-]+-token", re.IGNORECASE),          # example-discord-bot-token, example-api-token
 ]
 
 # ---------------------------------------------------------------------------
@@ -232,13 +234,13 @@ def scan_file_for_secrets(path: Path) -> list[str]:
         return []
 
     for pattern in SECRET_PATTERNS:
-        matches = pattern.findall(content)
         real_matches = []
-        for match in matches:
+        for m in pattern.finditer(content):
+            full_match = m.group(0)
             # Skip if the match is a known placeholder
-            if any(ph.match(match) for ph in PLACEHOLDER_PATTERNS):
+            if any(ph.search(full_match) for ph in PLACEHOLDER_PATTERNS):
                 continue
-            real_matches.append(match)
+            real_matches.append(full_match)
         if real_matches:
             violations.append(f"{path}: secret/token pattern detected (redacted)")
 

@@ -1,7 +1,7 @@
-// Basic webhook configuration — receive events from external services.
-// Webhooks let GitHub, Stripe, Zapier, and other services trigger OpenClaw actions.
-// Apply: openclaw config merge examples/webhook-basic.json
-// Then configure your external service to POST to the gateway URL.
+
+
+
+
 {
   "channels": {
     "webhook": {
