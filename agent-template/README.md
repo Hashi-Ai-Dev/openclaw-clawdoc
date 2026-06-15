@@ -14,12 +14,12 @@ This agent is running ClawDoc — a dedicated OpenClaw system doctor that knows 
 
 ## Skills
 
-ClawDoc ships with 23 skills covering:
+ClawDoc ships with 22 skills covering:
 
 - **Config** — Gateway config keys, secrets, retry, failover, model routing
 - **Memory** — builtin, QMD, Honcho, embeddings, active memory, dreaming
 - **Agents** — Multi-agent setup, bindings, sandbox, tool policies
-- **Channels** — Discord, Telegram, WhatsApp, Slack, Signal, and 29 more
+- **Channels** — Discord, Telegram, WhatsApp, Slack, Signal, and 18+ more
 - **Troubleshooting** — Diagnosis flows, error codes, common fixes
 - **Automation** — Cron, hooks, tasks, Task Flow
 - **CLI** — Every `openclaw` command with examples

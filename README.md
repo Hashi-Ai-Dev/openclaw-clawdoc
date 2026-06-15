@@ -91,7 +91,7 @@ ClawDoc routes to the right skill, reads the reference docs, and gives you a pre
 | Config | All gateway config keys, defaults, secrets, retry, failover |
 | Memory | builtin / QMD / Honcho setup, embeddings, citations |
 | Agents | Multi-agent, bindings, sandbox, tool policies |
-| Channels | Discord, Telegram, WhatsApp, Slack, Signal, and 27 more |
+| Channels | Discord, Telegram, WhatsApp, Slack, Signal, and 18+ more |
 | Concepts | Architecture, session, compaction, streaming, queue |
 | Providers | 50+ model providers: OpenAI, Anthropic, Gemini, Bedrock, Ollama... |
 | CLI | Every openclaw command with examples |
@@ -108,7 +108,7 @@ ClawDoc routes to the right skill, reads the reference docs, and gives you a pre
 | `openclaw-config` | Gateway config reference — all keys, all patterns |
 | `openclaw-memory` | Memory backends: builtin, QMD, Honcho |
 | `openclaw-agents` | Multi-agent, bindings, sandbox, tool policies |
-| `openclaw-channels` | 31 channel types: Discord, Telegram, WhatsApp, Slack... |
+| `openclaw-channels` | 22+ channel types: Discord, Telegram, WhatsApp, Slack... |
 
 ### Operations
 | Skill | What it does |
@@ -116,7 +116,7 @@ ClawDoc routes to the right skill, reads the reference docs, and gives you a pre
 | `openclaw-troubleshooting` | Diagnosis flows, error codes, common fixes |
 | `openclaw-automation` | Cron, hooks, tasks, Task Flow |
 | `openclaw-logging` | Logging configuration and management |
-| `openclaw-ci` | CI/CD integration, webhooks |
+| `openclaw-gateway` | Gateway HTTP API, telemetry, secrets, sandbox, runbooks |
 
 ### Channels & Platforms
 | Skill | What it does |
@@ -141,6 +141,7 @@ ClawDoc routes to the right skill, reads the reference docs, and gives you a pre
 | `openclaw-concepts` | Architecture, session, compaction, streaming, SOUL.md |
 | `openclaw-plugins` | Plugin slots, SDK, hook system |
 | `openclaw-help` | FAQ, help commands, usage patterns |
+| `openclaw-reference` | Catch-all reference: tokens, transcripts, SecretRef, release |
 
 ---
 
@@ -161,6 +162,7 @@ openclaw config merge examples/NAME.json && openclaw gateway restart
 | Conversation memory (builtin) | `memory-builtin.json` |
 | Semantic search over your files | `memory-qmd.json` |
 | Full memory with external search | `memory-honcho.json` |
+| Full Honcho memory layer | `honcho-memory.json` |
 | Different agents per Discord channel | `multi-agent-discord.json` |
 | Locked-down sandboxed agent | `per-agent-sandbox.json` |
 | Receive webhooks | `webhook-basic.json` |
