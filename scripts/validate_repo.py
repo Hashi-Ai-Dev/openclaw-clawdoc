@@ -6,6 +6,7 @@ Validates the public ClawDoc repository structure:
 - CLAWDOC_MANIFEST.json is valid JSON
 - Required public files exist
 - SKILL.md frontmatter: name + description required, triggers forbidden as separate key
+- SKILL.md frontmatter parses as valid YAML (uses yaml.safe_load, not regex)
 - No duplicate skills
 - Skill/example counts match manifest
 - Examples parse as valid JSON (with // comment stripping)
@@ -24,6 +25,11 @@ import os
 import re
 import sys
 from pathlib import Path
+
+try:
+    import yaml
+except ImportError:
+    yaml = None  # YAML check becomes a no-op if PyYAML not installed
 
 REPO_ROOT = Path(__file__).parent.parent.resolve()
 
@@ -178,6 +184,7 @@ def main():
             all_errors.append(f"required public file missing: {filename}")
 
     # 3. SKILL.md frontmatter for all skills; check for duplicate names
+    # 3a. SKILL.md frontmatter must round-trip as valid YAML (yaml.safe_load)
     if SKILLS_DIR.exists():
         seen_names = {}
         for skill_dir in sorted(SKILLS_DIR.iterdir()):
@@ -185,6 +192,23 @@ def main():
             if skill_md.exists():
                 errors = check_skill_frontmatter(skill_md)
                 all_errors.extend(errors)
+
+                # YAML round-trip check (catches unescaped colons in description values, etc.)
+                if yaml is not None:
+                    try:
+                        content = skill_md.read_text()
+                        if content.startswith("---\n"):
+                            fm_text = content.split("---", 2)[1]
+                            data = yaml.safe_load(fm_text)
+                            if not isinstance(data, dict):
+                                all_errors.append(
+                                    f"{skill_md}: frontmatter is not a YAML mapping (got {type(data).__name__})"
+                                )
+                    except yaml.YAMLError as e:
+                        first_line = str(e).split('\n')[0]
+                        all_errors.append(
+                            f"{skill_md}: frontmatter does not parse as valid YAML — {first_line}"
+                        )
 
                 fields = frontmatter_fields(skill_md.read_text())
                 name_val = fields.get("name", "")

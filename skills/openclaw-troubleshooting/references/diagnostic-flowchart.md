@@ -1,3 +1,8 @@
+---
+title: "OpenClaw Diagnostic Flowchart"
+summary: "Reference doc: OpenClaw Diagnostic Flowchart"
+---
+
 # OpenClaw Diagnostic Flowchart
 
 ## Symptom → Root Cause → Fix mapping for the most common OpenClaw failures.

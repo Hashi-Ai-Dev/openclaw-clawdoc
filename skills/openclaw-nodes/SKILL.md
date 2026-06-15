@@ -1,6 +1,6 @@
 ---
 name: openclaw-nodes
-description: Pairing and using companion nodes (iOS, Android, macOS) with OpenClaw. Use when: pairing a phone or tablet as a node, using camera or canvas from an agent, VoiceWake, talk, audio input, location from a node, device notifications, screen sharing. Triggers on: "node", "pairing", "voicewake", "camera", "canvas", "audio", "talk", "location", "notifications", "screen", "android", "ios", "paired device", "media understanding", "inbound media".
+description: "Pairing and using companion nodes (iOS, Android, macOS) with OpenClaw. Use when: pairing a phone or tablet as a node, using camera or canvas from an agent, VoiceWake, talk, audio input, location from a node, device notifications, screen sharing. Triggers on: \"node\", \"pairing\", \"voicewake\", \"camera\", \"canvas\", \"audio\", \"talk\", \"location\", \"notifications\", \"screen\", \"android\", \"ios\", \"paired device\", \"media understanding\", \"inbound media\"."
 ---
 
 # OpenClaw Nodes Reference

@@ -1,3 +1,8 @@
+---
+title: "Plugin Slots"
+summary: "Reference doc: Plugin Slots"
+---
+
 # Plugin Slots
 
 OpenClaw uses an **exclusive slot system** for plugins that can only have one active implementation at a time. Each slot has a single winning plugin — attempting to enable two plugins for the same slot causes a conflict.

@@ -1,6 +1,6 @@
 ---
 name: openclaw-help
-description: Help, FAQ, debugging, and testing for OpenClaw. Use when: troubleshooting issues, debugging errors, running tests, answering FAQ about models, auth, first-run setup, or everyday operations. Triggers on: "help", "faq", "testing", "debug", "testing-live", "error", "issue", "problem", "not working", "failed", "codex agentic parity".
+description: "Help, FAQ, and testing for OpenClaw. Use when: looking up an everyday question about models, auth, or basic usage, finding a FAQ entry, running test suites (testing-live), or asking \"how do I…\" in plain language. For deeper diagnostics use openclaw-troubleshooting instead. Triggers on: \"help\", \"faq\", \"how do I\", \"how to\", \"common question\", \"everyday\", \"basic usage\", \"testing\", \"testing-live\", \"codex agentic parity\"."
 ---
 
 # OpenClaw Help Reference

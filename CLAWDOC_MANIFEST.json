@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "schema_version": "1.0",
-  "clawdoc_version": "v1.6.15",
+  "clawdoc_version": "v1.6.16",
   "tracked_openclaw_version": "2026.6.6",
   "description": "Machine-readable manifest of the ClawDoc public repository contents. ClawDoc is a dual-mode OpenClaw system doctor distribution supporting two install modes: Mode 1 (persistent dedicated agent) and Mode 2 (skills-only into an existing agent).",
   "install_modes_supported": [
@@ -10,39 +10,39 @@
   ],
   "file_counts": {
     "skills": 22,
-    "reference_docs": 561,
+    "reference_docs": 535,
     "examples": 12
   },
   "reference_docs_definition": {
     "description": "reference_docs = files under skills/**/references/**",
-    "reproducible_count": "git ls-files skills/ | grep 'references/' | wc -l = 487",
+    "reproducible_count": "git ls-files skills/ | grep 'references/' | wc -l = 535 (post v1.6.16 dedup)",
     "includes_mdx": "yes \u2014 includes *.mdx files such as railway.mdx"
   },
   "skills": {
     "description": "Public openclaw-* skills shipped with ClawDoc. All SKILL.md files have name + description frontmatter only. 'triggers' are embedded inline in description, not a separate frontmatter key.",
     "public_list": [
-      "openclaw-master",
-      "openclaw-config",
-      "openclaw-memory",
+      "clawdoc-onboarding",
       "openclaw-agents",
-      "openclaw-channels",
-      "openclaw-troubleshooting",
       "openclaw-automation",
+      "openclaw-channels",
+      "openclaw-cli",
+      "openclaw-concepts",
+      "openclaw-config",
+      "openclaw-gateway",
+      "openclaw-help",
+      "openclaw-install",
       "openclaw-logging",
-      "openclaw-ci",
+      "openclaw-master",
+      "openclaw-memory",
       "openclaw-nodes",
       "openclaw-platforms",
-      "openclaw-install",
+      "openclaw-plugins",
+      "openclaw-providers",
+      "openclaw-reference",
       "openclaw-start",
       "openclaw-tools",
-      "openclaw-providers",
-      "openclaw-cli",
-      "openclaw-web",
-      "openclaw-concepts",
-      "openclaw-plugins",
-      "openclaw-help",
-      "openclaw-reference",
-      "clawdoc-onboarding"
+      "openclaw-troubleshooting",
+      "openclaw-web"
     ],
     "forbidden": [
       "clawdoc-update",

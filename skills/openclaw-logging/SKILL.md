@@ -1,6 +1,6 @@
 ---
 name: openclaw-logging
-description: OpenClaw logging configuration. Use when configuring log levels, log rotation, log destinations, log format, or debugging OpenClaw log output. Triggers on: "logging", "log level", "log rotation", "log format", "logs", "debug", "output", "logger", "syslog", "file logging".
+description: "OpenClaw logging configuration. Use when configuring log levels, log rotation, log destinations, log format, or debugging OpenClaw log output. Triggers on: \"logging\", \"log level\", \"log rotation\", \"log format\", \"logs\", \"debug\", \"output\", \"logger\", \"syslog\", \"file logging\"."
 ---
 
 # OpenClaw Logging

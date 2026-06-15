@@ -1,6 +1,6 @@
 ---
 name: openclaw-platforms
-description: OpenClaw on different platforms and operating systems. Use when: running OpenClaw on Android, iOS, macOS, Windows, Linux, Raspberry Pi, Oracle Cloud, or DigitalOcean. Triggers on: "android", "ios", "macos", "windows", "linux", "raspberry pi", "oracle", "digitalocean", "platform", "mac menu bar", "menu bar", "voice overlay".
+description: "OpenClaw on different platforms and operating systems. Use when: running OpenClaw on Android, iOS, macOS, Windows, Linux, Raspberry Pi, Oracle Cloud, or DigitalOcean. Triggers on: \"android\", \"ios\", \"macos\", \"windows\", \"linux\", \"raspberry pi\", \"oracle\", \"digitalocean\", \"platform\", \"mac menu bar\", \"menu bar\", \"voice overlay\"."
 ---
 
 # OpenClaw Platforms Reference

@@ -1,6 +1,6 @@
 ---
 name: openclaw-web
-description: OpenClaw web UI. Use when configuring the web dashboard, TUI terminal interface, webchat, or control UI. Triggers on: "web", "dashboard", "TUI", "terminal", "webchat", "control UI", "web UI", "browser", "localhost:18789".
+description: "OpenClaw web UI. Use when configuring the web dashboard, TUI terminal interface, webchat, or control UI. Triggers on: \"web\", \"dashboard\", \"TUI\", \"terminal\", \"webchat\", \"control UI\", \"web UI\", \"browser\", \"localhost:18789\"."
 ---
 
 # OpenClaw Web UI

@@ -1,3 +1,8 @@
+---
+title: "First Run Guide — Detailed"
+summary: "Reference doc: First Run Guide — Detailed"
+---
+
 # First Run Guide — Detailed
 
 ## The 15-minute path

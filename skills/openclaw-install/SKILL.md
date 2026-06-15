@@ -1,6 +1,6 @@
 ---
 name: openclaw-install
-description: Install, update, migrate, or uninstall OpenClaw. Use when: installing OpenClaw from scratch, deploying to Docker, Railway, Fly, GCP, Azure, Kubernetes, Hetzner, Podman, Bun, Nix, or from source; updating OpenClaw to a new version; migrating from another platform; uninstalling. Triggers on: "install", "update", "upgrade", "docker", "railway", "fly", "gcp", "azure", "kubernetes", "hetzner", "podman", "bun", "nix", "migration", "migrate", "uninstall", "from source", "stable channel", "beta channel", "dev channel", "installer", "release channel".
+description: "Install, update, migrate, or uninstall OpenClaw. Use when: installing OpenClaw from scratch, deploying to Docker, Railway, Fly, GCP, Azure, Kubernetes, Hetzner, Podman, Bun, Nix, or from source; updating OpenClaw to a new version; migrating from another platform; uninstalling. Triggers on: \"install\", \"update\", \"upgrade\", \"docker\", \"railway\", \"fly\", \"gcp\", \"azure\", \"kubernetes\", \"hetzner\", \"podman\", \"bun\", \"nix\", \"migration\", \"migrate\", \"uninstall\", \"from source\", \"stable channel\", \"beta channel\", \"dev channel\", \"installer\", \"release channel\"."
 ---
 
 # OpenClaw Install Reference

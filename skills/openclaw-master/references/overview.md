@@ -1,3 +1,8 @@
+---
+title: "OpenClaw Master Skill — Overview"
+summary: "Reference doc: OpenClaw Master Skill — Overview"
+---
+
 # OpenClaw Master Skill — Overview
 
 This is the top-level entry point for ClawDoc, the OpenClaw configuration expert.

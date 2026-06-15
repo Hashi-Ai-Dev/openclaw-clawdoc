@@ -1,6 +1,6 @@
 ---
 name: clawdoc-onboarding
-description: Guided first-run setup for ClawDoc. Checks OpenClaw install state, walks through model setup, first channel connection, and end-to-end verification. Triggers on: "first time setup", "getting started with ClawDoc", "onboard", "new install", "initial setup", "how do I set up ClawDoc", "ClawDoc first run".
+description: "Guided first-run setup for ClawDoc (the docs/skills themselves), NOT for OpenClaw runtime first-run (use openclaw-start for that). Walks through installing ClawDoc skills, configuring docs sync, and end-to-end verification of the ClawDoc layer. Triggers on: \"ClawDoc first run\", \"ClawDoc setup\", \"install ClawDoc\", \"ClawDoc getting started\", \"set up ClawDoc skills\", \"ClawDoc install verification\"."
 ---
 
 # ClawDoc Onboarding

@@ -1,3 +1,8 @@
+---
+title: "Plugin Configuration"
+summary: "Reference doc: Plugin Configuration"
+---
+
 # Plugin Configuration
 
 ## plugins entries
