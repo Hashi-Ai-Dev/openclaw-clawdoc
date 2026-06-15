@@ -1,6 +1,6 @@
 ---
 name: openclaw-plugins
-description: OpenClaw plugin system. Use when installing, configuring, debugging, or building plugins; understanding plugin slots, capability model, plugin manifest, SDK entry points, hook system, or plugin allow/deny. Triggers on: "plugin", "plugins install", "plugin slot", "plugin config", "extension", "plugin manifest", "plugin SDK", "channel plugin", "provider plugin", "tool plugin", "hook plugin", "building plugins", "plugin capability", "plugin allow list", "plugin shape", "ClawHub", "npm install", "plugin not loading", "plugin conflict", "disabled plugin", "plugin API", "openclaw plugins", "policy", "conformance", "openshell", "codex harness", "exec approvals", "memory wiki", "plugin slots".
+description: OpenClaw plugin system. Use when installing, configuring, debugging, or building plugins; understanding plugin slots, capability model, plugin manifest, SDK entry points, hook system, or plugin allow/deny. Triggers on: "plugin", "plugins install", "plugin slot", "plugin config", "extension", "plugin manifest", "plugin SDK", "channel plugin", "provider plugin", "tool plugin", "hook plugin", "building plugins", "plugin capability", "plugin allow list", "plugin shape", "ClawHub", "npm install", "plugin not loading", "plugin conflict", "disabled plugin", "plugin API", "openclaw plugins", "policy", "conformance", "openshell", "codex harness", "exec approvals", "memory wiki", "browser login", "context engine", "plugin slots".
 ---
 
 # OpenClaw Plugins

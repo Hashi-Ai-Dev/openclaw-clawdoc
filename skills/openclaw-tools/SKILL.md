@@ -1,6 +1,6 @@
 ---
 name: openclaw-tools
-description: OpenClaw tools reference. Use when explaining, configuring, or troubleshooting tools: exec, browser, cron, sessions, subagents, ACP, Lobster, slash commands, thinking, tool permissions, sandbox, loop detection, LLM task. Triggers on: "tools", "exec", "browser", "cron", "sessions", "subagent", "canvas", "message tool", "slash commands", "loop detection", "elevated", "exec approvals", "ACP", "thinking", "permissions", "webhook", "cron vs heartbeat", "clawflow", "code execution", "auth monitoring", "tool profile".
+description: OpenClaw tools reference. Use when explaining, configuring, or troubleshooting tools: exec, browser, cron, sessions, subagents, ACP, Lobster, slash commands, thinking, tool permissions, sandbox, loop detection, LLM task, search, media generation. Triggers on: "tools", "exec", "browser", "cron", "sessions", "subagent", "canvas", "message tool", "slash commands", "loop detection", "elevated", "exec approvals", "ACP", "thinking", "permissions", "webhook", "clawflow", "code execution", "auth monitoring", "tool profile", "brave search", "perplexity search", "exa search", "firecrawl", "minimax search", "image generation", "music generation", "video generation", "media tools", "creating skills", "btw", "steer".
 ---
 
 # OpenClaw Tools
