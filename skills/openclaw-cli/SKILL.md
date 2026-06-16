@@ -1,6 +1,6 @@
 ---
 name: openclaw-cli
-description: "OpenClaw CLI commands reference. Use when explaining openclaw commands: openclaw status, openclaw gateway, openclaw plugins, openclaw memory, openclaw agents, openclaw channels, openclaw config, openclaw sessions, openclaw cron, openclaw hooks, openclaw pairing, openclaw acp. Triggers on: \"openclaw CLI\", \"openclaw command\", \"openclaw status\", \"CLI\", \"command line\", \"openclaw hooks\", \"openclaw pairing\", \"policy\", \"conformance\", \"doctor lint\", \"taskflow\"."
+description: "OpenClaw CLI commands reference. Use when explaining openclaw commands: openclaw status, openclaw gateway, openclaw plugins, openclaw memory, openclaw agents, openclaw channels, openclaw config, openclaw sessions, openclaw cron, openclaw hooks, openclaw pairing, openclaw acp. Triggers on: \"openclaw CLI\", \"openclaw command\", \"openclaw status\", \"CLI\", \"command line\", \"openclaw hooks\", \"openclaw pairing\", \"policy\", \"conformance\", \"doctor lint\", \"taskflow\", \"troubleshooting\", \"automation troubleshooting\", \"automation\"."
 ---
 
 # OpenClaw CLI

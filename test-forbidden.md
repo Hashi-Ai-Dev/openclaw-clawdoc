@@ -1,1 +1,0 @@
-test MEMORY.md content
