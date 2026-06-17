@@ -15,7 +15,7 @@
   },
   "reference_docs_definition": {
     "description": "reference_docs = files under skills/**/references/**",
-    "reproducible_count": "git ls-files skills/ | grep 'references/' | wc -l = 536 (includes .mdx like railway.mdx)",
+    "reproducible_count": "git ls-files skills/ | grep 'references/' | wc -l = 542 (includes .mdx like railway.mdx)",
     "includes_mdx": "yes \u2014 includes *.mdx files such as railway.mdx"
   },
   "skills": {
