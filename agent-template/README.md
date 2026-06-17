@@ -1,6 +1,6 @@
 # ClawDoc — Standalone Agent
 
-**Version:** v1.6.18  
+**Version:** v1.6.20  
 **Tracked OpenClaw:** 2026.6.6  
 **Template:** agent-template/README.md
 
@@ -19,7 +19,7 @@ ClawDoc ships with 22 skills covering:
 - **Config** — Gateway config keys, secrets, retry, failover, model routing
 - **Memory** — builtin, QMD, Honcho, embeddings, active memory, dreaming
 - **Agents** — Multi-agent setup, bindings, sandbox, tool policies
-- **Channels** — Discord, Telegram, WhatsApp, Slack, Signal, and 18+ more
+- **Channels** — Discord, Telegram, WhatsApp, Slack, Signal, and 33+ more (38 total)
 - **Troubleshooting** — Diagnosis flows, error codes, common fixes
 - **Automation** — Cron, hooks, tasks, Task Flow
 - **CLI** — Every `openclaw` command with examples

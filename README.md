@@ -91,7 +91,7 @@ ClawDoc routes to the right skill, reads the reference docs, and gives you a pre
 | Config | All gateway config keys, defaults, secrets, retry, failover |
 | Memory | builtin / QMD / Honcho setup, embeddings, citations |
 | Agents | Multi-agent, bindings, sandbox, tool policies |
-| Channels | Discord, Telegram, WhatsApp, Slack, Signal, and 18+ more |
+| Channels | Discord, Telegram, WhatsApp, Slack, Signal, and 33+ more (38 total) |
 | Concepts | Architecture, session, compaction, streaming, queue |
 | Providers | 50+ model providers: OpenAI, Anthropic, Gemini, Bedrock, Ollama... |
 | CLI | Every openclaw command with examples |
