@@ -10,23 +10,25 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 ### Added
 - `CHANGELOG.md` — first curated changelog file (Keep-a-Changelog format)
 - README "Scope" section — explicit fences for what ClawDoc does and does not do
-- README "How ClawDoc routes requests" diagram — Mermaid flow showing master → area skill → reference docs → answer
+- README "How ClawDoc routes requests" diagram — Mermaid flow showing how `openclaw-master` routes questions to area skills and reference docs
 
 ### Changed
 - `SOUL.md` expanded with operating posture, routing flow, and scope fences; routing and citation discipline now part of the public persona
-- Install guides (`AGENT_INSTALL.md`, `SKILLS_INSTALL.md`), `QUICKSTART.md`, and `agent-template/README.md` bumped in lockstep with manifest — eliminates the v1.6.21 tag fix-up dance
+- Install guides (`AGENT_INSTALL.md`, `SKILLS_INSTALL.md`), `QUICKSTART.md`, and `agent-template/README.md` updated to match the release version
 
 ### Notes
-- Zero audit drift found on pre-pass: `routing_audit.py`, `claim_audit.py`, `metadata_audit.py`, `validate_repo.py`, `safety_scanner.py` all clean
 - No `tracked_openclaw_version` change — still 2026.6.8 (no OpenClaw sync in this release)
 
 ## [v1.6.24] — 2026-06-18
 
 ### Changed
-- Audit polish: 12 findings consolidated from a full 4-agent public-repo audit
-- 3 broken reference doc links fixed
-- 3 stale model references in examples corrected
-- Manifest consistency, README polish, install-guide "Try an example" block, scanner allowlist fix
+- Audit polish: 12 documentation issues fixed across the skill tree, manifest, scanner, and install guides
+- 3 broken reference doc links fixed (in `openclaw-cli/SKILL.md`, `openclaw-nodes/SKILL.md`, `openclaw-providers/SKILL.md`)
+- 3 example configs updated to the current default model (`install-verify.json`, `memory-builtin.json`, `multi-agent-discord.json`)
+- Manifest: added `IDENTITY.md`, `USER.md`, `TOOLS.md` to the public `allowed_paths` list in `CLAWDOC_MANIFEST.json`
+- Scanner: `scripts/safety_scanner.py` allow-list now includes the three root template files
+- README: provider count updated to match actual (`50+` → `60+`), new Contents section, link to `examples/README.md`, reworded channels line
+- Install guides (`AGENT_INSTALL.md`, `SKILLS_INSTALL.md`): added "Try an example" block with `openclaw config merge` command
 
 ## [v1.6.23] — 2026-06-17
 
@@ -46,10 +48,10 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 ## [v1.6.21] — 2026-06-17
 
 ### Fixed
-- Install guides + agent-template bumped in the same commit as the OpenClaw 2026.6.8 sync (eliminates the v1.6.20-era tag fix-up dance)
+- Install guides and agent-template version metadata updated in lockstep with the OpenClaw 2026.6.8 sync
 
 ### Added
-- 28 modified reference docs applied, 4 new docs added
+- 28 modified reference docs applied, 4 new docs added (25 docs deferred to v1.6.22)
 
 ## [v1.6.20] — 2026-06-16
 
@@ -80,7 +82,11 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 ## [v1.6.15] — 2026-06-15
 
 ### Changed
-- Skill routing maintenance pass — triggered by 19-day drift gap between v1.6.14 and v1.6.15; found and closed routing gaps
+- Skill routing maintenance pass — closed 30 routing gaps in skill descriptions across 8 `SKILL.md` files
+- Tracked OpenClaw version bump: 2026.5.26 → 2026.6.6 (no doc changes in this OpenClaw release)
+
+### Fixed
+- Reference doc count corrected to 561 in `CLAWDOC_MANIFEST.json` and the `README.md` badge (now includes `railway.mdx`; manifest and README count had not been updated since v1.6.14)
 
 ## [v1.6.14] — 2026-05-27
 
@@ -88,23 +94,71 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 - Processed all 4 deferred areas from the v2026.5.26 sync: `cli` (14), `gateway` (18 new), `plugins` (12+3), `tools` (11+1)
 - 55 references applied, 3 deferred (plugins: `codex-harness-reference`, `codex-harness`, `sdk-subpaths`)
 
-### Fixed
-- `.mdx` file undercount: `railway.mdx` was missed by `find -name "*.md"`; corrected formula in sync skills
-
 ## [v1.6.13] — 2026-05-27
 
 ### Added
-- OpenClaw v2026.5.26 sync: 5 new reference docs, 43 modified
+- OpenClaw v2026.5.26 sync: 5 new reference docs, 43 modified (4 areas deferred to v1.6.14)
 
 ## [v1.6.12] — 2026-05-24
 
 ### Added
-- OpenClaw v2026.5.22 sync: 3 new reference docs, 29 modified
+- OpenClaw v2026.5.22 sync: 3 new reference docs, 29 modified (6 areas deferred to v1.6.13)
 
 ## [v1.6.11] — 2026-05-22
 
 ### Changed
 - Skill routing audit: added missing trigger keywords
+
+## [v1.6.10] — 2026-05-22
+
+### Added
+- OpenClaw v2026.5.20 sync: 2 new reference docs, 27 modified (1 deferred)
+
+## [v1.6.9] — 2026-05-21
+
+### Added
+- OpenClaw v2026.5.19 sync: 58 modified reference docs (1 deferred — `install/podman`, no matching skill ref)
+
+## [v1.6.8] — 2026-05-19
+
+### Changed
+- Version bump and asset refresh
+
+## [v1.6.7] — 2026-05-19
+
+### Fixed
+- `clawdoc_version` corrected from `v1.6.6b` to `v1.6.7` (the previous version string was not valid SemVer)
+
+## [v1.6.6] — 2026-05-19
+
+### Added
+- OpenClaw v2026.5.18 sync (final batch): 8 remaining deferred reference docs applied (channels, concepts, config, cli)
+
+## [v1.6.5] — 2026-05-19
+
+### Added
+- OpenClaw v2026.5.18 sync (main batch): 70 modified reference docs applied
+
+## [v1.6.4] — 2026-05-19
+
+### Added
+- OpenClaw v2026.5.18 sync (safe batch): 3 modified reference docs applied
+
+## [v1.6.3] — 2026-05-19
+
+### Changed
+- `tracked_openclaw_version` → 2026.5.18; `ref_docs` → 523 in `CLAWDOC_MANIFEST.json`
+
+## [v1.6.2] — 2026-05-15
+
+### Fixed
+- `README.md` reference doc count badge synced to 520
+- Linked 3 orphan install reference docs from `SKILL.md` descriptions
+
+## [v1.6.1] — 2026-05-15
+
+### Changed
+- Maintainer hardening: agent-facing docs policy added
 
 ## [v1.6.0] — 2026-05-08
 
@@ -120,7 +174,6 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 
 ### Fixed
 - Reference docs count corrected from stale 508 → 487 (now includes `.mdx` files)
-- `openclaw-sync` skill reference doc count formula corrected
 
 ## [v1.5.x and earlier] — 2026-04 to 2026-05
 
@@ -130,8 +183,7 @@ Rapid iteration period: 28 releases from v1.0 through v1.5.14 covering:
 - Skills expansion to 22 routable skills
 - Reference doc growth from 90 → 487+
 - `SKILL.md` restructuring with trigger keywords
-- OpenClaw sync pipeline (`openclaw-sync` skill)
-- Multiple OpenClaw version syncs (2026.4.x → 2026.5.x)
+- Multiple OpenClaw upstream version syncs (2026.4.x → 2026.5.x)
 - Quickstart guide, examples expansion (4 → 12)
 - Onboarding skill (`clawdoc-onboarding`)
 - Install reference docs and platform guides
