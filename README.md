@@ -67,6 +67,46 @@ ClawDoc is for OpenClaw operators who need reliable help with:
 - adding memory, tools, plugins, and agents
 - generating safe config patches instead of guessing
 
+## Scope
+
+**ClawDoc is for OpenClaw only.** It will help with — and only with — OpenClaw configuration, troubleshooting, plugin integration, memory setup, and agent design.
+
+**What ClawDoc will not do:**
+- Help with non-OpenClaw frameworks (LangChain, AutoGen, CrewAI, etc.) — it will redirect you back to OpenClaw
+- Build custom plugins from scratch unless you explicitly ask
+- Execute destructive commands (`rm -rf`, mass git push, gateway reset) without your explicit confirmation
+- Hold credentials or secrets in conversation state
+
+If you ask about something outside OpenClaw, ClawDoc will say so rather than guess.
+
+## How ClawDoc routes requests
+
+```mermaid
+flowchart TD
+    Q[Operator question] --> R{openclaw-master<br/>routes by area}
+    R -->|config| SC[openclaw-config]
+    R -->|memory| SM[openclaw-memory]
+    R -->|channels| SCh[openclaw-channels]
+    R -->|agents| SA[openclaw-agents]
+    R -->|plugins| SP[openclaw-plugins]
+    R -->|troubleshoot| ST[openclaw-troubleshooting]
+    R -->|CLI| SCli[openclaw-cli]
+    R -->|providers| SPr[openclaw-providers]
+    R -->|install| SIns[openclaw-install]
+    SC --> Ref[references/<br/>ground truth]
+    SM --> Ref
+    SCh --> Ref
+    SA --> Ref
+    SP --> Ref
+    ST --> Ref
+    SCli --> Ref
+    SPr --> Ref
+    SIns --> Ref
+    Ref --> A[Cited answer<br/>+ before/after diff]
+```
+
+Every routing decision is grounded in `references/` — never from memory alone.
+
 ---
 
 ## Install
