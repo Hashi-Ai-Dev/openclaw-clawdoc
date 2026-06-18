@@ -99,8 +99,8 @@ For a high-level overview, see [Onboarding (CLI)](/start/wizard).
     - [Google Chat](/channels/googlechat): service account JSON + webhook audience.
     - [Mattermost](/channels/mattermost) (plugin): bot token + base URL.
     - [Signal](/channels/signal): optional `signal-cli` install + account config.
-    - [BlueBubbles](/channels/bluebubbles): **recommended for iMessage**; server URL + password + webhook.
-    - [iMessage](/channels/imessage): legacy `imsg` CLI path + DB access.
+    - [iMessage](/channels/imessage): **recommended for iMessage**; native `imsg` CLI on a signed-in macOS Messages host.
+    - [BlueBubbles](/channels/bluebubbles): **removed in current OpenClaw**; use [iMessage](/channels/imessage) instead. See [Coming from BlueBubbles](/channels/imessage-from-bluebubbles) for migration.
     - DM security: default is pairing. First DM sends a code; approve via `openclaw pairing approve <channel> <code>` or use allowlists.
   </Step>
   <Step title="Web search">
@@ -240,5 +240,5 @@ will prompt to install it (npm or a local path) before it can be configured.
 - Onboarding overview: [Onboarding (CLI)](/start/wizard)
 - macOS app onboarding: [Onboarding](/start/onboarding)
 - Config reference: [Gateway configuration](/gateway/configuration)
-- Providers: [WhatsApp](/channels/whatsapp), [Telegram](/channels/telegram), [Discord](/channels/discord), [Google Chat](/channels/googlechat), [Signal](/channels/signal), [BlueBubbles](/channels/bluebubbles) (iMessage), [iMessage](/channels/imessage) (legacy)
+- Providers: [WhatsApp](/channels/whatsapp), [Telegram](/channels/telegram), [Discord](/channels/discord), [Google Chat](/channels/googlechat), [Signal](/channels/signal), [iMessage](/channels/imessage), [BlueBubbles](/channels/bluebubbles) (removed — see [Coming from BlueBubbles](/channels/imessage-from-bluebubbles))
 - Skills: [Skills](/tools/skills), [Skills config](/tools/skills-config)

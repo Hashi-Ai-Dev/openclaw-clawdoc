@@ -5,6 +5,18 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [v1.6.26] — 2026-06-18
+
+### Fixed
+- **BlueBubbles / iMessage recommendation inversion** (3 docs disagreed; user-facing bug). Our own `imessage.md` already documented the BlueBubbles removal, but `channel-index.md` and `references/wizard.md` still recommended BlueBubbles, and `bluebubbles.md` was framed as a setup guide rather than a migration-from guide.
+  - `skills/openclaw-channels/references/channel-index.md` — BlueBubbles moved to a "Removed channels (migration-only)" section; iMessage promoted to "Recommended for iMessage"
+  - `skills/openclaw-channels/references/bluebubbles.md` — converted to a "Coming from BlueBubbles" migration-from guide with a config-translation table (channels.bluebubbles.\* → channels.imessage.\*) and step-by-step cutover
+  - `skills/openclaw-reference/references/wizard.md` — channel list and provider-list fixed to recommend iMessage, mark BlueBubbles as removed
+
+### Notes
+- No new reference docs, no OpenClaw sync. Reference doc count remains 542; tracked OpenClaw version remains 2026.6.8.
+- This is a hotfix ahead of v1.7.0 (Content Freshness + Drift Prevention); v1.6.26 + v1.7.0 form the two-step path the audit (2026-06-18) recommended.
+
 ## [v1.6.25] — 2026-06-18
 
 ### Added

@@ -1,43 +1,52 @@
 ---
-summary: "iMessage via BlueBubbles macOS server (REST send/receive, typing, reactions, pairing, advanced actions)."
+summary: "Migration guide: BlueBubbles was removed from current OpenClaw. iMessage is now supported exclusively through the native imsg CLI."
 read_when:
-  - Setting up BlueBubbles channel
-  - Troubleshooting webhook pairing
-  - Configuring iMessage on macOS
-title: "BlueBubbles"
-sidebarTitle: "BlueBubbles"
+  - Migrating an existing BlueBubbles config to imessage
+  - Troubleshooting a legacy BlueBubbles setup
+title: "Coming from BlueBubbles"
+sidebarTitle: "Coming from BlueBubbles"
 ---
 
-Status: bundled plugin that talks to the BlueBubbles macOS server over HTTP. **Recommended for iMessage integration** due to its richer API and easier setup compared to the legacy imsg channel.
+<Warning>
+BlueBubbles support was removed in current OpenClaw. `channels.bluebubbles` is no longer a supported runtime config surface. Use `channels.imessage` (the native `imsg` CLI) for iMessage integration.
+</Warning>
 
-<Note>
-Current OpenClaw releases bundle BlueBubbles, so normal packaged builds do not need a separate `openclaw plugins install` step.
-</Note>
+This page exists to help you migrate an existing BlueBubbles setup. **For new iMessage deployments, follow [/channels/imessage](/channels/imessage) instead.**
 
-## Overview
+## Migration summary
 
-- Runs on macOS via the BlueBubbles helper app ([bluebubbles.app](https://bluebubbles.app)).
-- Recommended/tested: macOS Sequoia (15). macOS Tahoe (26) works; edit is currently broken on Tahoe, and group icon updates may report success but not sync.
-- OpenClaw talks to it through its REST API (`GET /api/v1/ping`, `POST /message/text`, `POST /chat/:id/*`).
-- Incoming messages arrive via webhooks; outgoing replies, typing indicators, read receipts, and tapbacks are REST calls.
-- Attachments and stickers are ingested as inbound media (and surfaced to the agent when possible).
-- Auto-TTS replies that synthesize MP3 or CAF audio are delivered as iMessage voice memo bubbles instead of plain file attachments.
-- Pairing/allowlist works the same way as other channels (`/channels/pairing` etc) with `channels.bluebubbles.allowFrom` + pairing codes.
-- Reactions are surfaced as system events just like Slack/Telegram so agents can "mention" them before replying.
-- Advanced features: edit, unsend, reply threading, message effects, group management.
+| Old (BlueBubbles) | New (imessage) | Notes |
+|---|---|---|
+| `channels.bluebubbles.serverUrl` | `channels.imessage.cliPath` (default `imsg`) | BlueBubbles REST URL is no longer used |
+| `channels.bluebubbles.password` | (use SSH wrapper for remote Mac) | Web password is no longer used |
+| `channels.bluebubbles.allowFrom` | `channels.imessage.allowFrom` | Same pairing/allowlist semantics |
+| `channels.bluebubbles.accounts.*.password` | (one global imsg setup) | Multi-account BlueBubbles not supported on imsg |
+| Webhook pairing (`/api/v1/webhook`) | `imsg rpc` over stdio (no port) | No separate webhook server needed |
+| macOS BlueBubbles helper app | Built-in macOS Messages + `imsg` | No helper app install needed |
 
-## Quick start
+## Step-by-step cutover
 
-<Steps>
-  <Step title="Install BlueBubbles">
-    Install the BlueBubbles server on your Mac (follow the instructions at [bluebubbles.app/install](https://bluebubbles.app/install)).
-  </Step>
-  <Step title="Enable the web API">
-    In the BlueBubbles config, enable the web API and set a password.
-  </Step>
-  <Step title="Configure OpenClaw">
-    Run `openclaw onboard` and select BlueBubbles, or configure manually:
+1. **Stop the BlueBubbles helper app** on your Mac. You can leave the server installed; OpenClaw will not connect to it.
+2. **Install `imsg`** on the Mac that hosts your Messages account. `imsg` ships as a standalone CLI; install with `brew install imsg` (or follow the upstream install instructions).
+3. **Confirm the Mac Messages account is signed in.** `imsg` requires a logged-in Messages session.
+4. **Replace your `channels.bluebubbles` block** in `~/.openclaw/openclaw.json` with the `channels.imessage` block (see [/channels/imessage](/channels/imessage) for the exact schema).
+5. **If your Gateway runs on Linux or Windows**, configure `channels.imessage.cliPath` to point at an SSH wrapper that runs `imsg` on the Mac. See [Remote Mac over SSH](/channels/imessage#remote-mac-over-ssh).
+6. **Restart the Gateway** (`openclaw gateway restart`).
+7. **Re-pair your DMs.** `channels.imessage` DMs default to pairing mode; approve new codes via `openclaw pairing approve imessage <code>`.
 
+## Rollback (if you must stay on BlueBubbles)
+
+There is no supported rollback path on current OpenClaw. The `channels.bluebubbles` config surface is rejected by the config validator. If you depend on a feature that imsg does not provide, pin to an older OpenClaw release and keep your existing BlueBubbles config.
+
+## Why BlueBubbles was removed
+
+Upstream OpenClaw deprecated BlueBubbles in favor of the native `imsg` CLI to reduce the surface area (one less macOS helper app to install, one less webhook server to expose, no separate authentication layer). The `imsg` path also avoids the BlueBubbles-specific macOS Tahoe compatibility issues that were the most common support ticket.
+
+## Reference
+
+- [/channels/imessage](/channels/imessage) — current iMessage setup
+- [BlueBubbles removal announcement](/announcements/bluebubbles-imessage) — short version of this migration
+- [Channels index](/channels/channel-index) — full list of supported channels
     ```json5
     {
       channels: {

@@ -13,11 +13,10 @@ Text is supported everywhere; media and reactions vary by channel.
 
 ## Supported channels
 
-- [BlueBubbles](/channels/bluebubbles) — **Recommended for iMessage**; uses the BlueBubbles macOS server REST API with full feature support (bundled plugin; edit, unsend, effects, reactions, group management — edit currently broken on macOS 26 Tahoe).
+- [iMessage](/channels/imessage) — **Recommended for iMessage**; native external CLI integration via `imsg` (JSON-RPC over stdio) with private API actions for replies, tapbacks, effects, attachments, and group management. Requires a signed-in macOS Messages host.
 - [Discord](/channels/discord) — Discord Bot API + Gateway; supports servers, channels, and DMs.
 - [Feishu](/channels/feishu) — Feishu/Lark bot via WebSocket (bundled plugin).
 - [Google Chat](/channels/googlechat) — Google Chat API app via HTTP webhook.
-- [iMessage (legacy)](/channels/imessage) — Legacy macOS integration via imsg CLI (deprecated, use BlueBubbles for new setups).
 - [IRC](/channels/irc) — Classic IRC servers; channels + DMs with pairing/allowlist controls.
 - [LINE](/channels/line) — LINE Messaging API bot (bundled plugin).
 - [Matrix](/channels/matrix) — Matrix protocol (bundled plugin).
@@ -38,6 +37,10 @@ Text is supported everywhere; media and reactions vary by channel.
 - [WhatsApp](/channels/whatsapp) — Most popular; uses Baileys and requires QR pairing.
 - [Zalo](/channels/zalo) — Zalo Bot API; Vietnam's popular messenger (bundled plugin).
 - [Zalo Personal](/channels/zalouser) — Zalo personal account via QR login (bundled plugin).
+
+## Removed channels (migration-only)
+
+- [BlueBubbles](/channels/bluebubbles) — **Removed in current OpenClaw.** BlueBubbles was the recommended iMessage path on older OpenClaw releases; current OpenClaw supports iMessage exclusively through the native `imsg` CLI. If you have a `channels.bluebubbles` config, migrate to `channels.imessage`. See [Coming from BlueBubbles](/channels/imessage-from-bluebubbles) for the config translation table and step-by-step cutover, or [/channels/imessage](/channels/imessage) for the current setup.
 
 ## Notes
 

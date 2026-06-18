@@ -562,9 +562,11 @@ When Mattermost native commands are enabled:
 - `channels.signal.configWrites`: allow or deny Signal-initiated config writes.
 - Optional `channels.signal.defaultAccount` overrides default account selection when it matches a configured account id.
 
-### BlueBubbles
+### iMessage (recommended) and BlueBubbles (removed)
 
-BlueBubbles is the recommended iMessage path (plugin-backed, configured under `channels.bluebubbles`).
+For current OpenClaw releases, use the **iMessage** channel (native `imsg` CLI) — see [iMessage setup](/channels/imessage) and the [iMessage config keys](/channels/imessage) page for the full schema.
+
+BlueBubbles support was removed. `channels.bluebubbles` is no longer a supported runtime config surface. To migrate an existing BlueBubbles setup, see [Coming from BlueBubbles](/channels/imessage-from-bluebubbles) for the config-translation table and step-by-step cutover.
 
 ```json5
 {
