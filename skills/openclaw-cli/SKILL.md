@@ -121,6 +121,6 @@ openclaw logs --lines 100   # Last 100 log lines
 
 ## References
 
-- `references/cli-commands.md` — detailed CLI reference
+- `references/index.md` — detailed CLI reference
 - `references/cron-jobs.md` — full cron docs
 - `references/hooks.md` — hook system + writing hooks

@@ -60,5 +60,4 @@ openclaw devices approve <requestId>
 - `references/voicewake.md` — VoiceWake setup and commands
 - `references/audio.md` — audio input/output on nodes
 - `references/talk.md` — talk commands
-- `references/camera.md` — camera and video
 - `references/media-understanding.md` — image/video understanding on nodes

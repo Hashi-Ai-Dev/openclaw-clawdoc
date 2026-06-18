@@ -25,7 +25,7 @@ For a dedicated standalone agent with its own identity, see [AGENT_INSTALL.md](.
 git clone https://github.com/Hashi-Ai-Dev/openclaw-clawdoc.git /tmp/openclaw-clawdoc
 
 # Stable install (recommended for production):
-cd /tmp/openclaw-clawdoc && git checkout v1.6.23 && cd ..
+cd /tmp/openclaw-clawdoc && git checkout v1.6.24 && cd ..
 
 # Bleeding-edge (may include unreleased changes — use at your own risk):
 # cd /tmp/openclaw-clawdoc && git checkout master
@@ -144,3 +144,12 @@ openclaw gateway status
 
 **Want to switch to Mode 1 later?**
 See [AGENT_INSTALL.md](./AGENT_INSTALL.md) — Mode 1 and Mode 2 are independent. You can run both simultaneously with different agents.
+## Try an example
+
+Validate the install by applying one of the ready-to-use example configs:
+
+```bash
+openclaw config merge examples/install-verify.json && openclaw gateway restart
+```
+
+See [examples/README.md](./examples/README.md) for the full list (12 examples covering Discord, Telegram, memory backends, multi-agent setups, and more).

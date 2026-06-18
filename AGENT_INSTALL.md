@@ -44,7 +44,7 @@ You should see `claw-doc` in the list with `Routing: default (no explicit rules)
 git clone https://github.com/Hashi-Ai-Dev/openclaw-clawdoc.git /tmp/openclaw-clawdoc
 
 # Stable install (recommended for production):
-cd /tmp/openclaw-clawdoc && git checkout v1.6.23 && cd ..
+cd /tmp/openclaw-clawdoc && git checkout v1.6.24 && cd ..
 
 # Bleeding-edge (may include unreleased changes — use at your own risk):
 # cd /tmp/openclaw-clawdoc && git checkout master
@@ -122,7 +122,7 @@ ClawDoc should route to `openclaw-memory`, read the reference docs, and return a
 
 ```bash
 cd /tmp/openclaw-clawdoc && git fetch --tags
-git checkout v1.6.23
+git checkout v1.6.24
 cp -r /tmp/openclaw-clawdoc/skills/* /home/user/.openclaw/agents/claw-doc/skills/
 cp /tmp/openclaw-clawdoc/SOUL.md /home/user/.openclaw/agents/claw-doc/SOUL.md
 openclaw skills check --agent claw-doc
@@ -168,3 +168,12 @@ openclaw skills check --agent claw-doc --json
 openclaw agents delete claw-doc --force
 # Then re-run from Step 1
 ```
+## Try an example
+
+Validate the install by applying one of the ready-to-use example configs:
+
+```bash
+openclaw config merge examples/install-verify.json && openclaw gateway restart
+```
+
+See [examples/README.md](./examples/README.md) for the full list (12 examples covering Discord, Telegram, memory backends, multi-agent setups, and more).

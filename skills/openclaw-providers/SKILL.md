@@ -40,7 +40,7 @@ agents: {
 | LM Studio | Local | ❌ |
 | vLLM / SGLang | API key | ❌ |
 
-See `references/providers/index.md` for full 50+ provider list.
+See `references/index.md` for full 50+ provider list.
 
 ## Model failover (two-stage)
 
@@ -87,7 +87,7 @@ Direct from provider API (not estimates). Supported: **Anthropic OAuth**, **GitH
 
 ## References
 
-- `references/providers/index.md` — full 50+ provider list
+- `references/index.md` — full 50+ provider list
 - `references/model-failover.md` — failover + billing backoff
 - `references/anthropic.md`, `references/google.md`, `references/openai.md`
 - `references/bedrock.md`, `references/ollama.md`, `references/openrouter.md`

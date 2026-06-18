@@ -15,6 +15,22 @@
 
 ---
 
+## Contents
+
+- [What is ClawDoc?](#what-is-clawdoc)
+- [Which install mode?](#which-install-mode)
+- [Who is this for?](#who-is-this-for)
+- [Install](#install)
+- [Use it](#use-it)
+- [Reference docs](#reference-docs)
+- [Skill tree](#skill-tree)
+- [Ready-to-use examples](#ready-to-use-examples)
+- [Community](#community)
+- [For contributors](#for-contributors)
+- [Operating principles](#operating-principles)
+
+---
+
 ## What is ClawDoc?
 
 ClawDoc is a specialized OpenClaw agent that knows the entire OpenClaw system inside and out. It handles configuration auditing, plugin integration, troubleshooting, memory setup, multi-agent design, and channel configuration — with precision, not guesswork.
@@ -93,7 +109,7 @@ ClawDoc routes to the right skill, reads the reference docs, and gives you a pre
 | Agents | Multi-agent, bindings, sandbox, tool policies |
 | Channels | Discord, Telegram, WhatsApp, Slack, Signal, and 33+ more (38 total) |
 | Concepts | Architecture, session, compaction, streaming, queue |
-| Providers | 50+ model providers: OpenAI, Anthropic, Gemini, Bedrock, Ollama... |
+| Providers | 60+ model providers: OpenAI, Anthropic, Gemini, Bedrock, Ollama... |
 | CLI | Every openclaw command with examples |
 | Troubleshooting | Error codes, diagnostic flows, common fixes |
 
@@ -108,7 +124,7 @@ ClawDoc routes to the right skill, reads the reference docs, and gives you a pre
 | `openclaw-config` | Gateway config reference — all keys, all patterns |
 | `openclaw-memory` | Memory backends: builtin, QMD, Honcho |
 | `openclaw-agents` | Multi-agent, bindings, sandbox, tool policies |
-| `openclaw-channels` | 22+ channel types: Discord, Telegram, WhatsApp, Slack... |
+| `openclaw-channels` | Discord, Telegram, WhatsApp, Slack, Signal — and 33+ more (38 total) |
 
 ### Operations
 | Skill | What it does |

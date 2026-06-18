@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "schema_version": "1.0",
-  "clawdoc_version": "v1.6.23",
+  "clawdoc_version": "v1.6.24",
   "tracked_openclaw_version": "2026.6.8",
   "description": "Machine-readable manifest of the ClawDoc public repository contents. ClawDoc is a dual-mode OpenClaw system doctor distribution supporting two install modes: Mode 1 (persistent dedicated agent) and Mode 2 (skills-only into an existing agent).",
   "install_modes_supported": [
@@ -74,17 +74,17 @@
       "CODE_OF_CONDUCT.md",
       "LICENSE",
       "AUDIT.md",
-      "TROUBLESHOOTING.md"
+      "TROUBLESHOOTING.md",
+      "IDENTITY.md",
+      "USER.md",
+      "TOOLS.md"
     ],
     "blocked_by_default": [
       "MEMORY.md",
       "HEARTBEAT.md",
-      "USER.md",
-      "IDENTITY.md",
-      "TOOLS.md",
       "AGENTS.md"
     ],
-    "note": "Root-level USER.md, IDENTITY.md, TOOLS.md, HEARTBEAT.md, MEMORY.md, AGENTS.md are always forbidden unless explicitly listed above. Root-level SOUL.md is allowed only if it is the public ClawDoc persona already tracked in origin/master. A root-level SOUL.md that contains a private/personal runtime marker is forbidden and must not appear in the public repo."
+    "note": "Root-level USER.md, IDENTITY.md, TOOLS.md, HEARTBEAT.md, MEMORY.md, AGENTS.md are always forbidden unless explicitly listed above. Root-level SOUL.md is allowed only if it is the public ClawDoc persona already tracked in origin/master. A root-level SOUL.md that contains a private/personal runtime marker is forbidden and must not appear in the public repo. As of v1.6.24, IDENTITY.md, USER.md, and TOOLS.md are explicitly allowed at root \u2014 they hold the public ClawDoc template copies for the install contract."
   },
   "forbidden_private_runtime": {
     "description": "These files/directories are private runtime state and must never appear in the public repo at any path.",

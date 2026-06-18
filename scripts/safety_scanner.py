@@ -91,6 +91,10 @@ ALLOWED_PATHS = {
     "TROUBLESHOOTING.md",
     # root-level SOUL.md allowed only if it is the public ClawDoc persona
     "SOUL.md",
+    # root-level IDENTITY/USER/TOOLS: public ClawDoc template copies (v1.6.24)
+    "IDENTITY.md",
+    "USER.md",
+    "TOOLS.md",
 }
 
 # ---------------------------------------------------------------------------

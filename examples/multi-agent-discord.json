@@ -15,7 +15,7 @@
         "workspace": "~/.openclaw/workspace-coding",
         "name": "Coding Agent",
         "model": {
-          "primary": "minimax/MiniMax-M2.7"
+          "primary": "minimax/MiniMax-M3"
         }
       }
     ]
