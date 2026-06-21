@@ -50,20 +50,12 @@ FORBIDDEN_DIRNAMES = {
     ".openclaw",
 }
 
-# Private clawdoc-* skills that must not appear in the public repo.
-# clawdoc-onboarding is explicitly allowed (already public and intended for OSS).
-FORBIDDEN_CLAWDOC_SKILLS = {
-    "clawdoc-update",
-    "clawdoc-release-manager",
-    "clawdoc-repo-manager",
-    "clawdoc-m27-loop",
-    "clawdoc-effectiveness",
-    "clawdoc-doc-auditor",
-    "clawdoc-doc-reviewer",
-    "clawdoc-oss-reviewer",
-    "clawdoc-org-manager",
-    "clawdoc-fb-post",
-    "clawdoc-commit-sanitizer",
+# Private clawdoc-* skills must not appear in the public repo.
+# Use an ALLOWLIST, not a blocklist, so the scanner does not enumerate
+# internal skill names in this public file (would be a recon disclosure).
+# To make a new clawdoc-* skill public: add its slug here AND to MEMORY.md.
+PUBLIC_CLAWDOC_SKILLS = {
+    "clawdoc-onboarding",   # the only public clawdoc-* skill today
 }
 
 # ---------------------------------------------------------------------------
@@ -214,8 +206,8 @@ def check_blocklist(repo_root: Path) -> list[str]:
 
         if "clawdoc-" in name and len(rel.parts) >= 2 and rel.parts[0] == "skills":
             skill_slug = rel.parts[1]
-            if skill_slug in FORBIDDEN_CLAWDOC_SKILLS:
-                violations.append(f"forbidden private clawdoc-* skill found: skills/{skill_slug}/")
+            if skill_slug not in PUBLIC_CLAWDOC_SKILLS:
+                violations.append(f"non-public clawdoc-* skill found: skills/{skill_slug}/")
 
     return violations
 
