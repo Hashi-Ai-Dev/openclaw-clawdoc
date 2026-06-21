@@ -41,6 +41,7 @@ FORBIDDEN_FILENAMES = {
     "IDENTITY.md",     # will be filtered by path check below
     "TOOLS.md",        # will be filtered by path check below
     "SOUL.md",         # will be filtered by path check below
+    "CLAWDOC_DOC_INDEX.json",  # workspace-internal doc index, never public
 }
 
 # Directory names that are always forbidden (private runtime containers)
@@ -48,6 +49,7 @@ FORBIDDEN_DIRNAMES = {
     "memory",
     ".agents",
     ".openclaw",
+    "audit-output",    # workspace-internal pre-release ship reports + attachments
 }
 
 # Private clawdoc-* skills must not appear in the public repo.

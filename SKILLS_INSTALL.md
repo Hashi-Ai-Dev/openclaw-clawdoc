@@ -152,4 +152,4 @@ Validate the install by applying one of the ready-to-use example configs:
 openclaw config merge examples/install-verify.json && openclaw gateway restart
 ```
 
-See [examples/README.md](./examples/README.md) for the full list (12 examples covering Discord, Telegram, memory backends, multi-agent setups, and more).
+See [examples/README.md](./examples/README.md) for the full list (24 examples covering Discord, Telegram, Slack, MS Teams, WhatsApp, Signal, Matrix, iMessage-native, memory backends, multi-agent setups, and more).

@@ -34,10 +34,8 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 
 ### Notes
 - This release is a focused sync against OpenClaw 2026.6.9. It captures the new user-facing surfaces (Zalo ClawBot, Cohere externalized plugin, keyless Firecrawl, the Group bot identity rule, the new transcript-hygiene rule) and skips the 100+ small provider-doc upstream tweaks (those are content-preserving and re-checked in the next full sync).
-- Audit chain: 9/9 validators clean (0 HIGH, 6 MEDIUM all verified by design per `medium-findings-decisions.md`). Pre-Flight (safety, validate_repo, count_truth_check) all PASS.
+- Audit chain: 9/9 validators clean (0 HIGH, 6 MEDIUM all verified by design per the audit notes). Pre-Flight checks all PASS.
 - Manifest file_counts: skills 24 (unchanged), reference_docs 586 (+2 vs v1.7.0's 584), examples 24 (unchanged).
-
-## [v1.6.27] — 2026-06-18
 
 ## [v1.6.27] — 2026-06-18
 

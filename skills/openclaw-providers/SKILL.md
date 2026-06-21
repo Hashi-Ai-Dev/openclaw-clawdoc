@@ -1,11 +1,11 @@
 ---
 name: openclaw-providers
-description: "OpenClaw model providers. Use when configuring LLM providers (62 providers: OpenAI, Anthropic, Gemini, Bedrock, Ollama, DeepSeek, Groq, Together, Cerebras, xAI, Cohere, Deepgram, SenseAudio, Tencent, VolcEngine, and more), API keys, OAuth, auth profiles, model failover, API key rotation, billing disable backoff, and usage tracking. Triggers on: provider, model, API key, OAuth, Anthropic, OpenAI, Gemini, Bedrock, Ollama, failover, auth profile, billing disable, key rotation, Cohere, Deepgram, transcription, SenseAudio, speech to text, Tencent, VolcEngine, Doubao, voice provider, STT provider."
+description: "OpenClaw model providers. Use when configuring LLM providers (59 providers tracked: OpenAI, Anthropic, Gemini, Bedrock, Ollama, DeepSeek, Groq, Together, Cerebras, xAI, Cohere, Deepgram, SenseAudio, Tencent, VolcEngine, and more), API keys, OAuth, auth profiles, model failover, API key rotation, billing disable backoff, and usage tracking. Triggers on: provider, model, API key, OAuth, Anthropic, OpenAI, Gemini, Bedrock, Ollama, failover, auth profile, billing disable, key rotation, Cohere, Deepgram, transcription, SenseAudio, speech to text, Tencent, VolcEngine, Doubao, voice provider, STT provider."
 ---
 
 # OpenClaw Model Providers
 
-62 providers tracked. Pick a provider, authenticate, set `agents.defaults.model.primary`.
+59 providers tracked (60+ individual provider files when counting per-provider framework files like `bedrock-mantle.md` and `azure-speech.md`). Pick a provider, authenticate, set `agents.defaults.model.primary`.
 
 ## Quick setup
 
@@ -87,8 +87,8 @@ Direct from provider API (not estimates). Supported: **Anthropic OAuth**, **GitH
 
 ## References
 
-- `references/index.md` — full 50+ provider list
-- `references/model-failover.md` — failover + billing backoff
+- `references/index.md` — full provider list
 - `references/anthropic.md`, `references/google.md`, `references/openai.md`
 - `references/bedrock.md`, `references/ollama.md`, `references/openrouter.md`
 - `references/cerebras.md` — Cerebras setup
+- For failover + billing backoff, see the **Failover + billing backoff** section above this list.

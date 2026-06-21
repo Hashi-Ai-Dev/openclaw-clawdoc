@@ -21,3 +21,7 @@ __pycache__/
 PRIVATE.md
 NOTES.md
 TODO.md
+
+# Workspace-internal artifacts (never commit to public repo)
+CLAWDOC_DOC_INDEX.json
+audit-output/

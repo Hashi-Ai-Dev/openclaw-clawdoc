@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "schema_version": "1.0",
-  "clawdoc_version": "v1.7.0",
-  "tracked_openclaw_version": "2026.6.8",
+  "clawdoc_version": "v1.7.2",
+  "tracked_openclaw_version": "2026.6.9",
   "description": "Machine-readable manifest of the ClawDoc public repository contents. ClawDoc is a dual-mode OpenClaw system doctor distribution supporting two install modes: Mode 1 (persistent dedicated agent) and Mode 2 (skills-only into an existing agent).",
   "install_modes_supported": [
     "persistent-agent",
@@ -13,11 +13,11 @@
     "reference_docs": 619,
     "examples": 24,
     "examples_readme": 1,
-    "plugin_subdirs": 1
+    "plugin_subdirs": 0
   },
   "reference_docs_definition": {
-    "description": "reference_docs = files under skills/**/references/**",
-    "reproducible_count": "find skills -type f \\( -name '*.md' -o -name '*.mdx' \\) -path '*/references/*' | wc -l = 584 (includes .mdx like railway.mdx; counts tracked + new untracked in working tree)",
+    "description": "reference_docs = files under skills/**/references/**, tracked in git (matches file_counts.reference_docs)",
+    "reproducible_count": "find skills -type f \\( -name '*.md' -o -name '*.mdx' \\) -path '*/references/*' | wc -l = 619 (includes .mdx such as railway.mdx; git ls-files skills/ | grep references/ gives the same result)",
     "includes_mdx": "yes \u2014 includes *.mdx files such as railway.mdx"
   },
   "skills": {
@@ -27,6 +27,7 @@
       "openclaw-agents",
       "openclaw-automation",
       "openclaw-channels",
+      "openclaw-clawhub",
       "openclaw-cli",
       "openclaw-concepts",
       "openclaw-config",
@@ -95,7 +96,9 @@
       "HEARTBEAT.md",
       "memory/",
       ".agents/",
-      ".openclaw/"
+      ".openclaw/",
+      "CLAWDOC_DOC_INDEX.json",
+      "audit-output/"
     ],
     "note": "Root-level SOUL.md is allowed only if it is the public ClawDoc persona (content matches origin/master tracking). USER.md, IDENTITY.md, TOOLS.md, and AGENTS.md at repo root are blocked by default \u2014 new public identity/user/tool templates should live under agent-template/, not repo root. The same filenames inside private directories (memory/, .agents/, .openclaw/) are private runtime and are forbidden."
   },
@@ -113,7 +116,7 @@
     "examples_must_parse": true,
     "no_private_runtime_files": true,
     "install_mode_documentation": "Both README.md and QUICKSTART.md must mention Mode 1 (persistent-agent) and Mode 2 (skills-only) install paths.",
-    "skill_count_accuracy": "README.md and QUICKSTART.md must not claim 22 or 23 skills. The correct count is 24 (22 openclaw-* + clawdoc-onboarding + openclaw-prose + openclaw-clawhub = 24 routable skills; openclaw-prose and openclaw-clawhub added in v1.7.0)."
+    "skill_count_accuracy": "README.md and QUICKSTART.md must not claim 22 or 23 skills. The correct count is 24 routable skills = 23 openclaw-* (21 pre-existing + openclaw-prose + openclaw-clawhub added in v1.7.0) + clawdoc-onboarding."
   },
   "version_tracks": {
     "description": "Two separate version tracks are maintained independently.",
