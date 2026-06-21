@@ -10,7 +10,7 @@
   ],
   "file_counts": {
     "skills": 24,
-    "reference_docs": 586,
+    "reference_docs": 619,
     "examples": 24,
     "examples_readme": 1,
     "plugin_subdirs": 1
@@ -194,6 +194,45 @@
       "skills/openclaw-reference/references/transcript-hygiene.md",
       "skills/openclaw-tools/references/firecrawl.md"
     ],
+    "tracked_openclaw": "2026.6.9"
+  },
+  "v1_7_2_additions": {
+    "new_ref_docs": [
+      "skills/openclaw-plugins/references/copilot.md",
+      "skills/openclaw-plugins/references/reference.md",
+      "skills/openclaw-plugins/references/arcee.md",
+      "skills/openclaw-plugins/references/cerebras.md",
+      "skills/openclaw-plugins/references/chutes.md",
+      "skills/openclaw-plugins/references/cloudflare-ai-gateway.md",
+      "skills/openclaw-plugins/references/codex.md",
+      "skills/openclaw-plugins/references/cohere.md",
+      "skills/openclaw-plugins/references/deepinfra.md",
+      "skills/openclaw-plugins/references/deepseek.md",
+      "skills/openclaw-plugins/references/diagnostics-otel.md",
+      "skills/openclaw-plugins/references/exa.md",
+      "skills/openclaw-plugins/references/firecrawl.md",
+      "skills/openclaw-plugins/references/gmi.md",
+      "skills/openclaw-plugins/references/gradium.md",
+      "skills/openclaw-plugins/references/groq.md",
+      "skills/openclaw-plugins/references/inworld.md",
+      "skills/openclaw-plugins/references/kilocode.md",
+      "skills/openclaw-plugins/references/kimi.md",
+      "skills/openclaw-plugins/references/perplexity.md",
+      "skills/openclaw-plugins/references/qa-lab.md",
+      "skills/openclaw-plugins/references/qianfan.md",
+      "skills/openclaw-plugins/references/qwen.md",
+      "skills/openclaw-plugins/references/stepfun.md",
+      "skills/openclaw-providers/references/gmi.md",
+      "skills/openclaw-providers/references/qwen-oauth.md",
+      "skills/openclaw-platforms/references/ios.md",
+      "skills/openclaw-gateway/references/pairing.md",
+      "skills/openclaw-gateway/references/security/audit-checks.md",
+      "skills/openclaw-concepts/references/refactor/database-first.md",
+      "skills/openclaw-concepts/references/date-time.md",
+      "skills/openclaw-reference/references/code-mode.md",
+      "skills/openclaw-reference/references/prompt-caching.md"
+    ],
+    "modified_ref_docs_count": 102,
     "tracked_openclaw": "2026.6.9"
   }
 }

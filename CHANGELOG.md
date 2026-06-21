@@ -5,6 +5,21 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [v1.7.2] — 2026-06-21
+
+### Added
+- **Tracked OpenClaw bumped 2026.6.8 → 2026.6.9.** Full sync of the 2026.6.9 doc surface.
+- **33 new reference docs** under `openclaw-plugins/references/` (24 per-provider plugin stubs), `openclaw-providers/references/` (`gmi`, `qwen-oauth`), `openclaw-platforms/references/ios`, `openclaw-gateway/references/{pairing,security/audit-checks}`, `openclaw-concepts/references/{date-time,refactor/database-first}`, and `openclaw-reference/references/{code-mode,prompt-caching}`.
+- New external surfaces documented: Zalo ClawBot (`zaloclawbot.md`), GitHub Copilot plugin (`copilot.md`), per-provider plugin registry (24 files under `plugins/reference/`), Codex Harness plugin (`codex.md` under `plugins/reference/`), OpenTelemetry plugin diagnostics (`diagnostics-otel.md`), QA Lab plugin (`qa-lab.md`).
+
+### Changed
+- **102 reference docs updated** to match OpenClaw 2026.6.9 content, across providers (24), tools (12), concepts (12), plugins (12), reference (11), gateway (11), cli (11), channels (6), platforms (3), nodes (2), help (2), automation (2).
+- Headline behavior updates: richer Telegram delivery (Group bot identity, `includeGroupHistoryContext`), agent recovery (retries, terminal outcomes, usage after compaction), Codex integration (GPT-5.3 Spark OAuth, automatic plugin approvals, remote-node `exec` as a dynamic tool), slimmer distribution (provider plugins ship as standalone npm releases, external channel plugins load at Gateway startup), Control UI (session workspace rail, extension health), iOS Watch controls, Android chat context, Codex Hosted Search, Firecrawl keyless `web_fetch`, transcript-hygiene incomplete-reasoning-only-turns rule, secrets audit improvements.
+
+### Notes
+- Reference doc count: 584 → 619. Skills and examples unchanged.
+- This is the full 2026.6.9 sync per the `clawdoc-update` pipeline; no deferred items remain.
+
 ## [v1.7.1] — 2026-06-21
 
 ### Added

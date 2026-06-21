@@ -64,30 +64,32 @@ Scan the terminal-rendered QR code using the Zalo mobile app, accept the Terms o
 openclaw gateway restart
 ```
 
+---
+
 ## How It Works
 
-Unlike the standard developer Zalo channel (which requires registering a Zalo Official Account and pasting static developer credentials), Zalo ClawBot is an **owner-bound personal assistant** using a shared official infrastructure:
+Unlike the standard developer Zalo channel which requires you to register your own Zalo Official Account (OA) and paste static developer credentials, Zalo ClawBot operates as an **owner-bound personal assistant** using a shared, official infrastructure:
 
-1. **Secure Onboarding:** The QR code resolves to a Zalo Mini App that binds a newly-provisioned, private bot under a shared official OA directly to your Zalo User ID.
-2. **Owner-Bound Privacy:** The bot is restricted to communicating only with its owner. Messages from other users are dropped at the platform level.
-3. **Official API path:** The plugin uses Zalo Bot Platform APIs (no browser or web-session automation).
+1. **Secure Onboarding:** The QR code resolves to a secure Zalo Mini App that binds a newly-provisioned, private bot under a shared official OA directly to your Zalo User ID.
+2. **Owner-Bound Privacy:** By design, the bot is restricted to communicating _only_ with its owner. Messages from other users are dropped at the platform level, making the connection private and secure.
+3. **Official API path:** The plugin uses Zalo Bot Platform APIs instead of
+   browser or web-session automation.
 
 ## Under the Hood
 
-The Zalo ClawBot plugin communicates with Zalo APIs via a persistent long-polling message loop:
+The Zalo ClawBot plugin communicates with Zalo APIs via a persistent long-polling message loop. To maintain a clean and lightweight runtime:
 
-- Long-poll connections use the `getUpdates` endpoint.
+- Long-poll connections utilize the `getUpdates` endpoint.
 - Webhooks are disabled by default for local desktop/terminal gateway runs.
-- Messages are processed client-side and mapped to your local agent runtime.
+- Messages are processed client-side and mapped directly to your local agent runtime.
 
-The external plugin manages bot credentials under the OpenClaw state directory. Treat that directory as sensitive and include it in your OpenClaw state access-control and backup policy.
+The external plugin manages bot credentials under the OpenClaw state directory.
+Treat that directory as sensitive and include it in the same access-control and
+backup policy as the rest of your OpenClaw state.
+
+---
 
 ## Troubleshooting
 
-- **QR Login Timeout:** The login token (`zbsk`) expires after 5 minutes. If the QR expires before you scan it, re-run the login command to generate a new one.
-- **Gateway Fails to Load:** OpenClaw must be `2026.4.10` or higher. Older versions do not support the external npm-plugin installation ledger.
-
-## Related
-
-- `zalo.md` — the standard developer Zalo channel (different scope: registered OA, public bots)
-- `zalouser.md` — Zalo user-style account binding
+- **QR Login Timeout:** The login token (`zbsk`) expires after 5 minutes for security reasons. If the QR code expires before you scan it, simply rerun the login command to generate a new one.
+- **Gateway Fails to Load:** Ensure your OpenClaw host version is `2026.4.10` or higher. Older versions do not support the external npm-plugin installation ledger.
