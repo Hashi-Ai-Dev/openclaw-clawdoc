@@ -6,6 +6,10 @@ read_when:
 title: "DigitalOcean (platform)"
 ---
 
+<Note>
+This guide has moved. The canonical DigitalOcean install guide is at [Install: DigitalOcean](/install/digitalocean). This page is retained as a full reference because it contains cost comparisons, persistence notes, and the 1GB-RAM optimization playbook.
+</Note>
+
 # OpenClaw on DigitalOcean
 
 ## Goal

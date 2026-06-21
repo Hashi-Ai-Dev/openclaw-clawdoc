@@ -1,0 +1,16 @@
+{
+  "channels": {
+    "sms": {
+      "accounts": {
+        "default": {
+          "provider": "twilio",
+          "accountSid": "YOUR_TWILIO_ACCOUNT_SID",
+          "authToken": "YOUR_TWILIO_AUTH_TOKEN",
+          "fromNumber": "+15555550100",
+          "dmPolicy": "pairing",
+          "allowFrom": ["+15555550199"]
+        }
+      }
+    }
+  }
+}

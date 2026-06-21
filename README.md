@@ -3,12 +3,19 @@
 **The OpenClaw knowledge-base agent for config audits, troubleshooting, and grounded system fixes.**
 
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-2026.6.8-blue?style=flat-square)](https://github.com/openclaw/openclaw)
-[![Skills](https://img.shields.io/badge/Skills-22-orange?style=flat-square)](#skill-tree)
-[![Reference Docs](https://img.shields.io/badge/Reference_Docs-542-green?style=flat-square)](#reference-docs)
+[![Skills](https://img.shields.io/badge/Skills-24-orange?style=flat-square)](#skill-tree)
+[![Reference Docs](https://img.shields.io/badge/Reference_Docs-584-green?style=flat-square)](#reference-docs)
 [![License](https://img.shields.io/badge/License-MIT-success?style=flat-square)](LICENSE)
 
 <p align="center">
   <img src="assets/clawdoc-banner.png" alt="ClawDoc Banner" />
+</p>
+
+<p align="center">
+  <a href="https://github.com/Hashi-Ai-Dev/openclaw-clawdoc/releases/tag/v1.7.0"><img alt="v1.7.0 — Content Freshness" src="https://img.shields.io/badge/v1.7.0%E2%80%94Content_Freshness-success?style=flat-square"></a>
+  <a href="#skill-tree"><img alt="24 skills" src="https://img.shields.io/badge/24_skills-orange?style=flat-square"></a>
+  <a href="#reference-docs"><img alt="584 reference docs" src="https://img.shields.io/badge/584_reference_docs-green?style=flat-square"></a>
+  <a href="#ready-to-use-examples"><img alt="24 examples" src="https://img.shields.io/badge/24_examples-blueviolet?style=flat-square"></a>
 </p>
 
 🧠 **Same idea, different agent:** [HermitDoc](https://github.com/Hashi-Ai-Dev/HermitDoc) — the ClawDoc philosophy applied to Hermes Agent
@@ -117,7 +124,7 @@ Every routing decision is grounded in `references/` — never from memory alone.
 "Install ClawDoc from https://github.com/Hashi-Ai-Dev/openclaw-clawdoc"
 ```
 
-Your agent reads the repo, picks up all 22 skills, and is ready to help. That's it.
+Your agent reads the repo, picks up all 24 skills, and is ready to help. That's it.
 
 **Manual install — choose your mode:**
 
@@ -140,7 +147,7 @@ ClawDoc routes to the right skill, reads the reference docs, and gives you a pre
 
 ## Reference docs
 
-**542 docs** copied from the official OpenClaw source and versioned against the tracked OpenClaw release.
+**584 docs** copied from the official OpenClaw source and versioned against the tracked OpenClaw release.
 
 | Area | What's covered |
 |------|---------------|
@@ -187,15 +194,16 @@ ClawDoc routes to the right skill, reads the reference docs, and gives you a pre
 | Skill | What it does |
 |-------|-------------|
 | `openclaw-tools` | exec, browser, cron, sessions, subagents, ACP |
-| `openclaw-providers` | 50+ providers: OpenAI, Anthropic, Gemini, Bedrock... |
+| `openclaw-providers` | Model providers: 62 total: OpenAI, Anthropic, Gemini, Bedrock, Ollama, DeepSeek, Groq, Together, Cohere... |
 | `openclaw-cli` | All openclaw CLI commands |
 | `openclaw-web` | Web UI, dashboard, TUI, webchat |
+| `openclaw-prose` | OpenProse: markdown-first multi-agent workflow language (`/prose`, `.prose` files) |
 
 ### Concepts & Help
 | Skill | What it does |
 |-------|-------------|
-| `openclaw-concepts` | Architecture, session, compaction, streaming, SOUL.md |
-| `openclaw-plugins` | Plugin slots, SDK, hook system |
+| `openclaw-concepts` | Architecture, session, compaction, streaming, SOUL.md, OAuth, presence, OpenClaw SDK |
+| `openclaw-plugins` | Plugin slots, SDK, hook system, ClawHub registry |
 | `openclaw-help` | FAQ, help commands, usage patterns |
 | `openclaw-reference` | Catch-all reference: tokens, transcripts, SecretRef, release |
 
@@ -222,6 +230,18 @@ openclaw config merge examples/NAME.json && openclaw gateway restart
 | Different agents per Discord channel | `multi-agent-discord.json` |
 | Locked-down sandboxed agent | `per-agent-sandbox.json` |
 | Receive webhooks | `webhook-basic.json` |
+| SMS via Twilio | `sms-channel.json` |
+| WeChat (Tencent iLink) | `wechat-channel.json` |
+| iMessage (native imsg) | `imessage-native.json` |
+| Signal messenger | `signal-channel.json` |
+| Slack workspace | `slack-channel.json` |
+| Matrix homeserver | `matrix-channel.json` |
+| Microsoft Teams | `msteams-channel.json` |
+| WhatsApp via Baileys | `whatsapp-channel.json` |
+| Zalo Bot API | `zalo-channel.json` |
+| Skill Workshop (review proposals) | `skill-workshop.json` |
+| Codex harness (ACP agent) | `codex-harness.json` |
+| Production deploy (Tailscale + sandbox) | `production-deploy.json` |
 
 **Beginner path:** `install-verify.json` → `discord-single.json` → `memory-builtin.json`
 

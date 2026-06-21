@@ -1,0 +1,12 @@
+{
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "YOUR_DEFAULT_MODEL"
+      },
+      "tools": {
+        "allow": ["skill_workshop", "read", "write", "edit", "exec"]
+      }
+    }
+  }
+}

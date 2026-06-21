@@ -11,9 +11,12 @@ title: "Usage Tracking"
 ## What it is
 
 - Pulls provider usage/quota directly from their usage endpoints.
-- No estimated costs; only the provider-reported windows.
-- Human-readable status output is normalized to `X% left`, even when an
-  upstream API reports consumed quota, remaining quota, or only raw counts.
+- No estimated costs; only provider-reported quota windows or account-state
+  summaries.
+- Human-readable quota-window status output is normalized to `X% left`, even
+  when an upstream API reports consumed quota, remaining quota, or only raw
+  counts. Providers without resettable quota windows can show provider summary
+  text instead, such as a balance.
 - Session-level `/status` and `session_status` can fall back to the latest
   transcript usage entry when the live session snapshot is sparse. That
   fallback fills missing token/cache counters, can recover the active runtime
@@ -27,7 +30,63 @@ title: "Usage Tracking"
 - `/usage cost` in chats: local cost summary aggregated from OpenClaw session logs.
 - CLI: `openclaw status --usage` prints a full per-provider breakdown.
 - CLI: `openclaw channels list` prints the same usage snapshot alongside provider config (use `--no-usage` to skip).
-- macOS menu bar: “Usage” section under Context (only if available).
+- macOS menu bar: "Usage" section under Context (only if available).
+
+## Custom `/usage full` footer
+
+`/usage full` shows a built-in compact footer with model, reasoning, fast/slow,
+context window, turn tokens, cache, and cost when those fields are available. No
+template file is required.
+
+`messages.usageTemplate` is only for advanced custom layouts. The value is a
+JSON file path (supports `~`) or an inline object, and it replaces the built-in
+footer when valid:
+
+```json
+{
+  "messages": {
+    "usageTemplate": "~/.openclaw/usage-footer.json"
+  }
+}
+```
+
+Missing or empty templates fall back to the built-in footer quietly. Unreadable
+or invalid configured templates also fall back to the built-in footer and emit an
+operator warning.
+
+Start custom templates from the built-in shape, then edit the parts you want
+to change:
+
+```json
+{
+  "messages": {
+    "usageTemplate": {
+      "model": "{{model}}",
+      "reasoning": "{{reasoningEffort}}",
+      "speed": "{{speedLabel}}",
+      "context": "{{contextSummary}}",
+      "turnTokens": "{{turnTokensSummary}}",
+      "cache": "{{cacheSummary}}",
+      "cost": "{{costSummary}}"
+    }
+  }
+}
+```
+
+Available placeholders:
+
+- `model`: resolved model id (after alias / fallback resolution).
+- `reasoningEffort`: reasoning tier label (`low` / `medium` / `high` / `xhigh`),
+  when the active model reports one.
+- `speedLabel`: `fast` or `slow` based on the active profile mapping.
+- `contextSummary`: filled/window summary for the active session.
+- `turnTokensSummary`: per-turn token totals for the most recent assistant
+  message.
+- `cacheSummary`: cache read/write totals when the model reports them.
+- `costSummary`: cost line (`$0.0123`, API-key sessions only).
+
+Templates are rendered through the same redaction pipeline as built-in usage
+output. Keep them small; large templates are clipped to a single footer line.
 
 ## Providers + credentials
 

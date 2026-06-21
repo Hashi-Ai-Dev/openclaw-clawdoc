@@ -42,8 +42,10 @@ authoritative pin without explicit user intent or other out-of-band verification
 3. Client sends `pair-request`.
 4. Gateway waits for approval, then sends `pair-ok` and `hello-ok`.
 
-Historically, `hello-ok` returned `serverName` and could include
-`canvasHostUrl`.
+Historically, `hello-ok` returned `serverName`; hosted plugin surfaces are now
+advertised through `pluginSurfaceUrls`. Canvas/A2UI uses
+`pluginSurfaceUrls.canvas`; the deprecated `canvasHostUrl` alias is not part of
+the refactored protocol.
 
 ## Frames
 
@@ -63,7 +65,10 @@ Legacy allowlist enforcement lived in `src/gateway/server-bridge.ts` (removed).
 
 ## Exec lifecycle events
 
-Nodes can emit `exec.finished` or `exec.denied` events to surface system.run activity.
+Nodes can emit `exec.finished` events to surface completed `system.run` activity.
+These are mapped to system events in the gateway. (Legacy nodes may still emit `exec.started`.)
+Nodes may emit `exec.denied` for denied `system.run` attempts; the gateway accepts
+the event as a terminal denial and does not enqueue a system event or wake agent work.
 These are mapped to system events in the gateway. (Legacy nodes may still emit `exec.started`.)
 
 Payload fields (all optional unless noted):
@@ -87,3 +92,8 @@ Payload fields (all optional unless noted):
 The bridge was **implicit v1** (no min/max negotiation). This section is
 historical reference only; current node/operator clients use the WebSocket
 [Gateway Protocol](/gateway/protocol).
+
+## Related
+
+- [Gateway protocol](/gateway/protocol)
+- [Nodes](/nodes)

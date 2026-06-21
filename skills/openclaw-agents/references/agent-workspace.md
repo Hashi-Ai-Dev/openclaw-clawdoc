@@ -30,8 +30,10 @@ inside a sandbox workspace under `~/.openclaw/sandboxes`, not your host workspac
 
 ```json5
 {
-  agent: {
-    workspace: "~/.openclaw/workspace",
+  agents: {
+    defaults: {
+      workspace: "~/.openclaw/workspace",
+    },
   },
 }
 ```
@@ -45,7 +47,7 @@ If you already manage the workspace files yourself, you can disable bootstrap
 file creation:
 
 ```json5
-{ agent: { skipBootstrap: true } }
+{ agents: { defaults: { skipBootstrap: true } } }
 ```
 
 ## Extra workspace folders
@@ -121,7 +123,7 @@ See [Memory](/concepts/memory) for the workflow and automatic memory flush.
 If any bootstrap file is missing, OpenClaw injects a "missing file" marker into
 the session and continues. Large bootstrap files are truncated when injected;
 adjust limits with `agents.defaults.bootstrapMaxChars` (default: 20000) and
-`agents.defaults.bootstrapTotalMaxChars` (default: 150000).
+`agents.defaults.bootstrapTotalMaxChars` (default: 60000).
 `openclaw setup` can recreate missing defaults without overwriting existing
 files.
 
@@ -131,6 +133,7 @@ These live under `~/.openclaw/` and should NOT be committed to the workspace rep
 
 - `~/.openclaw/openclaw.json` (config)
 - `~/.openclaw/agents/<agentId>/agent/auth-profiles.json` (model auth profiles: OAuth + API keys)
+- `~/.openclaw/agents/<agentId>/agent/codex-home/` (per-agent Codex runtime account, config, skills, plugins, and native thread state)
 - `~/.openclaw/credentials/` (channel/provider state plus legacy OAuth import data)
 - `~/.openclaw/agents/<agentId>/sessions/` (session transcripts + metadata)
 - `~/.openclaw/skills/` (managed skills)

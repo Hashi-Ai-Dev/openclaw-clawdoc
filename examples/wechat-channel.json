@@ -1,0 +1,22 @@
+{
+  "channels": {
+    "wechat": {
+      "accounts": {
+        "default": {
+          "enabled": true,
+          "loginMethod": "qr",
+          "dmPolicy": "pairing",
+          "allowFrom": ["YOUR_WECHAT_USER_ID"],
+          "pollingIntervalMs": 3000
+        }
+      }
+    }
+  },
+  "plugins": {
+    "entries": {
+      "@tencent-weixin/openclaw-weixin": {
+        "enabled": true
+      }
+    }
+  }
+}

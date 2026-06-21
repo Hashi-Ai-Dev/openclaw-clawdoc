@@ -1,0 +1,14 @@
+{
+  "channels": {
+    "signal": {
+      "enabled": true,
+      "phoneNumber": "+15555550100",
+      "daemon": {
+        "transport": "signal-cli",
+        "endpoint": "http://127.0.0.1:8080"
+      },
+      "dmPolicy": "pairing",
+      "allowFrom": ["+15555550199"]
+    }
+  }
+}

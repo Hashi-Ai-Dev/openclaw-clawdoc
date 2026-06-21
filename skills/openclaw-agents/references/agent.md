@@ -32,18 +32,20 @@ Inside `agents.defaults.workspace`, OpenClaw expects these user-editable files:
 - `IDENTITY.md` — agent name/vibe/emoji
 - `USER.md` — user profile + preferred address
 
-On the first turn of a new session, OpenClaw injects the contents of these files directly into the agent context.
+On the first turn of a new session, OpenClaw injects the contents of these files into the system prompt's Project Context.
 
 Blank files are skipped. Large files are trimmed and truncated with a marker so prompts stay lean (read the file for full content).
 
 If a file is missing, OpenClaw injects a single “missing file” marker line (and `openclaw setup` will create a safe default template).
 
-`BOOTSTRAP.md` is only created for a **brand new workspace** (no other bootstrap files present). If you delete it after completing the ritual, it should not be recreated on later restarts.
+`BOOTSTRAP.md` is only created for a **brand new workspace** (no other bootstrap files present). While it is pending, OpenClaw keeps it in Project Context and adds system-prompt bootstrap guidance for the initial ritual instead of copying it into the user message. If you delete it after completing the ritual, it should not be recreated on later restarts.
+
+After a workspace has been observed, OpenClaw also keeps a state-dir attestation marker for the workspace path. If a recently attested workspace disappears or is wiped, startup refuses to silently re-seed `BOOTSTRAP.md`; restore the workspace or use a full onboard reset so the workspace and marker are cleared together.
 
 To disable bootstrap file creation entirely (for pre-seeded workspaces), set:
 
 ```json5
-{ agent: { skipBootstrap: true } }
+{ agents: { defaults: { skipBootstrap: true } } }
 ```
 
 ## Built-in tools
@@ -68,9 +70,9 @@ Skills can be gated by config/env (see `skills` in [Gateway configuration](/gate
 
 ## Runtime boundaries
 
-The embedded agent runtime is built on the Pi agent core (models, tools, and
-prompt pipeline). Session management, discovery, tool wiring, and channel
-delivery are OpenClaw-owned layers on top of that core.
+The embedded agent runtime is OpenClaw-owned: model discovery, tool wiring,
+prompt assembly, session management, and channel delivery share one integrated
+runtime surface.
 
 ## Sessions
 
@@ -83,15 +85,15 @@ Legacy session folders from other tools are not read.
 
 ## Steering while streaming
 
-When queue mode is `steer`, inbound messages are injected into the current run.
-Queued steering is delivered **after the current assistant turn finishes
-executing its tool calls**, before the next LLM call. Steering no longer skips
-remaining tool calls from the current assistant message; it injects the queued
-message at the next model boundary instead.
+Inbound prompts that arrive mid-run are steered into the current run by default.
+Steering is delivered **after the current assistant turn finishes executing its
+tool calls**, before the next LLM call, and no longer skips remaining tool calls
+from the current assistant message.
 
-When queue mode is `followup` or `collect`, inbound messages are held until the
-current turn ends, then a new agent turn starts with the queued payloads. See
-[Queue](/concepts/queue) for mode + debounce/cap behavior.
+`/queue steer` is the default active-run behavior. `/queue followup` and
+`/queue collect` make messages wait for a later turn instead of steering.
+`/queue interrupt` aborts the active run instead. See [Queue](/concepts/queue)
+and [Steering queue](/concepts/queue-steering) for queue and boundary behavior.
 
 Block streaming sends completed assistant blocks as soon as they finish; it is
 **off by default** (`agents.defaults.blockStreamingDefault: "off"`).
@@ -123,6 +125,12 @@ At minimum, set:
 
 - `agents.defaults.workspace`
 - `channels.whatsapp.allowFrom` (strongly recommended)
+
+## Related
+
+- [Agent workspace](/concepts/agent-workspace)
+- [Multi-agent routing](/concepts/multi-agent)
+- [Session management](/concepts/session)
 
 ---
 

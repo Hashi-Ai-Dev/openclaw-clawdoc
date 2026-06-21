@@ -1,0 +1,36 @@
+{
+  "gateway": {
+    "bind": "0.0.0.0:8080",
+    "tailscale": {
+      "enabled": true,
+      "hostname": "clawdoc-prod"
+    }
+  },
+  "sandbox": {
+    "enabled": true,
+    "mode": "all",
+    "scope": "agent",
+    "workspaceAccess": "rw"
+  },
+  "execApprovals": {
+    "enabled": "approval",
+    "approvers": ["YOUR_OWNER_USER_ID"],
+    "target": "dm"
+  },
+  "agents": {
+    "list": [
+      {
+        "id": "main",
+        "default": true,
+        "workspace": "~/.openclaw/workspace-prod",
+        "sandbox": {
+          "mode": "all",
+          "scope": "agent"
+        }
+      }
+    ]
+  },
+  "logging": {
+    "level": "info"
+  }
+}

@@ -262,7 +262,7 @@ Common channels supporting this pattern include:
 
 - `whatsapp`, `telegram`, `discord`, `slack`, `signal`, `imessage`
 - `irc`, `line`, `googlechat`, `mattermost`, `matrix`, `nextcloud-talk`
-- `bluebubbles`, `zalo`, `zalouser`, `nostr`, `feishu`
+- `zalo`, `zalouser`, `nostr`, `feishu`
 
 ## Concepts
 
@@ -605,7 +605,7 @@ Each agent can have its own sandbox and tool restrictions:
 - **Flexible policies**: different permissions per agent.
 
 <Note>
-`tools.elevated` is **global** and sender-based; it is not configurable per agent. If you need per-agent boundaries, use `agents.list[].tools` to deny `exec`. For group targeting, use `agents.list[].groupChat.mentionPatterns` so @mentions map cleanly to the intended agent.
+`tools.elevated` is **global** and sender-based; it is not configurable per agent. If you need per-agent boundaries, use `agents.list[].tools` to deny `exec`. For group targeting, use `agents.list[].groupChat.mentionPatterns` so @mentions map cleanly to the intended agent. Per-agent elevated overrides (`agents.list[].tools.elevated`) can further restrict elevated exec for specific agents.
 </Note>
 
 See [Multi-agent sandbox and tools](/tools/multi-agent-sandbox-tools) for detailed examples.

@@ -1,11 +1,11 @@
 ---
 name: openclaw-providers
-description: "OpenClaw model providers. Use when configuring LLM providers (50+ providers: OpenAI, Anthropic, Gemini, Bedrock, Ollama, DeepSeek, Groq, Together, Cerebras, xAI, Deepgram, SenseAudio, Tencent, VolcEngine, and more), API keys, OAuth, auth profiles, model failover, API key rotation, billing disable backoff, and usage tracking. Triggers on: \"provider\", \"model\", \"API key\", \"OAuth\", \"Anthropic\", \"OpenAI\", \"Gemini\", \"Bedrock\", \"Ollama\", \"failover\", \"auth profile\", \"billing disable\", \"key rotation\", \"Deepgram\", \"transcription\", \"SenseAudio\", \"speech to text\", \"Tencent\", \"VolcEngine\", \"Doubao\", \"voice provider\", \"STT provider\"."
+description: "OpenClaw model providers. Use when configuring LLM providers (62 providers: OpenAI, Anthropic, Gemini, Bedrock, Ollama, DeepSeek, Groq, Together, Cerebras, xAI, Cohere, Deepgram, SenseAudio, Tencent, VolcEngine, and more), API keys, OAuth, auth profiles, model failover, API key rotation, billing disable backoff, and usage tracking. Triggers on: provider, model, API key, OAuth, Anthropic, OpenAI, Gemini, Bedrock, Ollama, failover, auth profile, billing disable, key rotation, Cohere, Deepgram, transcription, SenseAudio, speech to text, Tencent, VolcEngine, Doubao, voice provider, STT provider."
 ---
 
 # OpenClaw Model Providers
 
-50+ providers. Pick a provider, authenticate, set `agents.defaults.model.primary`.
+62 providers tracked. Pick a provider, authenticate, set `agents.defaults.model.primary`.
 
 ## Quick setup
 

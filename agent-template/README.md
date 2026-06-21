@@ -1,6 +1,6 @@
 # ClawDoc — Standalone Agent
 
-**Version:** v1.6.26  
+**Version:** v1.7.0
 **Tracked OpenClaw:** 2026.6.8  
 **Template:** agent-template/README.md
 
@@ -14,7 +14,7 @@ This agent is running ClawDoc — a dedicated OpenClaw system doctor that knows 
 
 ## Skills
 
-ClawDoc ships with 22 skills covering:
+ClawDoc ships with 23 skills covering:
 
 - **Config** — Gateway config keys, secrets, retry, failover, model routing
 - **Memory** — builtin, QMD, Honcho, embeddings, active memory, dreaming

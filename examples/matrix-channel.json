@@ -1,0 +1,14 @@
+{
+  "channels": {
+    "matrix": {
+      "enabled": true,
+      "homeserverUrl": "https://matrix.org",
+      "accessToken": "YOUR_MATRIX_ACCESS_TOKEN",
+      "userId": "@yourbot:matrix.org",
+      "deviceId": "YOUR_MATRIX_DEVICE_ID",
+      "dmPolicy": "pairing",
+      "allowFrom": ["@you:matrix.org"],
+      "encryptedRooms": true
+    }
+  }
+}

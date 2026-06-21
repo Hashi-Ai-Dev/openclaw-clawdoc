@@ -17,8 +17,12 @@ examples.
 
 Auth is per-agent: each agent reads from its own `agentDir` auth store at
 `~/.openclaw/agents/<agentId>/agent/auth-profiles.json`.
-Credentials are **not** shared between agents. Never reuse `agentDir` across agents.
-If you want to share creds, copy `auth-profiles.json` into the other agent's `agentDir`.
+Never reuse `agentDir` across agents (it causes auth/session collisions). Agents
+can read through to the default/main agent's auth profiles when they do not have
+a local profile, but OpenClaw does not clone OAuth refresh tokens into the
+secondary agent store. If you want an independent OAuth account, sign in from
+that agent; if you copy credentials manually, copy only portable static
+`api_key` or `token` profiles.
 
 ---
 
@@ -283,6 +287,10 @@ Legacy `agent.*` configs are migrated by `openclaw doctor`; prefer `agents.defau
 }
 ```
 
+<Warning>
+This policy disables OpenClaw filesystem tools, but `exec` is still a shell and can write files wherever the selected host or sandbox filesystem allows. For a read-only agent, deny `exec` and `process`, or combine shell access with sandbox filesystem controls such as `agents.defaults.sandbox.workspaceAccess: "ro"` or `"none"`.
+</Warning>
+
 ### Communication-only Agent
 
 ```json
@@ -371,3 +379,4 @@ After configuring multi-agent sandbox and tools:
 - [Multi-Agent Routing](/concepts/multi-agent)
 - [Sandbox Configuration](/gateway/configuration-reference#agentsdefaultssandbox)
 - [Session Management](/concepts/session)
+- [Sub-agents](/tools/subagents)

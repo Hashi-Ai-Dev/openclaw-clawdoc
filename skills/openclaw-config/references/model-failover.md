@@ -30,7 +30,10 @@ the next model candidate.
 High-level sequence:
 
 1. Resolve the active session model and auth-profile preference.
-2. Build the model candidate chain.
+2. Build the model candidate chain from the current model selection and the
+   fallback policy for that selection source. Configured defaults, cron job
+   primaries, and auto-selected fallback models can use configured fallbacks;
+   explicit user session selections are strict.
 3. Try the current provider with auth-profile rotation/cooldown rules.
 4. If that provider is exhausted with a failover-worthy error, move to the next
    model candidate.

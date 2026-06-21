@@ -7,6 +7,10 @@ read_when:
 title: "Raspberry Pi (platform)"
 ---
 
+<Note>
+This guide has moved. The canonical Raspberry Pi install guide is at [Install: Raspberry Pi](/install/raspberry-pi). This page is retained as a full reference because it contains the hardware matrix, swap/SSD tuning, ARM binary notes, and the model-setup recommendation.
+</Note>
+
 # OpenClaw on Raspberry Pi
 
 ## Goal

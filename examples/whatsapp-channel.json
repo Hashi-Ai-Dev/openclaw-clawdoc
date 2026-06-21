@@ -1,0 +1,12 @@
+{
+  "channels": {
+    "whatsapp": {
+      "enabled": true,
+      "provider": "baileys",
+      "loginMethod": "qr",
+      "dmPolicy": "pairing",
+      "allowFrom": ["YOUR_WHATSAPP_NUMBER"],
+      "sessionPath": "~/.openclaw/whatsapp-session"
+    }
+  }
+}

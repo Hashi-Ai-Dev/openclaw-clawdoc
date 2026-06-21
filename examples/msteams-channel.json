@@ -1,0 +1,12 @@
+{
+  "channels": {
+    "msteams": {
+      "enabled": true,
+      "botId": "YOUR_MSTEAMS_BOT_ID",
+      "tenantId": "YOUR_MSTEAMS_TENANT_ID",
+      "appPassword": "YOUR_MSTEAMS_APP_PASSWORD",
+      "dmPolicy": "pairing",
+      "allowFrom": ["YOUR_MSTEAMS_USER_ID"]
+    }
+  }
+}

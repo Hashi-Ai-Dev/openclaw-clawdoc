@@ -5,6 +5,61 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [v1.6.27] — 2026-06-18
+
+### Fixed
+- Public-language scan on CHANGELOG.md v1.6.25 entry (after-the-fact cleanup — no public impact)
+
+## [v1.7.0] — 2026-06-18
+
+### Added
+- **New skill:** `openclaw-prose` — OpenProse workflow language (`/prose` slash command, `.prose` files, multi-agent orchestration). 1 SKILL.md + 6 ref docs.
+- **6 new ref docs:**
+  - `skills/openclaw-channels/references/sms.md` — Twilio SMS channel setup, webhooks, allowlists
+  - `skills/openclaw-channels/references/wechat.md` — Tencent iLink Bot (openclaw-weixin) channel
+  - `skills/openclaw-providers/references/cohere.md` — Cohere provider, default model `cohere/command-a-03-2025`
+  - `skills/openclaw-plugins/references/codex-supervisor.md` — Codex app-server supervisor plugin
+  - `skills/openclaw-tools/references/x-search.md` — X (Twitter) search tool
+  - `skills/openclaw-tools/references/goal.md` — session goal state machine + tools
+- **12 new examples:**
+  - 9 channel examples (SMS, WeChat, iMessage-native, Signal, Slack, Matrix, Teams, WhatsApp, Zalo)
+  - 3 platform examples (Skill Workshop, codex-harness, production-deploy)
+- **6 new internal validators** (workspace-only, not shipped):
+  - `doc_index_builder.py` — builds CLAWDOC_DOC_INDEX.json with per-doc lifecycle metadata
+  - `upstream_drift_detector.py` — drift distribution + cross-tab
+  - `routing_coverage_validator.py` — per-skill coverage + cross-references
+  - `doc_lifecycle_linter.py` — active docs that mention removed behavior
+  - `example_runtime_validator.py` — JSON validity + secret scan + channel coverage
+  - `duplicate_doc_detector.py` — same-H1 and same-snippet duplicates
+
+### Changed
+- `openclaw-master/SKILL.md` Skill map table now covers all 22 routable skills (was 10); description lists all 22 skills for routing
+- `openclaw-tools/SKILL.md` description: added 7 Skill Workshop triggers (skill workshop, skill_workshop, workshop, approve skill, propose skill, skill proposal, quarantine skill)
+- `openclaw-concepts/SKILL.md` description: added 9 latent triggers (presence, OpenClaw SDK, OAuth flows)
+- `openclaw-troubleshooting/SKILL.md` description: tightened (removed generic "not working", "failed", "issue", "error" triggers; kept domain-specific)
+- `openclaw-plugins/SKILL.md` description: added ClawHub vocabulary (clawhub CLI, publish, registry)
+- `openclaw-providers/SKILL.md`: 50+ → 62 (matches canonical count)
+- `bluebubbles.md` converted to "Coming from BlueBubbles" migration-from guide (was a setup guide)
+- `wizard.md`: BlueBubbles marked removed; iMessage promoted
+- `automation/references/logging.md` → 1-line pointer to `openclaw-logging/references/logging.md`
+- `README.md`: badges bumped (23 skills, 554 refs, 24 examples); 12 new examples added to the table; `openclaw-prose` added to skill tree
+- `assets/clawdoc-banner.png` restored + HTML overlay added with v1.7.0 stats
+
+### Fixed
+- **Master skill routing gap:** 12 of 22 skills were not in `openclaw-master`'s skill map. Fixed.
+- **Latent trigger-keyword gaps:** presence, OpenClaw SDK, OAuth-in-concepts were body content but no triggers. Fixed.
+- **Provider count inconsistency:** `50+` vs `43+` vs `60+` across files. Standardized to 62.
+- **Logging duplication:** 3 skills had their own `logging.md`. Consolidated to canonical + 2 pointers.
+- **OpenProse trigger blind spot:** "skill workshop" wasn't in `openclaw-tools` triggers. Added.
+
+### Notes
+- No new OpenClaw sync. v2026.6.8 is still the current stable upstream.
+- Reference doc count: 542 → 554 (+12 net: 6 new H5 + 6 openclaw-prose refs).
+- Skill count: 22 → 23 (added openclaw-prose).
+- Example count: 12 → 24 (12 new examples).
+- All audit checks pass clean: routing, claim, metadata, validate_repo, safety_scanner, doc_index_builder + 5 new validators.
+- Pre-Release Power Release Gate (8 stages) passed; VERDICT.md filed in `audit-output/v1.7.0-pre-release/`.
+
 ## [v1.6.26] — 2026-06-18
 
 ### Fixed

@@ -1,6 +1,6 @@
 ---
 name: openclaw-tools
-description: "OpenClaw tools reference. Use when explaining, configuring, or troubleshooting tools: exec, browser, cron, sessions, subagents, ACP, Lobster, slash commands, thinking, tool permissions, sandbox, loop detection, LLM task, search providers, media generation. Triggers on: tools, exec, browser, cron, sessions, subagent, canvas, slash commands, loop detection, elevated, exec approvals, ACP, thinking, permissions, webhook, clawflow, code execution, auth monitoring, tool profile, search providers, image generation, music generation, video generation, media tools, creating skills, btw, steer, gmail, pubsub, gmail pubsub, poll, polling."
+description: "OpenClaw tools reference. Use when explaining, configuring, or troubleshooting tools: exec, browser, cron, sessions, subagents, ACP, Lobster, slash commands, /prose, OpenProse, thinking, tool permissions, sandbox, loop detection, LLM task, search providers, media generation. Triggers on: tools, exec, browser, cron, sessions, subagent, canvas, slash commands, /prose, openprose, prose workflow, loop detection, elevated, exec approvals, ACP, thinking, permissions, webhook, clawflow, code execution, auth monitoring, tool profile, search providers, image generation, music generation, video generation, media tools, creating skills, btw, steer, gmail, pubsub, gmail pubsub, poll, polling."
 ---
 
 # OpenClaw Tools
@@ -83,6 +83,16 @@ Built-in safeguard against infinite tool call loops. Config:
 { "tools": { "loopDetection": { "maxIterations": 100 } } }
 ```
 
+## Workflow tools
+
+| Tool | Purpose | Skill |
+|------|---------|-------|
+| `/prose` slash command | Run or compile `.prose` multi-agent workflow files | `openclaw-prose` |
+| Lobster | Deterministic, approval-gated pipeline runtime | (see [Lobster](https://docs.openclaw.ai/tools/lobster)) |
+| Subagents | Spawn child sessions for fan-out | `sessions_spawn` |
+
+OpenProse (the `open-prose` plugin) requires `sessions_spawn`, `read`, `write`, and `web_fetch` in the agent's `tools.allow`. Programs that fan out via `parallel:` use the same `sessions_spawn` primitive as ad-hoc subagents.
+
 ## References
 
 - `references/index.md` — full tool list and reference
@@ -93,3 +103,7 @@ Built-in safeguard against infinite tool call loops. Config:
 - `references/creating-skills.md` — adding custom skills
 - `references/loop-detection.md` — loop detection config
 - `references/thinking.md` — thinking configuration
+
+## Related skills
+
+- `openclaw-prose` — OpenProse `.prose` workflow language (plugin + `/prose` slash command + skill pack)

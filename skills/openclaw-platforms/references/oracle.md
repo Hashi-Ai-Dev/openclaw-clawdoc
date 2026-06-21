@@ -7,6 +7,10 @@ read_when:
 title: "Oracle Cloud (platform)"
 ---
 
+<Note>
+This guide has moved. The canonical Oracle Cloud install guide is at [Install: Oracle Cloud](/install/oracle). This page is retained as a full reference because it contains the VCN + Tailscale security baseline and the Always Free capacity caveats.
+</Note>
+
 # OpenClaw on Oracle Cloud (OCI)
 
 ## Goal
