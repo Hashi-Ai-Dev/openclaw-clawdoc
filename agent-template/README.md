@@ -14,7 +14,7 @@ This agent is running ClawDoc — a dedicated OpenClaw system doctor that knows 
 
 ## Skills
 
-ClawDoc ships with 23 skills covering:
+ClawDoc ships with 24 skills covering:
 
 - **Config** — Gateway config keys, secrets, retry, failover, model routing
 - **Memory** — builtin, QMD, Honcho, embeddings, active memory, dreaming

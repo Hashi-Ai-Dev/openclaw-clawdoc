@@ -33,7 +33,7 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
   - `duplicate_doc_detector.py` — same-H1 and same-snippet duplicates
 
 ### Changed
-- `openclaw-master/SKILL.md` Skill map table now covers all 22 routable skills (was 10); description lists all 22 skills for routing
+- `openclaw-master/SKILL.md` Skill map table now covers all 24 routable skills (was 10); description lists all 24 skills for routing
 - `openclaw-tools/SKILL.md` description: added 7 Skill Workshop triggers (skill workshop, skill_workshop, workshop, approve skill, propose skill, skill proposal, quarantine skill)
 - `openclaw-concepts/SKILL.md` description: added 9 latent triggers (presence, OpenClaw SDK, OAuth flows)
 - `openclaw-troubleshooting/SKILL.md` description: tightened (removed generic "not working", "failed", "issue", "error" triggers; kept domain-specific)
@@ -42,11 +42,11 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 - `bluebubbles.md` converted to "Coming from BlueBubbles" migration-from guide (was a setup guide)
 - `wizard.md`: BlueBubbles marked removed; iMessage promoted
 - `automation/references/logging.md` → 1-line pointer to `openclaw-logging/references/logging.md`
-- `README.md`: badges bumped (23 skills, 554 refs, 24 examples); 12 new examples added to the table; `openclaw-prose` added to skill tree
+- `README.md`: badges bumped (24 skills, 584 refs, 24 examples); 12 new examples added to the table; `openclaw-prose` added to skill tree
 - `assets/clawdoc-banner.png` restored + HTML overlay added with v1.7.0 stats
 
 ### Fixed
-- **Master skill routing gap:** 12 of 22 skills were not in `openclaw-master`'s skill map. Fixed.
+- **Master skill routing gap:** 12 of 22 skills were not in (now 24 after openclaw-clawhub also added) `openclaw-master`'s skill map. Fixed.
 - **Latent trigger-keyword gaps:** presence, OpenClaw SDK, OAuth-in-concepts were body content but no triggers. Fixed.
 - **Provider count inconsistency:** `50+` vs `43+` vs `60+` across files. Standardized to 62.
 - **Logging duplication:** 3 skills had their own `logging.md`. Consolidated to canonical + 2 pointers.
@@ -54,8 +54,8 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 
 ### Notes
 - No new OpenClaw sync. v2026.6.8 is still the current stable upstream.
-- Reference doc count: 542 → 554 (+12 net: 6 new H5 + 6 openclaw-prose refs).
-- Skill count: 22 → 23 (added openclaw-prose).
+- Reference doc count: 542 → 584 (+42 net: 6 H5 + 12 config + 16 macOS + 6 openclaw-prose + 2 openclaw-clawhub).
+- Skill count: 22 → 24 (added openclaw-prose and openclaw-clawhub).
 - Example count: 12 → 24 (12 new examples).
 - All audit checks pass clean: routing, claim, metadata, validate_repo, safety_scanner, doc_index_builder + 5 new validators.
 - Pre-Release Power Release Gate (8 stages) passed; VERDICT.md filed in `audit-output/v1.7.0-pre-release/`.

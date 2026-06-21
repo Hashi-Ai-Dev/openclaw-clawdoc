@@ -17,7 +17,7 @@
   },
   "reference_docs_definition": {
     "description": "reference_docs = files under skills/**/references/**",
-    "reproducible_count": "find skills -type f \\( -name '*.md' -o -name '*.mdx' \\) -path '*/references/*' | wc -l = 554 (includes .mdx like railway.mdx; counts tracked + new untracked in working tree)",
+    "reproducible_count": "find skills -type f \\( -name '*.md' -o -name '*.mdx' \\) -path '*/references/*' | wc -l = 584 (includes .mdx like railway.mdx; counts tracked + new untracked in working tree)",
     "includes_mdx": "yes \u2014 includes *.mdx files such as railway.mdx"
   },
   "skills": {
@@ -113,7 +113,7 @@
     "examples_must_parse": true,
     "no_private_runtime_files": true,
     "install_mode_documentation": "Both README.md and QUICKSTART.md must mention Mode 1 (persistent-agent) and Mode 2 (skills-only) install paths.",
-    "skill_count_accuracy": "README.md and QUICKSTART.md must not claim 22 skills. The correct count is 23 (22 openclaw-* + clawdoc-onboarding + openclaw-prose = 23 routable skills; openclaw-prose added in v1.7.0)."
+    "skill_count_accuracy": "README.md and QUICKSTART.md must not claim 22 or 23 skills. The correct count is 24 (22 openclaw-* + clawdoc-onboarding + openclaw-prose + openclaw-clawhub = 24 routable skills; openclaw-prose and openclaw-clawhub added in v1.7.0)."
   },
   "version_tracks": {
     "description": "Two separate version tracks are maintained independently.",
