@@ -1,9 +1,23 @@
 ---
-title: "Configuration Reference"
-summary: "Gateway config reference for core OpenClaw keys, defaults, and links to dedicated subsystem references"
+title: "Comprehensive configuration reference"
+summary: "Comprehensive ClawDoc config reference for channels, agents, tools, providers, cron, media, and includes"
 read_when:
-  - You need exact field-level config semantics or defaults
+  - You need a single-doc field-level reference for the most-used config keys
   - You are validating channel, model, gateway, or tool config blocks
+
+---
+
+> **Note:** This page is ClawDoc's **comprehensive** single-doc config reference. Upstream OpenClaw splits the same content into focused pages; ClawDoc keeps one big reference for fast lookup. For task-oriented or focused-field docs, see:
+>
+> - `configuration.md` — task-oriented configuration overview
+> - `configuration-reference.md` — top-level key map and field lookup
+> - `config-agents.md` — `agents.*`, `session.*`, `messages.*`
+> - `config-channels.md` — per-channel keys, DM/group policy, multi-account
+> - `config-tools.md` — tool profiles, allow/deny, elevated policy
+> - `secrets.md` — SecretRef contract
+> - `authentication.md` — model provider auth
+> - `doctor.md` — health checks and migrations
+
 ---
 
 # Configuration Reference

@@ -25,10 +25,100 @@ openclaw channels status --probe
 
 Expected healthy signals:
 
-- `openclaw gateway status` shows `Runtime: running` and `RPC probe: ok`.
+- `openclaw gateway status` shows `Runtime: running, Connectivity probe: ok,`
+  and a `Capability: ...` line that matches what you expect. Use
+  `openclaw gateway status --require-rpc` when you need read-scope RPC proof,
+  not just reachability.
 - `openclaw doctor` reports no blocking config/service issues.
 - `openclaw channels status --probe` shows live per-account transport status and,
   where supported, probe/audit results such as `works` or `audit ok`.
+
+## After an update
+
+Use this when an update finishes but the Gateway is down, channels are empty, or
+model calls start failing with 401s.
+
+```bash
+openclaw status --all
+openclaw update status --json
+openclaw gateway status --deep
+openclaw doctor --fix
+openclaw gateway restart
+```
+
+Look for:
+
+- `Update restart` in `openclaw status` / `openclaw status --all`. Pending or
+  failed handoffs include the next command to run.
+- `plugin load failed: dependency tree corrupted; run openclaw doctor --fix`
+  under Channels. That means the channel config still exists, but plugin
+  registration failed before the channel could load.
+- provider 401s after re-auth. `openclaw doctor --fix` checks for stale
+  per-agent OAuth auth shadows and removes the old copies so all agents resolve
+  the current shared profile.
+
+## Split brain installs and newer config guard
+
+A split brain install is when more than one OpenClaw install owns the same
+state directory or the same Gateway port. It usually shows up after you
+install a second copy, restore from a backup, or move state to a new machine
+without fully uninstalling the previous host.
+
+Symptoms:
+
+- Two `openclaw gateway` processes visible in `ps`/`pgrep`, or two launchd /
+  systemd / Windows-service units pointing at the same `~/.openclaw`.
+- `openclaw status --all` reports `multiple reachable gateway identities
+  detected`.
+- Config edits appear to stick in one place but not another.
+- Channels reconnect in a loop because each instance keeps stealing the same
+  WebSocket.
+
+Fix:
+
+1. Stop every Gateway that touches the state dir (`openclaw gateway stop`,
+   then the OS service if present).
+2. Choose exactly one host to own the state and port. Confirm with
+   `lsof -nP -iTCP:18789 -sTCP:LISTEN` (or the equivalent on Windows).
+3. On the other hosts, uninstall the duplicate service or repoint
+   `OPENCLAW_STATE_DIR` / `OPENCLAW_CONFIG_PATH` to a separate install.
+4. Start the surviving Gateway once and re-check
+   `openclaw status --all`.
+
+OpenClaw's newer config guard rejects `openclaw config apply` and `openclaw
+config patch` if it can prove a second copy is already holding the state. The
+error names the conflicting install path; remove or reconfigure that install
+before retrying.
+
+## Protocol mismatch after rollback
+
+If you rolled back to an older Gateway build but the node, CLI, or desktop app
+is still on a newer client, you will see:
+
+- WebSocket connect succeeds, then the server immediately closes with
+  `error.code = "PROTOCOL_VERSION_UNSUPPORTED"`.
+- `openclaw status --all` shows `protocol mismatch: server=<old>, client=<new>`
+  in the client/server matrix.
+- Pairing requests appear to start but never produce a `pair-ok`.
+
+Fix the mismatch by aligning versions. Prefer upgrading the Gateway back to
+the matching release; if that is not possible, downgrade the client to the
+same release line as the Gateway (or older) and restart it. Do not assume
+that "the older server still works" — protocol-negotiated features and
+frame shapes are not guaranteed across versions.
+
+## Skill symlink skipped as path escape
+
+OpenClaw now refuses to follow a `skills/**/SKILL.md` path whose target
+resolves outside the configured workspace root, including symlink chains.
+Audit findings report this as `skills.workspace.symlink_escape`.
+
+If a skill suddenly stops loading after you reorganize files:
+
+- Confirm the skill path is inside the workspace and not reached through a
+  symlink.
+- If you intentionally want a skill from outside the workspace, move or copy
+  it inside, or expose it through an explicit skill include path.
 
 ## Anthropic 429 extra usage required for long context
 

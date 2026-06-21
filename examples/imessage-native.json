@@ -1,0 +1,12 @@
+{
+  "channels": {
+    "imessage": {
+      "enabled": true,
+      "provider": "imsg",
+      "cliPath": "/usr/local/bin/imsg",
+      "dmPolicy": "pairing",
+      "allowFrom": ["YOUR_APPLE_ID_EMAIL"],
+      "historyLimit": 20
+    }
+  }
+}

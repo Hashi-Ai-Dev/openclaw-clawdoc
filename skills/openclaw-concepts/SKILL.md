@@ -1,6 +1,6 @@
 ---
 name: openclaw-concepts
-description: "OpenClaw core concepts. Use when explaining architecture, memory, sessions, compaction, streaming, multi-agent design, sandboxing, agent bootstrap, message flow, queue modes, model failover, system prompt, SOUL.md, or timezone. Triggers on: \"how does it work\", \"architecture\", \"session\", \"compaction\", \"streaming\", \"bootstrap\", \"context\", \"queue\", \"message flow\", \"failover\", \"features\", \"retry\", \"typebox\", \"models\", \"model-providers\", \"usage-tracking\", \"markdown\", \"formatting\", \"qa\", \"matrix\", \"rpc\", \"adapters\"."
+description: "OpenClaw core concepts. Use when explaining architecture, memory, sessions, compaction, streaming, multi-agent design, sandboxing, agent bootstrap, message flow, queue modes, model failover, system prompt, SOUL.md, timezone, OAuth flows, presence, or the OpenClaw SDK. Triggers on: how does it work, architecture, session, compaction, streaming, bootstrap, context, queue, message flow, failover, features, retry, typebox, models, model-providers, usage-tracking, markdown, formatting, qa, matrix, rpc, adapters, OAuth, oauth flow, presence, user presence, agent presence, sdk, software development kit, OpenClaw SDK, openclaw sdk, programmatic access."
 ---
 
 # OpenClaw Concepts
@@ -105,3 +105,9 @@ Managed multi-step orchestration: **managed** (owns lifecycle) or **mirrored** (
 - `references/system-prompt.md` — prompt assembly
 - `references/soul.md` — SOUL.md guide
 - `references/sandboxing.md` — sandbox details
+
+## See also
+- Token use and costs: `openclaw-reference/references/token-use.md`
+- Transcript hygiene: `openclaw-reference/references/transcript-hygiene.md`
+
+These live in `openclaw-reference` for now because they are deep-reference material. Use `openclaw-concepts` to find them by topic.

@@ -5,6 +5,95 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [v1.7.2] — 2026-06-21
+
+### Added
+- **Tracked OpenClaw bumped 2026.6.8 → 2026.6.9.** Full sync of the 2026.6.9 doc surface.
+- **33 new reference docs** under `openclaw-plugins/references/` (24 per-provider plugin stubs), `openclaw-providers/references/` (`gmi`, `qwen-oauth`), `openclaw-platforms/references/ios`, `openclaw-gateway/references/{pairing,security/audit-checks}`, `openclaw-concepts/references/{date-time,refactor/database-first}`, and `openclaw-reference/references/{code-mode,prompt-caching}`.
+- New external surfaces documented: Zalo ClawBot (`zaloclawbot.md`), GitHub Copilot plugin (`copilot.md`), per-provider plugin registry (24 files under `plugins/reference/`), Codex Harness plugin (`codex.md` under `plugins/reference/`), OpenTelemetry plugin diagnostics (`diagnostics-otel.md`), QA Lab plugin (`qa-lab.md`).
+
+### Changed
+- **102 reference docs updated** to match OpenClaw 2026.6.9 content, across providers (24), tools (12), concepts (12), plugins (12), reference (11), gateway (11), cli (11), channels (6), platforms (3), nodes (2), help (2), automation (2).
+- Headline behavior updates: richer Telegram delivery (Group bot identity, `includeGroupHistoryContext`), agent recovery (retries, terminal outcomes, usage after compaction), Codex integration (GPT-5.3 Spark OAuth, automatic plugin approvals, remote-node `exec` as a dynamic tool), slimmer distribution (provider plugins ship as standalone npm releases, external channel plugins load at Gateway startup), Control UI (session workspace rail, extension health), iOS Watch controls, Android chat context, Codex Hosted Search, Firecrawl keyless `web_fetch`, transcript-hygiene incomplete-reasoning-only-turns rule, secrets audit improvements.
+
+### Notes
+- Reference doc count: 584 → 619. Skills and examples unchanged.
+- This is the full 2026.6.9 sync per the `clawdoc-update` pipeline; no deferred items remain.
+
+## [v1.7.1] — 2026-06-21
+
+### Added
+- **New ref doc:** `skills/openclaw-channels/references/zaloclawbot.md` — Zalo ClawBot channel setup through the external `@zalo-platforms/openclaw-zaloclawbot` plugin (QR-code login, owner-bound private bot, Zalo Bot Platform APIs).
+- **New ref doc:** `skills/openclaw-plugins/references/cohere-plugin.md` — Cohere provider plugin distribution and surface.
+
+### Changed
+- `tracked_openclaw` bumped from `2026.6.8` to `2026.6.9`.
+- `skills/openclaw-channels/references/telegram.md` — added "Group bot identity" section: explicit mention of the configured bot handle addresses the selected OpenClaw agent, even when the agent persona name differs from the Telegram username.
+- `skills/openclaw-tools/references/firecrawl.md` — added "Keyless Firecrawl `web_fetch`" section: explicitly-selected Firecrawl web_fetch fallback supports starter access without an API key; auto-detection still requires a configured `FIRECRAWL_API_KEY`.
+- `skills/openclaw-reference/references/transcript-hygiene.md` — added "Global rule: incomplete reasoning-only turns" section: assistant turns that hit the provider output limit with only thinking/redacted-thinking content are omitted from the in-memory replay copy. Stored transcripts are not rewritten.
+
+### Notes
+- This release is a focused sync against OpenClaw 2026.6.9. It captures the new user-facing surfaces (Zalo ClawBot, Cohere externalized plugin, keyless Firecrawl, the Group bot identity rule, the new transcript-hygiene rule) and skips the 100+ small provider-doc upstream tweaks (those are content-preserving and re-checked in the next full sync).
+- Audit chain: 9/9 validators clean (0 HIGH, 6 MEDIUM all verified by design per `medium-findings-decisions.md`). Pre-Flight (safety, validate_repo, count_truth_check) all PASS.
+- Manifest file_counts: skills 24 (unchanged), reference_docs 586 (+2 vs v1.7.0's 584), examples 24 (unchanged).
+
+## [v1.6.27] — 2026-06-18
+
+## [v1.6.27] — 2026-06-18
+
+### Fixed
+- Public-language scan on CHANGELOG.md v1.6.25 entry (after-the-fact cleanup — no public impact)
+
+## [v1.7.0] — 2026-06-18
+
+### Added
+- **New skill:** `openclaw-prose` — OpenProse workflow language (`/prose` slash command, `.prose` files, multi-agent orchestration). 1 SKILL.md + 6 ref docs.
+- **6 new ref docs:**
+  - `skills/openclaw-channels/references/sms.md` — Twilio SMS channel setup, webhooks, allowlists
+  - `skills/openclaw-channels/references/wechat.md` — Tencent iLink Bot (openclaw-weixin) channel
+  - `skills/openclaw-providers/references/cohere.md` — Cohere provider, default model `cohere/command-a-03-2025`
+  - `skills/openclaw-plugins/references/codex-supervisor.md` — Codex app-server supervisor plugin
+  - `skills/openclaw-tools/references/x-search.md` — X (Twitter) search tool
+  - `skills/openclaw-tools/references/goal.md` — session goal state machine + tools
+- **12 new examples:**
+  - 9 channel examples (SMS, WeChat, iMessage-native, Signal, Slack, Matrix, Teams, WhatsApp, Zalo)
+  - 3 platform examples (Skill Workshop, codex-harness, production-deploy)
+- **6 new internal validators** (workspace-only, not shipped):
+  - `doc_index_builder.py` — builds CLAWDOC_DOC_INDEX.json with per-doc lifecycle metadata
+  - `upstream_drift_detector.py` — drift distribution + cross-tab
+  - `routing_coverage_validator.py` — per-skill coverage + cross-references
+  - `doc_lifecycle_linter.py` — active docs that mention removed behavior
+  - `example_runtime_validator.py` — JSON validity + secret scan + channel coverage
+  - `duplicate_doc_detector.py` — same-H1 and same-snippet duplicates
+
+### Changed
+- `openclaw-master/SKILL.md` Skill map table now covers all 24 routable skills (was 10); description lists all 24 skills for routing
+- `openclaw-tools/SKILL.md` description: added 7 Skill Workshop triggers (skill workshop, skill_workshop, workshop, approve skill, propose skill, skill proposal, quarantine skill)
+- `openclaw-concepts/SKILL.md` description: added 9 latent triggers (presence, OpenClaw SDK, OAuth flows)
+- `openclaw-troubleshooting/SKILL.md` description: tightened (removed generic "not working", "failed", "issue", "error" triggers; kept domain-specific)
+- `openclaw-plugins/SKILL.md` description: added ClawHub vocabulary (clawhub CLI, publish, registry)
+- `openclaw-providers/SKILL.md`: 50+ → 62 (matches canonical count)
+- `bluebubbles.md` converted to "Coming from BlueBubbles" migration-from guide (was a setup guide)
+- `wizard.md`: BlueBubbles marked removed; iMessage promoted
+- `automation/references/logging.md` → 1-line pointer to `openclaw-logging/references/logging.md`
+- `README.md`: badges bumped (24 skills, 584 refs, 24 examples); 12 new examples added to the table; `openclaw-prose` added to skill tree
+- `assets/clawdoc-banner.png` restored + HTML overlay added with v1.7.0 stats
+
+### Fixed
+- **Master skill routing gap:** 12 of 22 skills were not in (now 24 after openclaw-clawhub also added) `openclaw-master`'s skill map. Fixed.
+- **Latent trigger-keyword gaps:** presence, OpenClaw SDK, OAuth-in-concepts were body content but no triggers. Fixed.
+- **Provider count inconsistency:** `50+` vs `43+` vs `60+` across files. Standardized to 62.
+- **Logging duplication:** 3 skills had their own `logging.md`. Consolidated to canonical + 2 pointers.
+- **OpenProse trigger blind spot:** "skill workshop" wasn't in `openclaw-tools` triggers. Added.
+
+### Notes
+- No new OpenClaw sync. v2026.6.8 is still the current stable upstream.
+- Reference doc count: 542 → 584 (+42 net: 6 H5 + 12 config + 16 macOS + 6 openclaw-prose + 2 openclaw-clawhub).
+- Skill count: 22 → 24 (added openclaw-prose and openclaw-clawhub).
+- Example count: 12 → 24 (12 new examples).
+- All audit checks pass clean: routing, claim, metadata, validate_repo, safety_scanner, doc_index_builder + 5 new validators.
+- Pre-Release Power Release Gate (8 stages) passed; VERDICT.md filed in `audit-output/v1.7.0-pre-release/`.
+
 ## [v1.6.26] — 2026-06-18
 
 ### Fixed

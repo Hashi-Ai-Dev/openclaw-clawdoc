@@ -6,7 +6,7 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "minimax/MiniMax-M3"
+        "primary": "YOUR_DEFAULT_MODEL"
       }
     }
   }

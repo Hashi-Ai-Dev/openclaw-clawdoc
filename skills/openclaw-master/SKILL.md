@@ -1,28 +1,55 @@
 ---
 name: openclaw-master
-description: "OpenClaw configuration expert and system doctor. Use for unclassified config questions that don't map to a more specific skill — for specific areas use their dedicated skills: openclaw-memory (memory), openclaw-channels (channels), openclaw-plugins (plugins), openclaw-providers (providers), openclaw-cli (CLI commands), openclaw-troubleshooting (troubleshooting), openclaw-tools (tools), openclaw-agents (multi-agent). Also covers: SOUL.md, streaming, queue modes, model failover, sandbox, Task Flow, Lobster, Diff viewer. Triggers on: openclaw expert, config doctor, system health, gateway diagnostics."
+description: "OpenClaw configuration expert and system doctor. Use for unclassified config questions that don't map to a more specific skill — for specific areas use their dedicated skills: openclaw-config (config keys), openclaw-memory (memory), openclaw-channels (channels), openclaw-plugins (plugins), openclaw-providers (providers), openclaw-cli (CLI commands), openclaw-troubleshooting (troubleshooting), openclaw-tools (tools), openclaw-agents (multi-agent), openclaw-automation (cron/hooks/webhooks), openclaw-install (install/upgrade), openclaw-start (first run/onboarding), openclaw-help (FAQ), openclaw-nodes (iOS/Android/macOS nodes), openclaw-web (dashboard/TUI/webchat), openclaw-platforms (per-OS notes), openclaw-logging (logging config), openclaw-reference (general reference), openclaw-concepts (architecture/concepts), openclaw-prose (OpenProse workflows). Also covers: SOUL.md, streaming, queue modes, model failover, sandbox, Task Flow, Lobster, Diff viewer. Triggers on: openclaw expert, config doctor, system health, gateway diagnostics."
 ---
 
 # OpenClaw Master Reference
 
 Comprehensive OpenClaw knowledge base. This is the top-level skill that routes to specialized skills.
 
-> **⚠️ OSS discipline:** Before publishing any release, new skill, or infrastructure change to the OSS repo, ALWAYS confirm with Hashi first. Not every feature belongs in the public release.
+> **Scope note:** ClawDoc follows an OSS-first scope fence — internal-only modules, private runtimes, and per-host paths are never published to this repo. Each release is reviewed against this fence before tagging.
 
 ## Skill map
 
+The 23 routable OpenClaw skills, grouped by area:
+
 | Skill | When to use |
 |-------|-------------|
+| **Config + Gateway** | |
 | `openclaw-config` | Config audits, gateway config keys, secrets, retry, model failover, timezone, auth profiles, authentication |
+| `openclaw-gateway` | Gateway operations, HTTP/API surface (OpenAI-compatible, OpenResponses), observability (OTel, Prometheus), secrets, sandbox vs tool policy vs elevated, security audit, gateway exposure (Tailscale/runbook) |
+| `openclaw-logging` | Logging configuration: log levels, log rotation, log destinations, log format, debugging log output |
+| **Memory** | |
 | `openclaw-memory` | Memory backends (builtin/QMD/Honcho), embedding providers, active memory, dreaming, memory search |
+| **Channels** | |
+| `openclaw-channels` | Discord, Telegram, WhatsApp, Slack, Signal, Matrix, iMessage (native imsg), routing, pairing, broadcast groups, BlueBubbles migration |
+| **Agents + Multi-agent** | |
 | `openclaw-agents` | Multi-agent setup, bindings, sandbox, tool policies, exec approvals |
-| `openclaw-channels` | Discord, Telegram, WhatsApp, Slack, Signal, Matrix, iMessage, routing, pairing, broadcast groups |
-| `openclaw-concepts` | Architecture, session, compaction, streaming, bootstrap, queue modes, agent loop, system prompt, SOUL.md, Task Flow |
-| `openclaw-troubleshooting` | Diagnosis, error codes, ACP, hooks, pairing, channel failures, gateway runbook |
-| `openclaw-plugins` | Plugin slots, installing plugins, plugin config, context engine |
-| `openclaw-tools` | Tool reference: exec, browser, cron, sessions, subagents, ACP, slash commands, Lobster, Diff viewer |
+| **Plugins** | |
+| `openclaw-plugins` | Plugin slots, installing plugins, plugin config, context engine, plugin manifest, SDK, ClawHub registry |
+| **Tools + Workflows** | |
+| `openclaw-tools` | Tool reference: exec, browser, cron, sessions, subagents, ACP, slash commands, Lobster, Diff viewer, Skill Workshop, media generation |
+| `openclaw-automation` | Cron jobs, hooks, tasks, webhooks, polls, standing orders, Task Flow, Clawflow, Gmail Pub/Sub |
+| `openclaw-prose` | OpenProse markdown-first workflow language for multi-agent AI sessions (plugin + slash command + skill pack) |
+| **CLI + Reference** | |
 | `openclaw-cli` | CLI commands: status, gateway, plugins, memory, agents, channels, config, sessions, cron, hooks, pairing, ACP, MCP, secrets, doctor, update, skills |
-| `openclaw-providers` | Model providers: OpenAI, Anthropic, Gemini, Bedrock, Ollama, DeepSeek, Groq, Together, and 30+ more |
+| `openclaw-reference` | General OpenClaw reference: token use, transcript hygiene, session compaction, rich output protocol, SecretRef credential surface, RELEASING |
+| **Concepts + Help** | |
+| `openclaw-concepts` | Architecture, session, compaction, streaming, bootstrap, queue modes, agent loop, system prompt, SOUL.md, Task Flow, OAuth, presence, OpenClaw SDK |
+| `openclaw-help` | Help, FAQ, "how do I..." plain-language entry point, testing |
+| **Install + Platforms + Start** | |
+| `openclaw-install` | Install, update, migrate, uninstall. Docker, Railway, Fly, GCP, Azure, Kubernetes, Hetzner, Podman, Bun, Nix, from source |
+| `openclaw-platforms` | OpenClaw on Android, iOS, macOS, Windows, Linux, Raspberry Pi, Oracle Cloud, DigitalOcean |
+| `openclaw-start` | First run, bootstrapping, onboarding OpenClaw. Setup wizard, workspace bootstrap, `openclaw onboard` CLI |
+| **Surfaces** | |
+| `openclaw-nodes` | Pairing and using companion nodes (iOS, Android, macOS). Camera, canvas, audio, talk, location, notifications, screen |
+| `openclaw-web` | Web UI: dashboard, TUI, webchat, control UI |
+| **Providers** | |
+| `openclaw-providers` | Model providers: OpenAI, Anthropic, Gemini, Bedrock, Ollama, DeepSeek, Groq, Together, and 60+ more |
+| **Troubleshooting** | |
+| `openclaw-troubleshooting` | Diagnosis, error codes, ACP, hooks, pairing, channel failures, gateway runbook |
+| **Different domain — not an OpenClaw skill** | |
+| `clawdoc-onboarding` | Guided first-run setup for **ClawDoc itself** (NOT OpenClaw). Walks through installing ClawDoc skills, configuring docs sync, end-to-end verification |
 
 ## Quick reference
 
@@ -232,3 +259,9 @@ Each skill has a `references/` directory with deep-dive docs. Key ones:
 - `openclaw-providers/references/providers.md` — all providers
 
 Load these for detailed reference when answering complex config questions.
+
+## Skill boundaries
+- `openclaw-install` = how to DEPLOY OpenClaw (Docker, Railway, Fly, GCP, Azure, K8s, etc.)
+- `openclaw-platforms` = how OpenClaw BEHAVES on specific OSes (Android, iOS, macOS, Windows, Linux, Pi, Oracle Cloud, DigitalOcean)
+
+Use install for "how do I deploy this?" Use platforms for "what works on this OS?" Use nodes for pairing + device behavior across platforms.

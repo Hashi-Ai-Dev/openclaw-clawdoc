@@ -8,7 +8,11 @@ title: "Timezones"
 
 # Timezones
 
-OpenClaw standardizes timestamps so the model sees a **single reference time**.
+OpenClaw standardizes timestamps so the model sees a **single reference time** instead of a mix of provider-local clocks. There are three surfaces where timezones show up, each with its own purpose:
+
+- **Envelope timestamps** in chat transcripts.
+- **Tool result / structured payload timestamps** in tool output.
+- **System prompt timezone hints** (`agents.defaults.userTimezone`).
 
 ## Message envelopes (local by default)
 

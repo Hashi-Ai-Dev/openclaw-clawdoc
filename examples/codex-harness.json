@@ -1,0 +1,27 @@
+{
+  "agents": {
+    "list": [
+      {
+        "id": "codex",
+        "name": "Codex Harness",
+        "model": {
+          "primary": "YOUR_DEFAULT_MODEL"
+        },
+        "harness": {
+          "type": "acp",
+          "command": "codex",
+          "args": ["acp"]
+        },
+        "workspace": "~/.openclaw/workspace-codex"
+      }
+    ]
+  },
+  "bindings": [
+    {
+      "agentId": "codex",
+      "match": {
+        "channel": "cli"
+      }
+    }
+  ]
+}

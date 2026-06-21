@@ -1,0 +1,12 @@
+{
+  "channels": {
+    "zalo": {
+      "enabled": true,
+      "provider": "zalo-bot-api",
+      "botToken": "YOUR_ZALO_BOT_TOKEN",
+      "dmPolicy": "pairing",
+      "allowFrom": ["YOUR_ZALO_USER_ID"],
+      "webhookUrl": "https://your-host.example.com/webhook/zalo"
+    }
+  }
+}

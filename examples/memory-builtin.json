@@ -6,7 +6,7 @@
     "defaults": {
       "workspace": "~/.openclaw/workspace",
       "model": {
-        "primary": "minimax/MiniMax-M3"
+        "primary": "YOUR_DEFAULT_MODEL"
       },
       
       "memorySearch": {

@@ -167,7 +167,7 @@ What to expect:
 
 - `gateway status --deep` can report `Other gateway-like services detected (best effort)`
   and print cleanup hints when stale launchd/systemd/schtasks installs are still around.
-- `gateway probe` can warn about `multiple reachable gateways` when more than one target
+- `gateway probe` can warn about `multiple reachable gateway identities` when more than one target
   answers.
 - If that is intentional, isolate ports, config/state, and workspace roots per gateway.
 

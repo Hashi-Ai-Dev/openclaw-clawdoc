@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "schema_version": "1.0",
-  "clawdoc_version": "v1.6.26",
+  "clawdoc_version": "v1.7.0",
   "tracked_openclaw_version": "2026.6.8",
   "description": "Machine-readable manifest of the ClawDoc public repository contents. ClawDoc is a dual-mode OpenClaw system doctor distribution supporting two install modes: Mode 1 (persistent dedicated agent) and Mode 2 (skills-only into an existing agent).",
   "install_modes_supported": [
@@ -9,14 +9,15 @@
     "skills-only"
   ],
   "file_counts": {
-    "skills": 22,
-    "reference_docs": 542,
-    "examples": 12,
-    "examples_readme": 1
+    "skills": 24,
+    "reference_docs": 619,
+    "examples": 24,
+    "examples_readme": 1,
+    "plugin_subdirs": 1
   },
   "reference_docs_definition": {
     "description": "reference_docs = files under skills/**/references/**",
-    "reproducible_count": "git ls-files skills/ | grep 'references/' | wc -l = 542 (includes .mdx like railway.mdx)",
+    "reproducible_count": "find skills -type f \\( -name '*.md' -o -name '*.mdx' \\) -path '*/references/*' | wc -l = 584 (includes .mdx like railway.mdx; counts tracked + new untracked in working tree)",
     "includes_mdx": "yes \u2014 includes *.mdx files such as railway.mdx"
   },
   "skills": {
@@ -38,6 +39,7 @@
       "openclaw-nodes",
       "openclaw-platforms",
       "openclaw-plugins",
+      "openclaw-prose",
       "openclaw-providers",
       "openclaw-reference",
       "openclaw-start",
@@ -84,7 +86,7 @@
       "HEARTBEAT.md",
       "AGENTS.md"
     ],
-    "note": "Root-level USER.md, IDENTITY.md, TOOLS.md, HEARTBEAT.md, MEMORY.md, AGENTS.md are always forbidden unless explicitly listed above. Root-level SOUL.md is allowed only if it is the public ClawDoc persona already tracked in origin/master. A root-level SOUL.md that contains a private/personal runtime marker is forbidden and must not appear in the public repo. As of v1.6.26, IDENTITY.md, USER.md, and TOOLS.md are explicitly allowed at root \u2014 they hold the public ClawDoc template copies for the install contract."
+    "note": "Root-level USER.md, IDENTITY.md, TOOLS.md, HEARTBEAT.md, MEMORY.md, AGENTS.md are always forbidden unless explicitly listed above. Root-level SOUL.md is allowed only if it is the public ClawDoc persona already tracked in origin/master. A root-level SOUL.md that contains a private/personal runtime marker is forbidden and must not appear in the public repo. As of v1.7.0, IDENTITY.md, USER.md, and TOOLS.md are explicitly allowed at root \u2014 they hold the public ClawDoc template copies for the install contract."
   },
   "forbidden_private_runtime": {
     "description": "These files/directories are private runtime state and must never appear in the public repo at any path.",
@@ -111,11 +113,126 @@
     "examples_must_parse": true,
     "no_private_runtime_files": true,
     "install_mode_documentation": "Both README.md and QUICKSTART.md must mention Mode 1 (persistent-agent) and Mode 2 (skills-only) install paths.",
-    "skill_count_accuracy": "README.md and QUICKSTART.md must not claim 11 skills. The correct count is 22."
+    "skill_count_accuracy": "README.md and QUICKSTART.md must not claim 22 or 23 skills. The correct count is 24 (22 openclaw-* + clawdoc-onboarding + openclaw-prose + openclaw-clawhub = 24 routable skills; openclaw-prose and openclaw-clawhub added in v1.7.0)."
   },
   "version_tracks": {
     "description": "Two separate version tracks are maintained independently.",
     "clawdoc_package_version": "SemVer public package version (e.g. v1.6.0). Bumped for public install contract, new capabilities, or breaking changes.",
     "tracked_openclaw_version": "Upstream OpenClaw source/docs version (e.g. 2026.5.7). Updated on every sync; does not drive ClawDoc SemVer."
+  },
+  "v1_7_0_additions": {
+    "new_skills": [
+      "openclaw-prose",
+      "openclaw-clawhub"
+    ],
+    "new_ref_docs": [
+      "skills/openclaw-channels/references/sms.md",
+      "skills/openclaw-channels/references/wechat.md",
+      "skills/openclaw-clawhub/references/cli.md",
+      "skills/openclaw-clawhub/references/publishing.md",
+      "skills/openclaw-config/references/authentication.md",
+      "skills/openclaw-config/references/cli-backends.md",
+      "skills/openclaw-config/references/config-agents.md",
+      "skills/openclaw-config/references/config-channels.md",
+      "skills/openclaw-config/references/config-tools.md",
+      "skills/openclaw-config/references/configuration-reference.md",
+      "skills/openclaw-config/references/configuration.md",
+      "skills/openclaw-config/references/doctor.md",
+      "skills/openclaw-config/references/external-apps.md",
+      "skills/openclaw-config/references/operator-scopes.md",
+      "skills/openclaw-config/references/protocol.md",
+      "skills/openclaw-config/references/secrets.md",
+      "skills/openclaw-platforms/references/mac/bundled-gateway.md",
+      "skills/openclaw-platforms/references/mac/canvas.md",
+      "skills/openclaw-platforms/references/mac/child-process.md",
+      "skills/openclaw-platforms/references/mac/dev-setup.md",
+      "skills/openclaw-platforms/references/mac/health.md",
+      "skills/openclaw-platforms/references/mac/icon.md",
+      "skills/openclaw-platforms/references/mac/logging.md",
+      "skills/openclaw-platforms/references/mac/menu-bar.md",
+      "skills/openclaw-platforms/references/mac/peekaboo.md",
+      "skills/openclaw-platforms/references/mac/permissions.md",
+      "skills/openclaw-platforms/references/mac/signing.md",
+      "skills/openclaw-platforms/references/mac/skills.md",
+      "skills/openclaw-platforms/references/mac/voice-overlay.md",
+      "skills/openclaw-platforms/references/mac/voicewake.md",
+      "skills/openclaw-platforms/references/mac/webchat.md",
+      "skills/openclaw-platforms/references/mac/xpc.md",
+      "skills/openclaw-plugins/references/codex-supervisor.md",
+      "skills/openclaw-prose/references/examples.md",
+      "skills/openclaw-prose/references/install.md",
+      "skills/openclaw-prose/references/programming.md",
+      "skills/openclaw-prose/references/runtime-mapping.md",
+      "skills/openclaw-prose/references/slash-command.md",
+      "skills/openclaw-prose/references/state.md",
+      "skills/openclaw-providers/references/cohere.md",
+      "skills/openclaw-tools/references/goal.md",
+      "skills/openclaw-tools/references/x-search.md"
+    ],
+    "new_examples": [
+      "codex-harness.json",
+      "imessage-native.json",
+      "matrix-channel.json",
+      "msteams-channel.json",
+      "production-deploy.json",
+      "signal-channel.json",
+      "skill-workshop.json",
+      "slack-channel.json",
+      "sms-channel.json",
+      "wechat-channel.json",
+      "whatsapp-channel.json",
+      "zalo-channel.json"
+    ]
+  },
+  "v1_7_1_additions": {
+    "new_ref_docs": [
+      "skills/openclaw-channels/references/zaloclawbot.md",
+      "skills/openclaw-plugins/references/cohere-plugin.md"
+    ],
+    "modified_ref_docs": [
+      "skills/openclaw-channels/references/telegram.md",
+      "skills/openclaw-reference/references/transcript-hygiene.md",
+      "skills/openclaw-tools/references/firecrawl.md"
+    ],
+    "tracked_openclaw": "2026.6.9"
+  },
+  "v1_7_2_additions": {
+    "new_ref_docs": [
+      "skills/openclaw-plugins/references/copilot.md",
+      "skills/openclaw-plugins/references/reference.md",
+      "skills/openclaw-plugins/references/arcee.md",
+      "skills/openclaw-plugins/references/cerebras.md",
+      "skills/openclaw-plugins/references/chutes.md",
+      "skills/openclaw-plugins/references/cloudflare-ai-gateway.md",
+      "skills/openclaw-plugins/references/codex.md",
+      "skills/openclaw-plugins/references/cohere.md",
+      "skills/openclaw-plugins/references/deepinfra.md",
+      "skills/openclaw-plugins/references/deepseek.md",
+      "skills/openclaw-plugins/references/diagnostics-otel.md",
+      "skills/openclaw-plugins/references/exa.md",
+      "skills/openclaw-plugins/references/firecrawl.md",
+      "skills/openclaw-plugins/references/gmi.md",
+      "skills/openclaw-plugins/references/gradium.md",
+      "skills/openclaw-plugins/references/groq.md",
+      "skills/openclaw-plugins/references/inworld.md",
+      "skills/openclaw-plugins/references/kilocode.md",
+      "skills/openclaw-plugins/references/kimi.md",
+      "skills/openclaw-plugins/references/perplexity.md",
+      "skills/openclaw-plugins/references/qa-lab.md",
+      "skills/openclaw-plugins/references/qianfan.md",
+      "skills/openclaw-plugins/references/qwen.md",
+      "skills/openclaw-plugins/references/stepfun.md",
+      "skills/openclaw-providers/references/gmi.md",
+      "skills/openclaw-providers/references/qwen-oauth.md",
+      "skills/openclaw-platforms/references/ios.md",
+      "skills/openclaw-gateway/references/pairing.md",
+      "skills/openclaw-gateway/references/security/audit-checks.md",
+      "skills/openclaw-concepts/references/refactor/database-first.md",
+      "skills/openclaw-concepts/references/date-time.md",
+      "skills/openclaw-reference/references/code-mode.md",
+      "skills/openclaw-reference/references/prompt-caching.md"
+    ],
+    "modified_ref_docs_count": 102,
+    "tracked_openclaw": "2026.6.9"
   }
 }

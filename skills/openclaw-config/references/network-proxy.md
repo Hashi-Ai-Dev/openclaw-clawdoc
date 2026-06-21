@@ -36,16 +36,31 @@ OpenClaw process
   WebSocket clients      -> operator-managed filtering proxy -> public internet
 ```
 
-The public contract is the routing behavior, not the internal Node hooks used to implement it. OpenClaw Gateway control-plane WebSocket clients use a narrow direct path for local loopback Gateway RPC traffic when the Gateway URL uses `localhost` or a literal loopback IP such as `127.0.0.1` or `[::1]`. That control-plane path must be able to reach loopback Gateways even when the operator proxy blocks loopback destinations. Normal runtime HTTP and WebSocket requests still use the configured proxy.
+The public contract is the routing behavior, not the internal Node hooks used to implement it. Internally, OpenClaw installs Proxyline as the process-level routing runtime for this feature. Proxyline covers `fetch`, undici-backed clients, Node core `node:http` / `node:https` callers, common WebSocket clients, and helper-created CONNECT tunnels. Managed proxy mode replaces caller-provided Node HTTP agents so explicit agents do not accidentally bypass the operator proxy.
 
-Internally, OpenClaw uses two process-level routing hooks for this feature:
+OpenClaw Gateway control-plane WebSocket clients use a narrow direct path for local loopback Gateway RPC traffic when the Gateway URL uses `localhost` or a literal loopback IP such as `127.0.0.1` or `[::1]`. That control-plane path must be able to reach loopback Gateways even when the operator proxy blocks loopback destinations. Normal runtime HTTP and WebSocket requests still use the configured proxy.
 
-- Undici dispatcher routing covers `fetch`, undici-backed clients, and transports that provide their own undici dispatcher.
-- `global-agent` routing covers Node core `node:http` and `node:https` callers, including many libraries layered on `http.request`, `https.request`, `http.get`, and `https.get`. Managed proxy mode forces that global agent so explicit Node HTTP agents do not accidentally bypass the operator proxy.
+### Gateway Loopback Mode
+
+Local Gateway control-plane clients usually connect to a loopback WebSocket such as `ws://127.0.0.1:18789`. Use `proxy.loopbackMode` to choose how loopback managed-proxy exceptions behave while the managed proxy is active:
+
+```json5
+{
+  proxy: {
+    enabled: true,
+    proxyUrl: "http://127.0.0.1:3128",
+    loopbackMode: "gateway-only", // gateway-only | proxy | block
+  },
+}
+```
+
+- `gateway-only` (default): OpenClaw registers the active Gateway loopback authority in Proxyline's managed bypass policy so local Gateway WebSocket traffic can connect directly. Custom loopback Gateway ports work because the active Gateway URL's host and port are registered. The bundled browser plugin can also register the exact local CDP readiness and DevTools WebSocket endpoints for OpenClaw-launched managed browsers, and the bundled Ollama memory embedding provider can use its own narrower guarded direct path for the exact configured host-local loopback embedding origin.
+- `proxy`: send loopback Gateway WebSocket traffic through the managed proxy. Use this only when you fully understand the remote-proxy caveat: a remote or non-loopback operator proxy cannot actually reach your local Gateway, so the loopback connection will fail.
+- `block`: deny loopback Gateway WebSocket connections while the managed proxy is active.
 
 Some plugins own custom transports that need explicit proxy wiring even when process-level routing exists. For example, Telegram's Bot API transport uses its own HTTP/1 undici dispatcher and therefore honors process proxy env plus the managed `OPENCLAW_PROXY_URL` fallback in that owner-specific transport path.
 
-The proxy URL itself must use `http://`. HTTPS destinations are still supported through the proxy with HTTP `CONNECT`; this only means OpenClaw expects a plain HTTP forward-proxy listener such as `http://127.0.0.1:3128`.
+The proxy URL uses `http://` or `https://`. HTTPS destinations are still reached through the proxy with HTTP `CONNECT`; HTTPS destination URLs simply mean the proxy speaks TLS to OpenClaw while the inner `CONNECT` request still targets the real upstream host/port.
 
 While the proxy is active, OpenClaw clears `no_proxy`, `NO_PROXY`, and `GLOBAL_AGENT_NO_PROXY`. Those bypass lists are destination-based, so leaving `localhost` or `127.0.0.1` there would let high-risk SSRF targets skip the filtering proxy.
 

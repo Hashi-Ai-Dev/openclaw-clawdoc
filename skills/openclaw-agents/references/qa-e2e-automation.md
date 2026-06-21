@@ -18,8 +18,12 @@ Current pieces:
   reaction, edit, and delete surfaces.
 - `extensions/qa-lab`: debugger UI and QA bus for observing the transcript,
   injecting inbound messages, and exporting a Markdown report.
+- `extensions/qa-matrix`, future runner plugins: live-transport adapters that
+  drive a real channel inside a child QA gateway.
 - `qa/`: repo-backed seed assets for the kickoff task and baseline QA
   scenarios.
+- [Mantis](/concepts/mantis): before and after live verification for bugs that
+  need real transports, browser screenshots, VM state, and PR evidence.
 
 The current QA operator flow is a two-pane QA site:
 
@@ -84,10 +88,13 @@ their own scenario list shape:
 `qa-channel` remains the broad synthetic product-behavior suite and is not part
 of the live transport coverage matrix.
 
-| Lane     | Canary | Mention gating | Allowlist block | Top-level reply | Restart resume | Thread follow-up | Thread isolation | Reaction observation | Help command |
-| -------- | ------ | -------------- | --------------- | --------------- | -------------- | ---------------- | ---------------- | -------------------- | ------------ |
-| Matrix   | x      | x              | x               | x               | x              | x                | x                | x                    |              |
-| Telegram | x      |                |                 |                 |                |                  |                  |                      | x            |
+| Lane     | Canary | Mention gating | Bot-to-bot | Allowlist block | Top-level reply | Restart resume | Thread follow-up | Thread isolation | Reaction observation | Help command | Native command registration |
+| -------- | ------ | -------------- | ---------- | --------------- | --------------- | -------------- | ---------------- | ---------------- | -------------------- | ------------ | --------------------------- |
+| Matrix   | x      | x              | x          | x               | x               | x              | x                | x                | x                    |              |                             |
+| Telegram | x      | x              | x          |                 |                 |                |                  |                  |                      | x            |                             |
+| Discord  | x      | x              | x          |                 |                 |                |                  |                  |                      |              | x                           |
+| Slack    | x      | x              | x          | x               | x               | x              | x                | x                |                      |              |                             |
+| WhatsApp | x      | x              |            | x               | x               | x              |                  |                  | x                    | x            |                             |
 
 This keeps `qa-channel` as the broad product-behavior suite while Matrix,
 Telegram, and future live transports share one explicit transport-contract
@@ -179,16 +186,16 @@ refs and write a judged Markdown report:
 
 ```bash
 pnpm openclaw qa character-eval \
-  --model openai/gpt-5.4,thinking=xhigh \
+  --model openai/gpt-5.5,thinking=medium,fast \
   --model openai/gpt-5.2,thinking=xhigh \
   --model openai/gpt-5,thinking=xhigh \
-  --model anthropic/claude-opus-4-6,thinking=high \
+  --model anthropic/claude-opus-4-8,thinking=high \
   --model anthropic/claude-sonnet-4-6,thinking=high \
   --model zai/glm-5.1,thinking=high \
   --model moonshot/kimi-k2.5,thinking=high \
   --model google/gemini-3.1-pro-preview,thinking=high \
-  --judge-model openai/gpt-5.4,thinking=xhigh,fast \
-  --judge-model anthropic/claude-opus-4-6,thinking=high \
+  --judge-model openai/gpt-5.5,thinking=xhigh,fast \
+  --judge-model anthropic/claude-opus-4-8,thinking=high \
   --blind-judge-models \
   --concurrency 16 \
   --judge-concurrency 16
@@ -219,13 +226,13 @@ Candidate and judge model runs both default to concurrency 16. Lower
 `--concurrency` or `--judge-concurrency` when provider limits or local gateway
 pressure make a run too noisy.
 When no candidate `--model` is passed, the character eval defaults to
-`openai/gpt-5.4`, `openai/gpt-5.2`, `openai/gpt-5`, `anthropic/claude-opus-4-6`,
+`openai/gpt-5.5`, `openai/gpt-5.2`, `openai/gpt-5`, `anthropic/claude-opus-4-8`,
 `anthropic/claude-sonnet-4-6`, `zai/glm-5.1`,
 `moonshot/kimi-k2.5`, and
 `google/gemini-3.1-pro-preview` when no `--model` is passed.
 When no `--judge-model` is passed, the judges default to
-`openai/gpt-5.4,thinking=xhigh,fast` and
-`anthropic/claude-opus-4-6,thinking=high`.
+`openai/gpt-5.5,thinking=xhigh,fast` and
+`anthropic/claude-opus-4-8,thinking=high`.
 
 ## Related docs
 
