@@ -138,7 +138,17 @@ than basic-only scraping.
 
 The selection knob is `tools.web.fetch.provider`. If you omit it, OpenClaw
 auto-detects the first ready web-fetch provider from available credentials.
-Today the bundled provider is Firecrawl.
+
+### Keyless Firecrawl `web_fetch`
+
+The explicitly-selected hosted Firecrawl `web_fetch` fallback supports starter
+access without an API key. Add `FIRECRAWL_API_KEY` in the Gateway environment
+(or configure it in the plugin) when you need higher limits. Firecrawl
+`web_search` and `firecrawl_scrape` always require an API key.
+
+Keyless access is opt-in: it activates only after you select the Firecrawl
+`web_fetch` provider explicitly. The auto-detection path above requires a
+configured `FIRECRAWL_API_KEY` to fall through to Firecrawl.
 
 ## Related
 

@@ -10,7 +10,7 @@
   ],
   "file_counts": {
     "skills": 24,
-    "reference_docs": 584,
+    "reference_docs": 586,
     "examples": 24,
     "examples_readme": 1,
     "plugin_subdirs": 1
@@ -183,5 +183,17 @@
       "whatsapp-channel.json",
       "zalo-channel.json"
     ]
+  },
+  "v1_7_1_additions": {
+    "new_ref_docs": [
+      "skills/openclaw-channels/references/zaloclawbot.md",
+      "skills/openclaw-plugins/references/cohere-plugin.md"
+    ],
+    "modified_ref_docs": [
+      "skills/openclaw-channels/references/telegram.md",
+      "skills/openclaw-reference/references/transcript-hygiene.md",
+      "skills/openclaw-tools/references/firecrawl.md"
+    ],
+    "tracked_openclaw": "2026.6.9"
   }
 }

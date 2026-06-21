@@ -5,6 +5,25 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [v1.7.1] — 2026-06-21
+
+### Added
+- **New ref doc:** `skills/openclaw-channels/references/zaloclawbot.md` — Zalo ClawBot channel setup through the external `@zalo-platforms/openclaw-zaloclawbot` plugin (QR-code login, owner-bound private bot, Zalo Bot Platform APIs).
+- **New ref doc:** `skills/openclaw-plugins/references/cohere-plugin.md` — Cohere provider plugin distribution and surface.
+
+### Changed
+- `tracked_openclaw` bumped from `2026.6.8` to `2026.6.9`.
+- `skills/openclaw-channels/references/telegram.md` — added "Group bot identity" section: explicit mention of the configured bot handle addresses the selected OpenClaw agent, even when the agent persona name differs from the Telegram username.
+- `skills/openclaw-tools/references/firecrawl.md` — added "Keyless Firecrawl `web_fetch`" section: explicitly-selected Firecrawl web_fetch fallback supports starter access without an API key; auto-detection still requires a configured `FIRECRAWL_API_KEY`.
+- `skills/openclaw-reference/references/transcript-hygiene.md` — added "Global rule: incomplete reasoning-only turns" section: assistant turns that hit the provider output limit with only thinking/redacted-thinking content are omitted from the in-memory replay copy. Stored transcripts are not rewritten.
+
+### Notes
+- This release is a focused sync against OpenClaw 2026.6.9. It captures the new user-facing surfaces (Zalo ClawBot, Cohere externalized plugin, keyless Firecrawl, the Group bot identity rule, the new transcript-hygiene rule) and skips the 100+ small provider-doc upstream tweaks (those are content-preserving and re-checked in the next full sync).
+- Audit chain: 9/9 validators clean (0 HIGH, 6 MEDIUM all verified by design per `medium-findings-decisions.md`). Pre-Flight (safety, validate_repo, count_truth_check) all PASS.
+- Manifest file_counts: skills 24 (unchanged), reference_docs 586 (+2 vs v1.7.0's 584), examples 24 (unchanged).
+
+## [v1.6.27] — 2026-06-18
+
 ## [v1.6.27] — 2026-06-18
 
 ### Fixed

@@ -89,6 +89,25 @@ Implementation:
 
 ---
 
+## Global rule: incomplete reasoning-only turns
+
+Assistant turns that hit the provider output limit with only thinking or
+redacted-thinking content are omitted from the in-memory replay copy. Such
+turns contain incomplete provider state and may carry a partial thinking
+signature that would otherwise be replayed into a later turn and rejected
+by the provider.
+
+Empty length turns are left unchanged, as are length turns with visible text,
+tool calls, or unknown content blocks. Stored transcripts on disk are not
+rewritten — only the in-memory copy the model sees is affected.
+
+Implementation:
+
+- `normalizeAssistantReplayContent` in
+  `src/agents/embedded-agent-runner/replay-history.ts`
+
+---
+
 ## Global rule: inter-session input provenance
 
 When an agent sends a prompt into another session via `sessions_send` (including

@@ -4,7 +4,7 @@
 
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-2026.6.8-blue?style=flat-square)](https://github.com/openclaw/openclaw)
 [![Skills](https://img.shields.io/badge/Skills-24-orange?style=flat-square)](#skill-tree)
-[![Reference Docs](https://img.shields.io/badge/Reference_Docs-584-green?style=flat-square)](#reference-docs)
+[![Reference Docs](https://img.shields.io/badge/Reference_Docs-586-green?style=flat-square)](#reference-docs)
 [![License](https://img.shields.io/badge/License-MIT-success?style=flat-square)](LICENSE)
 
 <p align="center">
@@ -14,7 +14,7 @@
 <p align="center">
   <a href="https://github.com/Hashi-Ai-Dev/openclaw-clawdoc/releases/tag/v1.7.0"><img alt="v1.7.0 — Content Freshness" src="https://img.shields.io/badge/v1.7.0%E2%80%94Content_Freshness-success?style=flat-square"></a>
   <a href="#skill-tree"><img alt="24 skills" src="https://img.shields.io/badge/24_skills-orange?style=flat-square"></a>
-  <a href="#reference-docs"><img alt="584 reference docs" src="https://img.shields.io/badge/584_reference_docs-green?style=flat-square"></a>
+  <a href="#reference-docs"><img alt="584 reference docs" src="https://img.shields.io/badge/586_reference_docs-green?style=flat-square"></a>
   <a href="#ready-to-use-examples"><img alt="24 examples" src="https://img.shields.io/badge/24_examples-blueviolet?style=flat-square"></a>
 </p>
 
@@ -147,7 +147,7 @@ ClawDoc routes to the right skill, reads the reference docs, and gives you a pre
 
 ## Reference docs
 
-**584 docs** copied from the official OpenClaw source and versioned against the tracked OpenClaw release.
+**586 docs** copied from the official OpenClaw source and versioned against the tracked OpenClaw release.
 
 | Area | What's covered |
 |------|---------------|
