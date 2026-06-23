@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Hashi-Ai-Dev/openclaw-clawdoc/releases/tag/v1.7.2"><img alt="v1.7.2 — OpenClaw 2026.6.9 full sync" src="https://img.shields.io/badge/v1.7.2%E2%80%94OpenClaw_2026.6.9_full_sync-success?style=flat-square"></a>
+  <a href="https://github.com/Hashi-Ai-Dev/openclaw-clawdoc/releases/tag/v1.7.3"><img alt="v1.7.3 — Hotfix consolidation, description-trim deferral, metadata corrections" src="https://img.shields.io/badge/v1.7.3%E2%80%94Hotfix_consolidation%2C_description_trim%2C_metadata_corrections-success?style=flat-square"></a>
   <a href="#skill-tree"><img alt="24 skills" src="https://img.shields.io/badge/24_skills-orange?style=flat-square"></a>
   <a href="#reference-docs"><img alt="584 reference docs" src="https://img.shields.io/badge/619_reference_docs-green?style=flat-square"></a>
   <a href="#ready-to-use-examples"><img alt="24 examples" src="https://img.shields.io/badge/24_examples-blueviolet?style=flat-square"></a>
@@ -154,7 +154,7 @@ ClawDoc routes to the right skill, reads the reference docs, and gives you a pre
 | Config | All gateway config keys, defaults, secrets, retry, failover |
 | Memory | builtin / QMD / Honcho setup, embeddings, citations |
 | Agents | Multi-agent, bindings, sandbox, tool policies |
-| Channels | Discord, Telegram, WhatsApp, Slack, Signal, and 33+ more (38 total) |
+| Channels | Discord, Telegram, WhatsApp, Slack, Signal, and 36+ more (41 total) |
 | Concepts | Architecture, session, compaction, streaming, queue |
 | Providers | 60+ model providers: OpenAI, Anthropic, Gemini, Bedrock, Ollama... |
 | CLI | Every openclaw command with examples |
@@ -171,7 +171,7 @@ ClawDoc routes to the right skill, reads the reference docs, and gives you a pre
 | `openclaw-config` | Gateway config reference — all keys, all patterns |
 | `openclaw-memory` | Memory backends: builtin, QMD, Honcho |
 | `openclaw-agents` | Multi-agent, bindings, sandbox, tool policies |
-| `openclaw-channels` | Discord, Telegram, WhatsApp, Slack, Signal — and 33+ more (38 total) |
+| `openclaw-channels` | Discord, Telegram, WhatsApp, Slack, Signal — and 36+ more (41 total) |
 
 ### Operations
 | Skill | What it does |
