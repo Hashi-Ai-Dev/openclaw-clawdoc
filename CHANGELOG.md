@@ -8,12 +8,7 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 ## [v1.7.3.1] — 2026-06-23
 
 ### Fixed
-- Reworded the v1.7.3 entry in `CHANGELOG.md` for clarity. No code or skill content changed.
-
-## [v1.7.3.2] — 2026-06-23
-
-### Fixed
-- Reworded the v1.7.3.1 entry in `CHANGELOG.md` for clarity. No code or skill content changed.
+- **Release-notes leak in the v1.7.3 CHANGELOG entry.** The original v1.7.3 entry referenced an internal audit-output file path and used internal-framing language (a "F2" audit label, a date-stamped audit reference, and a "v1.7.4 plan" reference). All replaced with public-voice descriptions of the work. The v1.7.3 GitHub release body was edited in place to the same effect.
 
 ## [v1.7.3] — 2026-06-23
 
