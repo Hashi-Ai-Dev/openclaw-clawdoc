@@ -5,11 +5,6 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
-## [v1.7.3.1] — 2026-06-23
-
-### Fixed
-- **Release-notes leak in the v1.7.3 CHANGELOG entry.** The original v1.7.3 entry referenced an internal audit-output file path and used internal-framing language (a "F2" audit label, a date-stamped audit reference, and a "v1.7.4 plan" reference). All replaced with public-voice descriptions of the work. The v1.7.3 GitHub release body was edited in place to the same effect.
-
 ## [v1.7.3] — 2026-06-23
 
 ### Fixed
@@ -19,13 +14,13 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 - **Channel-count claim** — `README.md` and `agent-template/README.md` corrected from "33+ more (38 total)" to "36+ more (41 total)" to match the on-disk channel count.
 - **Broken `references/` cross-refs** — `openclaw-platforms/references/index.md`, `openclaw-providers/references/model-failover.md`, and `openclaw-troubleshooting/references/automation-troubleshooting.md` removed from skill bodies (the files never existed).
 - **Stale provider count** — `openclaw-providers` corrected from "62 providers" to 59 to match the on-disk count.
-- **Skill routing fix** — `openclaw-gateway/SKILL.md` references section added (lists all 23 reference files). `openclaw-channels/SKILL.md` description no longer mentions BlueBubbles (the channel was removed in v1.6.26; the migration guide at `references/bluebubbles.md` is preserved).
+- **Public-skill routing fix (F2)** — `openclaw-gateway/SKILL.md` references section added (lists all 23 reference files). `openclaw-channels/SKILL.md` description no longer mentions BlueBubbles (the channel was removed in v1.6.26; the migration guide at `references/bluebubbles.md` is preserved).
 - **Public-side structural checks** — `scripts/validate_repo.py` extended from 6 to 12 checks: manifest version vs `git describe`, tracked OpenClaw version vs `.openclaw-version`, public skill list membership vs the on-disk skills directory, install command versions vs the latest tag, examples README coverage, and SKILL.md references existence.
 
 ### Notes
 - v1.7.2 is now marked as **known-broken**: anyone checking out `v1.7.2` (`ea034b3`) gets the pre-hotfix drift. v1.7.3 is the recommended tag for stable use.
 - No public-side doc count changes: 24 routable skills · 619 ref docs · 24 examples. All counts verified against the filesystem at tag time.
-- The public-skill description trim is **deferred to a follow-up release**. The 24 public descriptions are still over 160 chars on average; trimming is a behavior-changing release that needs careful per-skill analysis of the routing keywords each description carries. A lighter-weight approach (a `triggers:` field separate from `description:`) is proposed.
+- The public-skill description trim (Q2 from the 2026-06-21 audit) is **deferred to a follow-up release**. The 24 public descriptions are still over 160 chars on average; trimming is a behavior-changing release that needs careful per-skill analysis of the routing keywords each description carries. A lighter-weight approach (a frontmatter `triggers:` field separate from `description:`) is the proposed v1.7.4 plan.
 
 ## [v1.7.2] — 2026-06-21
 
