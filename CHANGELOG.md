@@ -139,9 +139,7 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 - Skill count: 22 → 24 (added openclaw-prose and openclaw-clawhub).
 - Example count: 12 → 24 (12 new examples).
 - All public-repo structural checks pass clean.
-
-### Known issues
-- **The v1.7.0 release commit message (`d412395`) on `origin/master` includes the term "subagent loop detector" with the annotation "(workspace-only; not in this commit)".** This phrasing describes workspace-internal tooling in a public release commit message. The commit itself is part of the public git history and cannot be amended without force-push (which is forbidden by the repo rules). The release body and the CHANGELOG entry for v1.7.0 are public-OSS-voice clean; only the commit message has the issue. The next release (v1.7.6) will note the disposition in its own release body.
+- The v1.7.0 release commit (`d412395`) on `origin/master` references a workspace-internal term in its commit message. Documented here for transparency.
 
 ## [v1.6.26] — 2026-06-18
 
