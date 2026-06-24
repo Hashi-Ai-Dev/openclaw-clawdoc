@@ -1,6 +1,6 @@
 ---
 name: openclaw-reference
-description: "General OpenClaw reference docs. Use when looking for conceptual reference material that doesn't map to a specific skill: token usage, transcript hygiene, session compaction, rich output protocol, SecretRef credential surface, application modernization plan, or releasing OpenClaw. Triggers on: \"token\", \"transcript\", \"session compaction\", \"rich output\", \"SecretRef\", \"credentials\", \"releasing\", \"application plan\", \"release validation\", \"release stages\", \"CI pipeline\", \"CI\"."
+description: "General OpenClaw reference docs. Use when looking for conceptual reference material that doesn't map to a specific skill: token usage, transcript hygiene, session compaction, rich output protocol, SecretRef credential surface, application modernization plan, releasing OpenClaw, or prompt caching (knobs, merge order, per-agent cache behavior, cache-ttl tuning). Triggers on: \"token\", \"transcript\", \"session compaction\", \"rich output\", \"SecretRef\", \"credentials\", \"releasing\", \"application plan\", \"release validation\", \"release stages\", \"CI pipeline\", \"CI\", \"prompt caching\", \"prompt-caching\", \"prompt cache\", \"cache retention\", \"cache-ttl\", \"cache ttl\", \"merge order\", \"knobs\"."
 ---
 
 # OpenClaw Reference

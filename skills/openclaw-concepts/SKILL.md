@@ -1,6 +1,6 @@
 ---
 name: openclaw-concepts
-description: "OpenClaw core concepts. Use when explaining architecture, memory, sessions, compaction, streaming, multi-agent design, sandboxing, agent bootstrap, message flow, queue modes, model failover, system prompt, SOUL.md, timezone, OAuth flows, presence, or the OpenClaw SDK. Triggers on: how does it work, architecture, session, compaction, streaming, bootstrap, context, queue, message flow, failover, features, retry, typebox, models, model-providers, usage-tracking, markdown, formatting, qa, matrix, rpc, adapters, OAuth, oauth flow, presence, user presence, agent presence, sdk, software development kit, OpenClaw SDK, openclaw sdk, programmatic access."
+description: "OpenClaw core concepts. Use when explaining architecture, memory, sessions, compaction, streaming, multi-agent design, sandboxing, agent bootstrap, message flow, queue modes, model failover, system prompt, SOUL.md, timezone, OAuth flows, presence, the OpenClaw SDK, the database-first migration to SQLite, doctor migrations from legacy JSON stores, or the cache layer refactor. Triggers on: how does it work, architecture, session, compaction, streaming, bootstrap, context, queue, message flow, failover, features, retry, typebox, models, model-providers, usage-tracking, markdown, formatting, qa, matrix, rpc, adapters, OAuth, oauth flow, presence, user presence, agent presence, sdk, software development kit, OpenClaw SDK, openclaw sdk, programmatic access, sqlite, database first, database-first, migration, migrations."
 ---
 
 # OpenClaw Concepts
