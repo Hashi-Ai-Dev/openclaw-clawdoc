@@ -69,7 +69,7 @@ The 23 routable OpenClaw skills, grouped by area:
 | Situation | Action |
 |---|---|
 | Config changes | Use gateway tool (`config.get` / `config.patch` / `config.apply`) |
-| Skill installation | `clawdhub` or clone to `~/.openclaw/skills/` |
+| Skill installation | `clawhub` CLI or clone to `~/.openclaw/skills/` |
 | Bot mention in Discord | `<@bot-id>` not plain `@name` |
 | `requireMention: true` | Respond only when pinged |
 | `requireMention: false` | Always open in that channel |
@@ -77,8 +77,10 @@ The 23 routable OpenClaw skills, grouped by area:
 
 ### Config location
 ```
-/data/.openclaw/openclaw.json
+~/.openclaw/openclaw.json
 ```
+
+This is the user-level config path for typical OpenClaw installs (Homebrew, pip, source). If you are running OpenClaw inside a container image that sets `OPENCLAW_HOME=/data/.openclaw`, the config path is `/data/.openclaw/openclaw.json` instead. Check `openclaw doctor` to see which path your install uses.
 
 ### Logs
 ```
@@ -94,7 +96,7 @@ ps aux | grep openclaw-gateway  # is it running?
 
 ### Validate config
 ```bash
-python3 -m json.tool /data/.openclaw/openclaw.json > /dev/null && echo "valid"
+python3 -m json.tool ~/.openclaw/openclaw.json > /dev/null && echo "valid"
 ```
 
 ### Key memory fix (Honcho)

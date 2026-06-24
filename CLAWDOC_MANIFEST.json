@@ -18,10 +18,10 @@
   "reference_docs_definition": {
     "description": "reference_docs = files under skills/**/references/**, tracked in git (matches file_counts.reference_docs)",
     "reproducible_count": "find skills -type f \\( -name '*.md' -o -name '*.mdx' \\) -path '*/references/*' | wc -l = 619 (includes .mdx such as railway.mdx; git ls-files skills/ | grep references/ gives the same result)",
-    "includes_mdx": "yes \u2014 includes *.mdx files such as railway.mdx"
+    "includes_mdx": "yes — includes *.mdx files such as railway.mdx"
   },
   "skills": {
-    "description": "Public openclaw-* skills shipped with ClawDoc. All SKILL.md files have name + description frontmatter only. 'triggers' are embedded inline in description, not a separate frontmatter key.",
+    "description": "Public skills shipped with ClawDoc. The list is an allowlist: only the names below are permitted in skills/ on master. Adding a new public skill requires updating this list in the same PR that adds the skill.",
     "public_list": [
       "clawdoc-onboarding",
       "openclaw-agents",
@@ -48,20 +48,8 @@
       "openclaw-troubleshooting",
       "openclaw-web"
     ],
-    "forbidden": [
-      "clawdoc-update",
-      "clawdoc-release-manager",
-      "clawdoc-repo-manager",
-      "clawdoc-m27-loop",
-      "clawdoc-effectiveness",
-      "clawdoc-doc-auditor",
-      "clawdoc-doc-reviewer",
-      "clawdoc-oss-reviewer",
-      "clawdoc-org-manager",
-      "clawdoc-fb-post",
-      "clawdoc-commit-sanitizer"
-    ],
-    "forbidden_note": "Any skills/ directory containing 'clawdoc-' that is NOT 'clawdoc-onboarding' is private and must not appear in the public repo."
+    "allowlist_policy": "Only the names in public_list are permitted under skills/. Any other skills/ subdirectory (including any 'clawdoc-*' name other than 'clawdoc-onboarding') is private and must not appear in the public repo. The validator enforces this allowlist; no deny-list is needed because private skill names are not enumerated here.",
+    "allowlist_note": "clawdoc-onboarding is the only 'clawdoc-*' skill shipped publicly. All other ClawDoc authoring/maintenance skills are workspace-internal and live outside this repo."
   },
   "public_template_files": {
     "description": "Approved public template files that are NOT forbidden. Only these paths are allowed.",
@@ -87,7 +75,7 @@
       "HEARTBEAT.md",
       "AGENTS.md"
     ],
-    "note": "Root-level USER.md, IDENTITY.md, TOOLS.md, HEARTBEAT.md, MEMORY.md, AGENTS.md are always forbidden unless explicitly listed above. Root-level SOUL.md is allowed only if it is the public ClawDoc persona already tracked in origin/master. A root-level SOUL.md that contains a private/personal runtime marker is forbidden and must not appear in the public repo. As of v1.7.0, IDENTITY.md, USER.md, and TOOLS.md are explicitly allowed at root \u2014 they hold the public ClawDoc template copies for the install contract."
+    "note": "Root-level USER.md, IDENTITY.md, TOOLS.md, SOUL.md are explicitly allowed at root — they hold the public ClawDoc persona / install contract templates. Root-level MEMORY.md, HEARTBEAT.md, AGENTS.md are blocked by default; new agent-workspace templates should live under agent-template/, not repo root. The same filenames inside private directories (memory/, .agents/, .openclaw/) are private runtime state and are forbidden."
   },
   "forbidden_private_runtime": {
     "description": "These files/directories are private runtime state and must never appear in the public repo at any path.",
@@ -100,7 +88,7 @@
       "CLAWDOC_DOC_INDEX.json",
       "audit-output/"
     ],
-    "note": "Root-level SOUL.md is allowed only if it is the public ClawDoc persona (content matches origin/master tracking). USER.md, IDENTITY.md, TOOLS.md, and AGENTS.md at repo root are blocked by default \u2014 new public identity/user/tool templates should live under agent-template/, not repo root. The same filenames inside private directories (memory/, .agents/, .openclaw/) are private runtime and are forbidden."
+    "note": "These files/directories are private runtime state and must never appear in the public repo at any path. Note: USER.md, IDENTITY.md, TOOLS.md, SOUL.md at repo root are public-template files (see public_template_files.allowed_paths) and are NOT covered by this deny-list — they are allowlisted separately."
   },
   "validation_rules": {
     "skill_frontmatter": {

@@ -14,7 +14,7 @@
 <p align="center">
   <a href="https://github.com/Hashi-Ai-Dev/openclaw-clawdoc/releases/tag/v1.7.5"><img alt="v1.7.5 — README + CHANGELOG cleanup" src="https://img.shields.io/badge/v1.7.5%E2%80%94README_%2B_CHANGELOG_cleanup-success?style=flat-square"></a>
   <a href="#skill-tree"><img alt="24 skills" src="https://img.shields.io/badge/24_skills-orange?style=flat-square"></a>
-  <a href="#reference-docs"><img alt="584 reference docs" src="https://img.shields.io/badge/619_reference_docs-green?style=flat-square"></a>
+  <a href="#reference-docs"><img alt="619 reference docs" src="https://img.shields.io/badge/619_reference_docs-green?style=flat-square"></a>
   <a href="#ready-to-use-examples"><img alt="24 examples" src="https://img.shields.io/badge/24_examples-blueviolet?style=flat-square"></a>
 </p>
 

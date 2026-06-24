@@ -10,10 +10,13 @@
 
 If you discover a security vulnerability in ClawDoc:
 
-1. **Do NOT** open a public GitHub issue
-2. Email the maintainer directly via Discord or the OpenClaw community
-3. Include a description of the vulnerability and steps to reproduce
-4. Allow 48 hours for initial response
+1. **Do NOT** open a public GitHub issue. Public disclosure before a fix is available puts users at risk.
+2. **Preferred channels (in order):**
+   1. **GitHub Security Advisories** on this repo — `https://github.com/Hashi-Ai-Dev/openclaw-clawdoc/security/advisories/new`. This gives you a private thread, a CVE request flow, and an audit trail.
+   2. **Email:** `security@openclaw.ai` (routed to the OpenClaw maintainers; ClawDoc shares this channel since it is part of the OpenClaw distribution).
+3. **What to include:** affected component, version, commit SHA if known; reproduction steps or proof-of-concept; the actual impact and which trust boundary is crossed; your contact info if you want a follow-up.
+4. **Expected response:** an acknowledgement within 72 hours. Triage and a fix or mitigation timeline within 7 days for valid reports. We coordinate disclosure with you on a fix timeline.
+5. Discord and the OpenClaw community are **not** appropriate primary channels for security reports — messages there are public, ephemeral, and may not reach the right maintainer quickly. Use them only as a last resort and ask for a private follow-up channel.
 
 ## Security Best Practices for ClawDoc Users
 
