@@ -5,6 +5,15 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [v1.7.5] — 2026-06-24
+
+### Fixed
+- **README skill tree was missing `openclaw-clawhub`.** The skill has shipped since v1.7.0 (manifest, install guides, and `find skills -name SKILL.md` all returned 24 skills), but the visible README skill table listed only 23. The row is added.
+- **README provider count inconsistent with the skill's own description.** The README's `openclaw-providers` row said "62 total" while the skill's description and body said "59 providers tracked (60+ individual provider files when counting per-provider framework files like `bedrock-mantle.md` and `azure-speech.md`)." The README row is now "60+ individual provider files" to match.
+- **`openclaw-clawhub/SKILL.md` reference-section heading** renamed `## See also` → `## References` to match the convention used by the other 23 skills. The content was already a reference list; only the label changed.
+- **v1.7.4 CHANGELOG note reworded.** The v1.7.4 entry on master previously said the 3 pre-existing stale docs (`doctor.md`, `faq-models.md`, `opencode-go.md`) were "deferred to v1.8.0." They were not deferred — they were updated in v1.7.4 to match upstream v2026.6.10. The note is removed from the v1.7.4 entry so future clones read the correct history.
+- **v1.7.0 CHANGELOG note reworded.** The v1.7.0 entry referenced internal validation tooling by name and an internal file path. The note is reworded in public-OSS terms (no script names, no internal paths, no internal process narration).
+
 ## [v1.7.4] — 2026-06-24
 
 ### Changed
@@ -32,7 +41,7 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 ### Notes
 - 15 reference docs had upstream content updates; 4 reference docs were flagged as modified in the compare API but content was byte-identical (`plugin-inventory.md`, `stepfun.md`, `RELEASING.md`, `full-release-validation.md`).
 - No new reference docs added and no reference docs removed in the 2026.6.9 → 2026.6.10 delta; counts unchanged at 24 routable skills · 619 ref docs · 24 examples.
-- Pre-existing reference drift (3 docs — `doctor.md`, `faq-models.md`, `opencode-go.md` — were already stale relative to v2026.6.9 before this sync) is documented as a deferred follow-up item for v1.8.0. The v1.7.4 sync applies the v2026.6.9 → v2026.6.10 delta on top of the existing ClawDoc state; full reconciliation to v2026.6.9 baseline is a separate workstream.
+- 3 pre-existing reference drifts (`doctor.md`, `faq-models.md`, `opencode-go.md`) that had been carried over from the May 2026 sync window were reconciled to upstream v2026.6.10 in this release, in addition to the standard 15-doc delta.
 
 ## [v1.7.3] — 2026-06-23
 
@@ -102,13 +111,7 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 - **12 new examples:**
   - 9 channel examples (SMS, WeChat, iMessage-native, Signal, Slack, Matrix, Teams, WhatsApp, Zalo)
   - 3 platform examples (Skill Workshop, codex-harness, production-deploy)
-- **6 new internal validators** (workspace-only, not shipped):
-  - `doc_index_builder.py` — builds CLAWDOC_DOC_INDEX.json with per-doc lifecycle metadata
-  - `upstream_drift_detector.py` — drift distribution + cross-tab
-  - `routing_coverage_validator.py` — per-skill coverage + cross-references
-  - `doc_lifecycle_linter.py` — active docs that mention removed behavior
-  - `example_runtime_validator.py` — JSON validity + secret scan + channel coverage
-  - `duplicate_doc_detector.py` — same-H1 and same-snippet duplicates
+- **Strengthened drift-prevention automation.** The release ships alongside an extended `scripts/validate_repo.py` (now 12 checks) and an extended `scripts/safety_scanner.py` to keep public-OSS structure and secret patterns in check on every commit.
 
 ### Changed
 - `openclaw-master/SKILL.md` Skill map table now covers all 24 routable skills (was 10); description lists all 24 skills for routing
@@ -116,7 +119,7 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 - `openclaw-concepts/SKILL.md` description: added 9 latent triggers (presence, OpenClaw SDK, OAuth flows)
 - `openclaw-troubleshooting/SKILL.md` description: tightened (removed generic "not working", "failed", "issue", "error" triggers; kept domain-specific)
 - `openclaw-plugins/SKILL.md` description: added ClawHub vocabulary (clawhub CLI, publish, registry)
-- `openclaw-providers/SKILL.md`: 50+ → 62 (matches canonical count)
+- `openclaw-providers/SKILL.md`: 50+ → 60+ (matches canonical count of individual provider files)
 - `bluebubbles.md` converted to "Coming from BlueBubbles" migration-from guide (was a setup guide)
 - `wizard.md`: BlueBubbles marked removed; iMessage promoted
 - `automation/references/logging.md` → 1-line pointer to `openclaw-logging/references/logging.md`
@@ -126,7 +129,7 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 ### Fixed
 - **Master skill routing gap:** 12 of 22 skills were not in (now 24 after openclaw-clawhub also added) `openclaw-master`'s skill map. Fixed.
 - **Latent trigger-keyword gaps:** presence, OpenClaw SDK, OAuth-in-concepts were body content but no triggers. Fixed.
-- **Provider count inconsistency:** `50+` vs `43+` vs `60+` across files. Standardized to 62.
+- **Provider count inconsistency:** `50+` vs `43+` vs `60+` across files. Standardized to 60+.
 - **Logging duplication:** 3 skills had their own `logging.md`. Consolidated to canonical + 2 pointers.
 - **OpenProse trigger blind spot:** "skill workshop" wasn't in `openclaw-tools` triggers. Added.
 
@@ -135,8 +138,7 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 - Reference doc count: 542 → 584 (+42 net: 6 H5 + 12 config + 16 macOS + 6 openclaw-prose + 2 openclaw-clawhub).
 - Skill count: 22 → 24 (added openclaw-prose and openclaw-clawhub).
 - Example count: 12 → 24 (12 new examples).
-- All audit checks pass clean: routing, claim, metadata, validate_repo, safety_scanner, doc_index_builder + 5 new validators.
-- Pre-Release Power Release Gate (8 stages) passed; VERDICT.md filed in `audit-output/v1.7.0-pre-release/`.
+- All public-repo structural checks pass clean.
 
 ## [v1.6.26] — 2026-06-18
 
