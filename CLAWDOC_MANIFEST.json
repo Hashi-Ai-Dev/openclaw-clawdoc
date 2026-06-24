@@ -197,7 +197,7 @@
       "skills/openclaw-reference/references/transcript-hygiene.md",
       "skills/openclaw-tools/references/firecrawl.md"
     ],
-    "tracked_openclaw": "2026.6.9"
+    "tracked_openclaw": "2026.6.10"
   },
   "v1_7_2_additions": {
     "new_ref_docs": [
@@ -236,6 +236,6 @@
       "skills/openclaw-reference/references/prompt-caching.md"
     ],
     "modified_ref_docs_count": 102,
-    "tracked_openclaw": "2026.6.9"
+    "tracked_openclaw": "2026.6.10"
   }
 }
