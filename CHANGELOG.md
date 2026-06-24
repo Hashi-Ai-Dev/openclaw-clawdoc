@@ -5,6 +5,35 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [v1.7.4] — 2026-06-24
+
+### Changed
+- **Tracked OpenClaw bumped 2026.6.9 → 2026.6.10.** Sync of modified reference docs from the 2026.6.10 release.
+
+### Updated reference docs
+- `openclaw-automation/references/cron-jobs.md` — Fast mode auto cutoff (`fastAutoOnSeconds`) behavior.
+- `openclaw-cli/references/cron.md` — Fast mode auto cutoff for isolated cron runs.
+- `openclaw-cli/references/doctor.md` — Doctor health check ordering and registry contract for plugin-backed checks.
+- `openclaw-gateway/references/config-agents.md` — `fastModeDefault` now accepts `"auto"` in addition to `true` / `false`.
+- `openclaw-gateway/references/protocol.md` — `chat.send` accepts one-turn `fastMode: "auto"` with per-model cutoff override.
+- `openclaw-help/references/faq-models.md` — New `/fast auto` mode and `params.fastAutoOnSeconds` configuration.
+- `openclaw-plugins/references/copilot.md` — Default model changed from `github-copilot/gpt-5.5` to `github-copilot/auto`; hooksConfig clarified as SDK-native bridge.
+- `openclaw-plugins/references/sdk-agent-harness.md` — New `Agent-end side effects` section (`runAgentEndSideEffects` / `awaitAgentEndSideEffects`).
+- `openclaw-plugins/references/sdk-runtime.md` — Session transcript runtime API (`openclaw/plugin-sdk/session-transcript-runtime`).
+- `openclaw-plugins/references/sdk-subpaths.md` — `plugin-sdk/session-transcript-runtime` added to the subpath table.
+- `openclaw-providers/references/openai.md` — `/fast` accepts `auto`; new `fastAutoOnSeconds` config.
+- `openclaw-providers/references/opencode-go.md` — Added `GLM-5.2` (1M context, 131K output) and `Kimi K2.7 Code` models.
+- `openclaw-providers/references/zai.md` — `GLM-5.2` thinking level support (`off | low | high | max`).
+- `openclaw-reference/references/RELEASING.md` — (no content change detected; upstream compare flagged whitespace).
+- `openclaw-reference/references/full-release-validation.md` — (no content change detected; upstream compare flagged whitespace).
+- `openclaw-tools/references/slash-commands.md` — `/fast` syntax updated to `status|auto|on|off|default`.
+- `openclaw-tools/references/thinking.md` — Fast mode levels expanded to `auto|on|off|default`; Z.AI `GLM-5.2` thinking level exception documented.
+
+### Notes
+- 15 reference docs had upstream content updates; 4 reference docs were flagged as modified in the compare API but content was byte-identical (`plugin-inventory.md`, `stepfun.md`, `RELEASING.md`, `full-release-validation.md`).
+- No new reference docs added and no reference docs removed in the 2026.6.9 → 2026.6.10 delta; counts unchanged at 24 routable skills · 619 ref docs · 24 examples.
+- Pre-existing reference drift (3 docs — `doctor.md`, `faq-models.md`, `opencode-go.md` — were already stale relative to v2026.6.9 before this sync) is documented as a deferred follow-up item for v1.8.0. The v1.7.4 sync applies the v2026.6.9 → v2026.6.10 delta on top of the existing ClawDoc state; full reconciliation to v2026.6.9 baseline is a separate workstream.
+
 ## [v1.7.3] — 2026-06-23
 
 ### Fixed
