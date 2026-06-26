@@ -8,11 +8,11 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 ## [v1.7.7] — 2026-06-26
 
 ### Fixed
-- **Tier 0 public-language cleanups across CHANGELOG.md** — replaced process-narration phrases (audit dates, commit hashes, internal-script paths, deferred-trim release-planning bullets, the v1.6.27 process-narration-only entry) with factual descriptions of what shipped.
+- **Public-language cleanup across CHANGELOG.md** — reworded prior entries to describe what shipped in user-facing terms; removed audit dates, commit hashes, internal validator paths, deferred-trim bullets, and the v1.6.27 entry that described process rather than substance.
 - **`openclaw-channels/SKILL.md` references section** — `bluebubbles.md` label updated from "bluebubbles setup" to "Coming from BlueBubbles (migration guide; BlueBubbles was removed in v1.6.26)".
 - **`openclaw-master/SKILL.md` skill map** — `openclaw-channels` row reframed to reference the historical BlueBubbles→iMessage migration guide at `references/bluebubbles.md` instead of framing BlueBubbles migration as an active channel surface.
 - **`openclaw-tools/references/tts.md`** — the per-channel TTS synthesis path labeled "BlueBubbles" reframed to "iMessage (was BlueBubbles pre-v1.6.26)" so the current-behavior context describes the active channel.
-- **`examples/README.md`** — dropped the `scripts/validate_repo.py` path reference and reframed the validation paragraph to be public-OSS-voice.
+- **`examples/README.md`** — dropped the validator path reference and reworded the validation paragraph to be user-facing.
 
 ### Synced
 - **6 reference docs brought into sync with OpenClaw v2026.6.10:**

@@ -14,7 +14,7 @@
 <p align="center">
   <a href="https://github.com/Hashi-Ai-Dev/openclaw-clawdoc/releases/tag/v1.7.7"><img alt="v1.7.7 — Tier 0/1/2 cleanup + OpenClaw sync" src="https://img.shields.io/badge/v1.7.7%E2%80%94tier_0%2F1%2F2_cleanup_%2B_OpenClaw_sync-success?style=flat-square"></a>
   <a href="#skill-tree"><img alt="24 skills" src="https://img.shields.io/badge/24_skills-orange?style=flat-square"></a>
-  <a href="#reference-docs"><img alt="619 reference docs" src="https://img.shields.io/badge/619_reference_docs-green?style=flat-square"></a>
+  <a href="#reference-docs"><img alt="622 reference docs" src="https://img.shields.io/badge/622_reference_docs-green?style=flat-square"></a>
   <a href="#ready-to-use-examples"><img alt="24 examples" src="https://img.shields.io/badge/24_examples-blueviolet?style=flat-square"></a>
 </p>
 
@@ -147,7 +147,7 @@ ClawDoc routes to the right skill, reads the reference docs, and gives you a pre
 
 ## Reference docs
 
-**619 docs** copied from the official OpenClaw source and versioned against the tracked OpenClaw release.
+**622 docs** copied from the official OpenClaw source and versioned against the tracked OpenClaw release.
 
 | Area | What's covered |
 |------|---------------|
