@@ -78,7 +78,7 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 
 ### Notes
 - Reference doc count: 584 → 619. Skills and examples unchanged.
-- This is the full 2026.6.9 sync per the `clawdoc-update` pipeline; no deferred items remain.
+- Full sync of OpenClaw 2026.6.9 applied (all reference docs; no deferred items).
 
 ## [v1.7.1] — 2026-06-21
 
