@@ -116,7 +116,7 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 - **12 new examples:**
   - 9 channel examples (SMS, WeChat, iMessage-native, Signal, Slack, Matrix, Teams, WhatsApp, Zalo)
   - 3 platform examples (Skill Workshop, codex-harness, production-deploy)
-- **Strengthened drift-prevention automation.** The release ships alongside an extended `scripts/validate_repo.py` (now 12 checks) and an extended `scripts/safety_scanner.py` to keep public-OSS structure and secret patterns in check on every commit.
+- **Strengthened drift-prevention automation.** Drift-prevention checks now cover 12 structural rules (manifest version, tracked OpenClaw version, public skill list membership, install command versions, examples README coverage, SKILL.md reference existence) and additional secret-pattern checks, all run on every commit.
 
 ### Changed
 - `openclaw-master/SKILL.md` Skill map table now covers all 24 routable skills (was 10); description lists all 24 skills for routing
