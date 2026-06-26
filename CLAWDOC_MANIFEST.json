@@ -17,7 +17,7 @@
   },
   "reference_docs_definition": {
     "description": "reference_docs = files under skills/**/references/**, tracked in git (matches file_counts.reference_docs)",
-    "reproducible_count": "find skills -type f \\( -name '*.md' -o -name '*.mdx' \\) -path '*/references/*' | wc -l = 619 (includes .mdx such as railway.mdx; git ls-files skills/ | grep references/ gives the same result)",
+    "reproducible_count": "find skills -type f \\( -name '*.md' -o -name '*.mdx' \\) -path '*/references/*' | wc -l = 622 (includes .mdx such as railway.mdx; git ls-files skills/ | grep references/ gives the same result)",
     "includes_mdx": "yes — includes *.mdx files such as railway.mdx"
   },
   "skills": {
