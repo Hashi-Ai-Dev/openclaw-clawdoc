@@ -1,11 +1,11 @@
 ---
 name: openclaw-providers
-description: "OpenClaw model providers. Use when configuring LLM providers (59 providers tracked: OpenAI, Anthropic, Gemini, Bedrock, Ollama, DeepSeek, Groq, Together, Cerebras, xAI, Cohere, Deepgram, SenseAudio, Tencent, VolcEngine, and more), API keys, OAuth, auth profiles, model failover, API key rotation, billing disable backoff, and usage tracking. Triggers on: provider, model, API key, OAuth, Anthropic, OpenAI, Gemini, Bedrock, Ollama, failover, auth profile, billing disable, key rotation, Cohere, Deepgram, transcription, SenseAudio, speech to text, Tencent, VolcEngine, Doubao, voice provider, STT provider."
+description: "OpenClaw model providers. Use when configuring LLM providers (60+ providers tracked: OpenAI, Anthropic, Gemini, Bedrock, Ollama, DeepSeek, Groq, Together, Cerebras, xAI, Cohere, Deepgram, SenseAudio, Tencent, VolcEngine, and more), API keys, OAuth, auth profiles, model failover, API key rotation, billing disable backoff, and usage tracking. Triggers on: provider, model, API key, OAuth, Anthropic, OpenAI, Gemini, Bedrock, Ollama, failover, auth profile, billing disable, key rotation, Cohere, Deepgram, transcription, SenseAudio, speech to text, Tencent, VolcEngine, Doubao, voice provider, STT provider."
 ---
 
 # OpenClaw Model Providers
 
-59 providers tracked (60+ individual provider files when counting per-provider framework files like `bedrock-mantle.md` and `azure-speech.md`). Pick a provider, authenticate, set `agents.defaults.model.primary`.
+60+ providers tracked (64 individual provider files when counting per-provider framework files like `bedrock-mantle.md` and `azure-speech.md`). Pick a provider, authenticate, set `agents.defaults.model.primary`.
 
 ## Quick setup
 
