@@ -5,6 +5,11 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [v1.7.6] — 2026-06-26
+
+### Fixed
+- **`openclaw-providers` SKILL.md count drift.** The skill description and body both claimed "59 providers tracked" while the actual count of individual provider files is 64. Both surfaces now use "60+ providers tracked" with the body's "64 individual provider files" framing.
+
 ## [v1.7.5] — 2026-06-24
 
 ### Fixed
