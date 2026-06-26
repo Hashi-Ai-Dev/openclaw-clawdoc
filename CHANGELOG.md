@@ -156,7 +156,7 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 
 ### Notes
 - No new reference docs, no OpenClaw sync. Reference doc count remains 542; tracked OpenClaw version remains 2026.6.8.
-- This is a hotfix ahead of v1.7.0 (Content Freshness + Drift Prevention); v1.6.26 + v1.7.0 form the two-step path the audit (2026-06-18) recommended.
+- Hotfix ahead of v1.7.0: addresses the BlueBubbles/iMessage recommendation inversion that was fixed in v1.7.0's Content Freshness release.
 
 ## [v1.6.25] — 2026-06-18
 
