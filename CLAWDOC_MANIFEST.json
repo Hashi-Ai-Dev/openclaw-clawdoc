@@ -10,7 +10,7 @@
   ],
   "file_counts": {
     "skills": 24,
-    "reference_docs": 619,
+    "reference_docs": 622,
     "examples": 24,
     "examples_readme": 1,
     "plugin_subdirs": 0
@@ -225,5 +225,6 @@
     ],
     "modified_ref_docs_count": 102,
     "tracked_openclaw": "2026.6.10"
-  }
+  },
+  "reproducible_count": "find skills -type f \\( -name \"*.md\" -o -name \"*.mdx\" \\) -path \"*/references/*\" | wc -l = 622"
 }

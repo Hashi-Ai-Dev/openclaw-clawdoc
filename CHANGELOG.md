@@ -5,6 +5,34 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [v1.7.7] — 2026-06-26
+
+### Fixed
+- **Tier 0 public-language cleanups across CHANGELOG.md** — replaced process-narration phrases (audit dates, commit hashes, internal-script paths, deferred-trim release-planning bullets, the v1.6.27 process-narration-only entry) with factual descriptions of what shipped.
+- **`openclaw-channels/SKILL.md` references section** — `bluebubbles.md` label updated from "bluebubbles setup" to "Coming from BlueBubbles (migration guide; BlueBubbles was removed in v1.6.26)".
+- **`openclaw-master/SKILL.md` skill map** — `openclaw-channels` row reframed to reference the historical BlueBubbles→iMessage migration guide at `references/bluebubbles.md` instead of framing BlueBubbles migration as an active channel surface.
+- **`openclaw-tools/references/tts.md`** — the per-channel TTS synthesis path labeled "BlueBubbles" reframed to "iMessage (was BlueBubbles pre-v1.6.26)" so the current-behavior context describes the active channel.
+- **`examples/README.md`** — dropped the `scripts/validate_repo.py` path reference and reframed the validation paragraph to be public-OSS-voice.
+
+### Synced
+- **6 reference docs brought into sync with OpenClaw v2026.6.10:**
+  - `openclaw-providers/references/anthropic.md` — model name (`claude-opus-4-6` → `claude-opus-4-8`), June 15 2026 Claude CLI billing policy section, authoritative Anthropic policy framing.
+  - `openclaw-plugins/references/voice-call.md` — added upstream fields (`realtime.providers.*.apiKey`, `streaming.providers.*.apiKey`, `sessionScope`, `inboundGreeting`, `responseSystemPrompt`); corrected `speakerVoice`/`voice` field-naming direction.
+  - `openclaw-channels/references/discord.md` — model id + commentary field + field-naming drift.
+  - `openclaw-channels/references/sms.md` — added missing upstream Quick Setup section (~183 lines: Twilio step-by-step + CardGroup navigation).
+  - `openclaw-tools/references/goal.md` — restored full Quick Start + commands sections.
+  - `openclaw-tools/references/tavily.md` — restored Tavily API reference.
+
+### Added
+- **3 new channel reference docs** mirrored from upstream OpenClaw v2026.6.10:
+  - `openclaw-channels/references/clickclack.md` — ClickClack bot-token channel setup and target syntax.
+  - `openclaw-channels/references/access-groups.md` — reusable sender allowlists for message channels.
+  - `openclaw-channels/references/matrix-presentation.md` — Matrix MessagePresentation metadata for OpenClaw-aware clients.
+- **`openclaw-channels/references/channel-index.md`** — added 4 missing channel entries to `## Supported channels`: `qa-channel`, `sms`, `yuanbao`, `zaloclawbot`.
+
+### Counts
+24 skills · **622 ref docs** (was 619) · 24 examples · 0 routing gaps · Tracked OpenClaw: 2026.6.10.
+
 ## [v1.7.6] — 2026-06-26
 
 ### Fixed

@@ -4,7 +4,7 @@
 
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-2026.6.10-blue?style=flat-square)](https://github.com/openclaw/openclaw)
 [![Skills](https://img.shields.io/badge/Skills-24-orange?style=flat-square)](#skill-tree)
-[![Reference Docs](https://img.shields.io/badge/Reference_Docs-619-green?style=flat-square)](#reference-docs)
+[![Reference Docs](https://img.shields.io/badge/Reference_Docs-622-green?style=flat-square)](#reference-docs)
 [![License](https://img.shields.io/badge/License-MIT-success?style=flat-square)](LICENSE)
 
 <p align="center">
@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Hashi-Ai-Dev/openclaw-clawdoc/releases/tag/v1.7.6"><img alt="v1.7.6 — openclaw-providers count alignment" src="https://img.shields.io/badge/v1.7.6%E2%80%94openclaw--providers_count_alignment-success?style=flat-square"></a>
+  <a href="https://github.com/Hashi-Ai-Dev/openclaw-clawdoc/releases/tag/v1.7.7"><img alt="v1.7.7 — Tier 0/1/2 cleanup + OpenClaw sync" src="https://img.shields.io/badge/v1.7.7%E2%80%94tier_0%2F1%2F2_cleanup_%2B_OpenClaw_sync-success?style=flat-square"></a>
   <a href="#skill-tree"><img alt="24 skills" src="https://img.shields.io/badge/24_skills-orange?style=flat-square"></a>
   <a href="#reference-docs"><img alt="619 reference docs" src="https://img.shields.io/badge/619_reference_docs-green?style=flat-square"></a>
   <a href="#ready-to-use-examples"><img alt="24 examples" src="https://img.shields.io/badge/24_examples-blueviolet?style=flat-square"></a>
