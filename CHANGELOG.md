@@ -124,7 +124,7 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 - `assets/clawdoc-banner.png` restored + HTML overlay added with v1.7.0 stats
 
 ### Fixed
-- **Master skill routing gap:** 12 of 22 skills were not in (now 24 after openclaw-clawhub also added) `openclaw-master`'s skill map. Fixed.
+- **Master skill routing gap:** 12 of the previously-listed skills were missing from `openclaw-master`'s skill map. All 24 routable skills now appear.
 - **Latent trigger-keyword gaps:** presence, OpenClaw SDK, OAuth-in-concepts were body content but no triggers. Fixed.
 - **Provider count inconsistency:** `50+` vs `43+` vs `60+` across files. Standardized to 60+.
 - **Logging duplication:** 3 skills had their own `logging.md`. Consolidated to canonical + 2 pointers.
