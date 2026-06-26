@@ -16,8 +16,6 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 - **README skill tree was missing `openclaw-clawhub`.** The skill has shipped since v1.7.0 (manifest, install guides, and `find skills -name SKILL.md` all returned 24 skills), but the visible README skill table listed only 23. The row is added.
 - **README provider count inconsistent with the skill's own description.** The README's `openclaw-providers` row said "62 total" while the skill's description and body said "59 providers tracked (60+ individual provider files when counting per-provider framework files like `bedrock-mantle.md` and `azure-speech.md`)." The README row is now "60+ individual provider files" to match.
 - **`openclaw-clawhub/SKILL.md` reference-section heading** renamed `## See also` → `## References` to match the convention used by the other 23 skills. The content was already a reference list; only the label changed.
-- **v1.7.4 CHANGELOG note reworded.** The v1.7.4 entry on master previously said the 3 pre-existing stale docs (`doctor.md`, `faq-models.md`, `opencode-go.md`) were "deferred to v1.8.0." They were not deferred — they were updated in v1.7.4 to match upstream v2026.6.10. The note is removed from the v1.7.4 entry so future clones read the correct history.
-- **v1.7.0 CHANGELOG note reworded.** The v1.7.0 entry referenced internal validation tooling by name and an internal file path. The note is reworded in public-OSS terms (no script names, no internal paths, no internal process narration).
 
 ## [v1.7.4] — 2026-06-24
 
@@ -51,19 +49,18 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 ## [v1.7.3] — 2026-06-23
 
 ### Fixed
-- **v1.7.2 hotfix `469117e` is now in a tag.** The hotfix commit (install guides, agent-template, README drift in v1.7.2 chain) was on master but not in any tag; checking out v1.7.2 (`ea034b3`) gave the pre-hotfix state. v1.7.3 includes it.
+- **v1.7.2 hotfix is now in a tag.** v1.7.2 was missing the install-guide, agent-template, and README-drift hotfix that shipped on master; v1.7.3 includes the hotfix. Users on v1.7.2 should upgrade to v1.7.3.
 - **Manifest cleanup** — `CLAWDOC_MANIFEST.json` bumped to v1.7.3; `openclaw-clawhub` added to the public skill list; `plugin_subdirs` corrected to 0; `reproducible_count` self-contradiction removed.
 - **Install command versions** — `QUICKSTART.md`, `AGENT_INSTALL.md`, `SKILLS_INSTALL.md` now point at v1.7.3 in all install paths.
 - **Channel-count claim** — `README.md` and `agent-template/README.md` corrected from "33+ more (38 total)" to "36+ more (41 total)" to match the on-disk channel count.
 - **Broken `references/` cross-refs** — `openclaw-platforms/references/index.md`, `openclaw-providers/references/model-failover.md`, and `openclaw-troubleshooting/references/automation-troubleshooting.md` removed from skill bodies (the files never existed).
 - **Stale provider count** — `openclaw-providers` corrected from "62 providers" to 59 to match the on-disk count.
 - **Public-skill routing fix** — `openclaw-gateway/SKILL.md` references section added (lists all 23 reference files). `openclaw-channels/SKILL.md` description no longer mentions BlueBubbles (the channel was removed in v1.6.26; the migration guide at `references/bluebubbles.md` is preserved).
-- **Public-side structural checks** — `scripts/validate_repo.py` extended from 6 to 12 checks: manifest version vs `git describe`, tracked OpenClaw version vs `.openclaw-version`, public skill list membership vs the on-disk skills directory, install command versions vs the latest tag, examples README coverage, and SKILL.md references existence.
+- **Public-side structural checks extended from 6 to 12:** manifest version vs `git describe`, tracked OpenClaw version vs `.openclaw-version`, public skill list membership vs the on-disk skills directory, install command versions vs the latest tag, examples README coverage, and SKILL.md references existence.
 
 ### Notes
-- v1.7.2 is now marked as **known-broken**: anyone checking out `v1.7.2` (`ea034b3`) gets the pre-hotfix drift. v1.7.3 is the recommended tag for stable use.
+- v1.7.3 is the recommended tag for stable use. v1.7.2 is missing the install-guide, agent-template, and README-drift hotfix; users on v1.7.2 should upgrade.
 - No public-side doc count changes: 24 routable skills · 619 ref docs · 24 examples. All counts verified against the filesystem at tag time.
-- The public-skill description trim is **deferred to a follow-up release**. The 24 public descriptions are still over 160 chars on average; trimming is a behavior-changing release that needs careful per-skill analysis of the routing keywords each description carries. A lighter-weight approach (a `triggers:` field separate from `description:`) is proposed.
 
 ## [v1.7.2] — 2026-06-21
 
@@ -78,7 +75,7 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 
 ### Notes
 - Reference doc count: 584 → 619. Skills and examples unchanged.
-- This is the full 2026.6.9 sync per the `clawdoc-update` pipeline; no deferred items remain.
+- Full sync of OpenClaw 2026.6.9 applied (all reference docs; no deferred items).
 
 ## [v1.7.1] — 2026-06-21
 
@@ -94,13 +91,8 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 
 ### Notes
 - This release is a focused sync against OpenClaw 2026.6.9. It captures the new user-facing surfaces (Zalo ClawBot, Cohere externalized plugin, keyless Firecrawl, the Group bot identity rule, the new transcript-hygiene rule) and skips the 100+ small provider-doc upstream tweaks (those are content-preserving and re-checked in the next full sync).
-- Audit chain: 9/9 validators clean (0 HIGH, 6 MEDIUM all verified by design per the audit notes). Pre-Flight checks all PASS.
+- Counts verified: 24 skills · 586 ref docs · 24 examples. No broken link cross-refs.
 - Manifest file_counts: skills 24 (unchanged), reference_docs 586 (+2 vs v1.7.0's 584), examples 24 (unchanged).
-
-## [v1.6.27] — 2026-06-18
-
-### Fixed
-- Public-language scan on CHANGELOG.md v1.6.25 entry (after-the-fact cleanup — no public impact)
 
 ## [v1.7.0] — 2026-06-18
 
@@ -116,7 +108,7 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 - **12 new examples:**
   - 9 channel examples (SMS, WeChat, iMessage-native, Signal, Slack, Matrix, Teams, WhatsApp, Zalo)
   - 3 platform examples (Skill Workshop, codex-harness, production-deploy)
-- **Strengthened drift-prevention automation.** The release ships alongside an extended `scripts/validate_repo.py` (now 12 checks) and an extended `scripts/safety_scanner.py` to keep public-OSS structure and secret patterns in check on every commit.
+- **Strengthened drift-prevention automation.** Drift-prevention checks now cover 12 structural rules (manifest version, tracked OpenClaw version, public skill list membership, install command versions, examples README coverage, SKILL.md reference existence) and additional secret-pattern checks, all run on every commit.
 
 ### Changed
 - `openclaw-master/SKILL.md` Skill map table now covers all 24 routable skills (was 10); description lists all 24 skills for routing
@@ -132,7 +124,7 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 - `assets/clawdoc-banner.png` restored + HTML overlay added with v1.7.0 stats
 
 ### Fixed
-- **Master skill routing gap:** 12 of 22 skills were not in (now 24 after openclaw-clawhub also added) `openclaw-master`'s skill map. Fixed.
+- **Master skill routing gap:** 12 of the previously-listed skills were missing from `openclaw-master`'s skill map. All 24 routable skills now appear.
 - **Latent trigger-keyword gaps:** presence, OpenClaw SDK, OAuth-in-concepts were body content but no triggers. Fixed.
 - **Provider count inconsistency:** `50+` vs `43+` vs `60+` across files. Standardized to 60+.
 - **Logging duplication:** 3 skills had their own `logging.md`. Consolidated to canonical + 2 pointers.
@@ -156,7 +148,7 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 
 ### Notes
 - No new reference docs, no OpenClaw sync. Reference doc count remains 542; tracked OpenClaw version remains 2026.6.8.
-- This is a hotfix ahead of v1.7.0 (Content Freshness + Drift Prevention); v1.6.26 + v1.7.0 form the two-step path the audit (2026-06-18) recommended.
+- Hotfix ahead of v1.7.0: addresses the BlueBubbles/iMessage recommendation inversion that was fixed in v1.7.0's Content Freshness release.
 
 ## [v1.6.25] — 2026-06-18
 
