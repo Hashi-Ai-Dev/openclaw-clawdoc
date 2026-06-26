@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Hashi-Ai-Dev/openclaw-clawdoc/releases/tag/v1.7.7"><img alt="v1.7.7 — Tier 0/1/2 cleanup + OpenClaw sync" src="https://img.shields.io/badge/v1.7.7%E2%80%94tier_0%2F1%2F2_cleanup_%2B_OpenClaw_sync-success?style=flat-square"></a>
+  <a href="https://github.com/Hashi-Ai-Dev/openclaw-clawdoc/releases/tag/v1.7.7"><img alt="v1.7.7 — comprehensive cleanup + OpenClaw sync" src="https://img.shields.io/badge/v1.7.7%E2%80%94comprehensive_cleanup_%2B_OpenClaw_sync-success?style=flat-square"></a>
   <a href="#skill-tree"><img alt="24 skills" src="https://img.shields.io/badge/24_skills-orange?style=flat-square"></a>
   <a href="#reference-docs"><img alt="622 reference docs" src="https://img.shields.io/badge/622_reference_docs-green?style=flat-square"></a>
   <a href="#ready-to-use-examples"><img alt="24 examples" src="https://img.shields.io/badge/24_examples-blueviolet?style=flat-square"></a>
@@ -266,6 +266,6 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for conventions, style guide, and how t
 ## Operating principles
 
 - **Precision over speed** — Quote the schema, cite the docs, show the exact patch.
-- **No hand-waving** — If I'm not sure, I say so and investigate.
+- **No hand-waving** — If we're not sure, we say so and investigate.
 - **Show your work** — Before/after diffs make answers learnable.
 - **Community-minded** — Design for clarity and generalizability, not just your own setup.

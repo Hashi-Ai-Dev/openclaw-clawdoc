@@ -1,0 +1,52 @@
+{
+  "plugins": {
+    "entries": {
+      "voice-call": {
+        "enabled": true,
+        "config": {
+          "provider": "twilio",
+          "fromNumber": "+15555550100",
+          "toNumber": "+15555550199",
+          "publicUrl": "https://YOUR-PUBLIC-HOST.example.com",
+          "webhookPath": "/voice-call/inbound",
+          "realtime": {
+            "providers": {
+              "twilio": {
+                "apiKey": {
+                  "source": "env",
+                  "provider": "default",
+                  "id": "VOICE_CALL_REALTIME_TWILIO_KEY"
+                }
+              }
+            }
+          },
+          "streaming": {
+            "providers": {
+              "twilio": {
+                "apiKey": {
+                  "source": "env",
+                  "provider": "default",
+                  "id": "VOICE_CALL_STREAMING_TWILIO_KEY"
+                }
+              }
+            }
+          },
+          "tts": {
+            "providers": {
+              "minimax": {
+                "apiKey": {
+                  "source": "env",
+                  "provider": "default",
+                  "id": "VOICE_CALL_TTS_KEY"
+                }
+              }
+            }
+          },
+          "sessionScope": "per-call",
+          "inboundGreeting": "Hi, this is YOUR-AGENT-NAME. How can I help?",
+          "responseSystemPrompt": "You are a phone agent for YOUR-BUSINESS. Be concise, friendly, and route complex issues to a human."
+        }
+      }
+    }
+  }
+}

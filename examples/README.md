@@ -4,6 +4,7 @@ Ready-to-use OpenClaw config examples. Each file is a complete, validated `openc
 
 | File | Purpose | When to use |
 |------|---------|-------------|
+| `clickclack.json` | ClickClack bot-token channel setup (baseUrl + bot token + workspace) | Connecting ClickClack as a chat channel |
 | `codex-harness.json` | Codex app-server harness plugin config | Running an ACP Codex sub-agent |
 | `discord-full.json` | Full Discord setup with allowFrom, group policy, slash commands | Starting a new Discord agent |
 | `discord-single.json` | Single-server Discord config (no DMs) | Bot for one specific server |
@@ -24,6 +25,7 @@ Ready-to-use OpenClaw config examples. Each file is a complete, validated `openc
 | `slack-channel.json` | Slack channel with bot token + signing secret | Connecting a Slack workspace |
 | `sms-channel.json` | Twilio SMS channel with webhooks + allowlists | Adding SMS as a channel |
 | `tts-minimax.json` | TTS provider config (minimax voice) | Adding text-to-speech to a channel |
+| `voice-call.json` | Voice-call plugin (Twilio + realtime/streaming/TTS keys + per-call session scope + system prompt) | Running a business-hours phone agent or callback hotline |
 | `webhook-basic.json` | Inbound webhook for cron-triggered events | Setting up a webhook listener |
 | `wechat-channel.json` | Tencent iLink Bot (openclaw-weixin) WeChat channel | Connecting WeChat via iLink |
 | `whatsapp-channel.json` | WhatsApp channel via WhatsApp Web multi-device | Connecting a WhatsApp number |
