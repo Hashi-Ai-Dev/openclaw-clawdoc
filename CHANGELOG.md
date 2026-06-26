@@ -58,7 +58,7 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 - **Broken `references/` cross-refs** — `openclaw-platforms/references/index.md`, `openclaw-providers/references/model-failover.md`, and `openclaw-troubleshooting/references/automation-troubleshooting.md` removed from skill bodies (the files never existed).
 - **Stale provider count** — `openclaw-providers` corrected from "62 providers" to 59 to match the on-disk count.
 - **Public-skill routing fix** — `openclaw-gateway/SKILL.md` references section added (lists all 23 reference files). `openclaw-channels/SKILL.md` description no longer mentions BlueBubbles (the channel was removed in v1.6.26; the migration guide at `references/bluebubbles.md` is preserved).
-- **Public-side structural checks** — `scripts/validate_repo.py` extended from 6 to 12 checks: manifest version vs `git describe`, tracked OpenClaw version vs `.openclaw-version`, public skill list membership vs the on-disk skills directory, install command versions vs the latest tag, examples README coverage, and SKILL.md references existence.
+- **Public-side structural checks extended from 6 to 12:** manifest version vs `git describe`, tracked OpenClaw version vs `.openclaw-version`, public skill list membership vs the on-disk skills directory, install command versions vs the latest tag, examples README coverage, and SKILL.md references existence.
 
 ### Notes
 - v1.7.2 is now marked as **known-broken**: anyone checking out `v1.7.2` (`ea034b3`) gets the pre-hotfix drift. v1.7.3 is the recommended tag for stable use.
