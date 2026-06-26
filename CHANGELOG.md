@@ -61,7 +61,6 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 ### Notes
 - v1.7.3 is the recommended tag for stable use. v1.7.2 is missing the install-guide, agent-template, and README-drift hotfix; users on v1.7.2 should upgrade.
 - No public-side doc count changes: 24 routable skills · 619 ref docs · 24 examples. All counts verified against the filesystem at tag time.
-- The public-skill description trim is **deferred to a follow-up release**. The 24 public descriptions are still over 160 chars on average; trimming is a behavior-changing release that needs careful per-skill analysis of the routing keywords each description carries. A lighter-weight approach (a `triggers:` field separate from `description:`) is proposed.
 
 ## [v1.7.2] — 2026-06-21
 
