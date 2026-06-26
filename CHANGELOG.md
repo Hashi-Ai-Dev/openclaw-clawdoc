@@ -97,11 +97,6 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 - Counts verified: 24 skills · 586 ref docs · 24 examples. No broken link cross-refs.
 - Manifest file_counts: skills 24 (unchanged), reference_docs 586 (+2 vs v1.7.0's 584), examples 24 (unchanged).
 
-## [v1.6.27] — 2026-06-18
-
-### Fixed
-- Public-language scan on CHANGELOG.md v1.6.25 entry (after-the-fact cleanup — no public impact)
-
 ## [v1.7.0] — 2026-06-18
 
 ### Added
