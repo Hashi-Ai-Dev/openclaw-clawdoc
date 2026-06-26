@@ -16,8 +16,6 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 - **README skill tree was missing `openclaw-clawhub`.** The skill has shipped since v1.7.0 (manifest, install guides, and `find skills -name SKILL.md` all returned 24 skills), but the visible README skill table listed only 23. The row is added.
 - **README provider count inconsistent with the skill's own description.** The README's `openclaw-providers` row said "62 total" while the skill's description and body said "59 providers tracked (60+ individual provider files when counting per-provider framework files like `bedrock-mantle.md` and `azure-speech.md`)." The README row is now "60+ individual provider files" to match.
 - **`openclaw-clawhub/SKILL.md` reference-section heading** renamed `## See also` → `## References` to match the convention used by the other 23 skills. The content was already a reference list; only the label changed.
-- **v1.7.4 CHANGELOG note reworded.** The v1.7.4 entry on master previously said the 3 pre-existing stale docs (`doctor.md`, `faq-models.md`, `opencode-go.md`) were "deferred to v1.8.0." They were not deferred — they were updated in v1.7.4 to match upstream v2026.6.10. The note is removed from the v1.7.4 entry so future clones read the correct history.
-- **v1.7.0 CHANGELOG note reworded.** The v1.7.0 entry referenced internal validation tooling by name and an internal file path. The note is reworded in public-OSS terms (no script names, no internal paths, no internal process narration).
 
 ## [v1.7.4] — 2026-06-24
 
