@@ -67,7 +67,7 @@ openclaw pairing approve <channel> <CODE>
 - `references/googlechat.md` — GoogleChat setup
 - `references/mattermost.md` — Mattermost setup
 - `references/msteams.md` — Microsoft Teams setup
-- `references/bluebubbles.md` — bluebubbles setup
+- `references/bluebubbles.md` — Coming from BlueBubbles (migration guide; BlueBubbles was removed in v1.6.26)
 - `references/imessage.md` — iMessage setup
 - `references/irc.md` — IRC setup
 - `references/nostr.md` — Nostr setup

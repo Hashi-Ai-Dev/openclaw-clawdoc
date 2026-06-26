@@ -22,7 +22,7 @@ The 23 routable OpenClaw skills, grouped by area:
 | **Memory** | |
 | `openclaw-memory` | Memory backends (builtin/QMD/Honcho), embedding providers, active memory, dreaming, memory search |
 | **Channels** | |
-| `openclaw-channels` | Discord, Telegram, WhatsApp, Slack, Signal, Matrix, iMessage (native imsg), routing, pairing, broadcast groups, BlueBubbles migration |
+| `openclaw-channels` | Discord, Telegram, WhatsApp, Slack, Signal, Matrix, iMessage (native imsg), routing, pairing, broadcast groups; historical BlueBubbles→iMessage migration guide at references/bluebubbles.md |
 | **Agents + Multi-agent** | |
 | `openclaw-agents` | Multi-agent setup, bindings, sandbox, tool policies, exec approvals |
 | **Plugins** | |

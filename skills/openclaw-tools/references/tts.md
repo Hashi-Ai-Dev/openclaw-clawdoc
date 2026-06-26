@@ -695,7 +695,7 @@ delivery.
   `audio/ogg; codecs=opus`. If conversion fails, Feishu receives the original
   file as an attachment; WhatsApp send fails rather than posting an incompatible
   PTT payload.
-- **BlueBubbles**: keeps provider synthesis on the normal audio-file path; MP3
+- **iMessage (was BlueBubbles pre-v1.6.26)**: keeps provider synthesis on the normal audio-file path; MP3
   and CAF outputs are marked for iMessage voice memo delivery.
 - **Other channels**: MP3 (`mp3_44100_128` from ElevenLabs, `mp3` from OpenAI).
   - 44.1kHz / 128kbps is the default balance for speech clarity.
