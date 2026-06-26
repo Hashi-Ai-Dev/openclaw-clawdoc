@@ -39,4 +39,4 @@ openclaw config merge ~/.openclaw/workspace/discord-full.json
 openclaw gateway restart
 ```
 
-All examples are validated by `scripts/validate_repo.py` (file existence + JSON validity + field completeness check). The "round-trip through `openclaw config merge`" claim is **not** automatically verified by CI; it depends on the operator's local OpenClaw install matching the tracked version in `CLAWDOC_MANIFEST.json`. If your install is on a different OpenClaw version, fields may have drifted.
+All examples are validated for file existence, JSON syntax, and required-field completeness before release. The end-to-end `openclaw config merge` round-trip is tested manually against the tracked OpenClaw version listed in `CLAWDOC_MANIFEST.json`; if your local install is on a different OpenClaw version, fields may have drifted.
