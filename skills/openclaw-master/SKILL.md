@@ -31,6 +31,7 @@ The 23 routable OpenClaw skills, grouped by area:
 | `openclaw-tools` | Tool reference: exec, browser, cron, sessions, subagents, ACP, slash commands, Lobster, Diff viewer, Skill Workshop, media generation |
 | `openclaw-automation` | Cron jobs, hooks, tasks, webhooks, polls, standing orders, Task Flow, Clawflow, Gmail Pub/Sub |
 | `openclaw-prose` | OpenProse markdown-first workflow language for multi-agent AI sessions (plugin + slash command + skill pack) |
+| `openclaw-clawhub` | ClawHub public registry: discover, install, publish, and verify skills and plugins; clawhub CLI |
 | **CLI + Reference** | |
 | `openclaw-cli` | CLI commands: status, gateway, plugins, memory, agents, channels, config, sessions, cron, hooks, pairing, ACP, MCP, secrets, doctor, update, skills |
 | `openclaw-reference` | General OpenClaw reference: token use, transcript hygiene, session compaction, rich output protocol, SecretRef credential surface, RELEASING |
