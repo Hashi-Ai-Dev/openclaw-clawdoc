@@ -39,7 +39,7 @@ openclaw agents add claw-doc \
 
 # 2. Install skills
 git clone https://github.com/Hashi-Ai-Dev/openclaw-clawdoc.git /tmp/openclaw-clawdoc
-cd /tmp/openclaw-clawdoc && git checkout v1.7.0 && cd ..
+cd /tmp/openclaw-clawdoc && git checkout v1.7.7 && cd ..
 cp -r /tmp/openclaw-clawdoc/skills/* /home/user/.openclaw/agents/claw-doc/skills/
 cp /tmp/openclaw-clawdoc/SOUL.md /home/user/.openclaw/agents/claw-doc/SOUL.md
 
@@ -63,7 +63,7 @@ Summary:
 ```bash
 # 1. Clone
 git clone https://github.com/Hashi-Ai-Dev/openclaw-clawdoc.git /tmp/openclaw-clawdoc
-cd /tmp/openclaw-clawdoc && git checkout v1.7.0 && cd ..
+cd /tmp/openclaw-clawdoc && git checkout v1.7.7 && cd ..
 
 # 2. Find your agent's workspace path
 openclaw agents list
@@ -106,7 +106,7 @@ ClawDoc routes to the right skill, reads the reference docs, and gives you a pre
 
 ## Next Steps
 
-- Browse [`skills/`](./skills/) to see all 22 available skills
+- Browse [`skills/`](./skills/) to see all 24 available skills
 - Check [`examples/`](./examples/) for ready-to-use config snippets
 - Read [AGENT_INSTALL.md](./AGENT_INSTALL.md) if you want a dedicated ClawDoc agent (Mode 1)
 - Read [SKILLS_INSTALL.md](./SKILLS_INSTALL.md) for the skills-only install (Mode 2)

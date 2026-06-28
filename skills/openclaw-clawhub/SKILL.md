@@ -84,7 +84,7 @@ For programmatic browse, the registry also exposes a JSON API.
 
 A failed verify exits non-zero and is safe in CI.
 
-## See also
+## References
 
 - `references/cli.md` — full CLI reference for both `openclaw skills/plugins`
   and the standalone `clawhub` CLI.

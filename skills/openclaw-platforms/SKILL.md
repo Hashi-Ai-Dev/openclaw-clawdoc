@@ -10,13 +10,13 @@ description: "OpenClaw on different platforms and operating systems. Use when: r
 | Platform | What it covers |
 |----------|---------------|
 | [Android](./references/android.md) | Android node app (companion device) |
-| [iOS](./references/index.md) | iOS app and node pairing |
-| [macOS](./references/index.md) | Menu bar app, voice overlay, canvas |
-| [Windows](./references/index.md) | Windows native + WSL2 |
-| [Linux](./references/index.md) | Linux server, systemd, headless |
-| [Raspberry Pi](./references/index.md) | Pi-specific setup |
-| [Oracle Cloud](./references/index.md) | Oracle Cloud deployment |
-| [DigitalOcean](./references/index.md) | DigitalOcean App Platform |
+| [iOS](./references/ios.md) | iOS app and node pairing |
+| [macOS](./references/macos.md) | Menu bar app, voice overlay, canvas |
+| [Windows](./references/windows.md) | Windows native + WSL2 |
+| [Linux](./references/dev-setup.md) | Linux server, systemd, headless |
+| [Raspberry Pi](./references/raspberry-pi.md) | Pi-specific setup |
+| [Oracle Cloud](./references/oracle.md) | Oracle Cloud deployment |
+| [DigitalOcean](./references/digitalocean.md) | DigitalOcean App Platform |
 
 ## Platform matrix
 
@@ -32,8 +32,8 @@ description: "OpenClaw on different platforms and operating systems. Use when: r
 ## macOS menu bar
 
 The macOS app runs as a menu bar agent. See:
-- `references/index.md` → macOS section
-- Canvas, voice overlay, remote access all covered
+- `references/macos.md` — macOS overview
+- `references/mac/` — macOS-specific sub-pages (bundled-gateway, canvas, child-process, dev-setup, health, icon, logging, menu-bar, peekaboo, permissions, signing, skills, voice-overlay, voicewake, webchat, xpc)
 
 ## Linux server
 
@@ -45,6 +45,12 @@ systemctl --user start openclaw
 
 ## References
 
-- `references/index.md` — platform overview + macOS/Linux/Windows/Raspberry Pi/Oracle/DigitalOcean
 - `references/android.md` — Android node app setup
-- `references/mac/` — macOS-specific docs
+- `references/ios.md` — iOS app and node pairing
+- `references/macos.md` — macOS overview
+- `references/mac/` — macOS-specific sub-pages
+- `references/windows.md` — Windows + WSL2
+- `references/dev-setup.md` — Linux server dev setup
+- `references/raspberry-pi.md` — Pi-specific setup
+- `references/oracle.md` — Oracle Cloud deployment
+- `references/digitalocean.md` — DigitalOcean App Platform

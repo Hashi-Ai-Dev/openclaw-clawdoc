@@ -2,9 +2,9 @@
 
 **The OpenClaw knowledge-base agent for config audits, troubleshooting, and grounded system fixes.**
 
-[![OpenClaw](https://img.shields.io/badge/OpenClaw-2026.6.9-blue?style=flat-square)](https://github.com/openclaw/openclaw)
+[![OpenClaw](https://img.shields.io/badge/OpenClaw-2026.6.10-blue?style=flat-square)](https://github.com/openclaw/openclaw)
 [![Skills](https://img.shields.io/badge/Skills-24-orange?style=flat-square)](#skill-tree)
-[![Reference Docs](https://img.shields.io/badge/Reference_Docs-619-green?style=flat-square)](#reference-docs)
+[![Reference Docs](https://img.shields.io/badge/Reference_Docs-622-green?style=flat-square)](#reference-docs)
 [![License](https://img.shields.io/badge/License-MIT-success?style=flat-square)](LICENSE)
 
 <p align="center">
@@ -12,9 +12,9 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Hashi-Ai-Dev/openclaw-clawdoc/releases/tag/v1.7.2"><img alt="v1.7.2 — OpenClaw 2026.6.9 full sync" src="https://img.shields.io/badge/v1.7.2%E2%80%94OpenClaw_2026.6.9_full_sync-success?style=flat-square"></a>
+  <a href="https://github.com/Hashi-Ai-Dev/openclaw-clawdoc/releases/tag/v1.7.7"><img alt="v1.7.7 — comprehensive cleanup + OpenClaw sync" src="https://img.shields.io/badge/v1.7.7%E2%80%94comprehensive_cleanup_%2B_OpenClaw_sync-success?style=flat-square"></a>
   <a href="#skill-tree"><img alt="24 skills" src="https://img.shields.io/badge/24_skills-orange?style=flat-square"></a>
-  <a href="#reference-docs"><img alt="584 reference docs" src="https://img.shields.io/badge/619_reference_docs-green?style=flat-square"></a>
+  <a href="#reference-docs"><img alt="622 reference docs" src="https://img.shields.io/badge/622_reference_docs-green?style=flat-square"></a>
   <a href="#ready-to-use-examples"><img alt="24 examples" src="https://img.shields.io/badge/24_examples-blueviolet?style=flat-square"></a>
 </p>
 
@@ -147,14 +147,14 @@ ClawDoc routes to the right skill, reads the reference docs, and gives you a pre
 
 ## Reference docs
 
-**619 docs** copied from the official OpenClaw source and versioned against the tracked OpenClaw release.
+**622 docs** copied from the official OpenClaw source and versioned against the tracked OpenClaw release.
 
 | Area | What's covered |
 |------|---------------|
 | Config | All gateway config keys, defaults, secrets, retry, failover |
 | Memory | builtin / QMD / Honcho setup, embeddings, citations |
 | Agents | Multi-agent, bindings, sandbox, tool policies |
-| Channels | Discord, Telegram, WhatsApp, Slack, Signal, and 33+ more (38 total) |
+| Channels | Discord, Telegram, WhatsApp, Slack, Signal, and 36+ more (41 total) |
 | Concepts | Architecture, session, compaction, streaming, queue |
 | Providers | 60+ model providers: OpenAI, Anthropic, Gemini, Bedrock, Ollama... |
 | CLI | Every openclaw command with examples |
@@ -171,7 +171,7 @@ ClawDoc routes to the right skill, reads the reference docs, and gives you a pre
 | `openclaw-config` | Gateway config reference — all keys, all patterns |
 | `openclaw-memory` | Memory backends: builtin, QMD, Honcho |
 | `openclaw-agents` | Multi-agent, bindings, sandbox, tool policies |
-| `openclaw-channels` | Discord, Telegram, WhatsApp, Slack, Signal — and 33+ more (38 total) |
+| `openclaw-channels` | Discord, Telegram, WhatsApp, Slack, Signal — and 36+ more (41 total) |
 
 ### Operations
 | Skill | What it does |
@@ -194,7 +194,8 @@ ClawDoc routes to the right skill, reads the reference docs, and gives you a pre
 | Skill | What it does |
 |-------|-------------|
 | `openclaw-tools` | exec, browser, cron, sessions, subagents, ACP |
-| `openclaw-providers` | Model providers: 62 total: OpenAI, Anthropic, Gemini, Bedrock, Ollama, DeepSeek, Groq, Together, Cohere... |
+| `openclaw-clawhub` | ClawHub registry: discover, install, publish, verify skills and plugins |
+| `openclaw-providers` | Model providers: 60+ individual files: OpenAI, Anthropic, Gemini, Bedrock, Ollama, DeepSeek, Groq, Together, Cohere... |
 | `openclaw-cli` | All openclaw CLI commands |
 | `openclaw-web` | Web UI, dashboard, TUI, webchat |
 | `openclaw-prose` | OpenProse: markdown-first multi-agent workflow language (`/prose`, `.prose` files) |
@@ -265,6 +266,6 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for conventions, style guide, and how t
 ## Operating principles
 
 - **Precision over speed** — Quote the schema, cite the docs, show the exact patch.
-- **No hand-waving** — If I'm not sure, I say so and investigate.
+- **No hand-waving** — If we're not sure, we say so and investigate.
 - **Show your work** — Before/after diffs make answers learnable.
 - **Community-minded** — Design for clarity and generalizability, not just your own setup.

@@ -25,7 +25,7 @@ For a dedicated standalone agent with its own identity, see [AGENT_INSTALL.md](.
 git clone https://github.com/Hashi-Ai-Dev/openclaw-clawdoc.git /tmp/openclaw-clawdoc
 
 # Stable install (recommended for production):
-cd /tmp/openclaw-clawdoc && git checkout v1.7.2 && cd ..
+cd /tmp/openclaw-clawdoc && git checkout v1.7.7 && cd ..
 
 # Bleeding-edge (may include unreleased changes — use at your own risk):
 # cd /tmp/openclaw-clawdoc && git checkout master
@@ -152,4 +152,4 @@ Validate the install by applying one of the ready-to-use example configs:
 openclaw config merge examples/install-verify.json && openclaw gateway restart
 ```
 
-See [examples/README.md](./examples/README.md) for the full list (12 examples covering Discord, Telegram, memory backends, multi-agent setups, and more).
+See [examples/README.md](./examples/README.md) for the full list (24 examples covering Discord, Telegram, Slack, MS Teams, WhatsApp, Signal, Matrix, iMessage-native, memory backends, multi-agent setups, and more).

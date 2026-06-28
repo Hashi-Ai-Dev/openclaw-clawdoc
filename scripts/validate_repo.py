@@ -146,18 +146,187 @@ def check_readme_mode_coverage(readme_path: Path) -> list[str]:
 
 
 def check_skill_count_claims(readme_path: Path, quickstart_path: Path) -> list[str]:
-    """Check that neither README nor QUICKSTART claim 11 skills."""
+    """Check that neither README nor QUICKSTART claim 22 or 23 skills (current count is 24)."""
     errors = []
     for path in [readme_path, quickstart_path]:
         if not path.exists():
             continue
         content = path.read_text()
-        # Look for the word "11" as a standalone number (not part of 110, 111, etc.)
-        matches = re.findall(r'\b11\b', content)
-        if matches:
+        # Look for the word "22" or "23" as a standalone number followed by "skills" / "available skills"
+        # (not part of 220, 230, etc.)
+        for stale in (22, 23):
+            pattern = re.compile(rf'\b{stale}\b[^.\n]{{0,40}}skills?', re.IGNORECASE)
+            if pattern.search(content):
+                errors.append(
+                    f"{path}: claims '{stale} skills' — current count is 24"
+                )
+    return errors
+
+
+def check_install_command_versions(quickstart_path: Path, agent_install_path: Path, skills_install_path: Path) -> list[str]:
+    """Check that install commands reference a tagged release, not stale or 'master'."""
+    errors = []
+    # Find the latest release tag (excluding master HEAD) — use git describe against tags
+    try:
+        import subprocess
+        result = subprocess.run(
+            ["git", "describe", "--tags", "--abbrev=0"],
+            cwd=REPO_ROOT, capture_output=True, text=True, check=True
+        )
+        latest_tag = result.stdout.strip()  # e.g. "v1.7.2"
+    except Exception:
+        return errors  # can't determine tag, skip
+
+    # Allowed tokens: latest tag, "master" (bleeding-edge), "main" (bleeding-edge)
+    allowed = {latest_tag, "master", "main"}
+
+    for path in [quickstart_path, agent_install_path, skills_install_path]:
+        if not path.exists():
+            continue
+        try:
+            content = path.read_text()
+        except Exception:
+            continue
+        # Find every "git checkout <ref>" occurrence
+        for m in re.finditer(r'git\s+checkout\s+(\S+)', content):
+            ref = m.group(1).strip().rstrip('&&').strip()
+            if ref not in allowed:
+                # Whitelist master/main if explicitly in a "bleeding-edge" context
+                # (the validator doesn't enforce the comment — just the literal)
+                if ref == latest_tag:
+                    continue
+                errors.append(
+                    f"{path}: 'git checkout {ref}' is stale — latest tag is {latest_tag}"
+                )
+    return errors
+
+
+def check_manifest_version(manifest: dict) -> list[str]:
+    """Check that clawdoc_version and tracked_openclaw_version match filesystem truth."""
+    errors = []
+    import subprocess
+
+    # 1. clawdoc_version vs latest tag
+    claimed_version = manifest.get("clawdoc_version", "")
+    try:
+        result = subprocess.run(
+            ["git", "describe", "--tags", "--abbrev=0"],
+            cwd=REPO_ROOT, capture_output=True, text=True, check=True
+        )
+        latest_tag = result.stdout.strip()
+        if claimed_version != latest_tag:
             errors.append(
-                f"{path}: incorrectly claims '{matches[0]}' skills — should be 22"
+                f"CLAWDOC_MANIFEST.json: clawdoc_version is '{claimed_version}' but latest tag is '{latest_tag}'"
             )
+    except Exception:
+        pass
+
+    # 2. tracked_openclaw_version vs .openclaw-version
+    claimed_oc = manifest.get("tracked_openclaw_version", "")
+    openclaw_version_file = REPO_ROOT / ".openclaw-version"
+    if openclaw_version_file.exists():
+        actual_oc = openclaw_version_file.read_text().strip()
+        if claimed_oc != actual_oc:
+            errors.append(
+                f"CLAWDOC_MANIFEST.json: tracked_openclaw_version is '{claimed_oc}' but .openclaw-version is '{actual_oc}'"
+            )
+
+    return errors
+
+
+def check_public_list_completeness(manifest: dict) -> list[str]:
+    """Check that skills.public_list matches what's actually on disk."""
+    errors = []
+    if not SKILLS_DIR.exists():
+        return errors
+    public_list = set(manifest.get("skills", {}).get("public_list", []))
+    on_disk = {d.name for d in SKILLS_DIR.iterdir() if d.is_dir() and (d / "SKILL.md").exists()}
+    # Allow clawdoc-* that aren't in public_list only if they are private (must not exist on disk)
+    missing_from_list = on_disk - public_list
+    extra_in_list = public_list - on_disk
+    for skill in sorted(missing_from_list):
+        errors.append(
+            f"CLAWDOC_MANIFEST.json: skill '{skill}' exists on disk but is missing from skills.public_list"
+        )
+    for skill in sorted(extra_in_list):
+        errors.append(
+            f"CLAWDOC_MANIFEST.json: skill '{skill}' is in skills.public_list but does not exist on disk"
+        )
+    return errors
+
+
+def check_examples_readme_coverage(examples_dir: Path, readme_path: Path) -> list[str]:
+    """Check that examples/README.md mentions every example .json file."""
+    errors = []
+    if not examples_dir.exists():
+        return errors
+    if not readme_path.exists():
+        return errors
+    readme_content = readme_path.read_text()
+    example_files = {f.name for f in examples_dir.iterdir() if f.suffix == ".json"}
+    for example in sorted(example_files):
+        if example not in readme_content:
+            errors.append(
+                f"examples/README.md: does not mention '{example}' (missing from the table)"
+            )
+    return errors
+
+
+def check_referenced_files_exist(skills_dir: Path) -> list[str]:
+    """Check that every references/X.md path referenced from a SKILL.md body exists.
+
+    Only validates references that look like current-skill relative paths:
+    - `references/foo.md` (skill-relative)
+    - `references/sub/foo.md` (skill-relative with subdir)
+    Skips cross-skill references like `openclaw-tools/references/foo.md` and
+    the literal `SKILL.md` self-reference.
+    """
+    errors = []
+    if not skills_dir.exists():
+        return errors
+    # Match `references/<name>.md` or `references/<sub>/<name>.md` only
+    pattern = re.compile(r'`references/([\w\-]+(?:/[\w\-]+)*\.md)`')
+    for skill_dir in sorted(skills_dir.iterdir()):
+        skill_md = skill_dir / "SKILL.md"
+        if not skill_md.exists():
+            continue
+        try:
+            content = skill_md.read_text()
+        except Exception:
+            continue
+        # Skip frontmatter
+        body_match = re.search(r"^---\n.*?\n---\n(.*)", content, re.DOTALL)
+        body = body_match.group(1) if body_match else content
+        for m in pattern.finditer(body):
+            ref_rel = m.group(1)
+            candidate = skill_dir / "references" / ref_rel
+            if not candidate.exists():
+                errors.append(
+                    f"{skill_md}: references '{ref_rel}' does not exist on disk"
+                )
+    return errors
+
+
+def check_root_file_example_counts(repo_root: Path) -> list[str]:
+    """Check that root files don't claim a stale example count."""
+    errors = []
+    stale_phrases = [
+        ("12 examples covering", "current count is 24"),
+        ("12 example configs", "current count is 24"),
+    ]
+    for filename in ("AGENT_INSTALL.md", "SKILLS_INSTALL.md"):
+        path = repo_root / filename
+        if not path.exists():
+            continue
+        try:
+            content = path.read_text()
+        except Exception:
+            continue
+        for phrase, fix in stale_phrases:
+            if phrase in content:
+                errors.append(
+                    f"{path}: contains stale phrase '{phrase}' — {fix}"
+                )
     return errors
 
 
@@ -232,8 +401,38 @@ def main():
         errors = check_readme_mode_coverage(path)
         all_errors.extend(errors)
 
-    # 6. README and QUICKSTART must not claim 11 skills
+    # 6. README and QUICKSTART must not claim 22 or 23 skills
     errors = check_skill_count_claims(readme_path, quickstart_path)
+    all_errors.extend(errors)
+
+    # 7. Install commands must reference the latest tag (not stale)
+    errors = check_install_command_versions(
+        quickstart_path,
+        REPO_ROOT / "AGENT_INSTALL.md",
+        REPO_ROOT / "SKILLS_INSTALL.md",
+    )
+    all_errors.extend(errors)
+
+    # 8. CLAWDOC_MANIFEST.json version fields must match filesystem truth
+    if manifest is not None:
+        errors = check_manifest_version(manifest)
+        all_errors.extend(errors)
+
+        # 9. skills.public_list must match what's on disk
+        errors = check_public_list_completeness(manifest)
+        all_errors.extend(errors)
+
+    # 10. examples/README.md must mention every example
+    if EXAMPLES_DIR.exists():
+        errors = check_examples_readme_coverage(EXAMPLES_DIR, EXAMPLES_DIR / "README.md")
+        all_errors.extend(errors)
+
+    # 11. Skill bodies must not reference non-existent references/*.md files
+    errors = check_referenced_files_exist(SKILLS_DIR)
+    all_errors.extend(errors)
+
+    # 12. Root install guides must not claim a stale example count
+    errors = check_root_file_example_counts(REPO_ROOT)
     all_errors.extend(errors)
 
     # Report

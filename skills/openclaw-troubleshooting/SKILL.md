@@ -343,4 +343,5 @@ If your issue is "my phone/desktop client won't connect to the gateway", you nee
 - `references/gateway-troubleshooting.md` — deep gateway runbook (506 lines)
 - `references/channel-troubleshooting.md` — per-channel failure signatures (133 lines)
 - `references/hooks.md` — hook writing guide, events, structure (319 lines)
-- `references/automation-troubleshooting.md` — cron/webhook/CRP issues (8 lines)
+
+> Note: cron/webhook/CRP troubleshooting is covered inline in the **Hook not firing** and **Session + queue** decision trees above. A dedicated automation-troubleshooting reference is on the roadmap but not yet written.

@@ -15,7 +15,7 @@ Found a bug or inaccuracy? Open an issue with:
 - Fix inaccuracies in SKILL.md bodies
 - Add missing reference docs
 - Improve clarity or examples
-- Add transllations
+- Add translations
 
 ### 🌳 Extend Skills
 - Add new skills for uncovered areas
@@ -34,8 +34,9 @@ Found a bug or inaccuracy? Open an issue with:
 The following are privileged instruction surfaces — treat them as contracts when editing:
 
 - `skills/` — all SKILL.md bodies and reference docs
-- `SOUL.md`, `AGENTS.md` (root level)
-- `agent-template/`
+- `SOUL.md` (root level — the public ClawDoc persona)
+- `agent-template/AGENTS.md`, `agent-template/README.md`, `agent-template/SOUL.md` (agent install templates)
+- Note: there is no `AGENTS.md` at the repo root. If you need to update the agent-workspace template, edit `agent-template/AGENTS.md`.
 - `AGENT_INSTALL.md`, `SKILLS_INSTALL.md`
 - `TROUBLESHOOTING.md`, `README.md`, `QUICKSTART.md`
 

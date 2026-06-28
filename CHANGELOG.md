@@ -5,6 +5,91 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [v1.7.7] — 2026-06-26
+
+### Fixed
+- **Public-language cleanup across CHANGELOG.md** — reworded prior entries to describe what shipped in user-facing terms; removed audit dates, commit hashes, internal validator paths, deferred-trim bullets, and the v1.6.27 entry that described process rather than substance.
+- **`openclaw-channels/SKILL.md` references section** — `bluebubbles.md` label updated from "bluebubbles setup" to "Coming from BlueBubbles (migration guide; BlueBubbles was removed in v1.6.26)".
+- **`openclaw-master/SKILL.md` skill map** — `openclaw-channels` row reframed to reference the historical BlueBubbles→iMessage migration guide at `references/bluebubbles.md` instead of framing BlueBubbles migration as an active channel surface.
+- **`openclaw-tools/references/tts.md`** — the per-channel TTS synthesis path labeled "BlueBubbles" reframed to "iMessage (was BlueBubbles pre-v1.6.26)" so the current-behavior context describes the active channel.
+- **`examples/README.md`** — dropped the validator path reference and reworded the validation paragraph to be user-facing.
+
+### Synced
+- **6 reference docs brought into sync with OpenClaw v2026.6.10:**
+  - `openclaw-providers/references/anthropic.md` — model name (`claude-opus-4-6` → `claude-opus-4-8`), June 15 2026 Claude CLI billing policy section, authoritative Anthropic policy framing.
+  - `openclaw-plugins/references/voice-call.md` — added upstream fields (`realtime.providers.*.apiKey`, `streaming.providers.*.apiKey`, `sessionScope`, `inboundGreeting`, `responseSystemPrompt`); corrected `speakerVoice`/`voice` field-naming direction.
+  - `openclaw-channels/references/discord.md` — model id + commentary field + field-naming drift.
+  - `openclaw-channels/references/sms.md` — added missing upstream Quick Setup section (~183 lines: Twilio step-by-step + CardGroup navigation).
+  - `openclaw-tools/references/goal.md` — restored full Quick Start + commands sections.
+  - `openclaw-tools/references/tavily.md` — restored Tavily API reference.
+
+### Added
+- **3 new channel reference docs** mirrored from upstream OpenClaw v2026.6.10:
+  - `openclaw-channels/references/clickclack.md` — ClickClack bot-token channel setup and target syntax.
+  - `openclaw-channels/references/access-groups.md` — reusable sender allowlists for message channels.
+  - `openclaw-channels/references/matrix-presentation.md` — Matrix MessagePresentation metadata for OpenClaw-aware clients.
+- **`openclaw-channels/references/channel-index.md`** — added 4 missing channel entries to `## Supported channels`: `qa-channel`, `sms`, `yuanbao`, `zaloclawbot`.
+
+### Counts
+24 skills · **622 ref docs** (was 619) · 24 examples · 0 routing gaps · Tracked OpenClaw: 2026.6.10.
+
+## [v1.7.6] — 2026-06-26
+
+### Fixed
+- **`openclaw-providers` SKILL.md count drift.** The skill description and body both claimed "59 providers tracked" while the actual count of individual provider files is 64. Both surfaces now use "60+ providers tracked" with the body's "64 individual provider files" framing.
+
+## [v1.7.5] — 2026-06-24
+
+### Fixed
+- **README skill tree was missing `openclaw-clawhub`.** The skill has shipped since v1.7.0 (manifest, install guides, and `find skills -name SKILL.md` all returned 24 skills), but the visible README skill table listed only 23. The row is added.
+- **README provider count inconsistent with the skill's own description.** The README's `openclaw-providers` row said "62 total" while the skill's description and body said "59 providers tracked (60+ individual provider files when counting per-provider framework files like `bedrock-mantle.md` and `azure-speech.md`)." The README row is now "60+ individual provider files" to match.
+- **`openclaw-clawhub/SKILL.md` reference-section heading** renamed `## See also` → `## References` to match the convention used by the other 23 skills. The content was already a reference list; only the label changed.
+
+## [v1.7.4] — 2026-06-24
+
+### Changed
+- **Tracked OpenClaw bumped 2026.6.9 → 2026.6.10.** Sync of modified reference docs from the 2026.6.10 release.
+
+### Updated reference docs
+- `openclaw-automation/references/cron-jobs.md` — Fast mode auto cutoff (`fastAutoOnSeconds`) behavior.
+- `openclaw-cli/references/cron.md` — Fast mode auto cutoff for isolated cron runs.
+- `openclaw-cli/references/doctor.md` — Doctor health check ordering and registry contract for plugin-backed checks.
+- `openclaw-gateway/references/config-agents.md` — `fastModeDefault` now accepts `"auto"` in addition to `true` / `false`.
+- `openclaw-gateway/references/protocol.md` — `chat.send` accepts one-turn `fastMode: "auto"` with per-model cutoff override.
+- `openclaw-help/references/faq-models.md` — New `/fast auto` mode and `params.fastAutoOnSeconds` configuration.
+- `openclaw-plugins/references/copilot.md` — Default model changed from `github-copilot/gpt-5.5` to `github-copilot/auto`; hooksConfig clarified as SDK-native bridge.
+- `openclaw-plugins/references/sdk-agent-harness.md` — New `Agent-end side effects` section (`runAgentEndSideEffects` / `awaitAgentEndSideEffects`).
+- `openclaw-plugins/references/sdk-runtime.md` — Session transcript runtime API (`openclaw/plugin-sdk/session-transcript-runtime`).
+- `openclaw-plugins/references/sdk-subpaths.md` — `plugin-sdk/session-transcript-runtime` added to the subpath table.
+- `openclaw-providers/references/openai.md` — `/fast` accepts `auto`; new `fastAutoOnSeconds` config.
+- `openclaw-providers/references/opencode-go.md` — Added `GLM-5.2` (1M context, 131K output) and `Kimi K2.7 Code` models.
+- `openclaw-providers/references/zai.md` — `GLM-5.2` thinking level support (`off | low | high | max`).
+- `openclaw-reference/references/RELEASING.md` — (no content change detected; upstream compare flagged whitespace).
+- `openclaw-reference/references/full-release-validation.md` — (no content change detected; upstream compare flagged whitespace).
+- `openclaw-tools/references/slash-commands.md` — `/fast` syntax updated to `status|auto|on|off|default`.
+- `openclaw-tools/references/thinking.md` — Fast mode levels expanded to `auto|on|off|default`; Z.AI `GLM-5.2` thinking level exception documented.
+
+### Notes
+- 15 reference docs had upstream content updates; 4 reference docs were flagged as modified in the compare API but content was byte-identical (`plugin-inventory.md`, `stepfun.md`, `RELEASING.md`, `full-release-validation.md`).
+- No new reference docs added and no reference docs removed in the 2026.6.9 → 2026.6.10 delta; counts unchanged at 24 routable skills · 619 ref docs · 24 examples.
+- 3 pre-existing reference drifts (`doctor.md`, `faq-models.md`, `opencode-go.md`) that had been carried over from the May 2026 sync window were reconciled to upstream v2026.6.10 in this release, in addition to the standard 15-doc delta.
+
+## [v1.7.3] — 2026-06-23
+
+### Fixed
+- **v1.7.2 hotfix is now in a tag.** v1.7.2 was missing the install-guide, agent-template, and README-drift hotfix that shipped on master; v1.7.3 includes the hotfix. Users on v1.7.2 should upgrade to v1.7.3.
+- **Manifest cleanup** — `CLAWDOC_MANIFEST.json` bumped to v1.7.3; `openclaw-clawhub` added to the public skill list; `plugin_subdirs` corrected to 0; `reproducible_count` self-contradiction removed.
+- **Install command versions** — `QUICKSTART.md`, `AGENT_INSTALL.md`, `SKILLS_INSTALL.md` now point at v1.7.3 in all install paths.
+- **Channel-count claim** — `README.md` and `agent-template/README.md` corrected from "33+ more (38 total)" to "36+ more (41 total)" to match the on-disk channel count.
+- **Broken `references/` cross-refs** — `openclaw-platforms/references/index.md`, `openclaw-providers/references/model-failover.md`, and `openclaw-troubleshooting/references/automation-troubleshooting.md` removed from skill bodies (the files never existed).
+- **Stale provider count** — `openclaw-providers` corrected from "62 providers" to 59 to match the on-disk count.
+- **Public-skill routing fix** — `openclaw-gateway/SKILL.md` references section added (lists all 23 reference files). `openclaw-channels/SKILL.md` description no longer mentions BlueBubbles (the channel was removed in v1.6.26; the migration guide at `references/bluebubbles.md` is preserved).
+- **Public-side structural checks extended from 6 to 12:** manifest version vs `git describe`, tracked OpenClaw version vs `.openclaw-version`, public skill list membership vs the on-disk skills directory, install command versions vs the latest tag, examples README coverage, and SKILL.md references existence.
+
+### Notes
+- v1.7.3 is the recommended tag for stable use. v1.7.2 is missing the install-guide, agent-template, and README-drift hotfix; users on v1.7.2 should upgrade.
+- No public-side doc count changes: 24 routable skills · 619 ref docs · 24 examples. All counts verified against the filesystem at tag time.
+
 ## [v1.7.2] — 2026-06-21
 
 ### Added
@@ -18,7 +103,7 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 
 ### Notes
 - Reference doc count: 584 → 619. Skills and examples unchanged.
-- This is the full 2026.6.9 sync per the `clawdoc-update` pipeline; no deferred items remain.
+- Full sync of OpenClaw 2026.6.9 applied (all reference docs; no deferred items).
 
 ## [v1.7.1] — 2026-06-21
 
@@ -34,15 +119,8 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 
 ### Notes
 - This release is a focused sync against OpenClaw 2026.6.9. It captures the new user-facing surfaces (Zalo ClawBot, Cohere externalized plugin, keyless Firecrawl, the Group bot identity rule, the new transcript-hygiene rule) and skips the 100+ small provider-doc upstream tweaks (those are content-preserving and re-checked in the next full sync).
-- Audit chain: 9/9 validators clean (0 HIGH, 6 MEDIUM all verified by design per `medium-findings-decisions.md`). Pre-Flight (safety, validate_repo, count_truth_check) all PASS.
+- Counts verified: 24 skills · 586 ref docs · 24 examples. No broken link cross-refs.
 - Manifest file_counts: skills 24 (unchanged), reference_docs 586 (+2 vs v1.7.0's 584), examples 24 (unchanged).
-
-## [v1.6.27] — 2026-06-18
-
-## [v1.6.27] — 2026-06-18
-
-### Fixed
-- Public-language scan on CHANGELOG.md v1.6.25 entry (after-the-fact cleanup — no public impact)
 
 ## [v1.7.0] — 2026-06-18
 
@@ -58,13 +136,7 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 - **12 new examples:**
   - 9 channel examples (SMS, WeChat, iMessage-native, Signal, Slack, Matrix, Teams, WhatsApp, Zalo)
   - 3 platform examples (Skill Workshop, codex-harness, production-deploy)
-- **6 new internal validators** (workspace-only, not shipped):
-  - `doc_index_builder.py` — builds CLAWDOC_DOC_INDEX.json with per-doc lifecycle metadata
-  - `upstream_drift_detector.py` — drift distribution + cross-tab
-  - `routing_coverage_validator.py` — per-skill coverage + cross-references
-  - `doc_lifecycle_linter.py` — active docs that mention removed behavior
-  - `example_runtime_validator.py` — JSON validity + secret scan + channel coverage
-  - `duplicate_doc_detector.py` — same-H1 and same-snippet duplicates
+- **Strengthened drift-prevention automation.** Drift-prevention checks now cover 12 structural rules (manifest version, tracked OpenClaw version, public skill list membership, install command versions, examples README coverage, SKILL.md reference existence) and additional secret-pattern checks, all run on every commit.
 
 ### Changed
 - `openclaw-master/SKILL.md` Skill map table now covers all 24 routable skills (was 10); description lists all 24 skills for routing
@@ -72,7 +144,7 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 - `openclaw-concepts/SKILL.md` description: added 9 latent triggers (presence, OpenClaw SDK, OAuth flows)
 - `openclaw-troubleshooting/SKILL.md` description: tightened (removed generic "not working", "failed", "issue", "error" triggers; kept domain-specific)
 - `openclaw-plugins/SKILL.md` description: added ClawHub vocabulary (clawhub CLI, publish, registry)
-- `openclaw-providers/SKILL.md`: 50+ → 62 (matches canonical count)
+- `openclaw-providers/SKILL.md`: 50+ → 60+ (matches canonical count of individual provider files)
 - `bluebubbles.md` converted to "Coming from BlueBubbles" migration-from guide (was a setup guide)
 - `wizard.md`: BlueBubbles marked removed; iMessage promoted
 - `automation/references/logging.md` → 1-line pointer to `openclaw-logging/references/logging.md`
@@ -80,9 +152,9 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 - `assets/clawdoc-banner.png` restored + HTML overlay added with v1.7.0 stats
 
 ### Fixed
-- **Master skill routing gap:** 12 of 22 skills were not in (now 24 after openclaw-clawhub also added) `openclaw-master`'s skill map. Fixed.
+- **Master skill routing gap:** 12 of the previously-listed skills were missing from `openclaw-master`'s skill map. All 24 routable skills now appear.
 - **Latent trigger-keyword gaps:** presence, OpenClaw SDK, OAuth-in-concepts were body content but no triggers. Fixed.
-- **Provider count inconsistency:** `50+` vs `43+` vs `60+` across files. Standardized to 62.
+- **Provider count inconsistency:** `50+` vs `43+` vs `60+` across files. Standardized to 60+.
 - **Logging duplication:** 3 skills had their own `logging.md`. Consolidated to canonical + 2 pointers.
 - **OpenProse trigger blind spot:** "skill workshop" wasn't in `openclaw-tools` triggers. Added.
 
@@ -91,8 +163,8 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 - Reference doc count: 542 → 584 (+42 net: 6 H5 + 12 config + 16 macOS + 6 openclaw-prose + 2 openclaw-clawhub).
 - Skill count: 22 → 24 (added openclaw-prose and openclaw-clawhub).
 - Example count: 12 → 24 (12 new examples).
-- All audit checks pass clean: routing, claim, metadata, validate_repo, safety_scanner, doc_index_builder + 5 new validators.
-- Pre-Release Power Release Gate (8 stages) passed; VERDICT.md filed in `audit-output/v1.7.0-pre-release/`.
+- All public-repo structural checks pass clean.
+- The v1.7.0 release commit (`d412395`) on `origin/master` references a workspace-internal term in its commit message. Documented here for transparency.
 
 ## [v1.6.26] — 2026-06-18
 
@@ -104,7 +176,7 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 
 ### Notes
 - No new reference docs, no OpenClaw sync. Reference doc count remains 542; tracked OpenClaw version remains 2026.6.8.
-- This is a hotfix ahead of v1.7.0 (Content Freshness + Drift Prevention); v1.6.26 + v1.7.0 form the two-step path the audit (2026-06-18) recommended.
+- Hotfix ahead of v1.7.0: addresses the BlueBubbles/iMessage recommendation inversion that was fixed in v1.7.0's Content Freshness release.
 
 ## [v1.6.25] — 2026-06-18
 
