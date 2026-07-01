@@ -54,8 +54,11 @@ openclaw pairing approve <channel> <CODE>
 
 ## References
 
-- `references/channel-index.md` — all 31 channel overviews
+- `references/channel-index.md` — all 30 active channel overviews (plus BlueBubbles in migration-only)
+- `references/ambient-room-events.md` — ambient-room-events channel setup
+- `references/bot-loop-protection.md` — bot loop protection patterns
 - `references/channel-routing.md` — routing rules, match conditions
+- `references/channel-troubleshooting.md` — channel-specific troubleshooting
 - `references/discord.md` — Discord setup, threads, exec approvals
 - `references/telegram.md` — Telegram setup, forum topics
 - `references/whatsapp.md` — WhatsApp pairing, broadcast groups
@@ -64,8 +67,13 @@ openclaw pairing approve <channel> <CODE>
 - `references/matrix.md` — Matrix setup, E2EE, multi-account
 - `references/feishu.md` — Feishu setup, streaming cards
 - `references/line.md` — LINE setup
+- `references/location.md` — location channel setup
 - `references/googlechat.md` — GoogleChat setup
+- `references/group-messages.md` — group messaging patterns
+- `references/groups.md` — groups meta
 - `references/mattermost.md` — Mattermost setup
+- `references/matrix-migration.md` — Matrix migration guide
+- `references/matrix-push-rules.md` — Matrix push rules
 - `references/msteams.md` — Microsoft Teams setup
 - `references/bluebubbles.md` — Coming from BlueBubbles (migration guide; BlueBubbles was removed in v1.6.26)
 - `references/imessage.md` — iMessage setup
@@ -74,11 +82,15 @@ openclaw pairing approve <channel> <CODE>
 - `references/synology-chat.md` — Synology Chat setup
 - `references/nextcloud-talk.md` — Nextcloud Talk setup
 - `references/qqbot.md` — QQ Bot setup
+- `references/qa-channel.md` — QA channel setup
 - `references/raft.md` — Raft consensus channel setup
+- `references/sms.md` — SMS channel setup
 - `references/tlon.md` — Tlon setup
 - `references/twitch.md` — Twitch setup
+- `references/wechat.md` — WeChat channel setup
 - `references/zalo.md` — Zalo setup
 - `references/zalouser.md` — Zalo User setup
+- `references/zaloclawbot.md` — Zalo ClawBot channel setup
 - `references/yuanbao.md` — Tencent Yuanbao setup
 - `references/clickclack.md` — ClickClack bot-token channel setup and target syntax
 - `references/access-groups.md` — reusable sender allowlists for message channels

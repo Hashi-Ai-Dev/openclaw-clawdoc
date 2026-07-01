@@ -12,9 +12,9 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Hashi-Ai-Dev/openclaw-clawdoc/releases/tag/v1.7.8"><img alt="v1.7.8 — OpenClaw 2026.6.11 sync + reference doc refresh" src="https://img.shields.io/badge/v1.7.8%E2%80%94OpenClaw_2026.6.11_sync_%2B_reference_doc_refresh-success?style=flat-square"></a>
+  <a href="https://github.com/Hashi-Ai-Dev/openclaw-clawdoc/releases/tag/v1.7.9"><img alt="v1.7.9 — curator fixes: count drift + channel references + token efficiency" src="https://img.shields.io/badge/v1.7.9%E2%80%94curator_fixes%3A_count_drift_%2B_channel_references_%2B_token_efficiency-success?style=flat-square"></a>
   <a href="#skill-tree"><img alt="24 skills" src="https://img.shields.io/badge/24_skills-orange?style=flat-square"></a>
-  <a href="#reference-docs"><img alt="622 reference docs" src="https://img.shields.io/badge/622_reference_docs-green?style=flat-square"></a>
+  <a href="#reference-docs"><img alt="626 reference docs" src="https://img.shields.io/badge/626_reference_docs-green?style=flat-square"></a>
   <a href="#ready-to-use-examples"><img alt="26 examples" src="https://img.shields.io/badge/26_examples-blueviolet?style=flat-square"></a>
 </p>
 
@@ -61,8 +61,6 @@ ClawDoc supports two adoption paths. Pick the one that fits your setup:
 | **New agent created?** | ✅ Yes | ❌ No |
 | **Separate identity?** | ✅ Yes | ❌ Your agent keeps its identity |
 | **Guide** | [AGENT_INSTALL.md](./AGENT_INSTALL.md) | [SKILLS_INSTALL.md](./SKILLS_INSTALL.md) |
-
-Not sure which to pick? Start with **Mode 2 — Skills Only** for the lightest path. Switch to Mode 1 if you want ClawDoc to have its own persistent workspace and identity.
 
 ---
 
@@ -112,8 +110,6 @@ flowchart TD
     Ref --> A[Cited answer<br/>+ before/after diff]
 ```
 
-Every routing decision is grounded in `references/` — never from memory alone.
-
 ---
 
 ## Install
@@ -154,7 +150,7 @@ ClawDoc routes to the right skill, reads the reference docs, and gives you a pre
 | Config | All gateway config keys, defaults, secrets, retry, failover |
 | Memory | builtin / QMD / Honcho setup, embeddings, citations |
 | Agents | Multi-agent, bindings, sandbox, tool policies |
-| Channels | Discord, Telegram, WhatsApp, Slack, Signal, and 36+ more (41 total) |
+| Channels | Discord, Telegram, WhatsApp, Slack, Signal, and 25+ more (30 active channels total) |
 | Concepts | Architecture, session, compaction, streaming, queue |
 | Providers | 60+ model providers: OpenAI, Anthropic, Gemini, Bedrock, Ollama... |
 | CLI | Every openclaw command with examples |
@@ -171,7 +167,7 @@ ClawDoc routes to the right skill, reads the reference docs, and gives you a pre
 | `openclaw-config` | Gateway config reference — all keys, all patterns |
 | `openclaw-memory` | Memory backends: builtin, QMD, Honcho |
 | `openclaw-agents` | Multi-agent, bindings, sandbox, tool policies |
-| `openclaw-channels` | Discord, Telegram, WhatsApp, Slack, Signal — and 36+ more (41 total) |
+| `openclaw-channels` | Discord, Telegram, WhatsApp, Slack, Signal — and 25+ more (30 active channels total) |
 
 ### Operations
 | Skill | What it does |
