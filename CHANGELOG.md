@@ -18,7 +18,7 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 - `skills/openclaw-channels/references/channel-index.md` now lists ClickClack in `## Supported channels` (carry-over from v1.7.7).
 
 ### Counts
-24 skills · **625 ref docs** (was 622) · **26 examples** (was 24) · 0 routing gaps · Tracked OpenClaw: 2026.6.11.
+24 skills · **626 ref docs** (was 622) · **26 examples** (was 24) · 0 routing gaps · Tracked OpenClaw: 2026.6.11.
 
 ## [v1.7.7] — 2026-06-26
 
