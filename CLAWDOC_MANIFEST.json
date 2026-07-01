@@ -17,7 +17,7 @@
   },
   "reference_docs_definition": {
     "description": "reference_docs = files under skills/**/references/**, tracked in git (matches file_counts.reference_docs)",
-    "reproducible_count": "find skills -type f \\( -name '*.md' -o -name '*.mdx' \\) -path '*/references/*' | wc -l = 622 (includes .mdx such as railway.mdx; git ls-files skills/ | grep references/ gives the same result)",
+    "reproducible_count": "find skills -type f \\( -name '*.md' -o -name '*.mdx' \\) -path '*/references/*' | wc -l = 626 (includes .mdx such as railway.mdx; git ls-files skills/ | grep references/ gives the same result)",
     "includes_mdx": "yes \u2014 includes *.mdx files such as railway.mdx"
   },
   "skills": {
@@ -226,5 +226,5 @@
     "modified_ref_docs_count": 102,
     "tracked_openclaw": "2026.6.10"
   },
-  "reproducible_count": "find skills -type f \\( -name \"*.md\" -o -name \"*.mdx\" \\) -path \"*/references/*\" | wc -l = 622"
+  "reproducible_count": "find skills -type f \\( -name \"*.md\" -o -name \"*.mdx\" \\) -path \"*/references/*\" | wc -l = 626"
 }
