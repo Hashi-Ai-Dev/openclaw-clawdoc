@@ -166,3 +166,10 @@ Rationale:
 
 - [Secrets management](/gateway/secrets)
 - [Auth credential semantics](/auth-credential-semantics)
+
+## Example
+
+```bash
+# Inspect the full release-validation flow
+openclaw doctor --verbose
+```

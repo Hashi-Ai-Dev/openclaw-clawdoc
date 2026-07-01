@@ -67,3 +67,11 @@ For a complete map of the docs, see [Docs hubs](/start/hubs).
 
 - [Getting started](/start/getting-started)
 - [Docs hubs](/start/hubs)
+
+## Example
+
+```bash
+# First-run onboarding
+openclaw onboard
+openclaw status
+```

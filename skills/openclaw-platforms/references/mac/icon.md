@@ -62,3 +62,11 @@ in Activity Monitor, check:
 
 Common bug: forgetting to invalidate the timer when leaving the "working"
 state. Symptoms: 5-10% CPU when idle.
+
+## Example
+
+```bash
+# macOS / iOS / Android: launch + connect to a paired node
+openclaw nodes status
+openclaw nodes invoke camera_snap --facing front --quality 0.8
+```

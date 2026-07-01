@@ -141,3 +141,12 @@ Malformed local-model reasoning tags are handled conservatively. Closed `<think>
 - Tool plugins with access to configured custom model metadata can pass `catalog` into `resolveThinkingPolicy` so `compat.supportedReasoningEfforts` opt-ins are reflected in plugin-side validation.
 - Published legacy hooks (`supportsXHighThinking`, `isBinaryThinking`, and `resolveDefaultThinkingLevel`) remain as compatibility adapters, but new custom level sets should use `resolveThinkingProfile`.
 - Gateway rows/defaults expose `thinkingLevels`, `thinkingOptions`, and `thinkingDefault` so ACP/chat clients render the same profile ids and labels that runtime validation uses.
+
+## Example
+
+```bash
+# Tool calls from an agent look like this in transcript
+tool: web_fetch
+input: { url: "https://docs.openclaw.ai" }
+result: { status: 200, body: "..." }
+```

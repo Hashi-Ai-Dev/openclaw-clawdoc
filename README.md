@@ -4,7 +4,7 @@
 
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-2026.6.11-blue?style=flat-square)](https://github.com/openclaw/openclaw)
 [![Skills](https://img.shields.io/badge/Skills-24-orange?style=flat-square)](#skill-tree)
-[![Reference Docs](https://img.shields.io/badge/Reference_Docs-626-green?style=flat-square)](#reference-docs)
+[![Reference Docs](https://img.shields.io/badge/Reference_Docs-640-green?style=flat-square)](#reference-docs)
 [![License](https://img.shields.io/badge/License-MIT-success?style=flat-square)](LICENSE)
 
 <p align="center">
@@ -12,9 +12,9 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Hashi-Ai-Dev/openclaw-clawdoc/releases/tag/v1.7.9"><img alt="v1.7.9 — curator fixes: count drift + channel references + token efficiency" src="https://img.shields.io/badge/v1.7.9%E2%80%94curator_fixes%3A_count_drift_%2B_channel_references_%2B_token_efficiency-success?style=flat-square"></a>
+  <a href="https://github.com/Hashi-Ai-Dev/openclaw-clawdoc/releases/tag/v1.7.10"><img alt="v1.7.10 — resolve all deferrals: openclaw-prose thin pointer + per-item D5/D6 + spot-fixes D3/D4" src="https://img.shields.io/badge/v1.7.10%E2%80%94resolve_all_deferrals%3A_openclaw--prose_thin_pointer_%2B_per--item_D5%2FD6_%2B_spot--fixes_D3%2FD4-success?style=flat-square"></a>
   <a href="#skill-tree"><img alt="24 skills" src="https://img.shields.io/badge/24_skills-orange?style=flat-square"></a>
-  <a href="#reference-docs"><img alt="626 reference docs" src="https://img.shields.io/badge/626_reference_docs-green?style=flat-square"></a>
+  <a href="#reference-docs"><img alt="640 reference docs" src="https://img.shields.io/badge/640_reference_docs-green?style=flat-square"></a>
   <a href="#ready-to-use-examples"><img alt="26 examples" src="https://img.shields.io/badge/26_examples-blueviolet?style=flat-square"></a>
 </p>
 
@@ -143,7 +143,7 @@ ClawDoc routes to the right skill, reads the reference docs, and gives you a pre
 
 ## Reference docs
 
-**626 docs** copied from the official OpenClaw source and versioned against the tracked OpenClaw release.
+**640 docs** copied from the official OpenClaw source and versioned against the tracked OpenClaw release.
 
 | Area | What's covered |
 |------|---------------|

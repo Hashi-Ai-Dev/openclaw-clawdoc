@@ -21,3 +21,12 @@ channels: raft
 ## Related docs
 
 - [raft](/channels/raft)
+
+## Example
+
+```yaml
+# Most plugin work involves editing ~/.openclaw/openclaw.json
+plugins:
+  entries:
+    <plugin-id>: { enabled: true }
+```

@@ -97,3 +97,14 @@ historical reference only; current node/operator clients use the WebSocket
 
 - [Gateway protocol](/gateway/protocol)
 - [Nodes](/nodes)
+
+## Example
+
+```json5
+// Most OpenClaw config lives at ~/.openclaw/openclaw.json
+{
+  "agents": { "defaults": { "model": { "primary": "minimax/MiniMax-M3" } } },
+  "memory": { "backend": "builtin" },
+  "plugins": { "entries": { "openclaw-honcho": { "enabled": true } } }
+}
+```

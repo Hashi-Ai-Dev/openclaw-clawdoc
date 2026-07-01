@@ -145,3 +145,14 @@ Out-of-scope credentials include:
 Rationale:
 
 - These credentials are minted, rotated, session-bearing, or OAuth-durable classes that do not fit read-only external SecretRef resolution.
+
+## Example
+
+```json5
+// Most OpenClaw config lives at ~/.openclaw/openclaw.json
+{
+  "agents": { "defaults": { "model": { "primary": "minimax/MiniMax-M3" } } },
+  "memory": { "backend": "builtin" },
+  "plugins": { "entries": { "openclaw-honcho": { "enabled": true } } }
+}
+```

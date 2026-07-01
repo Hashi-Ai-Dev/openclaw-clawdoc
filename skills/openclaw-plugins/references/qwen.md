@@ -22,3 +22,11 @@ providers: qwen, qwencloud, modelstudio, dashscope, qwen-oauth, qwen-portal, qwe
 
 - [qwen](/providers/qwen)
 - [qwen-oauth](/providers/qwen-oauth)
+
+## Example
+
+```yaml
+# Enable this provider in ~/.openclaw/openclaw.json
+providers:
+  qwen: { apiKey: "***", primary: "<see model list>" }
+```

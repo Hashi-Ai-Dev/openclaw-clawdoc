@@ -21,3 +21,11 @@ contracts: speechProviders
 ## Related docs
 
 - [inworld](/providers/inworld)
+
+## Example
+
+```yaml
+# Enable this provider in ~/.openclaw/openclaw.json
+providers:
+  inworld: { apiKey: "***", primary: "<see model list>" }
+```

@@ -21,3 +21,11 @@ contracts: speechProviders
 ## Related docs
 
 - [gradium](/providers/gradium)
+
+## Example
+
+```yaml
+# Enable this provider in ~/.openclaw/openclaw.json
+providers:
+  gradium: { apiKey: "***", primary: "<see model list>" }
+```

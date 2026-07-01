@@ -369,3 +369,11 @@ Full astronomy gear marketplace. Built with and around the OpenClaw ecosystem.
 
 - [Getting started](/start/getting-started)
 - [OpenClaw](/start/openclaw)
+
+## Example
+
+```bash
+# First-run onboarding
+openclaw onboard
+openclaw status
+```

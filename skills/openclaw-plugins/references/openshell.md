@@ -17,3 +17,12 @@ Sandbox backend powered by the NVIDIA OpenShell CLI with mirrored local workspac
 ## Surface
 
 plugin
+
+## Example
+
+```yaml
+# Enable in ~/.openclaw/openclaw.json
+plugins:
+  entries:
+    openshell: { enabled: true }
+```

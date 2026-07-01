@@ -78,3 +78,14 @@ For script compatibility, probe errors keep this first line unchanged:
 `Auth profile credentials are missing or expired.`
 
 Human-friendly detail and stable reason codes may be added on subsequent lines.
+
+## Example
+
+```json5
+// Most OpenClaw config lives at ~/.openclaw/openclaw.json
+{
+  "agents": { "defaults": { "model": { "primary": "minimax/MiniMax-M3" } } },
+  "memory": { "backend": "builtin" },
+  "plugins": { "entries": { "openclaw-honcho": { "enabled": true } } }
+}
+```

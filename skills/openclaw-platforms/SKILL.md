@@ -3,6 +3,11 @@ name: openclaw-platforms
 description: "OpenClaw on different platforms and operating systems. Use when: running OpenClaw on Android, iOS, macOS, Windows, Linux, Raspberry Pi, Oracle Cloud, or DigitalOcean. Triggers on: \"android\", \"ios\", \"macos\", \"windows\", \"linux\", \"raspberry pi\", \"oracle\", \"digitalocean\", \"platform\", \"mac menu bar\", \"menu bar\", \"voice overlay\"."
 ---
 
+## Routing hints
+
+You should route to this skill when the user asks about OpenClaw behavior on a specific OS — Android, iOS, macOS, Windows, Linux, Raspberry Pi, Oracle Cloud, DigitalOcean — or per-OS quirks, dev setup, packaging, signing, voice wake, the macOS menu bar, permissions, or platform-specific features. References: `android.md`, `ios.md`, `macos.md`, `windows.md`, `linux.md`, `raspberry-pi.md`, `oracle.md`, `digitalocean.md`, `dev-setup.md`, plus the `mac/` subdirectory for macOS-specific deep-dives.
+
+
 # OpenClaw Platforms Reference
 
 ## Platform guides

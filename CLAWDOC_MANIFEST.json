@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "schema_version": "1.0",
-  "clawdoc_version": "v1.7.9",
+  "clawdoc_version": "v1.7.10",
   "tracked_openclaw_version": "2026.6.11",
   "description": "Machine-readable manifest of the ClawDoc public repository contents. ClawDoc is a dual-mode OpenClaw system doctor distribution supporting two install modes: Mode 1 (persistent dedicated agent) and Mode 2 (skills-only into an existing agent).",
   "install_modes_supported": [
@@ -10,14 +10,14 @@
   ],
   "file_counts": {
     "skills": 24,
-    "reference_docs": 626,
+    "reference_docs": 640,
     "examples": 26,
     "examples_readme": 1,
     "plugin_subdirs": 0
   },
   "reference_docs_definition": {
     "description": "reference_docs = files under skills/**/references/**, tracked in git (matches file_counts.reference_docs)",
-    "reproducible_count": "find skills -type f \\( -name '*.md' -o -name '*.mdx' \\) -path '*/references/*' | wc -l = 626 (includes .mdx such as railway.mdx; git ls-files skills/ | grep references/ gives the same result)",
+    "reproducible_count": "find skills -type f \\( -name '*.md' -o -name '*.mdx' \\) -path '*/references/*' | wc -l = 640 (includes .mdx such as railway.mdx; git ls-files skills/ | grep references/ gives the same result)",
     "includes_mdx": "yes \u2014 includes *.mdx files such as railway.mdx"
   },
   "skills": {
@@ -150,12 +150,12 @@
       "skills/openclaw-platforms/references/mac/webchat.md",
       "skills/openclaw-platforms/references/mac/xpc.md",
       "skills/openclaw-plugins/references/codex-supervisor.md",
-      "skills/openclaw-prose/references/examples.md",
-      "skills/openclaw-prose/references/install.md",
-      "skills/openclaw-prose/references/programming.md",
-      "skills/openclaw-prose/references/runtime-mapping.md",
-      "skills/openclaw-prose/references/slash-command.md",
-      "skills/openclaw-prose/references/state.md",
+      "skills/openclaw-prose/references/examples.md [removed v1.7.10 — unverifiable against upstream]",
+      "skills/openclaw-prose/references/install.md [removed v1.7.10 — unverifiable against upstream]",
+      "skills/openclaw-prose/references/programming.md [removed v1.7.10 — unverifiable against upstream]",
+      "skills/openclaw-prose/references/runtime-mapping.md [removed v1.7.10 — unverifiable against upstream]",
+      "skills/openclaw-prose/references/slash-command.md [removed v1.7.10 — unverifiable against upstream]",
+      "skills/openclaw-prose/references/state.md [removed v1.7.10 — unverifiable against upstream]",
       "skills/openclaw-providers/references/cohere.md",
       "skills/openclaw-tools/references/goal.md",
       "skills/openclaw-tools/references/x-search.md"
@@ -231,5 +231,5 @@
     "notes": "Maintenance release: count-drift corrections + channel-references completeness + token-efficiency cleanup. No new ref docs; no upstream OpenClaw sync (tracked version stays 2026.6.11).",
     "tracked_openclaw": "2026.6.11"
   },
-  "reproducible_count": "find skills -type f \\( -name \"*.md\" -o -name \"*.mdx\" \\) -path \"*/references/*\" | wc -l = 626"
+  "reproducible_count": "find skills -type f \\( -name \"*.md\" -o -name \"*.mdx\" \\) -path \"*/references/*\" | wc -l = 640"
 }

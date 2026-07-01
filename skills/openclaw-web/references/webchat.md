@@ -97,3 +97,11 @@ Related global options:
 
 - [Control UI](/web/control-ui)
 - [Dashboard](/web/dashboard)
+
+## Example
+
+```bash
+# Default dashboard listens on the loopback interface
+openclaw web start --port 5173
+# then visit http://localhost:5173
+```

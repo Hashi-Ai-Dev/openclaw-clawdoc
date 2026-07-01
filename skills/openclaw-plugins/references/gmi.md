@@ -21,3 +21,11 @@ providers: gmi, gmi-cloud, gmicloud
 ## Related docs
 
 - [gmi](/providers/gmi)
+
+## Example
+
+```yaml
+# Enable this provider in ~/.openclaw/openclaw.json
+providers:
+  gmi: { apiKey: "***", primary: "<see model list>" }
+```

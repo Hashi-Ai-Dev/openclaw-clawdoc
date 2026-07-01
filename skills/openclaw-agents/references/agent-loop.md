@@ -172,3 +172,9 @@ The Codex app-server harness keeps OpenClaw plugin hooks as the compatibility co
 - [Compaction](/concepts/compaction) — how long conversations are summarized
 - [Exec Approvals](/tools/exec-approvals) — approval gates for shell commands
 - [Thinking](/tools/thinking) — thinking/reasoning level configuration
+
+## Example
+
+```yaml
+# Placeholder — see the related upstream docs for the canonical config snippet
+```

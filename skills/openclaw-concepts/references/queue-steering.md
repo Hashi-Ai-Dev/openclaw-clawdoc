@@ -88,3 +88,10 @@ boundary.
 - [Steer](/tools/steer)
 - [Messages](/concepts/messages)
 - [Agent loop](/concepts/agent-loop)
+
+## In practice
+
+```text
+A typical session: agent loads context → processes user turn → may call tools →
+  emits reply → idle until next turn. Persistence lives in the memory layer.
+```

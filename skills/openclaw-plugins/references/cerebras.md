@@ -21,3 +21,11 @@ providers: cerebras
 ## Related docs
 
 - [cerebras](/providers/cerebras)
+
+## Example
+
+```yaml
+# Enable this provider in ~/.openclaw/openclaw.json
+providers:
+  cerebras: { apiKey: "***", primary: "<see model list>" }
+```

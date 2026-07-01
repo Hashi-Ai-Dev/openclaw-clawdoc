@@ -17,3 +17,10 @@ Adds memory embedding provider support.
 ## Surface
 
 contracts: memoryEmbeddingProviders
+
+## Example
+
+```bash
+# Codex harness plugin runs as a child process spawned by the Gateway
+openclaw acp spawn codex --bind here
+```

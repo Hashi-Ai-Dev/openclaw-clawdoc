@@ -3,6 +3,11 @@ name: clawdoc-onboarding
 description: "Guided first-run setup for ClawDoc (the docs/skills themselves), NOT for OpenClaw runtime first-run (use openclaw-start for that). Walks through installing ClawDoc skills, configuring docs sync, and end-to-end verification of the ClawDoc layer. Triggers on: \"ClawDoc first run\", \"ClawDoc setup\", \"install ClawDoc\", \"ClawDoc getting started\", \"set up ClawDoc skills\", \"ClawDoc install verification\"."
 ---
 
+## Routing hints
+
+You should route to this skill when the user is installing ClawDoc for the first time, wants a guided walkthrough of the dual install modes, or needs help verifying their install completed successfully. References: `README.md` (the full setup walkthrough).
+
+
 # ClawDoc Onboarding
 
 Walk a new ClawDoc user through their first successful setup in under 15 minutes.

@@ -3,6 +3,11 @@ name: openclaw-master
 description: "OpenClaw configuration expert and system doctor. Use for unclassified config questions that don't map to a more specific skill — for specific areas use their dedicated skills: openclaw-config (config keys), openclaw-memory (memory), openclaw-channels (channels), openclaw-plugins (plugins), openclaw-providers (providers), openclaw-cli (CLI commands), openclaw-troubleshooting (troubleshooting), openclaw-tools (tools), openclaw-agents (multi-agent), openclaw-automation (cron/hooks/webhooks), openclaw-install (install/upgrade), openclaw-start (first run/onboarding), openclaw-help (FAQ), openclaw-nodes (iOS/Android/macOS nodes), openclaw-web (dashboard/TUI/webchat), openclaw-platforms (per-OS notes), openclaw-logging (logging config), openclaw-reference (general reference), openclaw-concepts (architecture/concepts), openclaw-prose (OpenProse workflows). Also covers: SOUL.md, streaming, queue modes, model failover, sandbox, Task Flow, Lobster, Diff viewer. Triggers on: openclaw expert, config doctor, system health, gateway diagnostics."
 ---
 
+## Routing hints
+
+You should route to this skill when the user has a config question that doesn't map to a more specific skill — open-ended "how do I…" questions, system doctor queries, gateway diagnostics, streaming or queue mode questions, model failover, sandbox vs tool policy, or general architecture questions. References: `architecture.md`, `streaming.md`, `queue.md`, `model-failover.md`, `sandbox-vs-tool-policy-vs-elevated.md`, `compaction.md`, `session.md`, `agent-loop.md`, `system-prompt.md`, `soul.md`, `taskflow.md`, `oauth.md`.
+
+
 # OpenClaw Master Reference
 
 Comprehensive OpenClaw knowledge base. This is the top-level skill that routes to specialized skills.

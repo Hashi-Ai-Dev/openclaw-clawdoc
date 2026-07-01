@@ -207,3 +207,10 @@ See [Skills](/tools/skills).
 - [Token use and costs](/reference/token-use)
 - [Prompt caching](/reference/prompt-caching)
 - [Usage tracking](/concepts/usage-tracking)
+
+## Example
+
+```bash
+# Inspect the full release-validation flow
+openclaw doctor --verbose
+```

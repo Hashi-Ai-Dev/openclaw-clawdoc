@@ -21,3 +21,11 @@ contracts: webSearchProviders
 ## Related docs
 
 - [perplexity](/tools/perplexity-search)
+
+## Example
+
+```yaml
+# Enable this provider in ~/.openclaw/openclaw.json
+providers:
+  perplexity: { apiKey: "***", primary: "<see model list>" }
+```

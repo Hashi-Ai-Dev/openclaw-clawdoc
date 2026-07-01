@@ -3779,3 +3779,10 @@ A surface is a product area such as Gateway runtime, Discord, or the macOS app. 
   </Accordion>
 
 </AccordionGroup>
+
+## Example
+
+```bash
+# Inspect the full release-validation flow
+openclaw doctor --verbose
+```

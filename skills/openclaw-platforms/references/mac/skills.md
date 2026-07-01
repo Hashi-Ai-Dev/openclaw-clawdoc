@@ -91,3 +91,11 @@ gateway.
    already enabled.
 3. One confirmation prompt before bulk apply.
 4. App calls `agents.update` with the merged skill list.
+
+## Example
+
+```bash
+# macOS / iOS / Android: launch + connect to a paired node
+openclaw nodes status
+openclaw nodes invoke camera_snap --facing front --quality 0.8
+```

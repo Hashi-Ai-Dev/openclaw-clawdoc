@@ -3419,3 +3419,10 @@ Open a surface to inspect the evidence state of each category. The list stays co
 </AccordionGroup>
 
 > Last updated: 2026-06-22
+
+## Example
+
+```bash
+# Inspect the full release-validation flow
+openclaw doctor --verbose
+```

@@ -73,3 +73,11 @@ Health reporting differs based on app focus:
   `node.presence.alive` beacon every ~60s.
 - **Quit** — no events. The Gateway marks the node as `lastSeen` at the
   time of the last beacon; the app re-announces on next launch.
+
+## Example
+
+```bash
+# macOS / iOS / Android: launch + connect to a paired node
+openclaw nodes status
+openclaw nodes invoke camera_snap --facing front --quality 0.8
+```

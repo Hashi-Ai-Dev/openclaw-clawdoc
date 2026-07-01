@@ -21,3 +21,11 @@ providers: deepinfra; contracts: imageGenerationProviders, mediaUnderstandingPro
 ## Related docs
 
 - [deepinfra](/providers/deepinfra)
+
+## Example
+
+```yaml
+# Enable this provider in ~/.openclaw/openclaw.json
+providers:
+  deepinfra: { apiKey: "***", primary: "<see model list>" }
+```

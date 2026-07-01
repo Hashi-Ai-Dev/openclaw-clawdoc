@@ -403,3 +403,12 @@ usage endpoint failed or returned no usable usage data.
 - [Plugin SDK overview](/plugins/sdk-overview)
 - [Plugin SDK setup](/plugins/sdk-setup)
 - [Building plugins](/plugins/building-plugins)
+
+## Example
+
+```yaml
+# Most plugin work involves editing ~/.openclaw/openclaw.json
+plugins:
+  entries:
+    <plugin-id>: { enabled: true }
+```

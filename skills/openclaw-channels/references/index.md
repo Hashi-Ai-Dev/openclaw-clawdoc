@@ -65,3 +65,14 @@ Text is supported everywhere; media and reactions vary by channel.
 - DM pairing and allowlists are enforced for safety; see [Security](/gateway/security).
 - Troubleshooting: [Channel troubleshooting](/channels/troubleshooting).
 - Model providers are documented separately; see [Model Providers](/providers/models).
+
+## Example
+
+```json5
+// Configure one channel in ~/.openclaw/openclaw.json
+{
+  "channels": {
+    "discord": { "token": "***", "dmPolicy": "pairing" }
+  }
+}
+```

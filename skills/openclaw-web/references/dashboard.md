@@ -100,3 +100,11 @@ Prefer localhost, Tailscale Serve, or an SSH tunnel.
 
 - [Control UI](/web/control-ui)
 - [WebChat](/web/webchat)
+
+## Example
+
+```bash
+# Default dashboard listens on the loopback interface
+openclaw web start --port 5173
+# then visit http://localhost:5173
+```

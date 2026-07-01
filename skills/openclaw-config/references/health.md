@@ -71,3 +71,14 @@ The health snapshot includes: `ok` (boolean), `ts` (timestamp), `durationMs` (pr
 - [Gateway runbook](/gateway)
 - [Diagnostics export](/gateway/diagnostics)
 - [Gateway troubleshooting](/gateway/troubleshooting)
+
+## Example
+
+```json5
+// Most OpenClaw config lives at ~/.openclaw/openclaw.json
+{
+  "agents": { "defaults": { "model": { "primary": "minimax/MiniMax-M3" } } },
+  "memory": { "backend": "builtin" },
+  "plugins": { "entries": { "openclaw-honcho": { "enabled": true } } }
+}
+```

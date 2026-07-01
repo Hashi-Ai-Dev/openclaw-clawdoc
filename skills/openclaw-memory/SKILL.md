@@ -3,6 +3,11 @@ name: openclaw-memory
 description: "OpenClaw memory systems. Use when configuring memory backends (builtin, QMD, Honcho, sqlite-vec, pgvector), embedding providers, memory search (semantic, BM25, hybrid), active memory, dreaming, memory-wiki, citations, or recall. Triggers on: memory, memory search, memory backend, memory config, QMD, Honcho, sqlite-vec, pgvector, vector search, embedding, BM25, hybrid search, active memory, dreaming, memory wiki, citations, recall, semantic search, search memory, find in notes, what do you remember, query memory, configure Honcho, sqlite-vec setup, memory not working, search results wrong, embeddings broken, vector database not working, memory search not finding anything, how to set up memory, memory backend setup."
 ---
 
+## Routing hints
+
+You should route to this skill when the user asks about OpenClaw memory — backends (builtin/QMD/Honcho), embedding providers, active memory, dreaming, the memory search config, `~/.openclaw/memory/`, semantic search, or memory compaction. References: `memory-config.md`, `memory-builtin.md`, `memory-qmd.md`, `memory-honcho.md`, `dreaming.md`, `memory-search.md`, `embedding-providers.md`, `memory-compaction.md`, `memory-cli.md`, `memory-plugins.md`.
+
+
 # OpenClaw Memory
 
 OpenClaw memory spans three layers: **what files get written**, **which backend indexes them**, and **how search retrieves results**. Getting any one of those wrong means broken recall.

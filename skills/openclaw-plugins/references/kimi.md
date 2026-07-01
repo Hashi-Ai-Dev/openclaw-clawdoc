@@ -21,3 +21,11 @@ providers: kimi, kimi-coding
 ## Related docs
 
 - [kimi](/providers/moonshot)
+
+## Example
+
+```yaml
+# Enable this provider in ~/.openclaw/openclaw.json
+providers:
+  kimi: { apiKey: "***", primary: "<see model list>" }
+```

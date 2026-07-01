@@ -23,3 +23,11 @@ Quick start is now part of [Getting Started](/start/getting-started).
 
 - [Getting started](/start/getting-started)
 - [Install overview](/install)
+
+## Example
+
+```bash
+# First-run onboarding
+openclaw onboard
+openclaw status
+```

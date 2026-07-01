@@ -21,3 +21,11 @@ providers: codex; contracts: mediaUnderstandingProviders, migrationProviders, we
 ## Related docs
 
 - [codex](/plugins/codex-harness)
+
+## Example
+
+```yaml
+# Enable this provider in ~/.openclaw/openclaw.json
+providers:
+  codex-harness: { apiKey: "***", primary: "<see model list>" }
+```

@@ -3,6 +3,11 @@ name: openclaw-tools
 description: "OpenClaw tools reference. Use when explaining, configuring, or troubleshooting tools: exec, browser, cron, sessions, subagents, ACP, Lobster, slash commands, /prose, OpenProse, thinking, tool permissions, sandbox, loop detection, LLM task, search providers, media generation. Triggers on: tools, exec, browser, cron, sessions, subagent, canvas, slash commands, /prose, openprose, prose workflow, loop detection, elevated, exec approvals, ACP, thinking, permissions, webhook, clawflow, code execution, auth monitoring, tool profile, search providers, image generation, music generation, video generation, media tools, creating skills, btw, steer, gmail, pubsub, gmail pubsub, poll, polling."
 ---
 
+## Routing hints
+
+You should route to this skill when the user asks about OpenClaw tools — exec, browser, cron, sessions, subagents, ACP, slash commands, `/prose`, OpenProse, thinking, tool permissions, sandbox, loop detection, LLM task, search providers, media generation, Lobster, Skill Workshop, or any tool-level question. References: `exec.md`, `browser.md`, `cron.md`, `sessions.md`, `subagents.md`, `acp-agents.md`, `acp-agents-setup.md`, `slash-commands.md`, `loop-detection.md`, `thinking.md`, `elevated.md`, `permissions.md`, `lobster.md`, `skill-workshop.md`, `clawhub.md`, `brave-search.md`, `duckduckgo-search.md`, `exa-search.md`, `firecrawl.md`, `gemini-search.md`, `grok-search.md`, `kimi-search.md`, `minimax-search.md`, `ollama-search.md`, `parallel-search.md`, `perplexity-search.md`, `searxng-search.md`, `tavily.md`, `tts.md`, `image-generation.md`, `music-generation.md`, `video-generation.md`, `web-fetch.md`, `webhook.md`, `clawflow.md`, `creating-skills.md`.
+
+
 # OpenClaw Tools
 
 ## Tool profiles

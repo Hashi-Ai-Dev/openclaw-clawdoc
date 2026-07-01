@@ -112,3 +112,11 @@ If WebChat is sluggish, check:
 WebChat is a sandboxed view; it cannot make outbound network requests
 except to the configured Gateway URL. The CSP set by the Gateway blocks
 inline scripts from non-trusted origins.
+
+## Example
+
+```bash
+# macOS / iOS / Android: launch + connect to a paired node
+openclaw nodes status
+openclaw nodes invoke camera_snap --facing front --quality 0.8
+```

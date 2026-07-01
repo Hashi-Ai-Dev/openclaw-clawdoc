@@ -8,3 +8,12 @@ read_when:
 # Building Plugins
 
 This page has moved to [Building Plugins](/plugins/building-plugins).
+
+## Example
+
+```yaml
+# Most plugin work involves editing ~/.openclaw/openclaw.json
+plugins:
+  entries:
+    <plugin-id>: { enabled: true }
+```

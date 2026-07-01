@@ -21,3 +21,11 @@ providers: chutes
 ## Related docs
 
 - [chutes](/providers/chutes)
+
+## Example
+
+```yaml
+# Enable this provider in ~/.openclaw/openclaw.json
+providers:
+  chutes: { apiKey: "***", primary: "<see model list>" }
+```

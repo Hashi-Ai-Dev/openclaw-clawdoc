@@ -184,3 +184,10 @@ surfaces, while Codex native hooks remain a separate lower-level Codex mechanism
 - [Compaction](/concepts/compaction) — how long conversations are summarized
 - [Exec Approvals](/tools/exec-approvals) — approval gates for shell commands
 - [Thinking](/tools/thinking) — thinking/reasoning level configuration
+
+## In practice
+
+```text
+A typical session: agent loads context → processes user turn → may call tools →
+  emits reply → idle until next turn. Persistence lives in the memory layer.
+```

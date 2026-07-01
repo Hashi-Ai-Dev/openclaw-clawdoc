@@ -115,3 +115,10 @@ indicator (Active/Idle/Stale) based on the age of the last update.
     The wire protocol for `connect`, `system-event`, and `system-presence`.
   </Card>
 </CardGroup>
+
+## In practice
+
+```text
+A typical session: agent loads context → processes user turn → may call tools →
+  emits reply → idle until next turn. Persistence lives in the memory layer.
+```
