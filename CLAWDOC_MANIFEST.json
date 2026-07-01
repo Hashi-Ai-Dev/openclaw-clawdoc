@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "schema_version": "1.0",
-  "clawdoc_version": "v1.7.8",
+  "clawdoc_version": "v1.7.9",
   "tracked_openclaw_version": "2026.6.11",
   "description": "Machine-readable manifest of the ClawDoc public repository contents. ClawDoc is a dual-mode OpenClaw system doctor distribution supporting two install modes: Mode 1 (persistent dedicated agent) and Mode 2 (skills-only into an existing agent).",
   "install_modes_supported": [
@@ -225,6 +225,11 @@
     ],
     "modified_ref_docs_count": 102,
     "tracked_openclaw": "2026.6.10"
+  },
+  "v1_7_9_additions": {
+    "modified_ref_docs_count": 0,
+    "notes": "Maintenance release: count-drift corrections + channel-references completeness + token-efficiency cleanup. No new ref docs; no upstream OpenClaw sync (tracked version stays 2026.6.11).",
+    "tracked_openclaw": "2026.6.11"
   },
   "reproducible_count": "find skills -type f \\( -name \"*.md\" -o -name \"*.mdx\" \\) -path \"*/references/*\" | wc -l = 626"
 }

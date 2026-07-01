@@ -3,19 +3,39 @@
 All notable changes to ClawDoc are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 
-## [Unreleased] — v1.7.8
+## [Unreleased] — v1.7.9
+
+### Fixed
+- **Reference-docs badge (README.md)** — `622` → `626` (the post-metadata_audit retag in v1.7.8 bumped body + manifest but missed the badge).
+- **Channel-count claims (README.md, agent-template/README.md)** — `"36+ more (41 total)"` → `"25+ more (30 active channels total)"`. The inflated number predated v1.7.7 and was missed by prior sweeps because they didn't walk the cross-file-channel-count claim specifically.
+- **`skills/openclaw-channels/SKILL.md` References section** — appended 12 missing entries (8 channel-or-channel-related docs: `ambient-room-events`, `location`, `matrix-migration`, `matrix-push-rules`, `qa-channel`, `sms`, `wechat`, `zaloclawbot`; 4 meta files: `bot-loop-protection`, `channel-troubleshooting`, `group-messages`, `groups`). The skill previously listed 31 of 45 on-disk references; now lists 43. `index.md` and `troubleshooting.md` remain omitted per convention.
+- **`skills/openclaw-channels/SKILL.md` reference description** — `"all 31 channel overviews"` → `"all 30 active channel overviews (plus BlueBubbles in migration-only)"` to match the canonical `## Supported channels` count.
+- **CHANGELOG.md [v1.7.8] entry** — added a `### Still available (post-v1.7.8)` section so the earlier "(see 'Still available' below)" forward reference resolves. Section enumerates the 8 risky + 35 orphan items at summary level; per-item routing lives in the v1.7.8.1 cycle.
+- **Token efficiency** — dropped a redundant prose summary after the README routing diagram (the mermaid block already conveys the same point); dropped the "Not sure which to pick?" sentence in `README.md` and `QUICKSTART.md` install-mode tables (the table's "best for" column already covers it).
+
+### Counts
+24 skills · **626 ref docs** (no change) · **26 examples** (no change) · 0 routing gaps · Tracked OpenClaw: 2026.6.11.
+
+## [v1.7.8] — 2026-07-01
 
 ### Sync
 - OpenClaw v2026.6.10 → v2026.6.11. Theme: channel delivery reliability (Telegram/WhatsApp/Matrix/Google Chat/iMessage/Feishu/Mattermost/WebChat/Control UI/TUI), model setup fixes, safer admin defaults. 109 upstream docs files changed (4 added, 104 modified, 1 removed).
 - 4 new reference docs added (raft in channels, raft in plugins/reference, scorecard and taxonomy under maturity).
 - 61 reference docs updated from upstream where changes were small and safe to apply directly.
-- 8 reference docs flagged as risky/deferred for v1.7.8.1 routing decision (see "Still available" below).
+- 8 reference docs flagged as risky/deferred for v1.7.8.1 routing decision.
 - 35 documentation paths flagged as orphans (upstream docs with no clawdoc-live 1:1 mapping).
 
 ### Fixed
-- README examples badge and the "Ready-to-use examples" table updated to reflect the 26-example canonical count (v1.7.7's Lane B commit `112746b` added `voice-call.json` and `clickclack.json` but did not propagate the count to surface-visible locations).
+- README examples badge and the "Ready-to-use examples" table updated to reflect the 26-example canonical count (v1.7.7's Lane B added `voice-call.json` and `clickclack.json` but did not propagate the count to surface-visible locations).
 - `skills/openclaw-channels/SKILL.md` references section now lists the three v1.7.7-added channel reference docs (`clickclack`, `access-groups`, `matrix-presentation`) that were previously reachable only by direct path.
 - `skills/openclaw-channels/references/channel-index.md` now lists ClickClack in `## Supported channels` (carry-over from v1.7.7).
+
+### Still available (post-v1.7.8)
+
+The following items are flagged for the next maintenance cycle:
+
+- **8 risky reference docs** — large rewrites in modified plugins/reference areas that warrant review before applying (case-by-case disposition).
+- **35 orphan documentation paths** — upstream docs with no clawdoc-live 1:1 mapping; routing audit pending.
 
 ### Counts
 24 skills · **626 ref docs** (was 622) · **26 examples** (was 24) · 0 routing gaps · Tracked OpenClaw: 2026.6.11.
