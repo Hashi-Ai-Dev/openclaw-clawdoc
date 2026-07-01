@@ -79,5 +79,8 @@ openclaw pairing approve <channel> <CODE>
 - `references/zalo.md` — Zalo setup
 - `references/zalouser.md` — Zalo User setup
 - `references/yuanbao.md` — Tencent Yuanbao setup
+- `references/clickclack.md` — ClickClack bot-token channel setup and target syntax
+- `references/access-groups.md` — reusable sender allowlists for message channels
+- `references/matrix-presentation.md` — Matrix MessagePresentation metadata for OpenClaw-aware clients
 - `references/pairing.md` — pairing flow, code approval
 - `references/broadcast-groups.md` — broadcast group config

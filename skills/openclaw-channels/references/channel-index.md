@@ -18,6 +18,7 @@ Text is supported everywhere; media and reactions vary by channel.
 - [Feishu](/channels/feishu) — Feishu/Lark bot via WebSocket (bundled plugin).
 - [Google Chat](/channels/googlechat) — Google Chat API app via HTTP webhook.
 - [IRC](/channels/irc) — Classic IRC servers; channels + DMs with pairing/allowlist controls.
+- [ClickClack](/channels/clickclack) — ClickClack bot-token channel setup (bundled plugin).
 - [LINE](/channels/line) — LINE Messaging API bot (bundled plugin).
 - [Matrix](/channels/matrix) — Matrix protocol (bundled plugin).
 - [Mattermost](/channels/mattermost) — Bot API + WebSocket; channels, groups, DMs (bundled plugin).

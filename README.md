@@ -2,7 +2,7 @@
 
 **The OpenClaw knowledge-base agent for config audits, troubleshooting, and grounded system fixes.**
 
-[![OpenClaw](https://img.shields.io/badge/OpenClaw-2026.6.10-blue?style=flat-square)](https://github.com/openclaw/openclaw)
+[![OpenClaw](https://img.shields.io/badge/OpenClaw-2026.6.11-blue?style=flat-square)](https://github.com/openclaw/openclaw)
 [![Skills](https://img.shields.io/badge/Skills-24-orange?style=flat-square)](#skill-tree)
 [![Reference Docs](https://img.shields.io/badge/Reference_Docs-622-green?style=flat-square)](#reference-docs)
 [![License](https://img.shields.io/badge/License-MIT-success?style=flat-square)](LICENSE)
@@ -12,10 +12,10 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Hashi-Ai-Dev/openclaw-clawdoc/releases/tag/v1.7.7"><img alt="v1.7.7 — comprehensive cleanup + OpenClaw sync" src="https://img.shields.io/badge/v1.7.7%E2%80%94comprehensive_cleanup_%2B_OpenClaw_sync-success?style=flat-square"></a>
+  <a href="https://github.com/Hashi-Ai-Dev/openclaw-clawdoc/releases/tag/v1.7.8"><img alt="v1.7.8 — OpenClaw 2026.6.11 sync + reference doc refresh" src="https://img.shields.io/badge/v1.7.8%E2%80%94OpenClaw_2026.6.11_sync_%2B_reference_doc_refresh-success?style=flat-square"></a>
   <a href="#skill-tree"><img alt="24 skills" src="https://img.shields.io/badge/24_skills-orange?style=flat-square"></a>
   <a href="#reference-docs"><img alt="622 reference docs" src="https://img.shields.io/badge/622_reference_docs-green?style=flat-square"></a>
-  <a href="#ready-to-use-examples"><img alt="24 examples" src="https://img.shields.io/badge/24_examples-blueviolet?style=flat-square"></a>
+  <a href="#ready-to-use-examples"><img alt="26 examples" src="https://img.shields.io/badge/26_examples-blueviolet?style=flat-square"></a>
 </p>
 
 🧠 **Same idea, different agent:** [HermitDoc](https://github.com/Hashi-Ai-Dev/HermitDoc) — the ClawDoc philosophy applied to Hermes Agent
@@ -242,6 +242,8 @@ openclaw config merge examples/NAME.json && openclaw gateway restart
 | Zalo Bot API | `zalo-channel.json` |
 | Skill Workshop (review proposals) | `skill-workshop.json` |
 | Codex harness (ACP agent) | `codex-harness.json` |
+| ClickClack bot-token channel setup (baseUrl + bot token + workspace) | `clickclack.json` |
+| Voice-call plugin (Twilio + realtime/streaming/TTS keys + per-call session scope + system prompt) | `voice-call.json` |
 | Production deploy (Tailscale + sandbox) | `production-deploy.json` |
 
 **Beginner path:** `install-verify.json` → `discord-single.json` → `memory-builtin.json`

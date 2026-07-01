@@ -3,7 +3,22 @@
 All notable changes to ClawDoc are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [Unreleased] — v1.7.8
+
+### Sync
+- OpenClaw v2026.6.10 → v2026.6.11. Theme: channel delivery reliability (Telegram/WhatsApp/Matrix/Google Chat/iMessage/Feishu/Mattermost/WebChat/Control UI/TUI), model setup fixes, safer admin defaults. 109 upstream docs files changed (4 added, 104 modified, 1 removed).
+- 4 new reference docs added (raft in channels, raft in plugins/reference, scorecard and taxonomy under maturity).
+- 61 reference docs updated from upstream where changes were small and safe to apply directly.
+- 8 reference docs flagged as risky/deferred for v1.7.8.1 routing decision (see "Still available" below).
+- 35 documentation paths flagged as orphans (upstream docs with no clawdoc-live 1:1 mapping).
+
+### Fixed
+- README examples badge and the "Ready-to-use examples" table updated to reflect the 26-example canonical count (v1.7.7's Lane B commit `112746b` added `voice-call.json` and `clickclack.json` but did not propagate the count to surface-visible locations).
+- `skills/openclaw-channels/SKILL.md` references section now lists the three v1.7.7-added channel reference docs (`clickclack`, `access-groups`, `matrix-presentation`) that were previously reachable only by direct path.
+- `skills/openclaw-channels/references/channel-index.md` now lists ClickClack in `## Supported channels` (carry-over from v1.7.7).
+
+### Counts
+24 skills · **625 ref docs** (was 622) · **26 examples** (was 24) · 0 routing gaps · Tracked OpenClaw: 2026.6.11.
 
 ## [v1.7.7] — 2026-06-26
 
