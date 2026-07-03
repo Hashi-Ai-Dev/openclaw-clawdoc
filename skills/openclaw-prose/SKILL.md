@@ -1,6 +1,6 @@
 ---
 name: openclaw-prose
-description: "OpenProse workflow language for OpenClaw. Use when running, writing, or debugging .prose workflow files, the /prose slash command, or the open-prose plugin. Covers multi-agent orchestration with parallel and sequential control flow, .prose/ state directory, and OpenProse-to-OpenClaw runtime mapping (sessions_spawn, read, write, web_fetch). Triggers on: prose, openprose, /prose, .prose files, prose workflow, multi-agent workflow, workflow file, parallel agents, agent orchestration, prose run, prose compile, prose examples."
+description: "OpenProse workflow language for OpenClaw. Use when running the /prose slash command or the open-prose plugin. Canonical docs: docs.openclaw.ai/prose. Triggers on: prose, openprose, /prose, .prose files, prose workflow, multi-agent workflow, parallel agents, agent orchestration."
 ---
 
 # OpenClaw Prose (OpenProse)

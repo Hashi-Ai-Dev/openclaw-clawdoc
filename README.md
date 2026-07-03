@@ -12,10 +12,10 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Hashi-Ai-Dev/openclaw-clawdoc/releases/tag/v1.7.10"><img alt="v1.7.10 — resolve all deferrals: openclaw-prose thin pointer + per-item D5/D6 + spot-fixes D3/D4" src="https://img.shields.io/badge/v1.7.10%E2%80%94resolve_all_deferrals%3A_openclaw--prose_thin_pointer_%2B_per--item_D5%2FD6_%2B_spot--fixes_D3%2FD4-success?style=flat-square"></a>
+  <a href="https://github.com/Hashi-Ai-Dev/openclaw-clawdoc/releases/tag/v1.7.11"><img alt="v1.7.11 — maintenance release: channel-count + examples + bloat backlog closure" src="https://img.shields.io/badge/v1.7.11%E2%80%94maintenance_release%3A_channel--count_%2B_examples_%2B_bloat_backlog_closure-success?style=flat-square"></a>
   <a href="#skill-tree"><img alt="24 skills" src="https://img.shields.io/badge/24_skills-orange?style=flat-square"></a>
   <a href="#reference-docs"><img alt="640 reference docs" src="https://img.shields.io/badge/640_reference_docs-green?style=flat-square"></a>
-  <a href="#ready-to-use-examples"><img alt="26 examples" src="https://img.shields.io/badge/26_examples-blueviolet?style=flat-square"></a>
+  <a href="#ready-to-use-examples"><img alt="26 example configs (+ README)" src="https://img.shields.io/badge/26_example_configs_(%2B_README)-blueviolet?style=flat-square"></a>
 </p>
 
 🧠 **Same idea, different agent:** [HermitDoc](https://github.com/Hashi-Ai-Dev/HermitDoc) — the ClawDoc philosophy applied to Hermes Agent
@@ -150,7 +150,7 @@ ClawDoc routes to the right skill, reads the reference docs, and gives you a pre
 | Config | All gateway config keys, defaults, secrets, retry, failover |
 | Memory | builtin / QMD / Honcho setup, embeddings, citations |
 | Agents | Multi-agent, bindings, sandbox, tool policies |
-| Channels | Discord, Telegram, WhatsApp, Slack, Signal, and 25+ more (30 active channels total) |
+| Channels | Discord, Telegram, WhatsApp, Slack, Signal, and 40+ more (45 active channels total) |
 | Concepts | Architecture, session, compaction, streaming, queue |
 | Providers | 60+ model providers: OpenAI, Anthropic, Gemini, Bedrock, Ollama... |
 | CLI | Every openclaw command with examples |
@@ -167,7 +167,7 @@ ClawDoc routes to the right skill, reads the reference docs, and gives you a pre
 | `openclaw-config` | Gateway config reference — all keys, all patterns |
 | `openclaw-memory` | Memory backends: builtin, QMD, Honcho |
 | `openclaw-agents` | Multi-agent, bindings, sandbox, tool policies |
-| `openclaw-channels` | Discord, Telegram, WhatsApp, Slack, Signal — and 25+ more (30 active channels total) |
+| `openclaw-channels` | Discord, Telegram, WhatsApp, Slack, Signal — and 40+ more (45 active channels total) |
 
 ### Operations
 | Skill | What it does |

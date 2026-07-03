@@ -3,7 +3,18 @@
 All notable changes to ClawDoc are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 
-## [Unreleased] — v1.7.11
+## [v1.7.11] — 2026-07-03
+
+### Fixed
+- **Channel-count narrative drift in README + agent-template.** Updated all three "30 active channels total" claims to "45 active channels total" to match the canonical ref-doc count (verified via `ls skills/openclaw-channels/references/*.md | wc -l` = 45). Sites: `README.md:153`, `README.md:170`, `agent-template/README.md:22`.
+- **Examples badge wording in README.** Changed "26 examples" → "26 example configs (+ README)" to reflect the manifest's split between config JSON files and the example README.
+- **`openclaw-channels/SKILL.md` references list.** Updated "all 30 active channel overviews" → "all 28 active channel overviews (plus BlueBubbles in migration-only; 45 channel reference docs total)" to match the channel-index.md content count.
+- **`openclaw-providers/SKILL.md` description + body count.** Description: "60+ providers tracked" / "62 providers" → "60+ individual provider files tracked" (69 individual files, including per-provider framework files like `bedrock-mantle.md` and `azure-speech.md`).
+- **`openclaw-prose/SKILL.md` description.** Trimmed the description by removing the lifted runtime-mapping content (sessions_spawn / read / write / web_fetch / `.prose/` state directory) that came from the dropped reference docs. The body remains a thin pointer to upstream; the description now matches.
+- **`openclaw-master/SKILL.md` description.** Shortened from a 1047-char inline enumeration of all 22 other skills to a focused ~270-char description with the routing trigger keywords. The full skill roster stays in the body's `## Routing hints` block (where newcomers actually look for it), avoiding the maintenance hazard of editing the description on every new skill.
+
+### Changed
+- **Description-length guidance.** The 500-char cap on SKILL.md descriptions was raised to 1000 chars to accommodate the public-OSS convention of inline `Triggers on:` blocks. The structural alternative — a separate `keywords:` frontmatter list — remains a v1.8.0 plan item.
 
 ## [v1.7.10] — 2026-07-01
 

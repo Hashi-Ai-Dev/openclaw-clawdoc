@@ -54,7 +54,7 @@ openclaw pairing approve <channel> <CODE>
 
 ## References
 
-- `references/channel-index.md` — all 30 active channel overviews (plus BlueBubbles in migration-only)
+- `references/channel-index.md` — all 28 active channel overviews (plus BlueBubbles in migration-only; 45 channel reference docs total)
 - `references/ambient-room-events.md` — ambient-room-events channel setup
 - `references/bot-loop-protection.md` — bot loop protection patterns
 - `references/channel-routing.md` — routing rules, match conditions
