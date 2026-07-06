@@ -54,6 +54,8 @@ openclaw pairing approve <channel> <CODE>
 
 ## References
 
+> **Convention:** `channel-index.md` and `channel-troubleshooting.md` carry the `channel-` prefix to distinguish them from the generic `index.md` (a route-fallback listing of the same channels) and `troubleshooting.md` (the cross-skill troubleshooting hub, owned by `openclaw-troubleshooting`). The bare names are kept for backwards-compatible routes; the prefixed names are the primary references for this skill.
+
 - `references/channel-index.md` — all 28 active channel overviews (plus BlueBubbles in migration-only; 45 channel reference docs total)
 - `references/ambient-room-events.md` — ambient-room-events channel setup
 - `references/bot-loop-protection.md` — bot loop protection patterns

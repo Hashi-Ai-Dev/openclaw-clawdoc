@@ -3,6 +3,11 @@
 All notable changes to ClawDoc are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 
+## [v1.7.11.1] — 2026-07-06
+
+### Fixed
+- **`openclaw-channels/SKILL.md` References section.** Added a one-paragraph convention footnote explaining the `channel-` prefix on `channel-index.md` and `channel-troubleshooting.md`. The prefix distinguishes the skill-scoped primary references from the generic `index.md` (a route-fallback listing of the same channels) and `troubleshooting.md` (the cross-skill troubleshooting hub owned by `openclaw-troubleshooting`). The bare names are kept for backwards-compatible routes; the prefixed names are the primary references for this skill. Docs-only change.
+
 ## [v1.7.11] — 2026-07-03
 
 ### Fixed
