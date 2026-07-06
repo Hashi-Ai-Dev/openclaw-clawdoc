@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Hashi-Ai-Dev/openclaw-clawdoc/releases/tag/v1.7.11"><img alt="v1.7.11 — maintenance release: channel-count + examples + bloat backlog closure" src="https://img.shields.io/badge/v1.7.11%E2%80%94maintenance_release%3A_channel--count_%2B_examples_%2B_bloat_backlog_closure-success?style=flat-square"></a>
+  <a href="https://github.com/Hashi-Ai-Dev/openclaw-clawdoc/releases/tag/v1.7.11.1"><img alt="v1.7.11.1 — openclaw-channels reference filename convention note" src="https://img.shields.io/badge/v1.7.11.1%E2%80%94openclaw--channels_reference_filename_convention_note-success?style=flat-square"></a>
   <a href="#skill-tree"><img alt="24 skills" src="https://img.shields.io/badge/24_skills-orange?style=flat-square"></a>
   <a href="#reference-docs"><img alt="640 reference docs" src="https://img.shields.io/badge/640_reference_docs-green?style=flat-square"></a>
   <a href="#ready-to-use-examples"><img alt="26 example configs (+ README)" src="https://img.shields.io/badge/26_example_configs_(%2B_README)-blueviolet?style=flat-square"></a>

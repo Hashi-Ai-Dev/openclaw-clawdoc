@@ -37,7 +37,7 @@ openclaw agents add claw-doc \
 
 # 2. Install skills
 git clone https://github.com/Hashi-Ai-Dev/openclaw-clawdoc.git /tmp/openclaw-clawdoc
-cd /tmp/openclaw-clawdoc && git checkout v1.7.11 && cd ..
+cd /tmp/openclaw-clawdoc && git checkout v1.7.11.1 && cd ..
 cp -r /tmp/openclaw-clawdoc/skills/* /home/user/.openclaw/agents/claw-doc/skills/
 cp /tmp/openclaw-clawdoc/SOUL.md /home/user/.openclaw/agents/claw-doc/SOUL.md
 
@@ -61,7 +61,7 @@ Summary:
 ```bash
 # 1. Clone
 git clone https://github.com/Hashi-Ai-Dev/openclaw-clawdoc.git /tmp/openclaw-clawdoc
-cd /tmp/openclaw-clawdoc && git checkout v1.7.11 && cd ..
+cd /tmp/openclaw-clawdoc && git checkout v1.7.11.1 && cd ..
 
 # 2. Find your agent's workspace path
 openclaw agents list

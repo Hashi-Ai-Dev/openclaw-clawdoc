@@ -1,6 +1,6 @@
 # ClawDoc — Standalone Agent
 
-**Version:** v1.7.11
+**Version:** v1.7.11.1
 **Tracked OpenClaw:** 2026.6.11  
 **Template:** agent-template/README.md
 
