@@ -11,3 +11,9 @@ read_when:
 This page moved to [Qwen](/providers/qwen). See [Qwen](/providers/qwen) for
 the canonical provider setup, endpoint details, compatibility aliases, and Wan
 video-generation notes.
+
+## Example
+
+```yaml
+# Placeholder — see the related upstream docs for the canonical config snippet
+```

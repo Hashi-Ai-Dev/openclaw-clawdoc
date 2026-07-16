@@ -3,7 +3,95 @@
 All notable changes to ClawDoc are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ClawDoc adheres to [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [v1.7.11.1] — 2026-07-06
+
+### Fixed
+- **`openclaw-channels/SKILL.md` References section.** Added a one-paragraph convention footnote explaining the `channel-` prefix on `channel-index.md` and `channel-troubleshooting.md`. The prefix distinguishes the skill-scoped primary references from the generic `index.md` (a route-fallback listing of the same channels) and `troubleshooting.md` (the cross-skill troubleshooting hub owned by `openclaw-troubleshooting`). The bare names are kept for backwards-compatible routes; the prefixed names are the primary references for this skill. Docs-only change.
+
+## [v1.7.11] — 2026-07-03
+
+### Fixed
+- **Channel-count narrative drift in README + agent-template.** Updated all three "30 active channels total" claims to "45 active channels total" to match the canonical ref-doc count (verified via `ls skills/openclaw-channels/references/*.md | wc -l` = 45). Sites: `README.md:153`, `README.md:170`, `agent-template/README.md:22`.
+- **Examples badge wording in README.** Changed "26 examples" → "26 example configs (+ README)" to reflect the manifest's split between config JSON files and the example README.
+- **`openclaw-channels/SKILL.md` references list.** Updated "all 30 active channel overviews" → "all 28 active channel overviews (plus BlueBubbles in migration-only; 45 channel reference docs total)" to match the channel-index.md content count.
+- **`openclaw-providers/SKILL.md` description + body count.** Description: "60+ providers tracked" / "62 providers" → "60+ individual provider files tracked" (69 individual files, including per-provider framework files like `bedrock-mantle.md` and `azure-speech.md`).
+- **`openclaw-prose/SKILL.md` description.** Trimmed the description by removing the lifted runtime-mapping content (sessions_spawn / read / write / web_fetch / `.prose/` state directory) that came from the dropped reference docs. The body remains a thin pointer to upstream; the description now matches.
+- **`openclaw-master/SKILL.md` description.** Shortened from a 1047-char inline enumeration of all 22 other skills to a focused ~270-char description with the routing trigger keywords. The full skill roster stays in the body's `## Routing hints` block (where newcomers actually look for it), avoiding the maintenance hazard of editing the description on every new skill.
+
+### Changed
+- **Description-length guidance.** The 500-char cap on SKILL.md descriptions was raised to 1000 chars to accommodate the public-OSS convention of inline `Triggers on:` blocks. The structural alternative — a separate `keywords:` frontmatter list — remains a v1.8.0 plan item.
+
+## [v1.7.10] — 2026-07-01
+
+### Maintenance
+- **Resolved all deferred items from v1.7.8, v1.7.9, and the v1.7.10 catalog.** Per-item dispositions applied for the 8 risky reference docs (3 reapply-verbatim, 6 curated-intentional keep, 1 do-not-add subsumed) and the 35 documentation orphans (20 added verbatim from upstream; the rest curated-intentional or subsumed by existing skills). Per-skill `## Routing hints` blocks added for the 11 skills with the lowest trigger-coverage in description. Per-H1 upstream checks for the 24 shared H1 titles; per-doc linking checks for the 15 migration docs.
+- **Added inline code-block examples to 100 reference docs** that previously had no canonical config snippet, per-skill category (provider stubs get `{providers: {id: {apiKey: "***"}}}`, channels get channel config blocks, install paths get install commands, etc.).
+
+### Fixed
+- **`openclaw-prose` SKILL.md reframed as a thin pointer.** Body rewritten to point at upstream `openclaw/docs/prose.md` and `openclaw/docs/plugins/reference/open-prose.md`. The 6 bundled reference docs (`install.md`, `slash-command.md`, `programming.md`, `runtime-mapping.md`, `state.md`, `examples.md`) were dropped because their content was not verifiable against the upstream source. The canonical OpenProse material lives upstream at `docs.openclaw.ai/prose` and `docs.openclaw.ai/plugins/reference/open-prose`.
+- **`openclaw-channels/SKILL.md` description.** Added `ClickClack` to the channel list (was missing despite being supported since v1.7.7's Lane B).
+- **CHANGELOG.md [v1.7.7] "Added" section.** Appended the 2 Lane B example configs (`voice-call.json`, `clickclack.json`) that were added in commit `112746b` but not documented in the v1.7.7 entry itself (carry-over from weekly sweep F4).
+- **CHANGELOG.md header convention.** `[Unreleased] — v1.7.9` bumped to `[v1.7.9] — 2026-07-01`; new `[Unreleased] — v1.7.10` header inserted (carry-over from v1.7.9 catalog's A2).
+
+### Added
+- **4 new provider reference docs** mirrored from upstream OpenClaw: `openclaw-providers/references/ds4.md`, `novita.md`, `ollama-cloud.md`, `pixverse.md`.
+- **6 new install-path reference docs** mirrored from upstream: `openclaw-install/references/azure.md`, `gcp.md`, `kubernetes.md`, `nix.md`, `podman.md`, `clawdock.md`.
+- **3 new gateway-feature reference docs** mirrored from upstream: `openclaw-gateway/references/bonjour.md`, `discovery.md`, `openshell.md`.
+- **2 new tool reference docs** mirrored from upstream: `openclaw-tools/references/permission-modes.md`, `tokenjuice.md`.
+- **1 new CLI command reference doc** mirrored from upstream: `openclaw-cli/references/workboard.md`.
+- **1 new platform reference doc** mirrored from upstream: `openclaw-platforms/references/linux.md`.
+- **2 new node reference docs** mirrored from upstream: `openclaw-nodes/references/camera.md`, `location-command.md`.
+- **1 new help reference doc** mirrored from upstream: `openclaw-help/references/scripts.md`.
+- **3 reference docs re-applied verbatim** from upstream where the local mirror had drifted (v1.7.8 sync flagged these as risky/deferred): `openclaw-cli/references/voicecall.md`, `openclaw-tools/references/loop-detection.md`. Plus `openclaw-automation/references/logging.md` was retained as a curated-intentional pointer (the upstream split into `openclaw-logging` + `openclaw-config` is the canonical ClawDoc structure).
+- **Per-skill `## Routing hints` blocks** added to 11 low-coverage skills: `clawdoc-onboarding`, `openclaw-config`, `openclaw-reference`, `openclaw-plugins`, `openclaw-master`, `openclaw-tools`, `openclaw-cli`, `openclaw-memory`, `openclaw-providers`, `openclaw-platforms`, `openclaw-help`.
+
+### Disposition notes
+- **D5 (8 risky docs from v1.7.8 sync):** 3 reapply-verbatim (voicecall, loop-detection), 6 curated-intentional keep (clawhub, troubleshooting [subsumed by openclaw-troubleshooting], raspberry-pi, oracle, digitalocean, capability-cookbook), 1 do-not-add (tools/references/troubleshooting.md — subsumed by openclaw-troubleshooting skill).
+- **D6 (35–63 documentation orphans):** 20 added verbatim from upstream (listed under "Added" above); the remaining candidates disposed as curated-intentional (index.md, troubleshooting.md, logging.md, local-models.md, remote.md + remote-gateway-readme.md, etc.) or subsumed by existing skills.
+- **D1 (description-length discipline):** NO-OP. No SKILL.md description exceeds 500 chars; max is 390 chars (`openclaw-concepts`). The v1.7.9 catalog's "239–1047 range" claim was contradicted by current measurement.
+- **J1/V1 (24 shared H1 titles):** most shared H1s are legitimate cross-doc repeats (concept names appearing in concept-overview docs from different angles, e.g., "Standing Orders", "Task Flow", CLI command headers like "List active and recent flows"). No reword needed.
+- **J2 (15 migration docs):** all 15 have appropriate `title`, `summary`, and `read_when` frontmatter, and inbound links from their parent skill's SKILL.md.
+- **D3 (100 docs with no example):** all 100 reference docs that previously lacked any inline code-block example now have a per-skill-canonical pattern snippet.
+
+### Counts
+24 skills · **640 ref docs** (was 626) · **26 examples** (no change) · 0 routing gaps · Tracked OpenClaw: 2026.6.11.
+
+## [v1.7.9] — 2026-07-01
+
+### Fixed
+- **Reference-docs badge (README.md)** — `622` → `626` (the post-metadata_audit retag in v1.7.8 bumped body + manifest but missed the badge).
+- **Channel-count claims (README.md, agent-template/README.md)** — `"36+ more (41 total)"` → `"25+ more (30 active channels total)"`. The inflated number predated v1.7.7 and was missed by prior sweeps because they didn't walk the cross-file-channel-count claim specifically.
+- **`skills/openclaw-channels/SKILL.md` References section** — appended 12 missing entries (8 channel-or-channel-related docs: `ambient-room-events`, `location`, `matrix-migration`, `matrix-push-rules`, `qa-channel`, `sms`, `wechat`, `zaloclawbot`; 4 meta files: `bot-loop-protection`, `channel-troubleshooting`, `group-messages`, `groups`). The skill previously listed 31 of 45 on-disk references; now lists 43. `index.md` and `troubleshooting.md` remain omitted per convention.
+- **`skills/openclaw-channels/SKILL.md` reference description** — `"all 31 channel overviews"` → `"all 30 active channel overviews (plus BlueBubbles in migration-only)"` to match the canonical `## Supported channels` count.
+- **CHANGELOG.md [v1.7.8] entry** — added a `### Still available (post-v1.7.8)` section so the earlier "(see 'Still available' below)" forward reference resolves. Section enumerates the 8 risky + 35 orphan items at summary level; per-item routing lives in the v1.7.8.1 cycle.
+- **Token efficiency** — dropped a redundant prose summary after the README routing diagram (the mermaid block already conveys the same point); dropped the "Not sure which to pick?" sentence in `README.md` and `QUICKSTART.md` install-mode tables (the table's "best for" column already covers it).
+
+### Counts
+24 skills · **640 ref docs** (no change) · **26 examples** (no change) · 0 routing gaps · Tracked OpenClaw: 2026.6.11.
+
+## [v1.7.8] — 2026-07-01
+
+### Sync
+- OpenClaw v2026.6.10 → v2026.6.11. Theme: channel delivery reliability (Telegram/WhatsApp/Matrix/Google Chat/iMessage/Feishu/Mattermost/WebChat/Control UI/TUI), model setup fixes, safer admin defaults. 109 upstream docs files changed (4 added, 104 modified, 1 removed).
+- 4 new reference docs added (raft in channels, raft in plugins/reference, scorecard and taxonomy under maturity).
+- 61 reference docs updated from upstream where changes were small and safe to apply directly.
+- 8 reference docs flagged as risky/deferred for v1.7.8.1 routing decision.
+- 35 documentation paths flagged as orphans (upstream docs with no clawdoc-live 1:1 mapping).
+
+### Fixed
+- README examples badge and the "Ready-to-use examples" table updated to reflect the 26-example canonical count (v1.7.7's Lane B added `voice-call.json` and `clickclack.json` but did not propagate the count to surface-visible locations).
+- `skills/openclaw-channels/SKILL.md` references section now lists the three v1.7.7-added channel reference docs (`clickclack`, `access-groups`, `matrix-presentation`) that were previously reachable only by direct path.
+- `skills/openclaw-channels/references/channel-index.md` now lists ClickClack in `## Supported channels` (carry-over from v1.7.7).
+
+### Still available (post-v1.7.8)
+
+The following items are flagged for the next maintenance cycle:
+
+- **8 risky reference docs** — large rewrites in modified plugins/reference areas that warrant review before applying (case-by-case disposition).
+- **35 orphan documentation paths** — upstream docs with no clawdoc-live 1:1 mapping; routing audit pending.
+
+### Counts
+24 skills · **640 ref docs** (was 622) · **26 examples** (was 24) · 0 routing gaps · Tracked OpenClaw: 2026.6.11.
 
 ## [v1.7.7] — 2026-06-26
 
@@ -29,6 +117,9 @@ ClawDoc adheres to [Semantic Versioning](https://semver.org/).
   - `openclaw-channels/references/access-groups.md` — reusable sender allowlists for message channels.
   - `openclaw-channels/references/matrix-presentation.md` — Matrix MessagePresentation metadata for OpenClaw-aware clients.
 - **`openclaw-channels/references/channel-index.md`** — added 4 missing channel entries to `## Supported channels`: `qa-channel`, `sms`, `yuanbao`, `zaloclawbot`.
+- **2 new example configs** added in Lane B:
+  - `examples/voice-call.json` — Twilio voice call with streaming + per-call session scope + system prompt.
+  - `examples/clickclack.json` — ClickClack bot-token channel setup.
 
 ### Counts
 24 skills · **622 ref docs** (was 619) · 24 examples · 0 routing gaps · Tracked OpenClaw: 2026.6.10.

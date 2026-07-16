@@ -43,3 +43,10 @@ ClawDoc is organized into specialized skills that route based on the task at han
 
 All reference docs are copied from `/openclaw/docs/` in the OpenClaw source tree.
 Run `openclaw skills check` to audit available skills.
+
+## In practice
+
+```text
+Route to the most specific skill that fits the question; if none fit, fall back
+to openclaw-master for general OpenClaw guidance.
+```

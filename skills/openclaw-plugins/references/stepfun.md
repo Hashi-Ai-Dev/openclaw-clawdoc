@@ -21,3 +21,11 @@ providers: stepfun, stepfun-plan
 ## Related docs
 
 - [stepfun](/providers/stepfun)
+
+## Example
+
+```yaml
+# Enable this provider in ~/.openclaw/openclaw.json
+providers:
+  stepfun: { apiKey: "***", primary: "<see model list>" }
+```

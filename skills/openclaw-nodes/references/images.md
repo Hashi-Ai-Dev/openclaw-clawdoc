@@ -77,3 +77,10 @@ The WhatsApp channel runs via **Baileys Web**. This document captures the curren
 - [Camera capture](/nodes/camera)
 - [Media understanding](/nodes/media-understanding)
 - [Audio and voice notes](/nodes/audio)
+
+## Example
+
+```bash
+# Pair a node from any channel chat
+openclaw pairing start --channel <name>
+```

@@ -329,3 +329,11 @@ Signal setup behavior:
 - Onboarding hub: [Onboarding (CLI)](/start/wizard)
 - Automation and scripts: [CLI Automation](/start/wizard-cli-automation)
 - Command reference: [`openclaw onboard`](/cli/onboard)
+
+## Example
+
+```bash
+# First-run onboarding
+openclaw onboard
+openclaw status
+```

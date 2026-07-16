@@ -73,3 +73,14 @@ When a key is missing, OpenClaw uses safe defaults:
 
 For channel- and plugin-specific command catalogs and deep memory/QMD knobs,
 see the owning skill's references.
+
+## Example
+
+```json5
+// Most OpenClaw config lives at ~/.openclaw/openclaw.json
+{
+  "agents": { "defaults": { "model": { "primary": "minimax/MiniMax-M3" } } },
+  "memory": { "backend": "builtin" },
+  "plugins": { "entries": { "openclaw-honcho": { "enabled": true } } }
+}
+```

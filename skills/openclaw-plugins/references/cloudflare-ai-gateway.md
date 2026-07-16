@@ -21,3 +21,11 @@ providers: cloudflare-ai-gateway
 ## Related docs
 
 - [cloudflare-ai-gateway](/providers/cloudflare-ai-gateway)
+
+## Example
+
+```yaml
+# Enable this provider in ~/.openclaw/openclaw.json
+providers:
+  cloudflare-ai-gateway: { apiKey: "***", primary: "<see model list>" }
+```

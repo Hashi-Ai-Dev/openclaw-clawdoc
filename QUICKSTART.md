@@ -13,8 +13,6 @@ Get ClawDoc running in under 10 minutes. Choose your install mode first.
 | **Your agent keeps its identity?** | ❌ No (ClawDoc has its own) | ✅ Yes |
 | **Guide** | [AGENT_INSTALL.md](./AGENT_INSTALL.md) | [SKILLS_INSTALL.md](./SKILLS_INSTALL.md) |
 
-Not sure? **Start with Mode 2** — it's the lightest path.
-
 ---
 
 ## Prerequisites (Both Modes)
@@ -39,7 +37,7 @@ openclaw agents add claw-doc \
 
 # 2. Install skills
 git clone https://github.com/Hashi-Ai-Dev/openclaw-clawdoc.git /tmp/openclaw-clawdoc
-cd /tmp/openclaw-clawdoc && git checkout v1.7.7 && cd ..
+cd /tmp/openclaw-clawdoc && git checkout v1.7.11.1 && cd ..
 cp -r /tmp/openclaw-clawdoc/skills/* /home/user/.openclaw/agents/claw-doc/skills/
 cp /tmp/openclaw-clawdoc/SOUL.md /home/user/.openclaw/agents/claw-doc/SOUL.md
 
@@ -63,7 +61,7 @@ Summary:
 ```bash
 # 1. Clone
 git clone https://github.com/Hashi-Ai-Dev/openclaw-clawdoc.git /tmp/openclaw-clawdoc
-cd /tmp/openclaw-clawdoc && git checkout v1.7.7 && cd ..
+cd /tmp/openclaw-clawdoc && git checkout v1.7.11.1 && cd ..
 
 # 2. Find your agent's workspace path
 openclaw agents list

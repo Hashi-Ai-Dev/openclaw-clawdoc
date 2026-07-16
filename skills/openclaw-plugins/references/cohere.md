@@ -21,3 +21,11 @@ providers: cohere
 ## Related docs
 
 - [cohere](/providers/cohere)
+
+## Example
+
+```yaml
+# Enable this provider in ~/.openclaw/openclaw.json
+providers:
+  cohere: { apiKey: "***", primary: "<see model list>" }
+```

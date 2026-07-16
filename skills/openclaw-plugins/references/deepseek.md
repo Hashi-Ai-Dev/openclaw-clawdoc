@@ -21,3 +21,11 @@ providers: deepseek
 ## Related docs
 
 - [deepseek](/providers/deepseek)
+
+## Example
+
+```yaml
+# Enable this provider in ~/.openclaw/openclaw.json
+providers:
+  deepseek: { apiKey: "***", primary: "<see model list>" }
+```

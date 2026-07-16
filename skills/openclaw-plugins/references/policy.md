@@ -21,3 +21,12 @@ plugin
 ## Related docs
 
 - [policy](/cli/policy)
+
+## Example
+
+```yaml
+# Most plugin work involves editing ~/.openclaw/openclaw.json
+plugins:
+  entries:
+    <plugin-id>: { enabled: true }
+```

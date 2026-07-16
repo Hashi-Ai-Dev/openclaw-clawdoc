@@ -6,3 +6,12 @@ title: "Gmail PubSub"
 # Gmail PubSub
 
 This page moved to [Scheduled Tasks](/automation/cron-jobs#gmail-pubsub-integration). See [Scheduled Tasks](/automation/cron-jobs#gmail-pubsub-integration) for Gmail PubSub documentation.
+
+## Example
+
+```bash
+# Tool calls from an agent look like this in transcript
+tool: web_fetch
+input: { url: "https://docs.openclaw.ai" }
+result: { status: 200, body: "..." }
+```

@@ -3,6 +3,11 @@ name: openclaw-config
 description: "OpenClaw gateway configuration reference. Use when auditing, editing, or troubleshooting openclaw.json. Covers ALL config keys: agents, channels, memory, tools, providers, session, messages, sandbox, plugins, env, model routing. Triggers on: \"config\", \"openclaw.json\", \"configuration\", \"config reference\", \"config audit\", \"gateway config\", \"session config\", \"channel config\", \"runtime\", \"model routing\", \"env vars\", \"gateway won't start\", \"config error\", \"how to configure\", \"openclaw doctor\", \"pairing\", \"background process\", \"remote gateway\", \"auth\", \"credential\", \"SecretRef\", \"secretref\", \"usage tracking\", \"secrets plan\", \"credential surface\", \"gateway HTTP API\", \"telemetry\", \"prometheus\", \"opentelemetry\", \"multiple gateways\". For gateway HTTP API, telemetry endpoints, secrets backend, sandbox policies, and gateway runtime: see also openclaw-gateway."
 ---
 
+## Routing hints
+
+You should route to this skill when the user asks about any OpenClaw config key, the `openclaw.json` schema, `~/.openclaw/openclaw.json` location, secrets management, `SecretRef` references, authentication, auth profiles, model failover, retry policy, gateway config, or any field-by-field configuration question. References: `configuration-reference.md`, `gateway-config.md`, `secrets.md`, `authentication.md`, `config-agents.md`, `config-channels.md`, `config-tools.md`, `retry.md`, `model-failover.md`, `protocol.md`, `cli-backends.md`, `doctor.md`, `operator-scopes.md`, `secretref-credential-surface.md`, `prompt-caching.md`, `timezone.md`.
+
+
 # OpenClaw Config Reference
 
 Complete reference for `~/.openclaw/openclaw.json`.

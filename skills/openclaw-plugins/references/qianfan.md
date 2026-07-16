@@ -21,3 +21,11 @@ providers: qianfan
 ## Related docs
 
 - [qianfan](/providers/qianfan)
+
+## Example
+
+```yaml
+# Enable this provider in ~/.openclaw/openclaw.json
+providers:
+  qianfan: { apiKey: "***", primary: "<see model list>" }
+```

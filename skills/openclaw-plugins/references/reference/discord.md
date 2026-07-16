@@ -21,3 +21,10 @@ channels: discord; contracts: transcriptSourceProviders
 ## Related docs
 
 - [discord](/channels/discord)
+
+## Example
+
+```bash
+# Codex harness plugin runs as a child process spawned by the Gateway
+openclaw acp spawn codex --bind here
+```

@@ -3,6 +3,11 @@ name: openclaw-plugins
 description: "OpenClaw plugin system. Use when installing, configuring, debugging, or building plugins; understanding plugin slots, capability model, plugin manifest, SDK entry points, hook system, or plugin allow/deny. Also covers the ClawHub public registry (publish, browse, install from clawhub CLI). Triggers on: plugin, plugins install, plugin slot, plugin config, extension, plugin manifest, plugin SDK, channel plugin, provider plugin, tool plugin, hook plugin, building plugins, plugin capability, plugin allow list, plugin shape, ClawHub, clawhub CLI, clawhub auth, publish skill, publish plugin, registry, browse plugins, install from ClawHub, npm install, plugin not loading, plugin conflict, disabled plugin, plugin API, openclaw plugins, policy, conformance, openshell, codex harness, codex supervisor, exec approvals, memory wiki, browser login, context engine, plugin slots."
 ---
 
+## Routing hints
+
+You should route to this skill when the user asks about OpenClaw plugins — how to install, configure, build, or distribute plugins; plugin manifest format; plugin slots (memory, channel, provider, context-engine); per-provider plugin stubs; the Codex harness; the plugin SDK; plugin context engine; ClawHub registry. References: `architecture.md`, `architecture-internals.md`, `plugin-manifest.md`, `plugin-slots.md`, `bundles.md`, `building-plugins.md`, `building-extensions.md`, `adding-capabilities.md`, `plugin-sdk.md`, `sdk-subpaths.md`, `sdk-agent-harness.md`, `sdk-channel-inbound.md`, `sdk-channel-outbound.md`, `codex.md`, `codex-harness.md`, `codex-harness-runtime.md`, `codex-harness-reference.md`, `codex-supervisor.md`, `codex-native-plugins.md`, `codex-computer-use.md`.
+
+
 # OpenClaw Plugins
 
 ## Plugin basics

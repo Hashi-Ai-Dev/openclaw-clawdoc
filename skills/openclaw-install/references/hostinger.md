@@ -96,3 +96,11 @@ Send "Hi" to your assistant on the channel you connected. OpenClaw will reply an
 - [Install overview](/install)
 - [VPS hosting](/vps)
 - [DigitalOcean](/install/digitalocean)
+
+## Example
+
+```bash
+# Provider-specific install example
+git clone https://github.com/<owner>/openclaw-clawdoc.git
+cd openclaw-clawdoc && ./install.sh
+```

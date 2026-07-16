@@ -117,3 +117,12 @@ Before shipping a new capability, verify:
 
 If a PR skips the capability layer and hardcodes vendor behavior into a
 channel/tool, send it back and define the contract first.
+
+## Example
+
+```bash
+# Tool calls from an agent look like this in transcript
+tool: web_fetch
+input: { url: "https://docs.openclaw.ai" }
+result: { status: 200, body: "..." }
+```

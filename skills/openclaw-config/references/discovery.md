@@ -148,3 +148,14 @@ The gateway is the source of truth for node/client admission.
 - [Remote access](/gateway/remote)
 - [Tailscale](/gateway/tailscale)
 - [Bonjour discovery](/gateway/bonjour)
+
+## Example
+
+```json5
+// Most OpenClaw config lives at ~/.openclaw/openclaw.json
+{
+  "agents": { "defaults": { "model": { "primary": "minimax/MiniMax-M3" } } },
+  "memory": { "backend": "builtin" },
+  "plugins": { "entries": { "openclaw-honcho": { "enabled": true } } }
+}
+```

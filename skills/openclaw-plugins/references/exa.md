@@ -21,3 +21,11 @@ contracts: webSearchProviders
 ## Related docs
 
 - [exa](/tools/exa-search)
+
+## Example
+
+```yaml
+# Enable this provider in ~/.openclaw/openclaw.json
+providers:
+  exa: { apiKey: "***", primary: "<see model list>" }
+```

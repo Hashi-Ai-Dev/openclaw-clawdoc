@@ -21,3 +21,12 @@ OpenClaw Cohere provider plugin.
 ## Related docs
 
 - [cohere](/providers/cohere)
+
+## Example
+
+```yaml
+# Enable in ~/.openclaw/openclaw.json
+plugins:
+  entries:
+    cohere-plugin: { enabled: true }
+```

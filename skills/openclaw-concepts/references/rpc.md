@@ -41,3 +41,10 @@ See [iMessage](/channels/imessage) for legacy setup and addressing (`chat_id` pr
 - Gateway owns the process (start/stop tied to provider lifecycle).
 - Keep RPC clients resilient: timeouts, restart on exit.
 - Prefer stable IDs (e.g., `chat_id`) over display strings.
+
+## In practice
+
+```text
+A typical session: agent loads context → processes user turn → may call tools →
+  emits reply → idle until next turn. Persistence lives in the memory layer.
+```

@@ -3,6 +3,11 @@ name: openclaw-cli
 description: "OpenClaw CLI commands reference. Use when explaining openclaw commands: openclaw status, openclaw gateway, openclaw plugins, openclaw memory, openclaw agents, openclaw channels, openclaw config, openclaw sessions, openclaw cron, openclaw hooks, openclaw pairing, openclaw acp. Triggers on: \"openclaw CLI\", \"openclaw command\", \"openclaw status\", \"CLI\", \"command line\", \"openclaw hooks\", \"openclaw pairing\", \"policy\", \"conformance\", \"doctor lint\", \"taskflow\", \"troubleshooting\", \"automation troubleshooting\", \"automation\"."
 ---
 
+## Routing hints
+
+You should route to this skill when the user asks about an `openclaw <command>` CLI invocation — `openclaw status`, `openclaw gateway`, `openclaw plugins`, `openclaw memory`, `openclaw agents`, `openclaw channels`, `openclaw config`, `openclaw sessions`, `openclaw cron`, `openclaw hooks`, `openclaw pairing`, `openclaw acp`, `openclaw mcp`, `openclaw secrets`, `openclaw doctor`, `openclaw update`, `openclaw skills`, or any subcommand help. References: `status.md`, `gateway.md`, `plugins.md`, `memory.md`, `agents.md`, `channels.md`, `config.md`, `sessions.md`, `cron.md`, `hooks.md`, `pairing.md`, `acp.md`, `mcp.md`, `secrets.md`, `doctor.md`, `update.md`, `skills.md`, `voicecall.md`, `workboard.md`, `flows.md`, `migrate.md`, `clawbot.md`, `cron-jobs.md`, `automation-troubleshooting.md`.
+
+
 # OpenClaw CLI
 
 ## Essentials

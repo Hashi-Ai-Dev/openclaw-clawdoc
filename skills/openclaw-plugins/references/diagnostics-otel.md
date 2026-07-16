@@ -17,3 +17,12 @@ OpenClaw diagnostics OpenTelemetry exporter for metrics, traces, and logs.
 ## Surface
 
 plugin
+
+## Example
+
+```yaml
+# Enable in ~/.openclaw/openclaw.json
+plugins:
+  entries:
+    diagnostics-otel: { enabled: true }
+```

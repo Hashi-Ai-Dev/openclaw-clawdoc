@@ -122,3 +122,14 @@ exhaustive):
 - [Security](/gateway/security)
 - [Configuration](/gateway/configuration)
 - [Trusted proxy auth](/gateway/trusted-proxy-auth)
+
+## Example
+
+```json5
+// Most OpenClaw config lives at ~/.openclaw/openclaw.json
+{
+  "agents": { "defaults": { "model": { "primary": "minimax/MiniMax-M3" } } },
+  "memory": { "backend": "builtin" },
+  "plugins": { "entries": { "openclaw-honcho": { "enabled": true } } }
+}
+```

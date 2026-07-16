@@ -125,3 +125,12 @@ exhaustive):
 - [Security](/gateway/security)
 - [Configuration](/gateway/configuration)
 - [Trusted proxy auth](/gateway/trusted-proxy-auth)
+
+## Example
+
+```bash
+# Start the gateway and check its health
+openclaw gateway start
+openclaw gateway status
+openclaw doctor --non-interactive
+```

@@ -35,3 +35,14 @@ title: "Gateway Lock"
 
 - [Multiple Gateways](/gateway/multiple-gateways) — running multiple instances with unique ports
 - [Troubleshooting](/gateway/troubleshooting) — diagnosing `EADDRINUSE` and port conflicts
+
+## Example
+
+```json5
+// Most OpenClaw config lives at ~/.openclaw/openclaw.json
+{
+  "agents": { "defaults": { "model": { "primary": "minimax/MiniMax-M3" } } },
+  "memory": { "backend": "builtin" },
+  "plugins": { "entries": { "openclaw-honcho": { "enabled": true } } }
+}
+```

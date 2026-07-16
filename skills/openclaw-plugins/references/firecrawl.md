@@ -21,3 +21,11 @@ contracts: tools, webFetchProviders, webSearchProviders
 ## Related docs
 
 - [firecrawl](/tools/firecrawl)
+
+## Example
+
+```yaml
+# Enable this provider in ~/.openclaw/openclaw.json
+providers:
+  firecrawl: { apiKey: "***", primary: "<see model list>" }
+```

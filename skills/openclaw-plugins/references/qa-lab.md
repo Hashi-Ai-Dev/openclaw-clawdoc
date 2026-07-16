@@ -17,3 +17,11 @@ OpenClaw QA lab plugin with private debugger UI and scenario runner.
 ## Surface
 
 contracts: webSearchProviders
+
+## Example
+
+```yaml
+# Enable this provider in ~/.openclaw/openclaw.json
+providers:
+  qa-lab: { apiKey: "***", primary: "<see model list>" }
+```

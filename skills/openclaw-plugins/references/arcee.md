@@ -21,3 +21,11 @@ providers: arcee
 ## Related docs
 
 - [arcee](/providers/arcee)
+
+## Example
+
+```yaml
+# Enable this provider in ~/.openclaw/openclaw.json
+providers:
+  arcee: { apiKey: "***", primary: "<see model list>" }
+```

@@ -144,3 +144,12 @@ If a PR skips the capability layer and hardcodes vendor behavior into a channel/
 - [Building plugins](/plugins/building-plugins) — first-plugin tutorial.
 - [SDK overview](/plugins/sdk-overview) — import map and registration API reference.
 - [Creating skills](/tools/creating-skills) — companion contributor surface.
+
+## Example
+
+```yaml
+# Most plugin work involves editing ~/.openclaw/openclaw.json
+plugins:
+  entries:
+    <plugin-id>: { enabled: true }
+```

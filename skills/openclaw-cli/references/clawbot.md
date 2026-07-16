@@ -19,3 +19,10 @@ Current supported alias:
 Prefer modern top-level commands directly:
 
 - `openclaw clawbot qr` -> `openclaw qr`
+
+## Example
+
+```bash
+# Most openclaw CLI commands follow this pattern
+openclaw <noun> <verb> [--flag <value>]
+```

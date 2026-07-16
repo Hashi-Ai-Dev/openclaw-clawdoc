@@ -2,9 +2,9 @@
 
 **The OpenClaw knowledge-base agent for config audits, troubleshooting, and grounded system fixes.**
 
-[![OpenClaw](https://img.shields.io/badge/OpenClaw-2026.6.10-blue?style=flat-square)](https://github.com/openclaw/openclaw)
+[![OpenClaw](https://img.shields.io/badge/OpenClaw-2026.6.11-blue?style=flat-square)](https://github.com/openclaw/openclaw)
 [![Skills](https://img.shields.io/badge/Skills-24-orange?style=flat-square)](#skill-tree)
-[![Reference Docs](https://img.shields.io/badge/Reference_Docs-622-green?style=flat-square)](#reference-docs)
+[![Reference Docs](https://img.shields.io/badge/Reference_Docs-640-green?style=flat-square)](#reference-docs)
 [![License](https://img.shields.io/badge/License-MIT-success?style=flat-square)](LICENSE)
 
 <p align="center">
@@ -12,10 +12,10 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Hashi-Ai-Dev/openclaw-clawdoc/releases/tag/v1.7.7"><img alt="v1.7.7 — comprehensive cleanup + OpenClaw sync" src="https://img.shields.io/badge/v1.7.7%E2%80%94comprehensive_cleanup_%2B_OpenClaw_sync-success?style=flat-square"></a>
+  <a href="https://github.com/Hashi-Ai-Dev/openclaw-clawdoc/releases/tag/v1.7.11.1"><img alt="v1.7.11.1 — openclaw-channels reference filename convention note" src="https://img.shields.io/badge/v1.7.11.1%E2%80%94openclaw--channels_reference_filename_convention_note-success?style=flat-square"></a>
   <a href="#skill-tree"><img alt="24 skills" src="https://img.shields.io/badge/24_skills-orange?style=flat-square"></a>
-  <a href="#reference-docs"><img alt="622 reference docs" src="https://img.shields.io/badge/622_reference_docs-green?style=flat-square"></a>
-  <a href="#ready-to-use-examples"><img alt="24 examples" src="https://img.shields.io/badge/24_examples-blueviolet?style=flat-square"></a>
+  <a href="#reference-docs"><img alt="640 reference docs" src="https://img.shields.io/badge/640_reference_docs-green?style=flat-square"></a>
+  <a href="#ready-to-use-examples"><img alt="26 example configs (+ README)" src="https://img.shields.io/badge/26_example_configs_(%2B_README)-blueviolet?style=flat-square"></a>
 </p>
 
 🧠 **Same idea, different agent:** [HermitDoc](https://github.com/Hashi-Ai-Dev/HermitDoc) — the ClawDoc philosophy applied to Hermes Agent
@@ -61,8 +61,6 @@ ClawDoc supports two adoption paths. Pick the one that fits your setup:
 | **New agent created?** | ✅ Yes | ❌ No |
 | **Separate identity?** | ✅ Yes | ❌ Your agent keeps its identity |
 | **Guide** | [AGENT_INSTALL.md](./AGENT_INSTALL.md) | [SKILLS_INSTALL.md](./SKILLS_INSTALL.md) |
-
-Not sure which to pick? Start with **Mode 2 — Skills Only** for the lightest path. Switch to Mode 1 if you want ClawDoc to have its own persistent workspace and identity.
 
 ---
 
@@ -112,8 +110,6 @@ flowchart TD
     Ref --> A[Cited answer<br/>+ before/after diff]
 ```
 
-Every routing decision is grounded in `references/` — never from memory alone.
-
 ---
 
 ## Install
@@ -147,14 +143,14 @@ ClawDoc routes to the right skill, reads the reference docs, and gives you a pre
 
 ## Reference docs
 
-**622 docs** copied from the official OpenClaw source and versioned against the tracked OpenClaw release.
+**640 docs** copied from the official OpenClaw source and versioned against the tracked OpenClaw release.
 
 | Area | What's covered |
 |------|---------------|
 | Config | All gateway config keys, defaults, secrets, retry, failover |
 | Memory | builtin / QMD / Honcho setup, embeddings, citations |
 | Agents | Multi-agent, bindings, sandbox, tool policies |
-| Channels | Discord, Telegram, WhatsApp, Slack, Signal, and 36+ more (41 total) |
+| Channels | Discord, Telegram, WhatsApp, Slack, Signal, and 40+ more (45 active channels total) |
 | Concepts | Architecture, session, compaction, streaming, queue |
 | Providers | 60+ model providers: OpenAI, Anthropic, Gemini, Bedrock, Ollama... |
 | CLI | Every openclaw command with examples |
@@ -171,7 +167,7 @@ ClawDoc routes to the right skill, reads the reference docs, and gives you a pre
 | `openclaw-config` | Gateway config reference — all keys, all patterns |
 | `openclaw-memory` | Memory backends: builtin, QMD, Honcho |
 | `openclaw-agents` | Multi-agent, bindings, sandbox, tool policies |
-| `openclaw-channels` | Discord, Telegram, WhatsApp, Slack, Signal — and 36+ more (41 total) |
+| `openclaw-channels` | Discord, Telegram, WhatsApp, Slack, Signal — and 40+ more (45 active channels total) |
 
 ### Operations
 | Skill | What it does |
@@ -242,6 +238,8 @@ openclaw config merge examples/NAME.json && openclaw gateway restart
 | Zalo Bot API | `zalo-channel.json` |
 | Skill Workshop (review proposals) | `skill-workshop.json` |
 | Codex harness (ACP agent) | `codex-harness.json` |
+| ClickClack bot-token channel setup (baseUrl + bot token + workspace) | `clickclack.json` |
+| Voice-call plugin (Twilio + realtime/streaming/TTS keys + per-call session scope + system prompt) | `voice-call.json` |
 | Production deploy (Tailscale + sandbox) | `production-deploy.json` |
 
 **Beginner path:** `install-verify.json` → `discord-single.json` → `memory-builtin.json`

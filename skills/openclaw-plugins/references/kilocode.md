@@ -21,3 +21,11 @@ providers: kilocode
 ## Related docs
 
 - [kilocode](/providers/kilocode)
+
+## Example
+
+```yaml
+# Enable this provider in ~/.openclaw/openclaw.json
+providers:
+  kilocode: { apiKey: "***", primary: "<see model list>" }
+```

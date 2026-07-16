@@ -96,3 +96,11 @@ Onboarding requests TCC permissions needed for:
 
 - [Onboarding overview](/start/onboarding-overview)
 - [Getting started](/start/getting-started)
+
+## Example
+
+```bash
+# First-run onboarding
+openclaw onboard
+openclaw status
+```

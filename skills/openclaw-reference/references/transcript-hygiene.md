@@ -240,3 +240,10 @@ logic in the runner, and made OpenAI **no-touch** beyond image sanitization.
 
 - [Session management](/concepts/session)
 - [Session pruning](/concepts/session-pruning)
+
+## Example
+
+```bash
+# Inspect the full release-validation flow
+openclaw doctor --verbose
+```

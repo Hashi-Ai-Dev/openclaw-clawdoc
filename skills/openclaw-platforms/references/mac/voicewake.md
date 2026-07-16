@@ -93,3 +93,11 @@ If the user starts typing mid-voice-utterance:
 - Overlay position: docked / floating / hidden
 
 Changes apply immediately; no app restart needed.
+
+## Example
+
+```bash
+# macOS / iOS / Android: launch + connect to a paired node
+openclaw nodes status
+openclaw nodes invoke camera_snap --facing front --quality 0.8
+```

@@ -21,3 +21,11 @@ providers: groq; contracts: mediaUnderstandingProviders
 ## Related docs
 
 - [groq](/providers/groq)
+
+## Example
+
+```yaml
+# Enable this provider in ~/.openclaw/openclaw.json
+providers:
+  groq: { apiKey: "***", primary: "<see model list>" }
+```

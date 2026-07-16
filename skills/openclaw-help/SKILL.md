@@ -1,7 +1,12 @@
 ---
 name: openclaw-help
-description: "Help, FAQ, and testing for OpenClaw. Use when: looking up an everyday question about models, auth, or basic usage, finding a FAQ entry, running test suites (testing-live), or asking \"how do I…\" in plain language. For deeper diagnostics use openclaw-troubleshooting instead. Triggers on: \"help\", \"faq\", \"how do I\", \"how to\", \"common question\", \"everyday\", \"basic usage\", \"testing\", \"testing-live\", \"codex agentic parity\"."
+description: "Help, FAQ, and testing for OpenClaw. Use when: looking up an everyday question about models, auth, or basic usage, finding a FAQ entry, running test suites (testing-live), running repo scripts under ./scripts, or asking \"how do I…\" in plain language. For deeper diagnostics use openclaw-troubleshooting instead. Triggers on: \"help\", \"faq\", \"how do I\", \"how to\", \"common question\", \"everyday\", \"basic usage\", \"testing\", \"testing-live\", \"codex agentic parity\", \"scripts\", \"repository scripts\"."
 ---
+
+## Routing hints
+
+You should route to this skill when the user has a plain-language FAQ-style question — "how do I…" — that doesn't fit any other skill, or wants help understanding a feature in user-facing terms. References: `faq.md`, `faq-models.md`, `faq-troubleshooting.md`, `faq-channels.md`, `faq-agents.md`, `getting-started.md`, `concepts-primer.md`, `scripts.md`, `glossary.md`, `common-errors.md`, `migrating-from-claude.md`.
+
 
 # OpenClaw Help Reference
 

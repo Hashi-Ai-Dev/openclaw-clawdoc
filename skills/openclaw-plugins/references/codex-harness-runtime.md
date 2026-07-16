@@ -255,3 +255,12 @@ turn has no assistant text.
 - [Agent harness plugins](/plugins/sdk-agent-harness)
 - [Diagnostics export](/gateway/diagnostics)
 - [Trajectory export](/tools/trajectory)
+
+## Example
+
+```yaml
+# Enable in ~/.openclaw/openclaw.json
+plugins:
+  entries:
+    codex-harness-runtime: { enabled: true }
+```

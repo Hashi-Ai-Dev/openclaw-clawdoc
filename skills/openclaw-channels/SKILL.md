@@ -1,6 +1,6 @@
 ---
 name: openclaw-channels
-description: "OpenClaw channel configuration. Use when setting up, auditing, or troubleshooting messaging channels: Discord, Telegram, WhatsApp, Slack, Signal, Matrix, iMessage, IRC, Feishu, LINE, GoogleChat, Mattermost, Microsoft Teams, Nextcloud Talk, Nostr, QQ Bot, Synology Chat, Twitch, Tlon, Zalo, Voice Call, plus location and qa-channel. (BlueBubbles was the prior iMessage path and is now removed; see references/bluebubbles.md for the migration guide.) Triggers on: channel config, dmPolicy, group policy, allowFrom, pairing, broadcast groups, channel pairing, matrix migration, push rules, location, setup channel, connect channel."
+description: "OpenClaw channel configuration. Use when setting up, auditing, or troubleshooting messaging channels: Discord, Telegram, WhatsApp, Slack, Signal, Matrix, iMessage, IRC, Feishu, LINE, GoogleChat, Mattermost, Microsoft Teams, Nextcloud Talk, Nostr, QQ Bot, Synology Chat, Twitch, Tlon, Zalo, Voice Call, Raft, ClickClack, plus location and qa-channel. (BlueBubbles was the prior iMessage path and is now removed; see references/bluebubbles.md for the migration guide.) Triggers on: channel config, dmPolicy, group policy, allowFrom, pairing, broadcast groups, channel pairing, matrix migration, push rules, raft consensus, location, setup channel, connect channel."
 ---
 
 # OpenClaw Channels
@@ -54,8 +54,13 @@ openclaw pairing approve <channel> <CODE>
 
 ## References
 
-- `references/channel-index.md` — all 31 channel overviews
+> **Convention:** `channel-index.md` and `channel-troubleshooting.md` carry the `channel-` prefix to distinguish them from the generic `index.md` (a route-fallback listing of the same channels) and `troubleshooting.md` (the cross-skill troubleshooting hub, owned by `openclaw-troubleshooting`). The bare names are kept for backwards-compatible routes; the prefixed names are the primary references for this skill.
+
+- `references/channel-index.md` — all 28 active channel overviews (plus BlueBubbles in migration-only; 45 channel reference docs total)
+- `references/ambient-room-events.md` — ambient-room-events channel setup
+- `references/bot-loop-protection.md` — bot loop protection patterns
 - `references/channel-routing.md` — routing rules, match conditions
+- `references/channel-troubleshooting.md` — channel-specific troubleshooting
 - `references/discord.md` — Discord setup, threads, exec approvals
 - `references/telegram.md` — Telegram setup, forum topics
 - `references/whatsapp.md` — WhatsApp pairing, broadcast groups
@@ -64,8 +69,13 @@ openclaw pairing approve <channel> <CODE>
 - `references/matrix.md` — Matrix setup, E2EE, multi-account
 - `references/feishu.md` — Feishu setup, streaming cards
 - `references/line.md` — LINE setup
+- `references/location.md` — location channel setup
 - `references/googlechat.md` — GoogleChat setup
+- `references/group-messages.md` — group messaging patterns
+- `references/groups.md` — groups meta
 - `references/mattermost.md` — Mattermost setup
+- `references/matrix-migration.md` — Matrix migration guide
+- `references/matrix-push-rules.md` — Matrix push rules
 - `references/msteams.md` — Microsoft Teams setup
 - `references/bluebubbles.md` — Coming from BlueBubbles (migration guide; BlueBubbles was removed in v1.6.26)
 - `references/imessage.md` — iMessage setup
@@ -74,10 +84,18 @@ openclaw pairing approve <channel> <CODE>
 - `references/synology-chat.md` — Synology Chat setup
 - `references/nextcloud-talk.md` — Nextcloud Talk setup
 - `references/qqbot.md` — QQ Bot setup
+- `references/qa-channel.md` — QA channel setup
+- `references/raft.md` — Raft consensus channel setup
+- `references/sms.md` — SMS channel setup
 - `references/tlon.md` — Tlon setup
 - `references/twitch.md` — Twitch setup
+- `references/wechat.md` — WeChat channel setup
 - `references/zalo.md` — Zalo setup
 - `references/zalouser.md` — Zalo User setup
+- `references/zaloclawbot.md` — Zalo ClawBot channel setup
 - `references/yuanbao.md` — Tencent Yuanbao setup
+- `references/clickclack.md` — ClickClack bot-token channel setup and target syntax
+- `references/access-groups.md` — reusable sender allowlists for message channels
+- `references/matrix-presentation.md` — Matrix MessagePresentation metadata for OpenClaw-aware clients
 - `references/pairing.md` — pairing flow, code approval
 - `references/broadcast-groups.md` — broadcast group config
